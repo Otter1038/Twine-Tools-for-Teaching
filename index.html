@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Twine Tools for Teaching</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Special+Elite&family=Oswald:wght@400;700&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --red: #C8102E;
+      --navy: #0A1628;
+      --gold: #F2A900;
+      --cream: #F5E6C8;
+      --steel: #6B7280;
+      --dark: #0D0D0D;
+      --rivet: #8B8B8B;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background-color: var(--navy);
+      color: var(--cream);
+      font-family: 'Special Elite', cursive;
+      overflow-x: hidden;
+      background-image:
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 40px,
+          rgba(255,255,255,0.015) 40px,
+          rgba(255,255,255,0.015) 41px
+        ),
+        repeating-linear-gradient(
+          90deg,
+          transparent,
+          transparent 40px,
+          rgba(255,255,255,0.015) 40px,
+          rgba(255,255,255,0.015) 41px
+        );
+    }
+
+    /* ── NOISE OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.4;
+    }
+
+    /* ── RIVETS ── */
+    .rivet {
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      background: radial-gradient(circle at 35% 35%, #d0d0d0, #666, #333);
+      border-radius: 50%;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.6), inset 0 1px 2px rgba(255,255,255,0.3);
+    }
+
+    /* ── STRIPE BAND ── */
+    .stripe-band {
+      height: 18px;
+      background: repeating-linear-gradient(
+        -45deg,
+        var(--red),
+        var(--red) 10px,
+        var(--gold) 10px,
+        var(--gold) 20px
+      );
+    }
+
+    /* ── HEADER ── */
+    header {
+      position: relative;
+      z-index: 1;
+      background: var(--red);
+      border-bottom: 6px solid var(--gold);
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .header-rivets {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5em 2em;
+      background: rgba(0,0,0,0.2);
+    }
+
+    .header-inner {
+      padding: 2em 2em 1.5em;
+      text-align: center;
+      position: relative;
+    }
+
+    .header-inner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 60px,
+        rgba(0,0,0,0.08) 60px,
+        rgba(0,0,0,0.08) 61px
+      );
+    }
+
+    .war-badge {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--dark);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.8em;
+      letter-spacing: 4px;
+      padding: 0.3em 1.5em;
+      margin-bottom: 0.8em;
+      clip-path: polygon(8px 0%, calc(100% - 8px) 0%, 100% 50%, calc(100% - 8px) 100%, 8px 100%, 0% 50%);
+    }
+
+    h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3em, 8vw, 6em);
+      letter-spacing: 6px;
+      color: var(--cream);
+      text-shadow:
+        4px 4px 0 rgba(0,0,0,0.4),
+        -1px -1px 0 rgba(255,255,255,0.1);
+      line-height: 0.95;
+      position: relative;
+    }
+
+    h1 span {
+      color: var(--gold);
+      display: block;
+    }
+
+    .header-sub {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.95em;
+      letter-spacing: 3px;
+      color: rgba(245,230,200,0.8);
+      margin-top: 0.8em;
+      text-transform: uppercase;
+    }
+
+    .rosie-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5em;
+      margin-top: 1.2em;
+      padding: 0.6em 0;
+      border-top: 2px solid rgba(255,255,255,0.2);
+    }
+
+    .rosie-bar span {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.3em;
+      letter-spacing: 3px;
+      color: var(--gold);
+    }
+
+    .dot-row {
+      display: flex;
+      gap: 8px;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--gold);
+      opacity: 0.6;
+    }
+
+    /* ── INTRO SECTION ── */
+    .intro {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 3em auto 2em;
+      padding: 0 2em;
+      text-align: center;
+    }
+
+    .intro-box {
+      border: 3px solid var(--gold);
+      padding: 2em;
+      position: relative;
+      background: rgba(10, 22, 40, 0.8);
+    }
+
+    .intro-box::before,
+    .intro-box::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      border-color: var(--red);
+      border-style: solid;
+    }
+
+    .intro-box::before {
+      top: -3px; left: -3px;
+      border-width: 3px 0 0 3px;
+    }
+
+    .intro-box::after {
+      bottom: -3px; right: -3px;
+      border-width: 0 3px 3px 0;
+    }
+
+    .intro p {
+      font-size: 1.05em;
+      line-height: 1.8;
+      color: var(--cream);
+      opacity: 0.9;
+    }
+
+    .intro p strong {
+      color: var(--gold);
+      font-family: 'Oswald', sans-serif;
+      letter-spacing: 1px;
+    }
+
+    /* ── SECTION LABEL ── */
+    .section-label {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      margin: 3em 0 1.5em;
+    }
+
+    .section-label h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.5em;
+      letter-spacing: 8px;
+      color: var(--cream);
+      display: inline-block;
+      padding: 0 1.5em;
+      position: relative;
+    }
+
+    .section-label h2::before,
+    .section-label h2::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(to right, transparent, var(--gold));
+    }
+
+    .section-label h2::before {
+      right: 100%;
+      background: linear-gradient(to left, transparent, var(--gold));
+    }
+
+    .section-label h2::after {
+      left: 100%;
+    }
+
+    /* ── TOOLS GRID ── */
+    .tools-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2em;
+      max-width: 1100px;
+      margin: 0 auto 4em;
+      padding: 0 2em;
+    }
+
+    /* ── TOOL CARD ── */
+    .tool-card {
+      background: var(--cream);
+      color: var(--dark);
+      border: 4px solid var(--dark);
+      position: relative;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 6px 6px 0 var(--dark);
+      text-decoration: none;
+    }
+
+    .tool-card:hover {
+      transform: translate(-3px, -3px);
+      box-shadow: 9px 9px 0 var(--dark);
+    }
+
+    .tool-card.coming-soon {
+      opacity: 0.65;
+      filter: grayscale(0.4);
+      cursor: not-allowed;
+    }
+
+    .tool-card.coming-soon:hover {
+      transform: none;
+      box-shadow: 6px 6px 0 var(--dark);
+    }
+
+    .card-top {
+      background: var(--red);
+      padding: 0.6em 1em;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .card-top .card-label {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.85em;
+      letter-spacing: 3px;
+      color: var(--cream);
+    }
+
+    .card-number {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.1em;
+      color: var(--gold);
+    }
+
+    .card-icon {
+      font-size: 3.5em;
+      text-align: center;
+      padding: 0.6em 0 0.3em;
+      line-height: 1;
+      background: var(--navy);
+      color: var(--cream);
+      border-bottom: 3px solid var(--dark);
+    }
+
+    .card-body {
+      padding: 1.2em 1.4em 1.4em;
+    }
+
+    .card-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.8em;
+      letter-spacing: 3px;
+      color: var(--red);
+      line-height: 1;
+      margin-bottom: 0.4em;
+    }
+
+    .card-desc {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.82em;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 1.2em;
+      padding-top: 0.8em;
+      border-top: 2px dashed var(--steel);
+    }
+
+    .card-cta {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.85em;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--red);
+    }
+
+    .coming-badge {
+      background: var(--steel);
+      color: white;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.75em;
+      letter-spacing: 2px;
+      padding: 0.2em 0.7em;
+    }
+
+    /* ── TYPEWRITER DECORATION ── */
+    .typewriter-section {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 2em 2em 3em;
+      border-top: 3px solid rgba(242,169,0,0.3);
+      margin-top: 1em;
+    }
+
+    .typewriter-row {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      gap: 3em;
+      flex-wrap: wrap;
+      margin-bottom: 2em;
+    }
+
+    .typewriter {
+      font-size: 5em;
+      filter: sepia(0.5) brightness(0.8);
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .typewriter:nth-child(2) { animation-delay: 1.5s; font-size: 4em; }
+    .typewriter:nth-child(3) { animation-delay: 0.8s; font-size: 4.5em; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .we-can {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2em, 5vw, 3.5em);
+      letter-spacing: 6px;
+      color: var(--red);
+      text-shadow: 3px 3px 0 var(--gold);
+    }
+
+    .we-can span {
+      color: var(--gold);
+      text-shadow: 3px 3px 0 var(--red);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      position: relative;
+      z-index: 1;
+      background: var(--dark);
+      border-top: 4px solid var(--red);
+      text-align: center;
+      padding: 1.5em 2em;
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.8em;
+      color: var(--steel);
+      letter-spacing: 2px;
+    }
+
+    footer strong {
+      color: var(--gold);
+    }
+
+    /* ── ANIMATIONS ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 0.7s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .tool-card:nth-child(1) { animation: fadeIn 0.7s 0.1s ease forwards; opacity: 0; }
+    .tool-card:nth-child(2) { animation: fadeIn 0.7s 0.25s ease forwards; opacity: 0; }
+    .tool-card:nth-child(3) { animation: fadeIn 0.7s 0.4s ease forwards; opacity: 0; }
+    .tool-card:nth-child(4) { animation: fadeIn 0.7s 0.55s ease forwards; opacity: 0; }
+
+    /* ── POLKA DOT ACCENT ── */
+    .polka-accent {
+      background-image: radial-gradient(circle, var(--gold) 1.5px, transparent 1.5px);
+      background-size: 16px 16px;
+      height: 40px;
+      opacity: 0.25;
+      margin: 1em 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="stripe-band"></div>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-rivets">
+      <div class="dot-row">
+        <div class="rivet"></div><div class="rivet"></div><div class="rivet"></div>
+      </div>
+      <div style="font-family:'Courier Prime',monospace; font-size:0.75em; letter-spacing:3px; color:rgba(245,230,200,0.6);">EDUCATIONAL TECHNOLOGY DIVISION</div>
+      <div class="dot-row">
+        <div class="rivet"></div><div class="rivet"></div><div class="rivet"></div>
+      </div>
+    </div>
+    <div class="header-inner">
+      <div class="war-badge">★ PROFESSOR FINCH'S ★</div>
+      <h1>TWINE TOOLS<span>FOR TEACHING</span></h1>
+      <p class="header-sub">Interactive Writing Tools for the Modern Classroom</p>
+      <div class="rosie-bar">
+        <div class="rivet"></div>
+        <span>★ DIVISION OF DIGITAL WRITING TOOLS ★</span>
+        <div class="rivet"></div>
+      </div>
+    </div>
+    <div class="header-rivets" style="justify-content:center; gap:2em; padding:0.4em 2em;">
+      <div class="rivet"></div><div class="rivet"></div><div class="rivet"></div>
+      <div class="rivet"></div><div class="rivet"></div><div class="rivet"></div>
+      <div class="rivet"></div><div class="rivet"></div><div class="rivet"></div>
+    </div>
+  </header>
+
+  <div class="stripe-band"></div>
+
+  <!-- INTRO -->
+  <div class="intro fade-in">
+    <div class="intro-box">
+      <p>
+        A collection of <strong>free, browser-based Twine games</strong> built for writing classrooms. Report for duty and get to writing.
+      </p>
+    </div>
+  </div>
+
+  <div class="polka-accent"></div>
+
+  <!-- TOOLS -->
+  <div class="section-label">
+    <h2>The Tools</h2>
+  </div>
+
+  <div class="tools-grid">
+
+    <!-- CITATION STATION -->
+    <a href="tools/citation-station/index.html" class="tool-card" target="_blank" rel="noopener">
+      <div class="card-top">
+        <span class="card-label">★ Tool No. 1</span>
+        <span class="card-number">MLA</span>
+      </div>
+      <div class="card-icon">📚</div>
+      <div class="card-body">
+        <div class="card-title">Citation Station</div>
+        <p class="card-desc">
+          A step-by-step MLA citation generator covering journal articles, books, websites, YouTube, social media, and newspaper sources. Build your Works Cited page one citation at a time.
+        </p>
+        <div class="card-footer">
+          <span class="card-cta">→ Launch Tool</span>
+          <div class="rivet"></div>
+        </div>
+      </div>
+    </a>
+
+    <!-- PEER REVIEW -->
+    <a href="tools/peer-review/index.html" class="tool-card" target="_blank" rel="noopener">
+      <div class="card-top">
+        <span class="card-label">★ Tool No. 2</span>
+        <span class="card-number">ENC</span>
+      </div>
+      <div class="card-icon">✍️</div>
+      <div class="card-body">
+        <div class="card-title">Peer Review</div>
+        <p class="card-desc">
+          A guided peer review tool that walks students through giving structured, meaningful feedback on their classmates' writing — moving beyond "it was good" into real critical response.
+        </p>
+        <div class="card-footer">
+          <span class="card-cta">→ Launch Tool</span>
+          <div class="rivet"></div>
+        </div>
+      </div>
+    </a>
+
+    <!-- ANNOTATED BIB - COMING SOON -->
+    <div class="tool-card coming-soon">
+      <div class="card-top">
+        <span class="card-label">★ Tool No. 3</span>
+        <span class="card-number">ANN</span>
+      </div>
+      <div class="card-icon">🗂️</div>
+      <div class="card-body">
+        <div class="card-title">Annotated Bibliography</div>
+        <p class="card-desc">
+          A guided tool for building annotated bibliographies — walking students through source evaluation, summary, and MLA formatting entry by entry.
+        </p>
+        <div class="card-footer">
+          <span class="card-cta" style="color:var(--steel);">In Production</span>
+          <span class="coming-badge">COMING SOON</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- TYPEWRITER DECORATION -->
+  <div class="typewriter-section">
+    <div class="typewriter-row">
+      <div class="typewriter">📻</div>
+      <div class="typewriter">⌨️</div>
+      <div class="typewriter">📷</div>
+    </div>
+    <div class="we-can">WRITE. <span>RECORD.</span> CREATE.</div>
+  </div>
+
+  <div class="polka-accent"></div>
+
+  <!-- FOOTER -->
+  <footer>
+    <strong>TWINE TOOLS FOR TEACHING</strong> &mdash;
+    Developed for writing classrooms &bull;
+    Built with Twine &amp; Chapbook
+  </footer>
+
+  <div class="stripe-band"></div>
+
+</body>
+</html>
