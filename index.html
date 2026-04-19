@@ -286,11 +286,28 @@
       transition: transform 0.2s ease, box-shadow 0.2s ease;
       box-shadow: 6px 6px 0 var(--dark);
       text-decoration: none;
+      cursor: pointer;
     }
 
     .tool-card:hover {
       transform: translate(-3px, -3px);
       box-shadow: 9px 9px 0 var(--dark);
+    }
+
+    .card-download {
+      display: block;
+      margin-top: 0.5em;
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.72em;
+      color: var(--steel);
+      text-decoration: none;
+      letter-spacing: 1px;
+      border-top: 1px dashed rgba(0,0,0,0.15);
+      padding-top: 0.5em;
+    }
+
+    .card-download:hover {
+      color: var(--red);
     }
 
     .tool-card.coming-soon {
@@ -650,7 +667,7 @@
   <div class="tools-grid">
 
     <!-- CITATION STATION -->
-    <a href="tools/citation-station/index.html" class="tool-card" target="_blank" rel="noopener">
+    <div class="tool-card" onclick="window.open('tools/citation-station/index.html','_blank')">
       <div class="card-top">
         <span class="card-label">★ Tool No. 1</span>
         <span class="card-number">MLA</span>
@@ -665,11 +682,12 @@
           <span class="card-cta">→ Launch Tool</span>
           <div class="rivet"></div>
         </div>
+        <a class="card-download" href="tools/citation-station/index.html" download="citation-station.html" onclick="event.stopPropagation()">⬇ Download Tool</a>
       </div>
-    </a>
+    </div>
 
     <!-- PEER REVIEW -->
-    <a href="tools/peer-review/index.html" class="tool-card" target="_blank" rel="noopener">
+    <div class="tool-card" onclick="window.open('tools/peer-review/index.html','_blank')">
       <div class="card-top">
         <span class="card-label">★ Tool No. 2</span>
         <span class="card-number">ENC</span>
@@ -684,11 +702,12 @@
           <span class="card-cta">→ Launch Tool</span>
           <div class="rivet"></div>
         </div>
+        <a class="card-download" href="tools/peer-review/index.html" download="peer-review.html" onclick="event.stopPropagation()">⬇ Download Tool</a>
       </div>
-    </a>
+    </div>
 
     <!-- ANNOTATED BIB -->
-    <a href="tools/annotated-bib/index.html" class="tool-card" target="_blank" rel="noopener">
+    <div class="tool-card" onclick="window.open('tools/annotated-bib/index.html','_blank')">
       <div class="card-top">
         <span class="card-label">★ Tool No. 3</span>
         <span class="card-number">ANN</span>
@@ -703,8 +722,9 @@
           <span class="card-cta">→ Launch Tool</span>
           <div class="rivet"></div>
         </div>
+        <a class="card-download" href="tools/annotated-bib/index.html" download="annotated-bib.html" onclick="event.stopPropagation()">⬇ Download Tool</a>
       </div>
-    </a>
+    </div>
 
   </div>
 
