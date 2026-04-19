@@ -385,10 +385,31 @@
     .typewriter-section {
       position: relative;
       z-index: 1;
-      text-align: center;
       padding: 2em 2em 3em;
       border-top: 3px solid rgba(242,169,0,0.3);
       margin-top: 1em;
+      display: flex;
+      align-items: center;
+      gap: 3em;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .typewriter-text-side {
+      text-align: center;
+      flex: 0 0 auto;
+    }
+
+    .typewriter-img-side {
+      flex: 0 1 480px;
+      min-width: 260px;
+    }
+
+    .typewriter-img-side img {
+      width: 100%;
+      border: 3px solid var(--dark);
+      box-shadow: 6px 6px 0 var(--dark);
+      display: block;
     }
 
     .typewriter-row {
@@ -685,12 +706,17 @@
 
   <!-- TYPEWRITER DECORATION -->
   <div class="typewriter-section">
-    <div class="typewriter-row">
-      <div class="typewriter">📻</div>
-      <div class="typewriter">⌨️</div>
-      <div class="typewriter">📷</div>
+    <div class="typewriter-img-side">
+      <img src="assets/desk.png" alt="Vintage desk with typewriter, camera, and laptop">
     </div>
-    <div class="we-can">WRITE. <span>CODE.</span> CREATE.</div>
+    <div class="typewriter-text-side">
+      <div class="typewriter-row">
+        <div class="typewriter">📻</div>
+        <div class="typewriter">⌨️</div>
+        <div class="typewriter">📷</div>
+      </div>
+      <div class="we-can">WRITE. <span>CODE.</span> CREATE.</div>
+    </div>
   </div>
 
   <div class="polka-accent"></div>
