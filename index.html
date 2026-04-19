@@ -287,6 +287,8 @@
       box-shadow: 6px 6px 0 var(--dark);
       text-decoration: none;
       cursor: pointer;
+      display: flex;
+      flex-direction: column;
     }
 
     .tool-card:hover {
@@ -354,6 +356,13 @@
 
     .card-body {
       padding: 1.2em 1.4em 1.4em;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .card-desc {
+      flex-grow: 1;
     }
 
     .card-title {
@@ -370,6 +379,7 @@
       font-size: 0.82em;
       line-height: 1.6;
       color: #333;
+      flex-grow: 1;
     }
 
     .card-footer {
