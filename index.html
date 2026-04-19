@@ -427,6 +427,107 @@
       text-shadow: 3px 3px 0 var(--red);
     }
 
+    /* ── BUSINESS CARD ── */
+    .card-section {
+      text-align: center;
+      padding: 2em 2em 3em;
+      border-top: 3px solid rgba(242,169,0,0.3);
+    }
+
+    .ttt-card-embed {
+      display: inline-block;
+      background: var(--cream);
+      border: 3px solid var(--dark);
+      box-shadow: 6px 6px 0 var(--dark);
+      padding: 1.8em 2.2em;
+      text-align: left;
+      max-width: 420px;
+      width: 100%;
+    }
+
+    .ttt-affil {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.85em;
+      letter-spacing: 3px;
+      color: var(--dark);
+      display: flex;
+      gap: 0.6em;
+      align-items: center;
+      margin-bottom: 0.6em;
+    }
+
+    .ttt-affil .a-ucf { color: var(--red); }
+    .ttt-affil .a-tt  { color: var(--dark); }
+    .ttt-affil .a-dwr { color: var(--steel); }
+
+    .ttt-rule {
+      height: 3px;
+      background: repeating-linear-gradient(-45deg, var(--red), var(--red) 6px, var(--gold) 6px, var(--gold) 12px);
+      margin-bottom: 0.8em;
+    }
+
+    .ttt-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6em;
+      letter-spacing: 3px;
+      color: var(--dark);
+    }
+
+    .ttt-name em {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.65em;
+      font-style: italic;
+      color: var(--steel);
+      letter-spacing: 1px;
+    }
+
+    .ttt-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.85em;
+      letter-spacing: 2px;
+      color: var(--red);
+      text-transform: uppercase;
+    }
+
+    .ttt-title-2 {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.75em;
+      color: var(--steel);
+      margin-top: 0.2em;
+    }
+
+    .ttt-inst {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.72em;
+      color: var(--dark);
+      font-style: italic;
+      margin-top: 0.15em;
+    }
+
+    .ttt-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3em;
+      margin-top: 0.9em;
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.78em;
+    }
+
+    .ttt-links .arrow { color: var(--red); font-weight: bold; }
+    .ttt-links a { color: var(--dark); text-decoration: none; border-bottom: 1px solid var(--gold); }
+    .ttt-links a:hover { color: var(--red); }
+
+    .ttt-stripe {
+      display: flex;
+      height: 8px;
+      margin-top: 1.2em;
+      overflow: hidden;
+    }
+
+    .ttt-stripe span { flex: 1; }
+    .ttt-stripe .s-r { background: var(--red); }
+    .ttt-stripe .s-g { background: var(--gold); }
+
     /* ── FOOTER ── */
     footer {
       position: relative;
@@ -593,6 +694,32 @@
   </div>
 
   <div class="polka-accent"></div>
+
+  <!-- BUSINESS CARD -->
+  <div class="card-section">
+    <div class="ttt-card-embed" id="card-light">
+      <div class="ttt-affil">
+        <span class="a-ucf">UCF</span>
+        <span class="a-tt">Texts &amp; Technology</span>
+        <span class="a-dwr">DWR</span>
+      </div>
+      <div class="ttt-rule"></div>
+      <div class="ttt-name">Ricky Finch, <em>M.A.</em></div>
+      <div class="ttt-title" style="margin-top:10px;">Ph.D. Candidate · Texts &amp; Technology</div>
+      <div class="ttt-title-2">Instructor · Dept. of Writing &amp; Rhetoric</div>
+      <div class="ttt-inst">University of Central Florida</div>
+      <div class="ttt-links">
+        <span><span class="arrow">&gt;</span> <a href="mailto:richard.finch@ucf.edu">richard.finch@ucf.edu</a></span>
+        <span><span class="arrow">&gt;</span> <a href="https://otter1038.github.io/Twine-Tools-for-Teaching/" target="_blank" rel="noopener">Twine Tools for Teaching</a></span>
+      </div>
+      <div class="ttt-stripe">
+        <span class="s-r"></span><span class="s-g"></span>
+        <span class="s-r"></span><span class="s-g"></span>
+        <span class="s-r"></span><span class="s-g"></span>
+        <span class="s-r"></span><span class="s-g"></span>
+      </div>
+    </div>
+  </div>
 
   <!-- FOOTER -->
   <footer>
