@@ -749,15 +749,86 @@
       </div>
     </div>
 
+    <!-- COMING SOON 1 -->
+    <div class="tool-card coming-soon">
+      <div class="card-top">
+        <span class="card-label">★ Tool No. 4</span>
+        <span class="card-number">???</span>
+      </div>
+      <div class="card-icon">⚙️</div>
+      <div class="card-body">
+        <div class="card-title">Coming Soon</div>
+        <p class="card-desc">
+          A new writing tool is under development. Check back soon.
+        </p>
+        <div class="card-footer">
+          <span class="card-cta" style="color:var(--steel);">In Development</span>
+          <span class="coming-badge">COMING SOON</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- COMING SOON 2 — Writing Challenges -->
+    <div class="tool-card coming-soon">
+      <div class="card-top">
+        <span class="card-label">★ Tool No. 5</span>
+        <span class="card-number">YOU</span>
+      </div>
+      <div class="card-icon">✉️</div>
+      <div class="card-body">
+        <div class="card-title">What Are Your Writing Challenges?</div>
+        <p class="card-desc">
+          Tell us what writing tasks give you the most trouble. Your responses help shape the next tools we build.
+        </p>
+        <div class="card-footer">
+          <span class="card-cta" style="color:var(--steel);">Coming Soon</span>
+          <span class="coming-badge">COMING SOON</span>
+        </div>
+      </div>
+    </div>
+
   </div>
+
+  <!-- DOWNLOAD ALL TOOLS -->
+  <div style="text-align:center; padding: 1.5em 2em; margin-bottom: 1em;">
+    <button onclick="downloadAll()" style="background:var(--red); color:var(--cream); border:3px solid var(--dark); box-shadow:4px 4px 0 var(--dark); font-family:'Bebas Neue',sans-serif; font-size:1.1em; letter-spacing:3px; padding:0.6em 2em; cursor:pointer; transition:transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translate(-2px,-2px)';this.style.boxShadow='6px 6px 0 var(--dark)'" onmouseout="this.style.transform='';this.style.boxShadow='4px 4px 0 var(--dark)'">
+      ⬇ Download All Tools
+    </button>
+    <p style="font-family:'Courier Prime',monospace; font-size:0.72em; color:var(--steel); margin-top:0.6em; letter-spacing:1px;">Save all tools to your device for offline use</p>
+  </div>
+  <script>
+    function downloadAll() {
+      var files = [
+        { href: 'tools/citation-station/index.html', name: 'citation-station.html' },
+        { href: 'tools/peer-review/index.html',      name: 'peer-review.html' },
+        { href: 'tools/annotated-bib/index.html',    name: 'annotated-bib.html' }
+      ];
+      files.forEach(function(f, i) {
+        setTimeout(function() {
+          var a = document.createElement('a');
+          a.href = f.href;
+          a.download = f.name;
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+        }, i * 600);
+      });
+    }
+  </script>
 
   <!-- TYPEWRITER DECORATION + CARD -->
   <div class="typewriter-section">
     <div class="typewriter-img-side">
       <img src="assets/desk.png" alt="Vintage desk with typewriter, camera, and laptop">
+      <p style="font-family:'Courier Prime',monospace; font-size:0.72em; color:var(--steel); line-height:1.7; margin-top:1em; border-top:1px dashed rgba(242,169,0,0.3); padding-top:0.8em;">
+        These tools are free and open to anyone teaching or learning to write. They are designed for use in classrooms, writing centers, and independent study. All tools are mobile-friendly and accessible across devices.
+      </p>
     </div>
     <div class="typewriter-text-side">
       <div class="we-can">WRITE. <span>CODE.</span> CREATE.</div>
+      <p style="margin-top:0.8em; font-family:'Courier Prime',monospace; font-size:0.72em; letter-spacing:1px;">
+        <a href="https://github.com/otter1038/Twine-Tools-for-Teaching" target="_blank" rel="noopener" style="color:var(--gold); text-decoration:none; border-bottom:1px solid var(--red);">⌥ View the code on GitHub</a>
+      </p>
     </div>
     <div class="typewriter-text-side">
       <div class="ttt-card-embed" id="card-light">
