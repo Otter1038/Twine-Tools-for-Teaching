@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Major Assignments — Twine Tools for Teaching</title>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9P579YYGT4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9P579YYGT4');
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Special+Elite&family=Oswald:wght@400;700&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --red: #C8102E;
+      --navy: #0A1628;
+      --gold: #F2A900;
+      --cream: #F5E6C8;
+      --steel: #6B7280;
+      --dark: #0D0D0D;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--navy);
+      color: var(--cream);
+      font-family: 'Special Elite', cursive;
+      background-image:
+        repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(255,255,255,0.015) 40px, rgba(255,255,255,0.015) 41px),
+        repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(255,255,255,0.015) 40px, rgba(255,255,255,0.015) 41px);
+    }
+
+    .stripe-band {
+      height: 18px;
+      background: repeating-linear-gradient(-45deg, var(--red), var(--red) 10px, var(--gold) 10px, var(--gold) 20px);
+    }
+
+    header {
+      background: var(--red);
+      border-bottom: 6px solid var(--gold);
+      padding: 2em;
+      text-align: center;
+    }
+
+    .war-badge {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--dark);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.8em;
+      letter-spacing: 4px;
+      padding: 0.3em 1.5em;
+      margin-bottom: 0.8em;
+      clip-path: polygon(8px 0%, calc(100% - 8px) 0%, 100% 50%, calc(100% - 8px) 100%, 8px 100%, 0% 50%);
+    }
+
+    header h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2em, 6vw, 3.5em);
+      letter-spacing: 6px;
+      color: var(--cream);
+      text-shadow: 3px 3px 0 rgba(0,0,0,0.4);
+      line-height: 1;
+    }
+
+    header h1 span { color: var(--gold); display: block; }
+
+    .header-sub {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.8em;
+      letter-spacing: 3px;
+      color: rgba(245,230,200,0.7);
+      margin-top: 0.6em;
+      text-transform: uppercase;
+    }
+
+    nav {
+      background: var(--dark);
+      border-bottom: 2px solid var(--gold);
+      text-align: center;
+      padding: 0.7em 2em;
+    }
+
+    nav a {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.85em;
+      letter-spacing: 3px;
+      color: var(--cream);
+      text-decoration: none;
+      text-transform: uppercase;
+      margin: 0 1.5em;
+      transition: color 0.2s;
+    }
+
+    nav a:hover { color: var(--gold); }
+    nav a.active { color: var(--gold); }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 3em 2em;
+    }
+
+    .page-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.5em;
+      letter-spacing: 5px;
+      color: var(--gold);
+      border-bottom: 3px solid var(--red);
+      padding-bottom: 0.4em;
+      margin-bottom: 0.6em;
+    }
+
+    .page-title::before {
+      content: '▶ ';
+      color: var(--red);
+      font-size: 0.7em;
+    }
+
+    .page-subtitle {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.85em;
+      color: var(--steel);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 2.5em;
+    }
+
+    /* ── ASSIGNMENT GRID ── */
+    .assignments-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+      gap: 1.5em;
+    }
+
+    .assignment-card {
+      background: var(--cream);
+      color: var(--dark);
+      border: 3px solid var(--dark);
+      box-shadow: 6px 6px 0 var(--dark);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-header {
+      background: var(--navy);
+      border-bottom: 3px solid var(--gold);
+      padding: 1em 1.4em;
+      display: flex;
+      align-items: center;
+      gap: 1em;
+    }
+
+    .card-number {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2em;
+      color: var(--gold);
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .card-label {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.7em;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--steel);
+    }
+
+    .card-body {
+      padding: 1.4em 1.6em;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8em;
+    }
+
+    .card-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.2em;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--dark);
+      text-transform: uppercase;
+    }
+
+    .card-meta {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.78em;
+      color: #5a4a3a;
+      letter-spacing: 1px;
+      line-height: 1.6;
+    }
+
+    .card-meta span {
+      display: inline-block;
+      background: rgba(200,16,46,0.1);
+      border: 1px solid rgba(200,16,46,0.3);
+      border-radius: 2px;
+      padding: 1px 6px;
+      margin: 2px 0;
+      color: #8B1a2e;
+      font-weight: 700;
+    }
+
+    .card-footer {
+      padding: 0 1.6em 1.4em;
+    }
+
+    .btn-view {
+      display: inline-block;
+      background: var(--red);
+      color: var(--cream);
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.8em;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.5em 1.4em;
+      border: 2px solid var(--dark);
+      box-shadow: 3px 3px 0 var(--dark);
+      transition: transform 0.1s, box-shadow 0.1s;
+    }
+
+    .btn-view:hover {
+      transform: translate(2px, 2px);
+      box-shadow: 1px 1px 0 var(--dark);
+    }
+
+    .btn-coming-soon {
+      display: inline-block;
+      background: transparent;
+      color: var(--steel);
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.8em;
+      font-weight: 400;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 0.5em 1.4em;
+      border: 2px dashed var(--steel);
+      opacity: 0.6;
+      cursor: default;
+    }
+
+    .coming-soon-badge {
+      display: inline-block;
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.72em;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--steel);
+      background: rgba(107,114,128,0.15);
+      border: 1px solid rgba(107,114,128,0.3);
+      padding: 0.3em 0.8em;
+      margin-bottom: 0.8em;
+    }
+
+    .card-desc {
+      font-family: 'Special Elite', cursive;
+      font-size: 0.9em;
+      line-height: 1.7;
+      color: #3a2e22;
+    }
+
+    /* ── BACK LINK ── */
+    .back-link {
+      display: inline-block;
+      margin-top: 2.5em;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.85em;
+      letter-spacing: 3px;
+      color: var(--gold);
+      text-decoration: none;
+      text-transform: uppercase;
+      border-bottom: 2px solid var(--red);
+      padding-bottom: 0.2em;
+      transition: color 0.2s;
+    }
+
+    .back-link:hover { color: var(--red); }
+
+    footer {
+      background: var(--dark);
+      border-top: 4px solid var(--red);
+      text-align: center;
+      padding: 1.5em 2em;
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.8em;
+      color: var(--steel);
+      letter-spacing: 2px;
+      margin-top: 4em;
+    }
+
+    footer strong { color: var(--gold); }
+
+    @media (max-width: 640px) {
+      .assignments-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="stripe-band"></div>
+
+<header>
+  <div class="war-badge">★ PROFESSOR FINCH'S ★</div>
+  <h1>TWINE TOOLS <span>FOR TEACHING</span></h1>
+  <p class="header-sub">Interactive Writing Tools for the Modern Classroom</p>
+</header>
+
+<div class="stripe-band"></div>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="additional-resources.html">Additional Resources</a>
+</nav>
+
+<div class="container">
+
+  <div class="page-title">Major Assignments</div>
+  <div class="page-subtitle">ENC 1102 &mdash; Composition II &mdash; Summer C 2026</div>
+
+  <div class="assignments-grid">
+
+    <!-- MA 1 -->
+    <div class="assignment-card">
+      <div class="card-header">
+        <div class="card-number">01</div>
+        <div>
+          <div class="card-label">Major Assignment</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-title">Cultural Artifact Analysis</div>
+        <div class="card-desc">Identify and analyze a cultural artifact — an object or symbol that connects to traditions, beliefs, and values within your community. Reflect on identity, culture, and language through research and personal insight.</div>
+        <div class="card-meta">
+          <span>30 pts</span> &nbsp; 15% of course grade<br>
+          Rough Draft &mdash; Wed, May 28<br>
+          Final Draft &mdash; Sun, May 31 @ 11:59 PM
+        </div>
+      </div>
+      <div class="card-footer">
+        <a class="btn-view" href="assignments/cultural-artifact-analysis.html">View Assignment &#8594;</a>
+      </div>
+    </div>
+
+    <!-- MA 2 -->
+    <div class="assignment-card">
+      <div class="card-header">
+        <div class="card-number">02</div>
+        <div>
+          <div class="card-label">Major Assignment</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="coming-soon-badge">Coming Soon</div>
+        <div class="card-title">TBA</div>
+        <div class="card-desc">Details for Major Assignment 2 will be posted here when available.</div>
+      </div>
+      <div class="card-footer">
+        <span class="btn-coming-soon">Not Yet Available</span>
+      </div>
+    </div>
+
+    <!-- MA 3 -->
+    <div class="assignment-card">
+      <div class="card-header">
+        <div class="card-number">03</div>
+        <div>
+          <div class="card-label">Major Assignment</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="coming-soon-badge">Coming Soon</div>
+        <div class="card-title">TBA</div>
+        <div class="card-desc">Details for Major Assignment 3 will be posted here when available.</div>
+      </div>
+      <div class="card-footer">
+        <span class="btn-coming-soon">Not Yet Available</span>
+      </div>
+    </div>
+
+    <!-- MA 4 -->
+    <div class="assignment-card">
+      <div class="card-header">
+        <div class="card-number">04</div>
+        <div>
+          <div class="card-label">Major Assignment</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="coming-soon-badge">Coming Soon</div>
+        <div class="card-title">TBA</div>
+        <div class="card-desc">Details for Major Assignment 4 will be posted here when available.</div>
+      </div>
+      <div class="card-footer">
+        <span class="btn-coming-soon">Not Yet Available</span>
+      </div>
+    </div>
+
+  </div>
+
+  <a class="back-link" href="index.html">&#8592; Back to the Tools</a>
+
+</div>
+
+<div class="stripe-band"></div>
+
+<footer>
+  <strong>TWINE TOOLS FOR TEACHING</strong> &mdash;
+  Developed for writing classrooms &bull;
+  Built with Twine &amp; Chapbook
+</footer>
+
+<div class="stripe-band"></div>
+
+</body>
+</html>

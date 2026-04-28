@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cultural Artifact Analysis — ENC 1102</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --paper: #f9f6f0;
+    --accent: #8B3A3A;
+    --accent-light: #c4726f;
+    --rule: #d4c9b8;
+    --muted: #6b6256;
+    --highlight: #f0e8d8;
+    --exceeds: #2d5a27;
+    --meets: #1a3a5c;
+    --approaching: #7a5c00;
+    --dnm: #7a2020;
+    --exceeds-bg: #edf5ec;
+    --meets-bg: #eaf0f7;
+    --approaching-bg: #fdf6e3;
+    --dnm-bg: #faeaea;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 17px;
+    line-height: 1.75;
+  }
+
+  /* ── PAGE WRAPPER ── */
+  .page {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 60px 48px 100px;
+  }
+
+  /* ── BACK LINK ── */
+  .back-link {
+    display: inline-block;
+    margin-bottom: 32px;
+    font-family: 'Source Serif 4', serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent-light);
+    padding-bottom: 2px;
+  }
+  .back-link:hover { color: var(--accent-light); }
+
+  /* ── MASTHEAD ── */
+  .masthead {
+    border-top: 3px solid var(--ink);
+    border-bottom: 1px solid var(--rule);
+    padding: 18px 0 14px;
+    margin-bottom: 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .masthead .course {
+    font-family: 'Source Serif 4', serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .masthead .instructor {
+    font-size: 12px;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  /* ── TITLE BLOCK ── */
+  .title-block {
+    margin-bottom: 48px;
+    border-left: 4px solid var(--accent);
+    padding-left: 24px;
+  }
+  .title-block h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 2.6rem;
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: 12px;
+  }
+  .dates {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    margin-top: 16px;
+  }
+  .date-item {
+    font-size: 13px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: .08em;
+  }
+  .date-item strong {
+    display: block;
+    font-size: 14px;
+    color: var(--accent);
+    font-weight: 600;
+    font-style: normal;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  /* ── SLO BAND ── */
+  .slo-band {
+    background: var(--highlight);
+    border: 1px solid var(--rule);
+    border-left: 4px solid var(--accent-light);
+    padding: 20px 24px;
+    margin-bottom: 40px;
+    border-radius: 0 4px 4px 0;
+  }
+  .slo-band h3 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+  .slo-band ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .slo-band li {
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  .slo-band li::before {
+    content: "→ ";
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .slo-band em { font-style: italic; }
+
+  /* ── BODY SECTIONS ── */
+  section {
+    margin-bottom: 44px;
+  }
+  section h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 16px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--rule);
+  }
+  p { margin-bottom: 16px; }
+  p:last-child { margin-bottom: 0; }
+
+  blockquote {
+    border-left: 3px solid var(--accent-light);
+    margin: 20px 0;
+    padding: 10px 20px;
+    font-style: italic;
+    color: var(--muted);
+    font-size: 16px;
+  }
+
+  .examples {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: 10px;
+    margin: 20px 0;
+  }
+  .example-chip {
+    background: white;
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 8px 12px;
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+  .example-chip::before {
+    content: "✦ ";
+    color: var(--accent-light);
+    font-size: 10px;
+  }
+
+  /* ── EXPECTATIONS BOX ── */
+  .expectations {
+    background: white;
+    border: 1px solid var(--rule);
+    border-top: 3px solid var(--ink);
+    padding: 24px 28px;
+    margin-top: 8px;
+  }
+  .expectations h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 14px;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: .06em;
+  }
+  .req-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .req-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 15px;
+  }
+  .req-list li::before {
+    content: "✓";
+    color: var(--accent);
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 56px 0 48px;
+    position: relative;
+  }
+  .divider::after {
+    content: "◆";
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--paper);
+    padding: 0 12px;
+    color: var(--rule);
+    font-size: 12px;
+  }
+
+  /* ── RUBRIC ── */
+  .rubric-header {
+    margin-bottom: 28px;
+  }
+  .rubric-header h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 6px;
+  }
+  .rubric-header p {
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 0;
+  }
+
+  /* Rubric table */
+  .rubric-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    margin-bottom: 32px;
+  }
+  .rubric-table thead tr {
+    background: var(--ink);
+    color: white;
+  }
+  .rubric-table thead th {
+    padding: 12px 14px;
+    text-align: left;
+    font-family: 'Source Serif 4', serif;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: .06em;
+  }
+  .rubric-table thead th:first-child {
+    width: 18%;
+  }
+  .rubric-table thead th.col-exceeds { background: #2a4a24; }
+  .rubric-table thead th.col-meets   { background: #1a3050; }
+  .rubric-table thead th.col-app     { background: #5a4400; }
+  .rubric-table thead th.col-dnm     { background: #5a1a1a; }
+
+  .rubric-table tbody tr {
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+  }
+  .rubric-table tbody tr:last-child {
+    border-bottom: 2px solid var(--ink);
+  }
+
+  .cat-cell {
+    padding: 16px 14px;
+    background: #f4f1ec;
+    border-right: 1px solid var(--rule);
+  }
+  .cat-name {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 13.5px;
+    line-height: 1.3;
+    margin-bottom: 4px;
+  }
+  .cat-pts {
+    font-size: 12px;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .cat-q {
+    font-size: 12px;
+    color: var(--muted);
+    font-style: italic;
+    line-height: 1.4;
+  }
+
+  .rubric-table td.lvl {
+    padding: 16px 14px;
+    line-height: 1.55;
+    font-size: 13.5px;
+    border-right: 1px solid var(--rule);
+  }
+  .rubric-table td.lvl:last-child { border-right: none; }
+
+  td.exceeds { background: var(--exceeds-bg); }
+  td.meets   { background: var(--meets-bg); }
+  td.app     { background: var(--approaching-bg); }
+  td.dnm     { background: var(--dnm-bg); }
+
+  /* ── SCORE SUMMARY ── */
+  .score-summary {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 32px;
+  }
+  .score-box {
+    border: 1px solid var(--rule);
+    overflow: hidden;
+  }
+  .score-box h4 {
+    background: var(--ink);
+    color: white;
+    font-family: 'Source Serif 4', serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    padding: 10px 16px;
+  }
+  .score-box table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+  }
+  .score-box table td {
+    padding: 8px 16px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .score-box table td:last-child { text-align: right; color: var(--accent); font-weight: 600; }
+  .score-box table tr:last-child td { border-bottom: none; }
+
+  .note-box {
+    border: 1px solid var(--rule);
+    border-left: 4px solid var(--accent-light);
+    padding: 16px 20px;
+    background: var(--highlight);
+    font-size: 14px;
+    font-style: italic;
+    color: var(--muted);
+    margin-top: 24px;
+  }
+
+  /* ── PRINT ── */
+  @media print {
+    body { background: white; font-size: 13px; }
+    .page { padding: 24px 32px; max-width: 100%; }
+    .rubric-table { font-size: 11px; }
+    .back-link { display: none; }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 680px) {
+    .page { padding: 32px 20px 60px; }
+    .title-block h1 { font-size: 1.9rem; }
+    .score-summary { grid-template-columns: 1fr; }
+    .rubric-table { font-size: 12px; }
+    .rubric-table td.lvl, .rubric-table td.cat-cell { padding: 10px 8px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <a class="back-link" href="../assignments.html">← Back to Assignments</a>
+
+  <!-- MASTHEAD -->
+  <div class="masthead">
+    <span class="course">ENC 1102: Composition II &nbsp;|&nbsp; Section C061 &nbsp;|&nbsp; Summer C 2026</span>
+    <span class="instructor">Richard Finch &mdash; richard.finch@ucf.edu</span>
+  </div>
+
+  <!-- TITLE -->
+  <div class="title-block">
+    <h1>Cultural Artifact<br>Analysis</h1>
+    <div class="dates">
+      <div class="date-item">Rough Draft<strong>Wednesday, May 28</strong></div>
+      <div class="date-item">Peer Review<strong>Wednesday, May 28</strong></div>
+      <div class="date-item">Final Draft<strong>Sunday, May 31 &mdash; 11:59 PM</strong></div>
+    </div>
+  </div>
+
+  <!-- SLO BAND -->
+  <div class="slo-band">
+    <h3>Course Outcomes for This Assignment</h3>
+    <ul>
+      <li><em>Generating Inquiry.</em> Students will be able to generate and explore genuine lines of inquiry related to writing, language, literacy, and/or rhetoric.</li>
+      <li><em>Multiple Ways of Writing.</em> Students will be able to purposefully integrate multimodality, multiple languages, and/or multiliteracies into writing products to support their goals.</li>
+    </ul>
+  </div>
+
+  <!-- PROMPT BODY -->
+  <section>
+    <h2>Background</h2>
+    <p>The first several weeks of class have focused on linguistic diversity, the myth of standardized English, and the many ways we use language to communicate effectively with different audiences. We've addressed common myths about writing — for example, that good grammar equals good writing. Most of our conversations have centered on how we <em>do</em> language and why we should recognize the value in our different language practices.</p>
+
+    <blockquote>
+      "There are no gaps or limits when it comes to languages; there are only gifts." — Sara P. Alvarez
+    </blockquote>
+
+    <p>Sara P. Alvarez, Amy J. Wan, and Eunjeong Lee write that we are "language architects" — we make critical decisions about how to negotiate and use language successfully in response to specific situations. Our social and cultural contexts inform how we use language, and social and cultural realities create norms and biases that influence how we understand it, which is why it's important to evaluate social and cultural power. Language is tied to identity.</p>
+
+    <blockquote>
+      "I am my language. Until I can take pride in my language, I cannot take pride in myself." — Gloria Anzaldúa
+    </blockquote>
+  </section>
+
+  <section>
+    <h2>The Assignment</h2>
+    <p>You're going to identify and analyze a <strong>cultural artifact</strong>. Select an object or symbol and provide context for it — explain how it connects to specific traditions, beliefs, and values within your community. We all have different backgrounds that shape how we see ourselves and the world. This assignment is asking you to reflect on your identity and culture, to evaluate something that has helped shape you, and to share that knowledge with us.</p>
+
+    <p>Writing is social and collaborative. Through peer review and the nature of this assignment, we'll gain new knowledge and learn about and from each other.</p>
+
+    <p>Some possibilities to get you thinking:</p>
+    <div class="examples">
+      <div class="example-chip">Cast iron skillet cornbread</div>
+      <div class="example-chip">A religious practice</div>
+      <div class="example-chip">Tailgating or cookouts</div>
+      <div class="example-chip">Knitting or crocheting</div>
+      <div class="example-chip">A piece of jewelry</div>
+      <div class="example-chip">A diary or scrapbook</div>
+      <div class="example-chip">A childhood stuffed animal</div>
+      <div class="example-chip">Baseball cards or Barbies</div>
+      <div class="example-chip">Coins or memorabilia</div>
+      <div class="example-chip">A family tradition</div>
+      <div class="example-chip">A piece of music</div>
+      <div class="example-chip">Something of your own</div>
+    </div>
+    <p>Choose <strong>only one</strong> thing.</p>
+  </section>
+
+  <section>
+    <h2>Two Ways In</h2>
+    <p>This assignment allows you to <strong>celebrate</strong> something meaningful to you. But you could also approach it through a more <strong>critical lens</strong> — investigating an object or symbol that doesn't hold as much value to you now, or something you find problematic about your culture or community. Maybe you want to examine your own previous understandings, ask hard questions, and share how your thinking has changed over time.</p>
+    <p>Either way, you're going to have to research. You're being asked to move beyond your own personal experience and perspective — through interviews and other sources.</p>
+  </section>
+
+  <section>
+    <h2>A Note on Language</h2>
+    <p>Since we've been talking about the dynamic nature of language, I encourage you to write this in <strong>your own voice, dialect, and language</strong>. You might choose to switch back and forth between languages — mixing more formal "academic" English with your own dialect. There's a lot of space for you to be creative. I hope you take that up.</p>
+  </section>
+
+  <section>
+    <h2>Expectations</h2>
+    <div class="expectations">
+      <h3>Meets (Baseline)</h3>
+      <ul class="req-list">
+        <li>4 full pages, double-spaced, Times New Roman 12pt</li>
+        <li>MLA format (header, margins, in-text citations, Works Cited)</li>
+        <li>One source from class readings</li>
+        <li>Two additional sources — one of which may be an interview</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- DIVIDER -->
+  <hr class="divider">
+
+  <!-- RUBRIC -->
+  <div class="rubric-header">
+    <h2>Grading Rubric</h2>
+    <p>Total: 30 points &nbsp;(15% of course grade &nbsp;|&nbsp; 200-point scale)</p>
+  </div>
+
+  <table class="rubric-table">
+    <thead>
+      <tr>
+        <th>Category</th>
+        <th class="col-exceeds">Exceeds &mdash; 8&ndash;9 pts</th>
+        <th class="col-meets">Meets &mdash; 6&ndash;7 pts</th>
+        <th class="col-app">Approaching &mdash; 4&ndash;5 pts</th>
+        <th class="col-dnm">Does Not Meet &mdash; 0&ndash;3 pts</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="cat-cell">
+          <div class="cat-name">What the Paper Is About</div>
+          <div class="cat-pts">9 pts &nbsp;/&nbsp; 30%</div>
+          <div class="cat-q">Does the paper have a clear focus and say something meaningful about the artifact?</div>
+        </td>
+        <td class="lvl exceeds">The paper has a clear, specific focus from the start. The writer explains what the artifact is, why it matters, and what they want the reader to understand. The main point is purposeful and holds together throughout.</td>
+        <td class="lvl meets">The paper has a clear focus. The reader can tell what artifact the writer chose and why it matters to them. The main point comes through, even if it's not always stated directly.</td>
+        <td class="lvl app">The paper has a focus, but it's vague or shifts around. The reader has a general sense of the artifact but isn't sure what the writer is trying to say about it.</td>
+        <td class="lvl dnm">It's hard to tell what the paper is about or why the artifact matters. There isn't a clear main idea.</td>
+      </tr>
+      <tr>
+        <td class="cat-cell">
+          <div class="cat-name">Analysis &amp; Depth</div>
+          <div class="cat-pts">9 pts &nbsp;/&nbsp; 30%</div>
+          <div class="cat-q">Does the paper go beyond description and dig into what the artifact means?</div>
+        </td>
+        <td class="lvl exceeds">The writer goes well beyond describing the artifact — they explain what it means, ask interesting questions, and connect it to bigger ideas about culture, identity, or community. The analysis feels genuine and thoughtful.</td>
+        <td class="lvl meets">The writer does more than just describe the artifact. They make connections between the artifact and their community, culture, or identity and offer some explanation of why those connections matter.</td>
+        <td class="lvl app">The paper mostly describes the artifact without fully analyzing it. Some connections are made, but they aren't developed or explained in depth.</td>
+        <td class="lvl dnm">The paper describes the artifact but doesn't analyze it. There are no real connections to culture, community, or identity.</td>
+      </tr>
+      <tr>
+        <td class="cat-cell">
+          <div class="cat-name">Using Sources</div>
+          <div class="cat-pts">1.5 pts &nbsp;/&nbsp; 5%</div>
+          <div class="cat-q">Does the paper include one class reading and two other sources (one may be an interview)?</div>
+        </td>
+        <td class="lvl exceeds" colspan="1">All three sources are present and woven into the paper naturally. It's clear how each one connects to the writer's ideas. &nbsp;<em>(1.5 pts)</em></td>
+        <td class="lvl meets">All three required sources are present and cited. Sources are connected to the paper's ideas, even if not always smoothly. &nbsp;<em>(1 pt)</em></td>
+        <td class="lvl app">Sources are included but feel dropped in without explanation, or one required source is missing. &nbsp;<em>(0.5 pts)</em></td>
+        <td class="lvl dnm">Fewer than three sources are used, no class reading is included, or sources aren't connected to the paper's ideas. &nbsp;<em>(0 pts)</em></td>
+      </tr>
+      <tr>
+        <td class="cat-cell">
+          <div class="cat-name">Voice, Identity &amp; Language</div>
+          <div class="cat-pts">9 pts &nbsp;/&nbsp; 30%</div>
+          <div class="cat-q">Does the paper sound like a real person and reflect honestly on identity and experience?</div>
+        </td>
+        <td class="lvl exceeds">The paper has a strong, distinctive voice. The writer reflects honestly and specifically on their identity and what the artifact means to them. Language choices — including dialect or code-switching if used — feel intentional and effective.</td>
+        <td class="lvl meets">The paper has a consistent voice and the writer reflects meaningfully on their own experience and identity. The writing feels personal, not generic.</td>
+        <td class="lvl app">There are moments of personal voice, but the writing sometimes feels generic or distant. The reflection on identity or experience stays on the surface.</td>
+        <td class="lvl dnm">The paper has little personal voice or reflection. It reads as detached from the writer's actual experience or identity.</td>
+      </tr>
+      <tr>
+        <td class="cat-cell">
+          <div class="cat-name">Format &amp; MLA</div>
+          <div class="cat-pts">1.5 pts &nbsp;/&nbsp; 5%</div>
+          <div class="cat-q">Does the paper meet the basic formatting requirements?</div>
+        </td>
+        <td class="lvl exceeds">4+ full pages, double-spaced, Times New Roman 12pt, correct MLA header. In-text citations and Works Cited are accurate with very few errors. &nbsp;<em>(1.5 pts)</em></td>
+        <td class="lvl meets">Meets the 4-page requirement and follows MLA formatting with only minor errors. Works Cited is included. &nbsp;<em>(1 pt)</em></td>
+        <td class="lvl app">Close to but doesn't fully meet the length requirement, or has several MLA formatting errors. Works Cited has mistakes. &nbsp;<em>(0.5 pts)</em></td>
+        <td class="lvl dnm">Significantly shorter than 4 pages, MLA formatting is largely missing, or no Works Cited page. &nbsp;<em>(0 pts)</em></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- SCORE SUMMARY -->
+  <div class="score-box" style="max-width:360px;">
+    <h4>Point Breakdown</h4>
+    <table>
+      <tr><td>What the Paper Is About</td><td>9 pts</td></tr>
+      <tr><td>Analysis &amp; Depth</td><td>9 pts</td></tr>
+      <tr><td>Voice, Identity &amp; Language</td><td>9 pts</td></tr>
+      <tr><td>Using Sources</td><td>1.5 pts</td></tr>
+      <tr><td>Format &amp; MLA</td><td>1.5 pts</td></tr>
+      <tr><td><strong>Total</strong></td><td><strong>30 pts</strong></td></tr>
+    </table>
+  </div>
+
+</div>
+</body>
+</html>
