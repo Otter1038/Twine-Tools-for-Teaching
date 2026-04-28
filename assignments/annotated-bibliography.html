@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Annotated Bibliography — MA 2 Part A — ENC 1102</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --paper: #f9f6f0;
+    --accent: #8B3A3A;
+    --accent-light: #c4726f;
+    --rule: #d4c9b8;
+    --muted: #6b6256;
+    --highlight: #f0e8d8;
+    --navy: #0A1628;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 17px;
+    line-height: 1.75;
+  }
+
+  .page {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 60px 48px 100px;
+  }
+
+  /* ── BACK LINK ── */
+  .back-link {
+    display: inline-block;
+    margin-bottom: 32px;
+    font-family: 'Source Serif 4', serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent-light);
+    padding-bottom: 2px;
+  }
+  .back-link:hover { color: var(--accent-light); }
+
+  /* ── MASTHEAD ── */
+  .masthead {
+    border-top: 3px solid var(--ink);
+    border-bottom: 1px solid var(--rule);
+    padding: 18px 0 14px;
+    margin-bottom: 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .masthead .course {
+    font-family: 'Source Serif 4', serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .masthead .instructor {
+    font-size: 12px;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  /* ── ASSIGNMENT BADGE ── */
+  .assignment-badge {
+    display: inline-block;
+    font-family: 'Source Serif 4', serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid var(--accent-light);
+    padding: 4px 12px;
+    margin-bottom: 16px;
+  }
+
+  /* ── TITLE BLOCK ── */
+  .title-block {
+    margin-bottom: 48px;
+    border-left: 4px solid var(--accent);
+    padding-left: 24px;
+  }
+  .title-block h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 2.4rem;
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: 12px;
+  }
+  .due-line {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    margin-top: 16px;
+  }
+  .due-item {
+    font-size: 13px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: .08em;
+  }
+  .due-item strong {
+    display: block;
+    font-size: 14px;
+    color: var(--accent);
+    font-weight: 600;
+    font-style: normal;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  /* ── PURPOSE BAND ── */
+  .purpose-band {
+    background: var(--highlight);
+    border: 1px solid var(--rule);
+    border-left: 4px solid var(--accent-light);
+    padding: 20px 24px;
+    margin-bottom: 40px;
+    border-radius: 0 4px 4px 0;
+  }
+  .purpose-band h3 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+  .purpose-band p {
+    font-size: 15px;
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  /* ── TWINE CALLOUT ── */
+  .twine-callout {
+    background: var(--navy);
+    color: #F5E6C8;
+    border: 3px solid var(--ink);
+    padding: 20px 28px;
+    margin-bottom: 40px;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .twine-callout .icon {
+    font-size: 1.6em;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .twine-callout .callout-text {
+    font-size: 15px;
+    line-height: 1.65;
+  }
+  .twine-callout .callout-text strong {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-size: 1em;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: #F2A900;
+  }
+  .twine-callout a {
+    color: #F2A900;
+    font-weight: 700;
+  }
+  .twine-callout a:hover { text-decoration: underline; }
+
+  /* ── SECTIONS ── */
+  section {
+    margin-bottom: 44px;
+  }
+  section h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 16px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--rule);
+  }
+  p { margin-bottom: 16px; }
+  p:last-child { margin-bottom: 0; }
+
+  /* ── REQUIREMENTS BOX ── */
+  .req-box {
+    background: white;
+    border: 1px solid var(--rule);
+    border-top: 3px solid var(--ink);
+    padding: 24px 28px;
+    margin-top: 8px;
+  }
+  .req-box h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 14px;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: .06em;
+  }
+  .req-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .req-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 15px;
+  }
+  .req-list li::before {
+    content: "✓";
+    color: var(--accent);
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* ── FORMAT STEPS ── */
+  .format-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 8px;
+  }
+  .step {
+    background: white;
+    border: 1px solid var(--rule);
+    border-left: 4px solid var(--accent);
+    padding: 16px 20px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .step-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3em;
+    font-weight: 700;
+    color: var(--accent);
+    flex-shrink: 0;
+    line-height: 1.3;
+  }
+  .step-content { font-size: 15px; line-height: 1.65; }
+  .step-content strong { color: var(--ink); }
+
+  /* ── DIVIDER ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 48px 0 40px;
+    position: relative;
+  }
+  .divider::after {
+    content: "◆";
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--paper);
+    padding: 0 12px;
+    color: var(--rule);
+    font-size: 12px;
+  }
+
+  /* ── PRINT ── */
+  @media print {
+    body { background: white; font-size: 13px; }
+    .page { padding: 24px 32px; max-width: 100%; }
+    .back-link, .twine-callout { display: none; }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 680px) {
+    .page { padding: 32px 20px 60px; }
+    .title-block h1 { font-size: 1.9rem; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <a class="back-link" href="../assignments.html">← Back to Assignments</a>
+
+  <!-- MASTHEAD -->
+  <div class="masthead">
+    <span class="course">ENC 1102: Composition II &nbsp;|&nbsp; Section C061 &nbsp;|&nbsp; Summer C 2026</span>
+    <span class="instructor">Richard Finch &mdash; richard.finch@ucf.edu</span>
+  </div>
+
+  <!-- TITLE -->
+  <div class="title-block">
+    <div class="assignment-badge">Major Assignment 2 &nbsp;&middot;&nbsp; Part A</div>
+    <h1>Annotated<br>Bibliography</h1>
+    <div class="due-line">
+      <div class="due-item">Due<strong>Sunday, June 21 &mdash; 11:59 PM</strong></div>
+      <div class="due-item">Points<strong>10 pts</strong></div>
+    </div>
+  </div>
+
+  <!-- PURPOSE -->
+  <div class="purpose-band">
+    <h3>Purpose</h3>
+    <p>An annotated bibliography is a research tool that helps you organize, evaluate, and document your sources. Each citation is followed by an annotation that summarizes the source and explains why it is credible and relevant to your project. This assignment asks you to think strategically about the sources you have chosen and to begin mapping connections between them.</p>
+  </div>
+
+  <!-- TWINE CALLOUT -->
+  <div class="twine-callout">
+    <div class="icon">★</div>
+    <div class="callout-text">
+      <strong>Use the Interactive Tool First</strong>
+      Before you begin, work through the <a href="https://otter1038.github.io/Twine-Tools-for-Teaching/tools/annotated-bib/" target="_blank">Annotated Bibliography Guide</a> to understand how to evaluate sources and structure your annotations effectively.
+    </div>
+  </div>
+
+  <!-- WHAT TO SUBMIT -->
+  <section>
+    <h2>What to Submit</h2>
+    <p>A brief introduction (<strong>one-half to one page</strong>) describing your research project and research question, followed by an <strong>alphabetically ordered annotated bibliography</strong> of six credible, relevant secondary sources. Two of these sources must be peer-reviewed journal articles.</p>
+  </section>
+
+  <!-- SOURCE REQUIREMENTS -->
+  <section>
+    <h2>Source Requirements</h2>
+    <div class="req-box">
+      <h3>Minimum Standards</h3>
+      <ul class="req-list">
+        <li>Minimum 6 sources total</li>
+        <li>At least 2 must be peer-reviewed journal articles</li>
+        <li>All sources must be credible and directly relevant to your research question</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CITATION AND ANNOTATION FORMAT -->
+  <section>
+    <h2>Citation &amp; Annotation Format</h2>
+    <p>Format all citations in <strong>MLA or APA style</strong>. Each annotation should be <strong>200–250 words</strong> in two paragraphs:</p>
+    <div class="format-steps">
+      <div class="step">
+        <div class="step-num">¶1</div>
+        <div class="step-content"><strong>Summary.</strong> Summarize the main relevant points of the source — what is the central argument, what evidence does the author use, and what conclusions do they reach?</div>
+      </div>
+      <div class="step">
+        <div class="step-num">¶2</div>
+        <div class="step-content"><strong>Evaluation &amp; Relevance.</strong> Explain how the source is credible, relevant, and useful to your project. Discuss how it connects to your research question and to <em>other sources</em> in your bibliography.</div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- PART B/C NOTE -->
+  <section>
+    <h2>Coming Next in MA 2</h2>
+    <p>The Research Proposal (Part B) and Literature Review (Part C) prompts will be posted here when available. The annotated bibliography you complete now will serve as the foundation for both.</p>
+  </section>
+
+</div>
+</body>
+</html>

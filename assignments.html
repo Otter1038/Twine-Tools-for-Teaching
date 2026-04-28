@@ -268,6 +268,39 @@
       color: #3a2e22;
     }
 
+    /* ── PARTS LIST ── */
+    .parts-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-top: 4px;
+    }
+    .parts-list li {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.78em;
+      letter-spacing: 1px;
+      color: #5a4a3a;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .parts-list li .part-label {
+      font-weight: 700;
+      color: var(--dark);
+      min-width: 52px;
+    }
+    .parts-list li a {
+      color: #8B1a2e;
+      font-weight: 700;
+      text-decoration: underline;
+    }
+    .parts-list li a:hover { color: var(--red); }
+    .parts-list li .tba-tag {
+      color: var(--steel);
+      font-style: italic;
+    }
+
     /* ── BACK LINK ── */
     .back-link {
       display: inline-block;
@@ -356,16 +389,24 @@
       <div class="card-header">
         <div class="card-number">02</div>
         <div>
-          <div class="card-label">Major Assignment</div>
+          <div class="card-label">Major Assignment &mdash; Multi-Part</div>
         </div>
       </div>
       <div class="card-body">
-        <div class="coming-soon-badge">Coming Soon</div>
-        <div class="card-title">TBA</div>
-        <div class="card-desc">Details for Major Assignment 2 will be posted here when available.</div>
+        <div class="card-title">Research Project Suite</div>
+        <div class="card-desc">A three-part research assignment: develop a research proposal, build an annotated bibliography of credible sources, and synthesize your findings into a literature review.</div>
+        <div class="card-meta">
+          <span>10 pts</span> &nbsp; Annotated Bib due Sun, June 21<br>
+          Proposal &amp; Lit Review &mdash; dates TBA
+        </div>
+        <ul class="parts-list">
+          <li><span class="part-label">Part A</span> <a href="assignments/annotated-bibliography.html">Annotated Bibliography &rarr;</a></li>
+          <li><span class="part-label">Part B</span> <span class="tba-tag">Research Proposal &mdash; coming soon</span></li>
+          <li><span class="part-label">Part C</span> <span class="tba-tag">Literature Review &mdash; coming soon</span></li>
+        </ul>
       </div>
       <div class="card-footer">
-        <span class="btn-coming-soon">Not Yet Available</span>
+        <a class="btn-view" href="assignments/annotated-bibliography.html">View Part A &#8594;</a>
       </div>
     </div>
 
