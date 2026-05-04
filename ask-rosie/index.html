@@ -683,17 +683,37 @@ Writing Center: University Writing Center Trevor Colbourn Hall 109, also availab
           })
         });
 
-        if (!res.ok) throw new Error('Network response ' + res.status);
+        if (!res.ok) {
+          const errText = await res.text();
+          console.error('Worker HTTP error', res.status, errText);
+          throw new Error('HTTP ' + res.status);
+        }
 
         const data = await res.json();
+        console.log('Worker response:', JSON.stringify(data, null, 2));
 
         const reply =
           data?.content?.[0]?.text ||
+          (typeof data?.content === 'string' ? data.content : null) ||
+          data?.choices?.[0]?.message?.content ||
           data?.response ||
+          data?.reply ||
           data?.message ||
+          data?.output ||
+          data?.result ||
           data?.text ||
           data?.completion ||
-          'I had a little trouble there — could you try again?';
+          data?.error?.message ||
+          null;
+
+        if (!reply) {
+          console.error('Unrecognized Worker response shape:', data);
+          removeTyping();
+          renderMessage('assistant', 'I received a response but could not read it. Please open the browser Console (F12) and share what you see with Mr. Finch so he can fix the connection.');
+          sendBtn.disabled = false;
+          userInput.focus();
+          return;
+        }
 
         messages.push({ role: 'assistant', content: reply });
         removeTyping();
@@ -701,7 +721,7 @@ Writing Center: University Writing Center Trevor Colbourn Hall 109, also availab
 
       } catch (err) {
         removeTyping();
-        renderMessage('assistant', "I'm having trouble connecting right now. Try refreshing the page, or check back in a moment. If the problem continues, reach out to Professor Finch at richard.finch@ucf.edu.");
+        renderMessage('assistant', "I am having trouble connecting right now. Try refreshing the page, or check back in a moment. If the problem continues, reach out to Professor Finch at richard.finch@ucf.edu.");
         console.error('Rosie fetch error:', err);
       }
 
