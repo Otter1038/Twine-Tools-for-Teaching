@@ -617,10 +617,12 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    .tool-card:nth-child(1) { animation: fadeIn 0.7s 0.1s ease forwards; opacity: 0; }
-    .tool-card:nth-child(2) { animation: fadeIn 0.7s 0.25s ease forwards; opacity: 0; }
-    .tool-card:nth-child(3) { animation: fadeIn 0.7s 0.4s ease forwards; opacity: 0; }
-    .tool-card:nth-child(4) { animation: fadeIn 0.7s 0.55s ease forwards; opacity: 0; }
+    .tool-card:nth-child(1) { animation: fadeIn 0.7s 0.10s ease forwards; opacity: 0; }
+    .tool-card:nth-child(2) { animation: fadeIn 0.7s 0.22s ease forwards; opacity: 0; }
+    .tool-card:nth-child(3) { animation: fadeIn 0.7s 0.34s ease forwards; opacity: 0; }
+    .tool-card:nth-child(4) { animation: fadeIn 0.7s 0.46s ease forwards; opacity: 0; }
+    .tool-card:nth-child(5) { animation: fadeIn 0.7s 0.58s ease forwards; opacity: 0; }
+    .tool-card:nth-child(6) { animation: fadeIn 0.7s 0.70s ease forwards; opacity: 0; }
 
     /* ── POLKA DOT ACCENT ── */
     .polka-accent {
@@ -751,10 +753,29 @@
       </div>
     </div>
 
-    <!-- COMING SOON 1 -->
-    <div class="tool-card coming-soon">
+    <!-- ASK ROSIE -->
+    <div class="tool-card" onclick="window.location.href='ask-rosie/index.html'">
       <div class="card-top">
         <span class="card-label">★ Tool No. 4</span>
+        <span class="card-number">AI</span>
+      </div>
+      <div class="card-icon">✍️</div>
+      <div class="card-body">
+        <div class="card-title">Ask Rosie</div>
+        <p class="card-desc">
+          Your AI writing assistant for ENC 1102. Ask Rosie about assignments, citations, research strategies, peer review, and anything else about the writing process.
+        </p>
+        <div class="card-footer">
+          <span class="card-cta">→ Ask Rosie</span>
+          <div class="rivet"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COMING SOON -->
+    <div class="tool-card coming-soon">
+      <div class="card-top">
+        <span class="card-label">★ Tool No. 5</span>
         <span class="card-number">???</span>
       </div>
       <div class="card-icon">⚙️</div>
@@ -770,21 +791,21 @@
       </div>
     </div>
 
-    <!-- COMING SOON 2 — Writing Challenges -->
-    <div class="tool-card coming-soon">
+    <!-- WRITING CHALLENGES -->
+    <div class="tool-card" onclick="window.location.href='mailto:richard.finch@ucf.edu?subject=Writing%20Question%20%E2%80%94%20ENC%201102&body=Hi%20Mr.%20Finch%2C%0A%0AI%20have%20a%20question%20about%3A%0A%0A'">
       <div class="card-top">
-        <span class="card-label">★ Tool No. 5</span>
+        <span class="card-label">★ Tool No. 6</span>
         <span class="card-number">YOU</span>
       </div>
       <div class="card-icon">✉️</div>
       <div class="card-body">
-        <div class="card-title">What Are Your Writing Challenges?</div>
+        <div class="card-title">Still Have Questions?</div>
         <p class="card-desc">
-          Tell us what writing tasks give you the most trouble. Your responses help shape the next tools we build.
+          If Rosie could not answer your question or you need to talk to a real person, reach out directly. Mr. Finch is here to help. Click to open a pre-addressed email and tell him what you are working on.
         </p>
         <div class="card-footer">
-          <span class="card-cta" style="color:var(--steel);">Coming Soon</span>
-          <span class="coming-badge">COMING SOON</span>
+          <span class="card-cta">→ Email Mr. Finch</span>
+          <div class="rivet"></div>
         </div>
       </div>
     </div>
