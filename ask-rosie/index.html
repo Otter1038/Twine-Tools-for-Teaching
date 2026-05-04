@@ -721,10 +721,9 @@ Writing Center: University Writing Center Trevor Colbourn Hall 109, also availab
       this.style.height = Math.min(this.scrollHeight, 160) + 'px';
     });
 
-    // Opening message
+    // Opening message — display only, not sent to the API
     (function() {
       const greeting = "Hey! I'm Rosie. What are you working on today? Whether it's brainstorming for the Cultural Artifact Analysis, hunting for sources, puzzling over a citation, or anything else — I'm here to help.";
-      messages.push({ role: 'assistant', content: greeting });
       renderMessage('assistant', greeting);
     })();
   </script>
