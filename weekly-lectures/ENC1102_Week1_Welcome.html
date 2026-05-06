@@ -1,0 +1,641 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ENC 1102 — Welcome to the Game</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Exo+2:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --yellow: #FFD700;
+  --gold:   #B8860B;
+  --cyan:   #00E5FF;
+  --pink:   #FF80D5;
+  --red:    #FF5555;
+  --orange: #FFB852;
+  --maze:   #2222EE;
+  --dim:    #AAAAAA;
+  --bg:     #060606;
+}
+
+body {
+  background: var(--bg);
+  color: #fff;
+  font-family: 'Exo 2', sans-serif;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+}
+
+.deck { width: 100%; height: 100%; position: relative; }
+
+.slide {
+  position: absolute; inset: 0;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3vh 5vw;
+  text-align: center;
+  background: var(--bg);
+  animation: fadeIn .3s ease;
+}
+.slide.active { display: flex; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+#progress-bar {
+  position: fixed; bottom: 0; left: 0;
+  height: 5px; background: var(--yellow);
+  transition: width .3s ease; z-index: 100;
+}
+#counter {
+  position: fixed; bottom: 14px; right: 22px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: clamp(10px, 1vw, 14px); color: rgba(255,255,255,.3); z-index: 100;
+}
+#nav-hint {
+  position: fixed; bottom: 14px; left: 22px;
+  font-size: clamp(11px, 1vw, 14px); color: rgba(255,255,255,.22); z-index: 100;
+}
+#notes-panel {
+  display: none; position: fixed; bottom: 0; left: 0; right: 0;
+  background: rgba(0,0,0,.94); border-top: 2px solid var(--yellow);
+  padding: 16px 32px; font-size: clamp(14px, 1.5vw, 18px);
+  line-height: 1.8; color: #ddd; max-height: 30vh; overflow-y: auto; z-index: 200;
+}
+#notes-panel.open { display: block; }
+#notes-label {
+  font-family: 'Press Start 2P', monospace;
+  font-size: clamp(9px, .9vw, 12px); color: var(--yellow); margin-bottom: 10px;
+}
+
+.px-title {
+  font-family: 'Press Start 2P', monospace;
+  color: var(--yellow);
+  font-size: clamp(32px, 5.2vw, 82px);
+  line-height: 1.7;
+  text-shadow: 4px 4px 0 var(--gold);
+}
+.px-sub {
+  font-family: 'Press Start 2P', monospace;
+  color: #fff;
+  font-size: clamp(16px, 2vw, 32px);
+  line-height: 2.1;
+}
+.px-level {
+  font-family: 'Press Start 2P', monospace;
+  color: var(--cyan);
+  font-size: clamp(10px, 1.1vw, 16px);
+  border: 1px solid var(--cyan);
+  background: rgba(0,229,255,.07);
+  padding: 7px 20px;
+  display: inline-block; margin-bottom: 2vh;
+}
+.px-sec {
+  font-family: 'Press Start 2P', monospace;
+  color: var(--yellow);
+  font-size: clamp(18px, 2.7vw, 42px);
+  line-height: 1.6; margin-bottom: 2vh;
+}
+.px-label {
+  font-family: 'Press Start 2P', monospace;
+  font-size: clamp(9px, .95vw, 14px);
+  margin-bottom: 10px;
+}
+.blink {
+  animation: blink 1s step-start infinite;
+  font-family: 'Press Start 2P', monospace;
+  font-size: clamp(11px, 1.3vw, 20px); color: #fff;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+.lvl-num {
+  font-family: 'Press Start 2P', monospace;
+  font-size: clamp(44px, 7.5vw, 110px);
+  color: var(--yellow); text-shadow: 5px 5px 0 var(--gold);
+}
+.body-txt { font-size: clamp(15px, 1.7vw, 23px); line-height: 1.8; }
+.small-txt { font-size: clamp(12px, 1.3vw, 18px); color: var(--dim); }
+
+.pm-row { display:flex; align-items:center; justify-content:center; gap:clamp(10px,1.8vw,22px); margin: 2.5vh 0; }
+.pm {
+  width: clamp(34px,4.5vw,60px); height: clamp(34px,4.5vw,60px);
+  background: var(--yellow); border-radius: 50%;
+  animation: chomp .35s linear infinite; flex-shrink: 0;
+}
+@keyframes chomp {
+  0%,100% { clip-path: polygon(50% 50%,100% 15%,100% 85%,80% 100%,20% 100%,0 85%,0 15%,20% 0,80% 0); }
+  50%      { clip-path: polygon(50% 50%,100% 50%,100% 50%,80% 100%,20% 100%,0 50%,0 50%,20% 0,80% 0); }
+}
+.dot  { width:clamp(8px,1.1vw,15px); height:clamp(8px,1.1vw,15px); background:var(--yellow); border-radius:50%; flex-shrink:0; }
+.ppel { width:clamp(16px,2.2vw,28px); height:clamp(16px,2.2vw,28px); background:var(--yellow); border-radius:50%;
+        animation:pblink .8s ease-in-out infinite; flex-shrink:0; }
+@keyframes pblink { 0%,100%{opacity:1} 50%{opacity:.15} }
+
+.dots { color:var(--yellow); letter-spacing:clamp(8px,1.2vw,16px); font-size:clamp(16px,2vw,26px); margin:1.2vh 0; }
+
+.maze-box {
+  border: 2px solid var(--maze); border-radius: 4px;
+  padding: 2.8vh 3.5vw;
+  box-shadow: 0 0 22px rgba(34,34,238,.4);
+  width: 90vw; max-width: 900px;
+}
+.hi-box {
+  background: rgba(255,215,0,.07); border: 1px solid var(--yellow);
+  padding: 1.8vh 2.5vw; margin: 1.2vh 0; border-radius: 3px;
+  width: 90vw; max-width: 900px;
+}
+
+.card {
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,215,0,.22);
+  border-radius: 6px; padding: clamp(12px,1.8vh,24px) clamp(14px,1.8vw,26px);
+  text-align: left;
+}
+.card.r { border-color: var(--red);    }
+.card.p { border-color: var(--pink);   }
+.card.b { border-color: var(--cyan);   }
+.card.o { border-color: var(--orange); }
+.card.y { border-color: var(--yellow); }
+
+.two-col {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: clamp(10px,1.6vw,20px); text-align: left;
+  width: 94vw; max-width: 1000px;
+}
+
+.row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: clamp(8px,1.1vh,16px) clamp(12px,1.8vw,24px);
+  margin: clamp(3px,.5vh,7px) 0;
+  background: rgba(255,255,255,.03);
+  border-left: 3px solid var(--yellow);
+  font-size: clamp(14px, 1.6vw, 22px);
+  width: 94vw; max-width: 960px;
+}
+.pts {
+  color: var(--yellow);
+  font-family: 'Press Start 2P', monospace;
+  font-size: clamp(9px, 1vw, 14px);
+  white-space: nowrap; margin-left: 12px;
+}
+
+.slo-wrap { width: 94vw; max-width: 960px; text-align: left; }
+.slo { display:flex; align-items:flex-start; gap:clamp(8px,1.1vw,16px);
+       margin:clamp(4px,.6vh,9px) 0;
+       font-size:clamp(13px,1.5vw,21px); }
+.slo .arr { color:var(--yellow); flex-shrink:0; margin-top:3px; }
+
+.content { width: 94vw; max-width: 980px; }
+</style>
+</head>
+<body>
+<div class="deck" id="deck">
+
+  <!-- ══ 01 TITLE ══ -->
+  <div class="slide active" data-notes="Welcome to ENC 1102, Composition II. My name is Professor Finch, and I am glad you are here. This presentation will walk you through everything you need to know before we get started — who I am, what this course is about, how to navigate Canvas, and the key policies that will shape our semester together. Take a few minutes to watch it in full. It will answer most of the questions you are likely to have in week one.">
+    <div class="px-title">WELCOME</div>
+    <div class="dots">· · · · · · · · · · ·</div>
+    <div class="px-sub">ENC 1102: COMPOSITION II</div>
+    <div class="small-txt" style="margin:10px 0;">Summer C 2026 &nbsp;|&nbsp; Section C061 &nbsp;|&nbsp; Online, Asynchronous</div>
+    <div class="pm-row">
+      <div class="pm"></div>
+      <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+      <div class="ppel"></div>
+      <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+    </div>
+    <div class="blink">▶ PRESS SPACE OR → TO BEGIN ◀</div>
+  </div>
+
+  <!-- ══ 02 RIGHT CLASS ══ -->
+  <div class="slide" data-notes="Before we go any further, let's confirm you are in the correct course. This is ENC 1102, Section C061, for Summer C 2026. The course is delivered fully online and asynchronously, meaning there are no required meeting times. Enrollment requires a grade of C or better in ENC 1101. If any of the information on this slide does not match your registration, please verify your schedule in myUCF before proceeding.">
+    <div class="px-level">LEVEL 1</div>
+    <div class="px-sec">ARE YOU IN THE RIGHT GAME?</div>
+    <div class="maze-box" style="text-align:left;">
+      <div style="font-size:clamp(15px,1.8vw,24px); line-height:2.5;">
+        <div>✅ &nbsp;<strong style="color:var(--yellow);">Course:</strong> &nbsp;ENC 1102 — Composition II</div>
+        <div>✅ &nbsp;<strong style="color:var(--yellow);">Section:</strong> &nbsp;C061</div>
+        <div>✅ &nbsp;<strong style="color:var(--yellow);">Semester:</strong> &nbsp;Summer C 2026</div>
+        <div>✅ &nbsp;<strong style="color:var(--yellow);">Format:</strong> &nbsp;Fully Online, Asynchronous</div>
+        <div>✅ &nbsp;<strong style="color:var(--yellow);">Prerequisite:</strong> &nbsp;ENC 1101 with a grade of C or better</div>
+      </div>
+    </div>
+    <div class="small-txt" style="margin-top:2.5vh;">If any of the above does not match your registration, please verify your schedule in myUCF before proceeding.</div>
+  </div>
+
+  <!-- ══ 03 MEET PROF FINCH ══ -->
+  <div class="slide" data-notes="My name is Professor Finch. I am originally from Nashville, Tennessee. I hold a Bachelor of Arts in English from Lipscomb University and a Master of Science in Communication, Rhetoric and Digital Media from NSU. I am currently a doctoral student in the Technology and Design program here at UCF. Outside of teaching and research, I enjoy wood carving and have what I will honestly describe as a serious collection of Rosie the Riveter memorabilia — so if she appears somewhere in the course materials, now you know the reason. The best way to reach me is through your UCF email or the Webcourses inbox. I hold virtual office hours every Wednesday from 2:00 to 3:00 PM via Zoom, and I respond to messages within 24 to 48 hours on weekdays.">
+    <div class="px-level">LEVEL 2</div>
+    <div class="px-sec">PLAYER 1: PROFESSOR FINCH</div>
+    <div class="two-col">
+      <div style="display:flex;flex-direction:column;gap:clamp(10px,1.4vh,18px);">
+        <div class="card r">
+          <div class="px-label" style="color:var(--red);">📍 ORIGIN</div>
+          <div class="body-txt">Nashville, Tennessee</div>
+        </div>
+        <div class="card p">
+          <div class="px-label" style="color:var(--pink);">🎓 ACADEMIC BACKGROUND</div>
+          <div class="body-txt" style="line-height:2.0;">B.A. in English — Lipscomb University<br>M.S. in CRDM — NSU<br>PhD Candidate in T&amp;D — UCF</div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:clamp(10px,1.4vh,18px);">
+        <div class="card b">
+          <div class="px-label" style="color:var(--cyan);">🪵 OUTSIDE THE CLASSROOM</div>
+          <div class="body-txt" style="line-height:2.0;">Wood carving<br>Rosie the Riveter enthusiast</div>
+        </div>
+        <div class="card o">
+          <div class="px-label" style="color:var(--orange);">📬 HOW TO REACH ME</div>
+          <div class="body-txt" style="line-height:2.0;">richard.finch@ucf.edu<br>Virtual Office Hours: Wed 2–3 PM<br>Response within 24–48 hours</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ 04 THE COURSE ══ -->
+  <div class="slide" data-notes="ENC 1102 is a research writing course, but it differs from a traditional research paper class in an important way. Rather than being assigned a topic, you will identify a genuine research question connected to writing, language, literacy, or rhetoric — something you actually want to investigate — and pursue it across the full semester. The six Student Learning Outcomes on this slide represent what the Department of Writing and Rhetoric expects you to develop through that process. These outcomes will anchor your final ePortfolio, and we will return to them throughout the course.">
+    <div class="px-level">LEVEL 3</div>
+    <div class="px-sec">THE COURSE</div>
+    <div class="content">
+      <div class="hi-box" style="width:100%;margin-bottom:1.8vh;text-align:left;">
+        <div style="font-family:'Press Start 2P',monospace;font-size:clamp(9px,.95vw,13px);color:var(--yellow);margin-bottom:10px;">WHAT IS ENC 1102?</div>
+        <div class="body-txt">ENC 1102 emphasizes the discipline and community-specific nature of academic and public research writing through sustained, semester-long inquiry into topics related to writing, language, literacy, and rhetoric. Students learn to ask research questions that matter to specific communities, collect and analyze primary and secondary materials, and express their findings across multiple genres and modalities.</div>
+      </div>
+      <div style="font-family:'Press Start 2P',monospace;font-size:clamp(9px,.95vw,13px);color:var(--cyan);margin-bottom:1.2vh;">COURSE LEARNING OUTCOMES</div>
+      <div class="slo-wrap" style="width:100%;">
+        <div class="slo"><span class="arr">►</span><span><strong>Generating Inquiry</strong> — generating and exploring genuine lines of inquiry related to writing, language, literacy, and rhetoric</span></div>
+        <div class="slo"><span class="arr">►</span><span><strong>Multiple Ways of Writing</strong> — purposefully integrating multimodality, multiple languages, and multiliteracies</span></div>
+        <div class="slo"><span class="arr">►</span><span><strong>Information Literacy</strong> — evaluating and acting on criteria for relevance, credibility, and ethics in research</span></div>
+        <div class="slo"><span class="arr">►</span><span><strong>Research Genre Production</strong> — producing writing that navigates choices and constraints in academic and public genres</span></div>
+        <div class="slo"><span class="arr">►</span><span><strong>Contributing Knowledge</strong> — drawing conclusions from primary evidence and placing that work in conversation with sources</span></div>
+        <div class="slo"><span class="arr">►</span><span><strong>Revision</strong> — negotiating differences in and acting with intention on feedback from readers</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ 05 CANVAS HQ ══ -->
+  <div class="slide" data-notes="Canvas is the platform where all course activity takes place. There are four areas you should familiarize yourself with immediately. The Syllabus tab contains all course policies, due dates, and assignment details — read it in full and return to it throughout the semester. Modules is where each week's content is organized; everything you need for a given week will be found there. Assignments is where you submit your work and locate rubrics and instructions. Discussions is where the weekly academic conversation takes place — your initial post is due each Tuesday, and your replies to at least two classmates are due each Friday.">
+    <div class="px-level">LEVEL 4</div>
+    <div class="px-sec">CANVAS HQ</div>
+    <div class="small-txt" style="margin-bottom:2.5vh;">All course activity takes place in Canvas. The four areas below are where you will spend most of your time.</div>
+    <div class="two-col">
+      <div class="card r">
+        <div class="px-label" style="color:var(--red);">📄 SYLLABUS</div>
+        <div class="body-txt">Contains all course policies, due dates, and assignment details. Read it in full during the first week and return to it throughout the semester as a reference.</div>
+      </div>
+      <div class="card p">
+        <div class="px-label" style="color:var(--pink);">📦 MODULES</div>
+        <div class="body-txt">All course content is organized by week in Modules. Readings, instructions, prompts, and resources for each week are located here.</div>
+      </div>
+      <div class="card b">
+        <div class="px-label" style="color:var(--cyan);">📝 ASSIGNMENTS</div>
+        <div class="body-txt">Major assignments and weekly submissions are turned in here. Each assignment page includes the full prompt, rubric, and submission instructions.</div>
+      </div>
+      <div class="card o">
+        <div class="px-label" style="color:var(--orange);">💬 DISCUSSIONS</div>
+        <div class="body-txt">Weekly academic discussion takes place here. Initial posts are due each Tuesday by 11:59 PM. Replies to at least two classmates are due each Friday by 11:59 PM.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ 06 SYLLABUS SPLASH ══ -->
+  <div class="slide" data-notes="Now let's walk through the most important sections of the syllabus. I want to highlight the policies and expectations that will shape your experience in this course. Please read the full syllabus on your own — it contains information beyond what we will cover here — but what follows are the things I most want you to understand before week one begins.">
+    <div class="lvl-num">LVL 5</div>
+    <br>
+    <div class="px-sec">THE SYLLABUS</div>
+    <div class="small-txt">The following slides cover the most important policies and expectations for this course.</div>
+    <br>
+    <div class="dots">· · · · · · · · · · ·</div>
+  </div>
+
+  <!-- ══ 07 OFFICE HOURS ══ -->
+  <div class="slide" data-notes="The best way to contact me is through your UCF email at richard.finch@ucf.edu, or through the Webcourses Inbox. I hold virtual office hours every Wednesday from 2:00 to 3:00 PM via Zoom at the link listed on screen. No appointment is necessary to drop in. I aim to respond to all messages within 24 to 48 hours during the regular work week. Messages received on weekends or holidays will receive a response by the following business day. If the scheduled office hours do not work with your schedule, please reach out by email and we will arrange a meeting at a mutually convenient time.">
+    <div class="px-level">LVL 5 · INSTRUCTOR INFORMATION</div>
+    <div class="px-sec" style="font-size:clamp(15px,2.2vw,34px);">OFFICE HOURS &amp; CONTACT</div>
+    <div class="maze-box" style="text-align:left;">
+      <div style="font-size:clamp(15px,1.8vw,24px);line-height:2.5;">
+        <div>📧 &nbsp;<strong style="color:var(--yellow);">Email:</strong> &nbsp;richard.finch@ucf.edu</div>
+        <div>🕑 &nbsp;<strong style="color:var(--yellow);">Virtual Office Hours:</strong> &nbsp;Wednesdays 2:00–3:00 PM</div>
+        <div>🔗 &nbsp;<strong style="color:var(--yellow);">Zoom Link:</strong> &nbsp;ucf.zoom.us/j/6281575051</div>
+        <div>⏱ &nbsp;<strong style="color:var(--yellow);">Response Time:</strong> &nbsp;Within 24–48 hours on weekdays</div>
+      </div>
+    </div>
+    <div class="hi-box" style="margin-top:1.8vh;text-align:left;">
+      <div class="body-txt">No appointment is necessary for office hours. If the scheduled time does not work for you, please reach out by email to arrange a meeting at a mutually convenient time.</div>
+    </div>
+  </div>
+
+  <!-- ══ 08 MATERIALS ══ -->
+  <div class="slide" data-notes="There are no textbooks to purchase for this course. Both primary texts — Bad Ideas About Writing and Writing Spaces — are available at no cost through the links provided in Canvas. You will also need reliable internet access and Microsoft Word for submitting assignments. Microsoft Word is available at no cost to all UCF students through Office 365. To access it, visit the Microsoft Office Student website and sign in with your UCF email address.">
+    <div class="px-level">LVL 5 · REQUIRED MATERIALS</div>
+    <div class="px-sec" style="font-size:clamp(15px,2.2vw,34px);">REQUIRED COURSE MATERIALS</div>
+    <div class="content" style="display:flex;flex-direction:column;gap:clamp(10px,1.5vh,20px);">
+      <div class="card" style="text-align:left;">
+        <div class="px-label">📖 BAD IDEAS ABOUT WRITING</div>
+        <div class="body-txt">Available at no cost as a free PDF. Access link provided in Canvas. No purchase required.</div>
+      </div>
+      <div class="card" style="text-align:left;">
+        <div class="px-label">📖 WRITING SPACES</div>
+        <div class="body-txt">Available at no cost online at writingspaces.org. All assigned readings are linked directly in Canvas. No purchase required.</div>
+      </div>
+      <div class="card" style="text-align:left;">
+        <div class="px-label">💻 TECHNOLOGY</div>
+        <div class="body-txt">Reliable internet access and Microsoft Word are required. Word is available at no cost to all UCF students through Office 365 — sign in with your UCF email to access it.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ 09 ASSESSMENT ══ -->
+  <div class="slide" data-notes="The course is worth 200 points in total. The largest portion — 125 points — is allocated to the major writing assignments. The remaining 75 points are distributed across weekly participation activities: discussions, reading responses, peer reviews, ePortfolio check-ins, and one virtual conference with the instructor. While no individual weekly activity carries significant point value on its own, consistent participation across the semester is essential to your success in the course.">
+    <div class="px-level">LVL 5 · COURSE ASSESSMENT</div>
+    <div class="px-sec" style="font-size:clamp(15px,2.2vw,34px);">ASSESSMENT &amp; GRADING</div>
+    <div class="content">
+      <div class="row"><span>Major Writing Assignments</span><span class="pts">125 pts</span></div>
+      <div class="row"><span>Discussions (12 posts × 2 pts)</span><span class="pts">24 pts</span></div>
+      <div class="row"><span>Reading Responses (10 × 2 pts)</span><span class="pts">20 pts</span></div>
+      <div class="row"><span>Peer Review (4 reviews × 4 pts)</span><span class="pts">16 pts</span></div>
+      <div class="row"><span>ePortfolio Check-ins</span><span class="pts">10 pts</span></div>
+      <div class="row"><span>Virtual Conference</span><span class="pts">5 pts</span></div>
+      <div class="row" style="border-left-color:var(--cyan);background:rgba(0,229,255,.05);">
+        <span style="color:var(--cyan);font-weight:700;">TOTAL</span>
+        <span class="pts" style="color:var(--cyan);">200 pts</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ 10 CONFERENCE ══ -->
+  <div class="slide" data-notes="Once during the semester, during Week 6, you will complete a virtual conference with me. This conference is asynchronous — there is no scheduled meeting time. Instead, you will respond to a short set of questions in Canvas covering how the course is going, what you need assistance with, and what your goals are for the remainder of the semester. The conference is worth 5 points and is designed to give you dedicated time to connect with the instructor and ensure you have what you need to succeed. Students who prefer a live conversation are welcome to schedule a Zoom appointment during office hours or by email.">
+    <div class="px-level">LVL 5 · CONFERENCE</div>
+    <div class="px-sec" style="font-size:clamp(15px,2.2vw,34px);">VIRTUAL CONFERENCE</div>
+    <div class="maze-box" style="text-align:left;">
+      <div style="font-size:clamp(15px,1.8vw,24px);line-height:1.9;">
+        <div style="font-family:'Press Start 2P',monospace;font-size:clamp(9px,.9vw,13px);color:var(--yellow);margin-bottom:12px;">WHAT IS IT?</div>
+        The virtual conference is a one-on-one asynchronous check-in between the student and instructor, completed during Week 6. In place of a live meeting, students respond to a structured set of questions in Canvas addressing course progress, areas where support is needed, and academic goals for the remainder of the semester.
+        <br><br>
+        <div style="font-family:'Press Start 2P',monospace;font-size:clamp(9px,.9vw,13px);color:var(--yellow);margin-bottom:10px;">WORTH 5 POINTS · COMPLETED IN WEEK 6</div>
+        Students who prefer a live meeting may schedule a Zoom appointment during office hours or by contacting the instructor via email.
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ 11 MAJOR ASSIGNMENTS ══ -->
+  <div class="slide" data-notes="There are six major assignments in this course. The first is the Cultural Artifact Analysis, due May 31st. The second is a three-part Research Project Suite, which includes a Research Proposal due June 14th, an Annotated Bibliography due June 21st, and a Literature Review due June 28th. The third major assignment is the Final Research Paper, due July 27th. The fourth and final assignment is the ePortfolio, due July 31st. I want to be direct about the ePortfolio deadline: there are no extensions and no exceptions. Every other assignment in this course has some degree of flexibility. The ePortfolio does not. Plan accordingly.">
+    <div class="px-level">LVL 5 · MAJOR WRITING ASSIGNMENTS</div>
+    <div class="px-sec" style="font-size:clamp(15px,2.2vw,34px);">MAJOR ASSIGNMENTS</div>
+    <div class="content">
+      <div class="row" style="border-left-color:var(--yellow);"><span><strong style="color:var(--yellow);">MA1</strong> &nbsp;Cultural Artifact Analysis</span><span class="pts">25 pts &nbsp;·&nbsp; <span style="font-family:'Exo 2';font-size:1.4em;color:var(--dim);">May 31</span></span></div>
+      <div class="row" style="border-left-color:var(--pink);"><span><strong style="color:var(--pink);">MA2a</strong> &nbsp;Research Proposal</span><span class="pts">10 pts &nbsp;·&nbsp; <span style="font-family:'Exo 2';font-size:1.4em;color:var(--dim);">Jun 14</span></span></div>
+      <div class="row" style="border-left-color:var(--pink);"><span><strong style="color:var(--pink);">MA2b</strong> &nbsp;Annotated Bibliography</span><span class="pts">10 pts &nbsp;·&nbsp; <span style="font-family:'Exo 2';font-size:1.4em;color:var(--dim);">Jun 21</span></span></div>
+      <div class="row" style="border-left-color:var(--pink);"><span><strong style="color:var(--pink);">MA2c</strong> &nbsp;Literature Review</span><span class="pts">10 pts &nbsp;·&nbsp; <span style="font-family:'Exo 2';font-size:1.4em;color:var(--dim);">Jun 28</span></span></div>
+      <div class="row" style="border-left-color:var(--cyan);"><span><strong style="color:var(--cyan);">MA3</strong> &nbsp;Final Research Paper</span><span class="pts">40 pts &nbsp;·&nbsp; <span style="font-family:'Exo 2';font-size:1.4em;color:var(--dim);">Jul 27</span></span></div>
+      <div class="row" style="border-left-color:var(--orange);"><span><strong style="color:var(--orange);">MA4</strong> &nbsp;Final ePortfolio</span><span class="pts">30 pts &nbsp;·&nbsp; <span style="font-family:'Exo 2';font-size:1.4em;color:var(--red);">Jul 31 — NO EXTENSIONS</span></span></div>
+    </div>
+    <div class="small-txt" style="margin-top:1.2vh;">Full prompts and grading rubrics are available in Canvas under Assignments.</div>
+  </div>
+
+  <!-- ══ 12 GRADING SCALE ══ -->
+  <div class="slide" data-notes="The grading scale for this course follows the standard UCF scale. There is one critical requirement I want to call your attention to: students must earn a grade of C-minus or higher to pass ENC 1102. A grade in the D range is not a passing final grade in this course. This is a state-mandated requirement and applies regardless of circumstances. Please keep this in mind as you manage your workload across the semester.">
+    <div class="px-level">LVL 5 · GRADING</div>
+    <div class="px-sec" style="font-size:clamp(15px,2.2vw,34px);">GRADING SCALE</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(8px,1.2vw,16px);width:90vw;max-width:800px;">
+      <div>
+        <div class="row" style="border-left-color:var(--yellow);"><span>A</span><span class="pts">94–100%</span></div>
+        <div class="row" style="border-left-color:var(--yellow);"><span>A−</span><span class="pts">90–93%</span></div>
+        <div class="row" style="border-left-color:#90EE90;"><span>B+</span><span class="pts">87–89%</span></div>
+        <div class="row" style="border-left-color:#90EE90;"><span>B</span><span class="pts">84–86%</span></div>
+        <div class="row" style="border-left-color:#90EE90;"><span>B−</span><span class="pts">80–83%</span></div>
+        <div class="row" style="border-left-color:var(--cyan);"><span>C+</span><span class="pts">77–79%</span></div>
+      </div>
+      <div>
+        <div class="row" style="border-left-color:var(--cyan);"><span>C</span><span class="pts">74–76%</span></div>
+        <div class="row" style="border-left-color:var(--cyan);"><span>C−</span><span class="pts">70–73%</span></div>
+        <div class="row" style="border-left-color:var(--orange);"><span>D+</span><span class="pts">67–69%</span></div>
+        <div class="row" style="border-left-color:var(--orange);"><span>D</span><span class="pts">64–66%</span></div>
+        <div class="row" style="border-left-color:var(--orange);"><span>D−</span><span class="pts">61–63%</span></div>
+        <div class="row" style="border-left-color:var(--red);"><span>F</span><span class="pts">0–60%</span></div>
+      </div>
+    </div>
+    <div class="small-txt" style="margin-top:1.8vh;">⚠️ A grade of C− or higher is required to pass ENC 1102. A grade in the D range is not a passing final grade. This is a state-mandated requirement.</div>
+  </div>
+
+  <!-- ══ 13 KEY POLICIES ══ -->
+  <div class="slide" data-notes="Two policies I want to address directly. First, the syllabus amendment policy: throughout the semester, events can occur that require adjustments to due dates, readings, or course structure. I will do my best to carry out the course as planned; however, I reserve the right to make modifications at my discretion. Any changes will be communicated to the class in advance through Canvas announcements. Second, the late work policy: if you are concerned about submitting an assignment on time, I encourage you to contact me through email or the Webcourses Inbox before the deadline. If you communicate with me in writing prior to the due date, alternative arrangements may be granted on a case-by-case basis. If you do not communicate with me regarding a late submission, you may incur a penalty of up to 10 percent per day. The most important thing I can tell you is this: reach out early. I want to help you succeed, and I can almost always do more when I hear from you before a deadline rather than after.">
+    <div class="px-level">LVL 5 · COURSE POLICIES</div>
+    <div class="px-sec" style="font-size:clamp(15px,2.2vw,34px);">KEY POLICIES</div>
+    <div class="content" style="display:flex;flex-direction:column;gap:clamp(10px,1.8vh,22px);text-align:left;">
+      <div class="card p">
+        <div class="px-label" style="color:var(--pink);">📅 SYLLABUS AMENDMENT POLICY</div>
+        <div class="body-txt">Throughout the semester, events can occur that shift or change due dates, readings, and course structure. I will do my best to carry out the course as planned; however, I reserve the right to make modifications at my discretion. Any changes will be communicated to the class in advance through Canvas announcements.</div>
+      </div>
+      <div class="card r">
+        <div class="px-label" style="color:var(--red);">⏰ MISSED AND LATE ASSIGNMENTS</div>
+        <div class="body-txt">If you are concerned about submitting an assignment on time, contact me through email or the Webcourses Inbox before the due date. If you communicate in writing prior to the deadline, alternative arrangements may be granted on a case-by-case basis. Failure to communicate may result in a penalty of up to <strong style="color:var(--red);">10% per day</strong>. <strong style="color:var(--yellow);">Reaching out early is always the right move — I can do far more to help before a deadline than after.</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ 14 AI POLICY ══ -->
+  <div class="slide" data-notes="I want to take a moment to address the use of Artificial Intelligence tools in this course. AI tools are generally welcome here — they can support critical thinking, help with brainstorming, and assist in the early stages of the writing process such as outlining and exploring ideas. However, there are clear and firm limits. It is not acceptable to use generative AI to complete peer reviews, rough drafts, or final drafts. Submitting AI-generated work as your own constitutes a violation of academic integrity. The work you submit in this course must represent your own thinking and your own writing. Specific guidance on when AI use is and is not appropriate will be communicated for each assignment. If you are ever uncertain whether a particular use of AI is permissible, please contact me before submitting your work.">
+    <div class="px-level">LVL 5 · COURSE POLICIES</div>
+    <div class="px-sec" style="font-size:clamp(15px,2.2vw,34px);">USE OF GENERATIVE AI</div>
+    <div class="content" style="display:flex;flex-direction:column;gap:clamp(10px,1.8vh,22px);text-align:left;">
+      <div class="card b">
+        <div class="px-label" style="color:var(--cyan);">✅ APPROPRIATE USE</div>
+        <div class="body-txt">AI tools may be used to support brainstorming, outlining, and early-stage idea exploration. We should engage with these tools critically and intentionally, examining their limitations, biases, and ethical considerations. Specific guidelines will be communicated for each assignment.</div>
+      </div>
+      <div class="card r">
+        <div class="px-label" style="color:var(--red);">🚫 NOT ACCEPTABLE</div>
+        <div class="body-txt">Using generative AI to complete peer reviews, rough drafts, or final drafts is a violation of academic integrity. The work you submit must represent your own thinking and your own writing. When in doubt about a specific use, contact the instructor <strong style="color:var(--yellow);">before</strong> submitting your work.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ 15 SAS ══ -->
+  <div class="slide" data-notes="The University of Central Florida is committed to providing access and inclusion for all students with disabilities. If you require accommodations in this course, I encourage you to contact Student Accessibility Services as early in the semester as possible. Their office is located in Ferrell Commons, Room 185. You may also reach them by email at sas@ucf.edu or by phone at 407-823-2371. Once SAS provides me with a Course Accessibility Letter outlining your approved accommodations, we will work together to ensure those accommodations are in place. Please do not wait until difficulties arise to initiate this process — early communication gives us the best opportunity to support your success in the course.">
+    <div class="px-level">LVL 5 · ACCESSIBILITY</div>
+    <div class="px-sec" style="font-size:clamp(15px,2.2vw,34px);">STUDENT ACCESSIBILITY SERVICES</div>
+    <div class="maze-box" style="text-align:left;">
+      <div style="font-size:clamp(15px,1.8vw,24px);line-height:2.0;">
+        UCF is committed to providing access and inclusion for all students with disabilities. If you require accommodations in this course, please contact Student Accessibility Services as early in the semester as possible.
+        <br><br>
+        <div>📍 &nbsp;<strong style="color:var(--yellow);">Office Location:</strong> &nbsp;Ferrell Commons, Room 185</div>
+        <div>📧 &nbsp;<strong style="color:var(--yellow);">Email:</strong> &nbsp;sas@ucf.edu</div>
+        <div>📞 &nbsp;<strong style="color:var(--yellow);">Phone:</strong> &nbsp;(407) 823-2371</div>
+        <br>
+        Once a Course Accessibility Letter is provided, we will work together to ensure appropriate accommodations are in place. <strong style="color:var(--yellow);">Please do not wait — early communication gives us the best opportunity to support your success.</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ 16 MODULES SPLASH ══ -->
+  <div class="slide" data-notes="Now let's take a look at how the course is organized week to week inside Canvas Modules. I want to walk you through what a typical week looks like so that the structure of the course feels clear from the start. We will use Week 1 as our example, and then I will walk you through three activities that recur every week — reading responses, discussions, and peer review.">
+    <div class="lvl-num">LVL 6</div>
+    <br>
+    <div class="px-sec">THE MODULE MAZE</div>
+    <div class="small-txt">The following slides walk through how a typical week is structured in Canvas.</div>
+    <br>
+    <div class="dots">· · · · · · · · · · ·</div>
+  </div>
+
+  <!-- ══ 17 HOW A WEEK WORKS ══ -->
+  <div class="slide" data-notes="Every week follows the same basic structure. An assigned reading is available at the start of the week and may be completed on your own schedule. A reading response is due each Sunday by 11:59 PM. Your initial discussion post is due each Tuesday by 11:59 PM. Your replies to at least two classmates are due each Friday by 11:59 PM. During major assignment weeks, there is an additional layer: a rough draft submitted to the Canvas Discussion Board by Tuesday, peer reviews of assigned classmates completed by Friday, and the final polished submission due by Sunday. This structure repeats throughout the semester and will become familiar quickly.">
+    <div class="px-level">LVL 6 · WEEK 1 EXAMPLE</div>
+    <div class="px-sec" style="font-size:clamp(15px,2.2vw,34px);">HOW A WEEK IS STRUCTURED</div>
+    <div class="content">
+      <div class="row" style="border-left-color:var(--yellow);">        <span>📖 &nbsp;<strong>Reading</strong> — complete the assigned text for the week</span>                                                    <span style="color:var(--dim);white-space:nowrap;font-size:.9em;">flexible</span></div>
+      <div class="row" style="border-left-color:var(--cyan);">          <span>✍️ &nbsp;<strong>Reading Response</strong> — short written reflection on the assigned reading</span>                            <span style="color:var(--dim);white-space:nowrap;font-size:.9em;">Sun 11:59 PM</span></div>
+      <div class="row" style="border-left-color:var(--pink);">          <span>💬 &nbsp;<strong>Discussion Post</strong> — initial response to the weekly prompt</span>                                         <span style="color:var(--dim);white-space:nowrap;font-size:.9em;">Tue 11:59 PM</span></div>
+      <div class="row" style="border-left-color:var(--orange);">        <span>🗣 &nbsp;<strong>Discussion Replies</strong> — substantive responses to at least two classmates</span>                        <span style="color:var(--dim);white-space:nowrap;font-size:.9em;">Fri 11:59 PM</span></div>
+      <div class="row" style="border-left-color:var(--red);">           <span>📄 &nbsp;<strong>Rough Draft</strong> — submitted to the Discussion Board for peer review <em style="color:var(--dim);">(MA weeks)</em></span><span style="color:var(--dim);white-space:nowrap;font-size:.9em;">Tue 11:59 PM</span></div>
+      <div class="row" style="border-left-color:var(--red);">           <span>🔍 &nbsp;<strong>Peer Review</strong> — written feedback provided to assigned classmates <em style="color:var(--dim);">(MA weeks)</em></span>  <span style="color:var(--dim);white-space:nowrap;font-size:.9em;">Fri 11:59 PM</span></div>
+      <div class="row" style="border-left-color:var(--yellow);background:rgba(255,215,0,.05);"><span>🏁 &nbsp;<strong>Final Submission</strong> — revised and polished draft submitted via Canvas <em style="color:var(--dim);">(MA weeks)</em></span><span style="color:var(--dim);white-space:nowrap;font-size:.9em;">Sun 11:59 PM</span></div>
+    </div>
+  </div>
+
+  <!-- ══ 18 READING RESPONSES ══ -->
+  <div class="slide" data-notes="Reading responses are short, low-stakes written reflections that accompany each week's assigned reading. They are not summaries of the text — they are an opportunity for you to engage with the ideas, raise questions, make connections to your own experience, or push back on something you found challenging or unconvincing. Reading responses are worth 2 points each, and there are 10 of them across the semester for a total of 20 points. They are due each Sunday by 11:59 PM and should be submitted through Canvas. They are designed to help you arrive at the week's discussion with something to say, so the more genuinely you engage with them, the more the rest of your weekly work will benefit.">
+    <div class="px-level">LVL 6 · WEEKLY ACTIVITIES</div>
+    <div class="px-sec" style="font-size:clamp(15px,2.2vw,34px);">READING RESPONSES</div>
+    <div class="content" style="display:flex;flex-direction:column;gap:clamp(10px,1.8vh,22px);text-align:left;">
+      <div class="card b">
+        <div class="px-label" style="color:var(--cyan);">WHAT ARE THEY?</div>
+        <div class="body-txt">Reading responses are short, low-stakes written reflections on the week's assigned reading. They are not summaries — they are an opportunity to engage with the ideas, raise questions, make connections, or push back on something you found challenging or unconvincing.</div>
+      </div>
+      <div class="two-col" style="width:100%;max-width:100%;">
+        <div class="card y">
+          <div class="px-label" style="color:var(--yellow);">📋 HOW THEY WORK</div>
+          <div class="body-txt">Each response is submitted through Canvas in response to a short prompt. Responses should demonstrate that you have read and engaged with the assigned material thoughtfully.</div>
+        </div>
+        <div class="card o">
+          <div class="px-label" style="color:var(--orange);">📅 WHEN &amp; HOW MUCH</div>
+          <div class="body-txt">Due each Sunday by 11:59 PM. Worth 2 points each. 10 responses across the semester for a total of 20 points.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ 19 DISCUSSIONS ══ -->
+  <div class="slide" data-notes="Weekly discussions are the primary space for academic conversation in this course. Each week, a prompt will be posted in Canvas that asks you to engage with the week's reading, your own research, or a broader question related to writing and rhetoric. Your initial post should be substantive — it should demonstrate genuine engagement with the prompt and with the course material, not a surface-level response. Replies to classmates should also be substantive: ask a follow-up question, offer a different perspective, or extend the conversation in a meaningful direction. Simply agreeing or saying something like 'great post' does not meet the expectation. Initial posts are due Tuesday by 11:59 PM, and replies to at least two classmates are due Friday by 11:59 PM.">
+    <div class="px-level">LVL 6 · WEEKLY ACTIVITIES</div>
+    <div class="px-sec" style="font-size:clamp(15px,2.2vw,34px);">DISCUSSIONS</div>
+    <div class="content" style="display:flex;flex-direction:column;gap:clamp(10px,1.8vh,22px);text-align:left;">
+      <div class="card p">
+        <div class="px-label" style="color:var(--pink);">WHAT ARE THEY?</div>
+        <div class="body-txt">Discussions are the primary space for academic conversation in this course. Each week, a prompt asks you to engage with the assigned reading, your own research, or a broader question related to writing and rhetoric. Both your initial post and your replies should demonstrate genuine, substantive engagement — not surface-level responses.</div>
+      </div>
+      <div class="two-col" style="width:100%;max-width:100%;">
+        <div class="card y">
+          <div class="px-label" style="color:var(--yellow);">📋 WHAT'S EXPECTED</div>
+          <div class="body-txt">Initial posts must engage meaningfully with the prompt. Replies should extend the conversation — ask a follow-up question, offer a different perspective, or build on a classmate's idea. Simply agreeing does not meet the expectation.</div>
+        </div>
+        <div class="card o">
+          <div class="px-label" style="color:var(--orange);">📅 WHEN &amp; HOW MUCH</div>
+          <div class="body-txt">Initial post due Tuesday by 11:59 PM. Replies to at least two classmates due Friday by 11:59 PM. Worth 2 points per week, 12 discussions total — 24 points.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ 20 PEER REVIEW ══ -->
+  <div class="slide" data-notes="Peer review is a required component of the major assignment process in this course. For the Cultural Artifact Analysis, the Research Proposal, the Literature Review, and the Final Research Paper, you will be assigned two classmates whose drafts you are responsible for reading and responding to. Peer review is not proofreading — it is a substantive engagement with your classmate's argument, structure, evidence, and ideas. Specific instructions and a review guide will be provided for each peer review assignment in Canvas. Drafts are submitted to the Canvas Discussion Board by Tuesday of the assignment week. Peer reviews are completed and submitted by Friday of that same week. Each peer review is worth 4 points, and there are four across the semester for a total of 16 points.">
+    <div class="px-level">LVL 6 · WEEKLY ACTIVITIES</div>
+    <div class="px-sec" style="font-size:clamp(15px,2.2vw,34px);">PEER REVIEW</div>
+    <div class="content" style="display:flex;flex-direction:column;gap:clamp(10px,1.8vh,22px);text-align:left;">
+      <div class="card r">
+        <div class="px-label" style="color:var(--red);">WHAT IS IT?</div>
+        <div class="body-txt">Peer review is a required component of the major assignment process. For four assignments across the semester, you will be assigned two classmates whose drafts you are responsible for reading and providing written feedback on. Peer review is not proofreading — it is a substantive engagement with your classmate's argument, structure, evidence, and ideas.</div>
+      </div>
+      <div class="two-col" style="width:100%;max-width:100%;">
+        <div class="card y">
+          <div class="px-label" style="color:var(--yellow);">📋 HOW IT WORKS</div>
+          <div class="body-txt">Drafts are posted to the Canvas Discussion Board by Tuesday. Assigned classmates complete and submit their reviews by Friday. A review guide with specific instructions is provided for each assignment.</div>
+        </div>
+        <div class="card o">
+          <div class="px-label" style="color:var(--orange);">📅 WHEN &amp; HOW MUCH</div>
+          <div class="body-txt">Peer reviews are due Friday by 11:59 PM during major assignment weeks. Worth 4 points each. Four reviews across the semester for a total of 16 points.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ 21 OTHER MODULES ══ -->
+  <div class="slide" data-notes="In addition to the weekly content modules, there are two other modules in Canvas I want to bring to your attention. The ePortfolio module contains everything you need to establish and maintain your ePortfolio throughout the semester — including platform options, check-in instructions, and final submission requirements. The Tools and Resources module is a centralized location for academic support links, including the University Writing Center, Microsoft Office 365, and Zoom. Neither of these modules requires your immediate attention today, but I encourage you to spend some time with them during the first week so you are familiar with their contents before you need them.">
+    <div class="px-level">LVL 6 · ADDITIONAL MODULES</div>
+    <div class="px-sec" style="font-size:clamp(15px,2.2vw,34px);">TWO MORE MODULES TO KNOW</div>
+    <div class="content" style="display:flex;flex-direction:column;gap:clamp(12px,2vh,26px);">
+      <div class="card b" style="text-align:left;">
+        <div class="px-label" style="color:var(--cyan);">🗂 ePORTFOLIO MODULE</div>
+        <div class="body-txt">Contains everything you need to establish and maintain your ePortfolio — platform options, check-in instructions, and final submission requirements. Review this module during the first week of the course.</div>
+      </div>
+      <div class="card o" style="text-align:left;">
+        <div class="px-label" style="color:var(--orange);">🛠 TOOLS &amp; RESOURCES MODULE</div>
+        <div class="body-txt">A centralized location for academic support resources — the University Writing Center, Microsoft Office 365, Zoom, and more. Familiarize yourself with this module early; these resources will be valuable as the workload increases.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ 22 CLOSING ══ -->
+  <div class="slide" data-notes="That covers everything I want you to know before we begin. To get started, please read the full syllabus in Canvas, open and review the Week 1 module, submit your Week 1 discussion post by Tuesday evening, and take some time to explore the ePortfolio and Tools and Resources modules when you have a moment. If you have questions about anything covered in this presentation — or anything else related to the course — do not hesitate to reach out. I am available by email and during Wednesday office hours, and I am glad to help. I look forward to working with you this semester. Have a great week.">
+    <div class="px-level" style="background:rgba(255,215,0,.12);border-color:var(--yellow);">GAME START</div>
+    <div class="px-sec">WHERE TO BEGIN</div>
+    <div class="content">
+      <div class="row" style="border-left-color:var(--yellow);">1️⃣ &nbsp;&nbsp;Read the full syllabus in Canvas</div>
+      <div class="row" style="border-left-color:var(--yellow);">2️⃣ &nbsp;&nbsp;Open and review the Week 1 module</div>
+      <div class="row" style="border-left-color:var(--yellow);">3️⃣ &nbsp;&nbsp;Submit your Week 1 discussion post by Tuesday at 11:59 PM</div>
+      <div class="row" style="border-left-color:var(--yellow);">4️⃣ &nbsp;&nbsp;Review the ePortfolio and Tools &amp; Resources modules</div>
+      <div class="row" style="border-left-color:var(--yellow);">5️⃣ &nbsp;&nbsp;Reach out with any questions before the week gets underway</div>
+    </div>
+    <br>
+    <div class="hi-box" style="text-align:center;">
+      <div class="body-txt">I am available by email and during Wednesday office hours. &nbsp;📬 &nbsp;<strong style="color:var(--yellow);">richard.finch@ucf.edu</strong></div>
+    </div>
+    <br>
+    <div style="font-family:'Press Start 2P',monospace;font-size:clamp(13px,1.5vw,22px);color:var(--yellow);">I look forward to working with you. Have a great week. 👾</div>
+  </div>
+
+</div><!-- /deck -->
+
+<div id="progress-bar"></div>
+<div id="counter"></div>
+<div id="nav-hint">← → or Space to navigate &nbsp;|&nbsp; N = speaker notes</div>
+<div id="notes-panel"><div id="notes-label">SPEAKER NOTES</div><div id="notes-text"></div></div>
+
+<script>
+  const slides  = Array.from(document.querySelectorAll('.slide'));
+  const bar     = document.getElementById('progress-bar');
+  const counter = document.getElementById('counter');
+  const panel   = document.getElementById('notes-panel');
+  const notesEl = document.getElementById('notes-text');
+  const total   = slides.length;
+  let cur = 0, notesOpen = false;
+
+  function goTo(n) {
+    slides[cur].classList.remove('active');
+    cur = Math.max(0, Math.min(n, total - 1));
+    slides[cur].classList.add('active');
+    bar.style.width = ((cur + 1) / total * 100) + '%';
+    counter.textContent = (cur + 1) + ' / ' + total;
+    notesEl.textContent = slides[cur].dataset.notes || '';
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); goTo(cur + 1); }
+    if (e.key === 'ArrowLeft')                   { e.preventDefault(); goTo(cur - 1); }
+    if (e.key === 'n' || e.key === 'N')          { notesOpen = !notesOpen; panel.classList.toggle('open', notesOpen); }
+  });
+
+  let tx = 0;
+  document.addEventListener('touchstart', e => { tx = e.touches[0].clientX; });
+  document.addEventListener('touchend',   e => { const d = e.changedTouches[0].clientX - tx; if (d < -50) goTo(cur+1); if (d > 50) goTo(cur-1); });
+
+  document.getElementById('deck').addEventListener('click', e => {
+    if (e.target.closest('#notes-panel')) return;
+    e.clientX > window.innerWidth / 2 ? goTo(cur + 1) : goTo(cur - 1);
+  });
+
+  goTo(0);
+</script>
+</body>
+</html>
