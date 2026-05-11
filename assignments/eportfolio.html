@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Major Assignment 4: ePortfolio | ENC 1102</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:   #1a2744;
+      --gold:   #c9973a;
+      --cream:  #fdf8f2;
+      --white:  #ffffff;
+      --muted:  #6b7280;
+      --border: #e4d9c8;
+      --accent-light: #fef3e2;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--navy);
+      line-height: 1.7;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: var(--navy);
+      color: var(--white);
+      padding: 48px 24px 36px;
+      text-align: center;
+    }
+
+    .course-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+
+    header h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+
+    .header-meta {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin-top: 20px;
+    }
+
+    .meta-pill {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 999px;
+      padding: 6px 18px;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    .meta-pill span {
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    /* ── MAIN LAYOUT ── */
+    main {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    /* ── INTRO CARD ── */
+    .intro-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-left: 5px solid var(--gold);
+      border-radius: 8px;
+      padding: 28px 32px;
+      margin-bottom: 48px;
+    }
+
+    .intro-card h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.3rem;
+      color: var(--navy);
+      margin-bottom: 12px;
+    }
+
+    .intro-card p {
+      color: #374151;
+      margin-bottom: 12px;
+    }
+
+    .intro-card p:last-child { margin-bottom: 0; }
+
+    /* ── SECTION ── */
+    .section {
+      margin-bottom: 48px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 18px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--border);
+    }
+
+    .section-num {
+      width: 36px;
+      height: 36px;
+      background: var(--navy);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .section h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.35rem;
+      color: var(--navy);
+    }
+
+    .section p {
+      color: #374151;
+      margin-bottom: 14px;
+    }
+
+    .section p:last-child { margin-bottom: 0; }
+
+    /* ── PARTS ── */
+    .parts-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .part-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .part-header {
+      background: var(--navy);
+      color: var(--white);
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .part-num {
+      background: var(--gold);
+      color: var(--navy);
+      font-weight: 700;
+      font-size: 0.8rem;
+      padding: 4px 10px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+    }
+
+    .part-header h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+    }
+
+    .part-body {
+      padding: 22px 24px;
+      color: #374151;
+      line-height: 1.75;
+    }
+
+    .part-body p {
+      margin-bottom: 12px;
+    }
+
+    .part-body p:last-child { margin-bottom: 0; }
+
+    .part-body ul {
+      margin-top: 12px;
+      padding-left: 0;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .part-body ul li {
+      display: flex;
+      gap: 10px;
+    }
+
+    .part-body ul li::before {
+      content: '→';
+      color: var(--gold);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* ── CHECKPOINT TIMELINE ── */
+    .timeline {
+      margin-top: 48px;
+    }
+
+    .timeline-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.35rem;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+
+    .timeline-sub {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 28px;
+    }
+
+    .timeline-items {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      position: relative;
+    }
+
+    .timeline-items::before {
+      content: '';
+      position: absolute;
+      left: 17px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--border);
+    }
+
+    .timeline-item {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      padding-bottom: 28px;
+      position: relative;
+    }
+
+    .timeline-item:last-child {
+      padding-bottom: 0;
+    }
+
+    .timeline-dot {
+      width: 36px;
+      height: 36px;
+      background: var(--navy);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.78rem;
+      font-weight: 700;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .timeline-dot.final {
+      background: var(--gold);
+      color: var(--navy);
+    }
+
+    .timeline-content {
+      padding-top: 6px;
+    }
+
+    .timeline-date {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 2px;
+    }
+
+    .timeline-label {
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 2px;
+    }
+
+    .timeline-desc {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    /* ── FORMAT BOX ── */
+    .format-box {
+      background: var(--accent-light);
+      border: 1px solid #e8c97a;
+      border-radius: 8px;
+      padding: 24px 28px;
+      margin-top: 48px;
+    }
+
+    .format-box h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.2rem;
+      color: var(--navy);
+      margin-bottom: 12px;
+    }
+
+    .format-list {
+      list-style: none;
+      margin-top: 12px;
+    }
+
+    .format-list li {
+      padding: 6px 0;
+      color: #374151;
+      display: flex;
+      gap: 10px;
+    }
+
+    .format-list li::before {
+      content: '✓';
+      color: var(--gold);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      padding: 24px;
+      font-size: 0.8rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <p class="course-label">ENC 1102 · Summer C 2026 · Section C061</p>
+  <h1>Major Assignment 4<br>ePortfolio</h1>
+  <div class="header-meta">
+    <div class="meta-pill">Due <span>Thursday, July 31 · 11:59 PM</span></div>
+    <div class="meta-pill">Worth <span>30 Points</span></div>
+    <div class="meta-pill">Ongoing <span>throughout the semester</span></div>
+  </div>
+</header>
+
+<main>
+
+  <!-- WHAT IS IT -->
+  <div class="intro-card">
+    <h2>What Is an ePortfolio?</h2>
+    <p>Your ePortfolio is a personal website where you showcase what you learned this semester. It's not just a place to upload files — it's a space where you explain, demonstrate, and reflect on your growth as a writer. Think of it as the argument you make for your own learning.</p>
+    <p>Because learning happens over time, your ePortfolio should grow with you throughout the semester. The best ePortfolios are built week by week, not assembled at the end. You'll have five check-ins along the way to keep you on track.</p>
+  </div>
+
+  <!-- SECTIONS -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">→</div>
+      <h2>What Goes In It</h2>
+    </div>
+    <p>Your ePortfolio has three main components: your student learning outcomes, your major writing assignments, and your writing artifacts. Each piece needs reflection — not just the work itself, but your thinking about it.</p>
+  </div>
+
+  <div class="parts-wrapper">
+
+    <div class="part-card">
+      <div class="part-header">
+        <span class="part-num">Component 1</span>
+        <h3>Student Learning Outcomes</h3>
+      </div>
+      <div class="part-body">
+        <p>ENC 1102 is built around six student learning outcomes. Your ePortfolio should address each one. For every outcome, explain what it means in plain terms, show how your writing demonstrates that you engaged with it, and reflect on what you learned. Use examples from your actual work — don't just describe the outcome in the abstract.</p>
+        <p>The six outcomes are: Generating Inquiry, Multiple Ways of Writing, Information Literacy, Research Genre Production, Contributing Knowledge, and Revision.</p>
+      </div>
+    </div>
+
+    <div class="part-card">
+      <div class="part-header">
+        <span class="part-num">Component 2</span>
+        <h3>Major Writing Assignments</h3>
+      </div>
+      <div class="part-body">
+        <p>Include all four major assignments in your ePortfolio. For each one, embed or link the full document and write a reflection that contextualizes the work — what was the assignment asking you to do, how did you approach it, what did you learn from it?</p>
+        <p>For at least one major assignment, include multiple drafts (for example, Draft 1, Draft 2, and Final). Walk readers through the feedback you received and the specific revisions you made. This is one of the most important parts of your ePortfolio — it shows that writing is a process.</p>
+      </div>
+    </div>
+
+    <div class="part-card">
+      <div class="part-header">
+        <span class="part-num">Component 3</span>
+        <h3>Writing Artifacts</h3>
+      </div>
+      <div class="part-body">
+        <p>Include at least five writing artifacts representing at least three different kinds of writing tasks. These can include discussion posts, reading responses, peer review feedback, free writes, or any other writing you did this semester. For each one, explain why you chose it and what it shows about your learning.</p>
+        <p>Screenshots are encouraged — especially when you want to highlight a specific moment, comment, or revision that would be hard to capture otherwise.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- CHECKPOINTS TIMELINE -->
+  <div class="timeline">
+    <h2 class="timeline-title">Check-In Schedule</h2>
+    <p class="timeline-sub">Five checkpoints keep your ePortfolio on track throughout the semester.</p>
+
+    <div class="timeline-items">
+
+      <div class="timeline-item">
+        <div class="timeline-dot">1</div>
+        <div class="timeline-content">
+          <div class="timeline-date">Sunday, May 25</div>
+          <div class="timeline-label">Check-In 1 — Create Your Site</div>
+          <div class="timeline-desc">Choose a platform (Google Sites, Wix, Weebly, WordPress, or Squarespace), set up your site, and submit your URL in Canvas.</div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot">2</div>
+        <div class="timeline-content">
+          <div class="timeline-date">Sunday, June 22</div>
+          <div class="timeline-label">Check-In 2 — Add Your SLOs</div>
+          <div class="timeline-desc">Add a section for each of the six student learning outcomes. You don't need to complete them yet — just get the structure in place and begin drafting your reflections.</div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot">3</div>
+        <div class="timeline-content">
+          <div class="timeline-date">Sunday, July 6</div>
+          <div class="timeline-label">Check-In 3 — Progress Update</div>
+          <div class="timeline-desc">Add your first two major assignments and at least two writing artifacts. Reflect on where you are and what you still need to complete.</div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot">4</div>
+        <div class="timeline-content">
+          <div class="timeline-date">Sunday, July 20</div>
+          <div class="timeline-label">Check-In 4 — What Do You Need?</div>
+          <div class="timeline-desc">Your ePortfolio should be mostly complete at this point. Submit a note in Canvas about what you still need help with before the final deadline.</div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot final">✓</div>
+        <div class="timeline-content">
+          <div class="timeline-date">Thursday, July 31</div>
+          <div class="timeline-label">Final Submission</div>
+          <div class="timeline-desc">Submit your published ePortfolio URL in Canvas. Make sure all links are accessible and your site is set to public viewing.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FORMAT -->
+  <div class="format-box">
+    <h2>Requirements Checklist</h2>
+    <ul class="format-list">
+      <li>Published website using a free platform — do not pay for a domain</li>
+      <li>Reflections on all six student learning outcomes with examples from your writing</li>
+      <li>All four major writing assignments included as embedded or linked documents</li>
+      <li>Multiple drafts of at least one major assignment with revision reflection</li>
+      <li>At least five writing artifacts representing at least three different kinds of writing</li>
+      <li>All links accessible to anyone with the URL — check your sharing settings</li>
+      <li>Site is organized, user-friendly, and written for a public audience</li>
+    </ul>
+  </div>
+
+</main>
+
+<footer>
+  ENC 1102 · Composition II · UCF Summer C 2026
+</footer>
+
+</body>
+</html>
