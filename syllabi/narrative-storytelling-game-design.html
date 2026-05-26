@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Narrative, Storytelling, and Game Design — Course Syllabus</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --paper: #f9f6f0;
+    --accent: #8B3A3A;
+    --accent-light: #c4726f;
+    --rule: #d4c9b8;
+    --muted: #6b6256;
+    --highlight: #f0e8d8;
+    --module-bg: #eef2f7;
+    --module-border: #1a3a5c;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 17px;
+    line-height: 1.75;
+  }
+
+  /* ── PAGE WRAPPER ── */
+  .page {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 60px 48px 100px;
+  }
+
+  /* ── PRINT BUTTON ── */
+  .print-btn {
+    display: inline-block;
+    margin-bottom: 28px;
+    font-family: 'Source Serif 4', serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    background: none;
+    border: 1px solid var(--rule);
+    padding: 6px 14px;
+    cursor: pointer;
+    border-radius: 2px;
+  }
+  .print-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* ── MASTHEAD ── */
+  .masthead {
+    border-top: 3px solid var(--ink);
+    border-bottom: 1px solid var(--rule);
+    padding: 18px 0 14px;
+    margin-bottom: 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .masthead .course-meta {
+    font-family: 'Source Serif 4', serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .masthead .instructor {
+    font-size: 12px;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  /* ── TITLE BLOCK ── */
+  .title-block {
+    margin-bottom: 48px;
+  }
+  .title-block h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 16px;
+  }
+  .course-details {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--rule);
+  }
+  .detail-item {
+    font-size: 13px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: .08em;
+  }
+  .detail-item strong {
+    display: block;
+    font-size: 14px;
+    color: var(--ink);
+    font-weight: 600;
+    font-style: normal;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  /* ── SECTIONS ── */
+  section {
+    margin-bottom: 44px;
+  }
+  section h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--rule);
+  }
+  p { margin-bottom: 16px; }
+  p:last-child { margin-bottom: 0; }
+
+  /* ── LEARNING OBJECTIVES ── */
+  .objectives-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    counter-reset: obj;
+  }
+  .objectives-list li {
+    display: flex;
+    gap: 16px;
+    font-size: 16px;
+    line-height: 1.6;
+    counter-increment: obj;
+  }
+  .objectives-list li::before {
+    content: counter(obj);
+    min-width: 28px;
+    height: 28px;
+    background: var(--ink);
+    color: white;
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    font-weight: 700;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* ── READING LISTS ── */
+  .reading-group {
+    margin-bottom: 28px;
+  }
+  .reading-group h3 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+    padding-bottom: 6px;
+    border-bottom: 1px dashed var(--rule);
+  }
+  .reading-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .reading-list li {
+    font-size: 15px;
+    line-height: 1.6;
+    padding-left: 16px;
+    position: relative;
+  }
+  .reading-list li::before {
+    content: "—";
+    position: absolute;
+    left: 0;
+    color: var(--accent-light);
+  }
+  .reading-list li em { font-style: italic; }
+  .reading-list li .bracket {
+    font-size: 13px;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  /* ── GAMES LIST ── */
+  .games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 10px;
+    margin: 16px 0;
+  }
+  .game-chip {
+    background: white;
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--accent-light);
+    padding: 10px 14px;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+  .game-chip .game-title { font-weight: 600; font-style: italic; }
+  .game-chip .game-meta { font-size: 12px; color: var(--muted); }
+
+  .note-callout {
+    background: var(--highlight);
+    border: 1px solid var(--rule);
+    border-left: 4px solid var(--accent-light);
+    padding: 16px 20px;
+    font-size: 15px;
+    font-style: italic;
+    color: var(--muted);
+    margin-top: 16px;
+    line-height: 1.6;
+  }
+  .note-callout strong { font-style: normal; color: var(--ink); }
+
+  /* ── GRADING TABLE ── */
+  .grade-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
+    margin: 16px 0 24px;
+  }
+  .grade-table thead tr {
+    background: var(--ink);
+    color: white;
+  }
+  .grade-table thead th {
+    padding: 10px 16px;
+    text-align: left;
+    font-family: 'Source Serif 4', serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .06em;
+  }
+  .grade-table thead th:last-child { text-align: right; }
+  .grade-table tbody tr {
+    border-bottom: 1px solid var(--rule);
+  }
+  .grade-table tbody tr:last-child {
+    border-bottom: 2px solid var(--ink);
+    font-weight: 600;
+  }
+  .grade-table td {
+    padding: 10px 16px;
+  }
+  .grade-table td:last-child {
+    text-align: right;
+    color: var(--accent);
+    font-weight: 600;
+    font-family: 'Playfair Display', serif;
+  }
+  .grade-table tbody tr:last-child td { color: var(--ink); }
+
+  /* ── ASSIGNMENT DESCRIPTIONS ── */
+  .assignment-entry {
+    margin-bottom: 28px;
+    padding-bottom: 28px;
+    border-bottom: 1px dashed var(--rule);
+  }
+  .assignment-entry:last-child {
+    border-bottom: none;
+  }
+  .assignment-entry h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .assignment-weight {
+    font-size: 12px;
+    color: var(--accent);
+    font-weight: 600;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 56px 0 48px;
+    position: relative;
+  }
+  .divider::after {
+    content: "◆";
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--paper);
+    padding: 0 12px;
+    color: var(--rule);
+    font-size: 12px;
+  }
+
+  /* ── COURSE SCHEDULE ── */
+  .module-header {
+    background: var(--ink);
+    color: white;
+    padding: 20px 28px;
+    margin-bottom: 0;
+    margin-top: 40px;
+  }
+  .module-header .module-num {
+    font-family: 'Source Serif 4', serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 4px;
+  }
+  .module-header h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 6px;
+  }
+  .module-header .module-sub {
+    font-size: 14px;
+    font-style: italic;
+    color: rgba(255,255,255,0.65);
+  }
+
+  .week-block {
+    border: 1px solid var(--rule);
+    border-top: none;
+    margin-bottom: 0;
+    padding: 24px 28px;
+    background: white;
+  }
+  .week-block + .week-block {
+    border-top: 1px solid var(--rule);
+  }
+  .week-block + .module-header {
+    margin-top: 40px;
+  }
+
+  .week-label {
+    font-family: 'Source Serif 4', serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .week-block h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed var(--rule);
+  }
+
+  .week-section {
+    margin-bottom: 14px;
+  }
+  .week-section-label {
+    font-family: 'Source Serif 4', serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+  .week-section ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-left: 8px;
+  }
+  .week-section ul li {
+    font-size: 15px;
+    line-height: 1.55;
+    padding-left: 14px;
+    position: relative;
+  }
+  .week-section ul li::before {
+    content: "–";
+    position: absolute;
+    left: 0;
+    color: var(--muted);
+  }
+  .week-section p {
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 6px;
+    padding-left: 8px;
+  }
+
+  .due-item {
+    background: var(--highlight);
+    border-left: 3px solid var(--accent);
+    padding: 8px 14px;
+    font-size: 14px;
+    margin-top: 6px;
+    line-height: 1.5;
+  }
+
+  .prompt-box {
+    background: #f4f1ec;
+    border: 1px solid var(--rule);
+    border-top: 2px solid var(--ink);
+    padding: 18px 22px;
+    font-size: 14.5px;
+    line-height: 1.65;
+    margin-top: 10px;
+  }
+  .prompt-box .prompt-label {
+    font-family: 'Source Serif 4', serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+
+  /* ── POLICIES ── */
+  .policy-entry {
+    margin-bottom: 24px;
+    padding-left: 20px;
+    border-left: 3px solid var(--rule);
+  }
+  .policy-entry h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+  .policy-entry p {
+    font-size: 15.5px;
+    line-height: 1.7;
+    margin-bottom: 0;
+  }
+
+  /* ── ADDITIONAL READING ── */
+  .add-reading-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .add-reading-list li {
+    font-size: 15px;
+    line-height: 1.6;
+    padding-left: 16px;
+    position: relative;
+  }
+  .add-reading-list li::before {
+    content: "◦";
+    position: absolute;
+    left: 0;
+    color: var(--accent-light);
+    font-size: 18px;
+    line-height: 1.4;
+  }
+  .add-reading-list li em { font-style: italic; }
+
+  /* ── FOOTNOTE ── */
+  .footnote {
+    margin-top: 56px;
+    padding-top: 20px;
+    border-top: 1px solid var(--rule);
+    font-size: 13px;
+    color: var(--muted);
+    font-style: italic;
+    text-align: center;
+  }
+
+  /* ── PRINT ── */
+  @media print {
+    body { background: white; font-size: 13px; }
+    .page { padding: 24px 32px; max-width: 100%; }
+    .print-btn { display: none; }
+    .module-header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .week-block { page-break-inside: avoid; }
+    .grade-table thead tr { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 680px) {
+    .page { padding: 32px 20px 60px; }
+    .title-block h1 { font-size: 2.2rem; }
+    .games-grid { grid-template-columns: 1fr; }
+    .module-header { padding: 16px 20px; }
+    .week-block { padding: 18px 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <button class="print-btn" onclick="window.print()">Print / Save as PDF</button>
+
+  <!-- MASTHEAD -->
+  <div class="masthead">
+    <span class="course-meta">Upper-Division Undergraduate &nbsp;|&nbsp; 16 Weeks &nbsp;|&nbsp; 3 Credit Hours</span>
+    <span class="instructor">Syllabus — subject to revision with notice</span>
+  </div>
+
+  <!-- TITLE -->
+  <div class="title-block">
+    <h1>Narrative, Storytelling,<br>and Game Design</h1>
+    <div class="course-details">
+      <div class="detail-item">Format<strong>Lecture / Workshop</strong></div>
+      <div class="detail-item">Duration<strong>16 Weeks</strong></div>
+      <div class="detail-item">Credits<strong>3 Credit Hours</strong></div>
+      <div class="detail-item">Level<strong>Upper-Division Undergraduate</strong></div>
+      <div class="detail-item">Software<strong>Twine (free, browser-based)</strong></div>
+    </div>
+  </div>
+
+  <!-- COURSE DESCRIPTION -->
+  <section>
+    <h2>Course Description</h2>
+    <p>This course examines how video games tell stories — and asks students to become storytellers themselves. Through a combination of critical reading, close game play, and hands-on design work using the open-source platform Twine, students will analyze how narrative structures, player agency, and game mechanics work together to create meaning. By the end of the semester, students will have produced a portfolio of work that demonstrates their ability to think critically about narrative games and to design one of their own.</p>
+    <p>No prior coding experience is required. All games and software used in this course are free or available through library or streaming platforms. Watching a complete playthrough of a game on YouTube is equivalent to playing it for the purposes of this class.</p>
+  </section>
+
+  <!-- LEARNING OBJECTIVES -->
+  <section>
+    <h2>Learning Objectives</h2>
+    <p>By the end of this course, students will be able to:</p>
+    <ol class="objectives-list">
+      <li><strong>Analyze</strong> how narrative structures and storytelling techniques function in video games using established theoretical frameworks</li>
+      <li><strong>Identify and apply</strong> core concepts — player agency, game mechanics, branching narrative, emotional pacing — in both critical writing and game design</li>
+      <li><strong>Design and develop</strong> interactive narratives using Twine, with attention to choice architecture, player experience, and narrative consequence</li>
+      <li><strong>Reflect critically</strong> on their own creative process as both player and designer</li>
+      <li><strong>Engage the field</strong> by reading and responding to foundational and contemporary scholarship in game studies and interactive narrative</li>
+    </ol>
+  </section>
+
+  <!-- REQUIRED TEXTS -->
+  <section>
+    <h2>Required Texts and Materials</h2>
+    <p>All readings are either open access or available through course reserves. <strong>No textbook purchase is required.</strong></p>
+
+    <div class="reading-group">
+      <h3>Open Access — Free Online</h3>
+      <ul class="reading-list">
+        <li>Battey, Tom. "Videogames Can, Do &amp; Should Tell Stories." <em>Gamasutra</em>, 2017.</li>
+        <li>Jenkins, Henry. "Game Design as Narrative Architecture." <em>First Person</em>, MIT Press, 2004. <span class="bracket">[web.mit.edu]</span></li>
+        <li>Juul, Jesper. "Games Telling Stories? A Brief Note on Games and Narratives." <em>Game Studies</em> 1.1, 2001. <span class="bracket">[gamestudies.org]</span></li>
+        <li>Zimmerman, Eric. "Narrative, Interactivity, Play, and Games." <em>Electronic Book Review</em>, 2004.</li>
+      </ul>
+    </div>
+
+    <div class="reading-group">
+      <h3>Course Reserves / Library</h3>
+      <ul class="reading-list">
+        <li>Murray, Janet. <em>Hamlet on the Holodeck</em>. MIT Press, 1997. <span class="bracket">[Chapter 5: "Agency" — excerpt only]</span></li>
+        <li>Reed, Arden A., et al. <em>Adventure Games: Playing the Outsider</em>. Bloomsbury, 2020. <span class="bracket">[Selected chapters]</span></li>
+        <li>Salter, Anastasia, and Stuart Moulthrop. <em>Twining</em>. Amherst College Press, 2021. <span class="bracket">[Selected chapters]</span></li>
+        <li>Finley, T.K. <em>Branching Story, Unlocked Dialogue</em>. CRC Press, 2022. <span class="bracket">[Chapters 3 and 6 only]</span></li>
+        <li>Mitchell, Alice, et al. "Storygameness: Understanding Repeat Experience and the Desire for Closure in Storygames."</li>
+        <li>Anthropy, Anna. <em>Rise of the Videogame Zinesters</em>. Seven Stories Press, 2012. <span class="bracket">[Excerpt, Chapters 1–2]</span></li>
+      </ul>
+    </div>
+
+    <div class="reading-group">
+      <h3>Software</h3>
+      <ul class="reading-list">
+        <li><strong>Twine</strong> — twinery.org &nbsp;<span class="bracket">[browser-based, no download required, free]</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- GAMES -->
+  <section>
+    <h2>Games Explored in Class</h2>
+    <p>All games can be watched via full playthroughs on YouTube. Purchasing is optional.</p>
+    <div class="games-grid">
+      <div class="game-chip">
+        <div class="game-title">The Last of Us</div>
+        <div class="game-meta">Naughty Dog, 2013</div>
+      </div>
+      <div class="game-chip">
+        <div class="game-title">Firewatch</div>
+        <div class="game-meta">Campo Santo, 2016</div>
+      </div>
+      <div class="game-chip">
+        <div class="game-title">Depression Quest</div>
+        <div class="game-meta">Zoe Quinn, 2013 &mdash; free, browser-based Twine</div>
+      </div>
+      <div class="game-chip">
+        <div class="game-title">Howling Dogs</div>
+        <div class="game-meta">Porpentine, 2012 &mdash; free, browser-based Twine</div>
+      </div>
+      <div class="game-chip">
+        <div class="game-title">Papers, Please</div>
+        <div class="game-meta">Lucas Pope, 2013</div>
+      </div>
+      <div class="game-chip">
+        <div class="game-title">To the Moon</div>
+        <div class="game-meta">Freebird Games, 2011</div>
+      </div>
+      <div class="game-chip">
+        <div class="game-title">The Stanley Parable</div>
+        <div class="game-meta">Galactic Cafe, 2013</div>
+      </div>
+    </div>
+    <div class="note-callout">
+      <strong>A note on open-source:</strong> The platforms and many of the games used in this class exist in open-source and indie spaces. Part of what this course asks you to notice is how much meaningful creative work happens outside of major commercial studios — and why that matters.
+    </div>
+  </section>
+
+  <!-- ASSIGNMENTS AND GRADING -->
+  <section>
+    <h2>Assignments and Grading</h2>
+
+    <table class="grade-table">
+      <thead>
+        <tr>
+          <th>Assignment</th>
+          <th>Weight</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Weekly Response Posts (×10)</td><td>15%</td></tr>
+        <tr><td>Close Play Essay</td><td>15%</td></tr>
+        <tr><td>Paper Prototype</td><td>5%</td></tr>
+        <tr><td>Twine Draft 1.0</td><td>10%</td></tr>
+        <tr><td>Peer Review of Twine 1.0</td><td>5%</td></tr>
+        <tr><td>Twine 1.0 Reflection</td><td>5%</td></tr>
+        <tr><td>Group Game Presentation</td><td>10%</td></tr>
+        <tr><td>Story Storyboard</td><td>5%</td></tr>
+        <tr><td>Final Twine Project</td><td>20%</td></tr>
+        <tr><td>Final Process Reflection</td><td>10%</td></tr>
+        <tr><td><strong>Total</strong></td><td>100%</td></tr>
+      </tbody>
+    </table>
+
+    <div class="assignment-entry">
+      <h3>Weekly Response Posts</h3>
+      <div class="assignment-weight">15% &nbsp;—&nbsp; 10 weeks &times; 1.5%</div>
+      <p>Ten times over the semester (not every week), students post a 150–200 word response to Canvas connecting a reading to a specific moment in one of the games we have played or watched. These are informal, low-stakes, and graded on completion and engagement, not argument quality. Think of them as a warm-up for discussion.</p>
+    </div>
+
+    <div class="assignment-entry">
+      <h3>Close Play Essay</h3>
+      <div class="assignment-weight">15% &nbsp;—&nbsp; 700–900 words</div>
+      <p>An analytical essay in which you examine <em>one specific mechanic</em> in <em>one specific game</em> from our course list, and argue for how that mechanic reinforces, contradicts, or complicates the game's narrative. You must use at least one course reading as a theoretical frame. This essay is not a plot summary or a review — it is a focused argument about design and meaning. More detailed guidelines will be distributed in Week 4.</p>
+    </div>
+
+    <div class="assignment-entry">
+      <h3>Paper Prototype</h3>
+      <div class="assignment-weight">5% &nbsp;—&nbsp; 3 pages</div>
+      <p>A low-stakes, three-page document in which you draft the skeleton of an original narrative game. Graded on completion and care, not polish. Full prompt distributed in Module 1, Week 4.</p>
+    </div>
+
+    <div class="assignment-entry">
+      <h3>Twine Draft 1.0</h3>
+      <div class="assignment-weight">10%</div>
+      <p>A playable Twine built from your Paper Prototype, with at least three meaningful player choices and two distinct endings. This does not need to be long or code-heavy — the focus is on narrative structure and player experience, not technical complexity.</p>
+    </div>
+
+    <div class="assignment-entry">
+      <h3>Peer Review of Twine 1.0</h3>
+      <div class="assignment-weight">5%</div>
+      <p>A structured written review of a classmate's Twine using a provided rubric. Reviewers address: how choice is presented, whether player agency feels meaningful, what the narrative does well and where it loses momentum.</p>
+    </div>
+
+    <div class="assignment-entry">
+      <h3>Twine 1.0 Reflection</h3>
+      <div class="assignment-weight">5% &nbsp;—&nbsp; 1–2 pages</div>
+      <p>A reflection written <em>after</em> peer review. What did you learn from having someone play your game? What did you change or plan to change, and why? This is a metacognitive exercise — you are thinking about your design process, not just your game.</p>
+    </div>
+
+    <div class="assignment-entry">
+      <h3>Group Game Presentation</h3>
+      <div class="assignment-weight">10% &nbsp;—&nbsp; 10–12 minutes + Q&amp;A</div>
+      <p>In groups of 3–4, you will analyze <em>Papers, Please</em> (or an approved alternative) and present your findings to the class. Your presentation should address: how mechanics and narrative create tension together, what emotional response the game designs for, and how choice and consequence shape replayability.</p>
+    </div>
+
+    <div class="assignment-entry">
+      <h3>Story Storyboard</h3>
+      <div class="assignment-weight">5%</div>
+      <p>A planning document for your Final Twine — a visual or written map of your narrative structure, including branching logic, key decision points, and intended emotional arc. This is a scaffolding step, not a polished deliverable.</p>
+    </div>
+
+    <div class="assignment-entry">
+      <h3>Final Twine Project</h3>
+      <div class="assignment-weight">20%</div>
+      <p>A significantly expanded and revised Twine that builds on your earlier draft. The final game must demonstrate: meaningful narrative consequence for player choices, a coherent aesthetic and tonal identity, and at least two distinct endings that feel earned. Students may incorporate CSS, images, or conditional logic, but are not required to. The game will be shared in a brief in-class showcase.</p>
+    </div>
+
+    <div class="assignment-entry">
+      <h3>Final Process Reflection</h3>
+      <div class="assignment-weight">10% &nbsp;—&nbsp; 3–4 pages</div>
+      <p>A reflection paper accompanying the Final Twine. Not a description of your game — a reflection on your <em>process</em>. How did your design thinking change across the semester? What readings, games, or feedback most shaped your decisions? What would you do differently?</p>
+    </div>
+  </section>
+
+  <!-- COURSE SCHEDULE -->
+  <hr class="divider">
+
+  <section>
+    <h2>Course Schedule</h2>
+
+    <!-- MODULE 1 -->
+    <div class="module-header">
+      <div class="module-num">Module 1</div>
+      <h3>Foundations of Narrative and Games</h3>
+      <div class="module-sub">What does it mean for a game to tell a story — and why does it matter?</div>
+    </div>
+
+    <div class="week-block">
+      <div class="week-label">Week 1</div>
+      <h4>Games as Storytelling Media</h4>
+
+      <div class="week-section">
+        <div class="week-section-label">Reading</div>
+        <ul>
+          <li>Battey, "Videogames Can, Do &amp; Should Tell Stories"</li>
+          <li>Reed et al., <em>Adventure Games</em> — Introduction</li>
+        </ul>
+      </div>
+
+      <div class="week-section">
+        <div class="week-section-label">Game</div>
+        <p>Watch or play: <em>The Last of Us</em> (at least the first two hours or equivalent traversal)</p>
+      </div>
+
+      <div class="week-section">
+        <div class="week-section-label">Discussion</div>
+        <p>How do video games tell stories differently than film or fiction? What does Battey mean when he says games are "inherently powerful" storytelling tools — and do you agree after watching <em>The Last of Us</em>?</p>
+      </div>
+
+      <div class="due-item"><strong>Due:</strong> Weekly Response Post #1 — Agree or disagree with Battey using a specific moment from <em>The Last of Us</em> as your evidence.</div>
+    </div>
+
+    <div class="week-block">
+      <div class="week-label">Week 2</div>
+      <h4>The Debate: Do Games Tell Stories at All?</h4>
+
+      <div class="week-section">
+        <div class="week-section-label">Reading</div>
+        <ul>
+          <li>Juul, "Games Telling Stories?" <em>(open access)</em></li>
+          <li>Jenkins, "Game Design as Narrative Architecture" <em>(open access)</em></li>
+        </ul>
+      </div>
+
+      <div class="week-section">
+        <div class="week-section-label">Discussion</div>
+        <p>Juul and Jenkins represent two sides of an ongoing argument in game studies. Where do you land? Can a game tell a story without its mechanics getting in the way? Jenkins proposes thinking of designers as "narrative architects" rather than storytellers — what does that shift in framing open up?</p>
+      </div>
+
+      <div class="due-item"><strong>Due:</strong> Weekly Response Post #2 — In 150–200 words, identify which framework (Juul or Jenkins) better describes one game you have played outside of class. Be specific.</div>
+      <div class="note-callout" style="margin-top:12px;"><strong>Note:</strong> The Close Play Essay is introduced this week. Guidelines distributed. Topic proposals due Week 5.</div>
+    </div>
+
+    <div class="week-block">
+      <div class="week-label">Week 3</div>
+      <h4>Space, Aesthetics, and Environment as Narrative</h4>
+
+      <div class="week-section">
+        <div class="week-section-label">Reading</div>
+        <ul>
+          <li>Reed et al., <em>Adventure Games</em> — Chapters 1 and 2</li>
+          <li>Zimmerman, "Narrative, Interactivity, Play, and Games"</li>
+        </ul>
+      </div>
+
+      <div class="week-section">
+        <div class="week-section-label">Game</div>
+        <p>Watch or play: <em>Firewatch</em> (at least first hour)</p>
+      </div>
+
+      <div class="week-section">
+        <div class="week-section-label">Activity</div>
+        <p>In pairs, select a single scene or location from <em>Firewatch</em> and draw or describe a "narrative map" of that space — what story is being told by the environment itself, before any dialogue happens?</p>
+      </div>
+
+      <div class="week-section">
+        <div class="week-section-label">Discussion</div>
+        <p>How does aesthetics carry narrative information? What does the player <em>feel</em> before they are told anything?</p>
+      </div>
+
+      <div class="due-item"><strong>Due:</strong> Weekly Response Post #3</div>
+    </div>
+
+    <div class="week-block">
+      <div class="week-label">Week 4</div>
+      <h4>Player Agency and the Architecture of Choice</h4>
+
+      <div class="week-section">
+        <div class="week-section-label">Reading</div>
+        <ul>
+          <li>Reed et al., <em>Adventure Games</em> — Chapter 3</li>
+          <li>Murray, <em>Hamlet on the Holodeck</em> — Chapter 5: "Agency" (excerpt)</li>
+        </ul>
+      </div>
+
+      <div class="week-section">
+        <div class="week-section-label">Discussion</div>
+        <p>Murray defines agency as "the satisfying power to take meaningful action and see the results of our decisions." What makes a choice feel meaningful versus arbitrary? How does <em>Firewatch</em> handle this?</p>
+      </div>
+
+      <div class="due-item" style="margin-bottom:10px;"><strong>Assigned:</strong> Paper Prototype</div>
+      <div class="prompt-box">
+        <div class="prompt-label">Paper Prototype Prompt</div>
+        <p style="margin-bottom:10px;">On <strong>page 1</strong>, write a scene (250–300 words) set in a specific, vivid location with at least one character and one source of tension. The player should feel grounded in a place.</p>
+        <p style="margin-bottom:10px;">On <strong>page 2</strong>, write two choices the player can make at the end of that scene. Think carefully: what does the player know, and what don't they know, when they make this decision?</p>
+        <p>On <strong>page 3</strong>, write what happens next for each choice — two separate continuations of equal care and weight. <strong>Due Week 6.</strong></p>
+      </div>
+    </div>
+
+    <!-- MODULE 2 -->
+    <div class="module-header">
+      <div class="module-num">Module 2</div>
+      <h3>Tools for Interactive Storytelling</h3>
+      <div class="module-sub">Learning to make with Twine — and thinking through making.</div>
+    </div>
+
+    <div class="week-block">
+      <div class="week-label">Week 5</div>
+      <h4>Introduction to Twine</h4>
+
+      <div class="week-section">
+        <div class="week-section-label">Reading</div>
+        <ul>
+          <li>Hahn, "Creating Digital Gamebooks with Twine"</li>
+          <li>Salter &amp; Moulthrop, <em>Twining</em> — Chapter 1</li>
+        </ul>
+      </div>
+
+      <div class="week-section">
+        <div class="week-section-label">Activity</div>
+        <p>In-class Twine workshop. We build the Paper Prototype's branching structure together in Twine. The goal for today is: get something playable. Don't worry about polish.</p>
+      </div>
+
+      <div class="week-section">
+        <div class="week-section-label">Discussion</div>
+        <p>What surprised you about moving from a Word document to Twine? What did the tool force you to think about differently?</p>
+      </div>
+
+      <div class="due-item"><strong>Due:</strong> Weekly Response Post #4 — Reflect on your prior coding experience (or lack of it). What feels like a barrier? What doesn't?</div>
+      <div class="note-callout" style="margin-top:12px;"><strong>Note:</strong> Close Play Essay topic proposals due this week (one paragraph: your game, your chosen mechanic, and the reading you plan to use).</div>
+    </div>
+
+    <div class="week-block">
+      <div class="week-label">Week 6</div>
+      <h4>Branching Narrative and Player Interpretation</h4>
+
+      <div class="week-section">
+        <div class="week-section-label">Reading</div>
+        <ul>
+          <li>Finley, <em>Branching Story, Unlocked Dialogue</em> — Chapter 3</li>
+        </ul>
+      </div>
+
+      <div class="week-section">
+        <div class="week-section-label">Game</div>
+        <p>Play or watch: <em>Depression Quest</em> (Zoe Quinn, 2013) — free in browser</p>
+      </div>
+
+      <div class="week-section">
+        <div class="week-section-label">Discussion</div>
+        <p><em>Depression Quest</em> is built in Twine, and you can see its structure. How does Quinn use unavailable choices — options that are greyed out — as a narrative device? How does the game's word choice shape your interpretation of each decision?</p>
+      </div>
+
+      <div class="due-item"><strong>Due:</strong> Paper Prototype (physical document)</div>
+      <div class="due-item" style="margin-top:6px;"><strong>Beginning:</strong> Twine Draft 1.0 — bring your Twine to class for workshop time</div>
+    </div>
+
+    <div class="week-block">
+      <div class="week-label">Week 7</div>
+      <h4>Peer Review and Revision</h4>
+
+      <div class="week-section">
+        <div class="week-section-label">Reading</div>
+        <ul>
+          <li>Finley, <em>Branching Story, Unlocked Dialogue</em> — Chapter 6</li>
+          <li>Salter &amp; Moulthrop, <em>Twining</em> — Chapter 2</li>
+        </ul>
+      </div>
+
+      <div class="week-section">
+        <div class="week-section-label">Activity</div>
+        <p>Structured peer review workshop. In groups of three, each student plays their two partners' Twines and completes a written peer review form. Reviewers address: How are choices presented — does wording feel neutral, guiding, or manipulative? Does player agency feel meaningful? Where does the narrative lose momentum or clarity?</p>
+      </div>
+
+      <div class="due-item"><strong>Due:</strong> Peer Review forms (written, submitted to Canvas)</div>
+    </div>
+
+    <div class="week-block">
+      <div class="week-label">Week 8</div>
+      <h4>Reflection and Revision</h4>
+
+      <div class="week-section">
+        <div class="week-section-label">Reading</div>
+        <ul>
+          <li>Salter &amp; Moulthrop, <em>Twining</em> — Chapter 3 <em>(skim for practical reference)</em></li>
+        </ul>
+      </div>
+
+      <div class="due-item"><strong>Due:</strong> Twine Draft 1.0 (final version, submitted to Canvas)</div>
+      <div class="due-item" style="margin-top:6px;"><strong>Due:</strong> Twine 1.0 Reflection — 1–2 pages: What did peer review reveal? What are you changing, and why? What design decisions are you most uncertain about?</div>
+    </div>
+
+    <!-- MODULE 3 -->
+    <div class="module-header">
+      <div class="module-num">Module 3</div>
+      <h3>Player Engagement, Emotion, and Consequence</h3>
+      <div class="module-sub">What makes a game feel like it matters?</div>
+    </div>
+
+    <div class="week-block">
+      <div class="week-label">Week 9</div>
+      <h4>Immersion, Agency, and Emotional Design</h4>
+
+      <div class="week-section">
+        <div class="week-section-label">Reading</div>
+        <ul>
+          <li>Murray, <em>Hamlet on the Holodeck</em> — Chapter 5 (continued/revisited)</li>
+          <li>Reed et al., <em>Adventure Games</em> — Chapter 4</li>
+        </ul>
+      </div>
+
+      <div class="week-section">
+        <div class="week-section-label">Game</div>
+        <p>Begin watching or playing: <em>Papers, Please</em></p>
+      </div>
+
+      <div class="week-section">
+        <div class="week-section-label">Discussion</div>
+        <p>Murray argues that a meaningful sense of agency is central to the pleasure of interactive narrative. How does <em>Papers, Please</em> create or complicate that agency? Can a game make you feel <em>bad</em> as a design goal?</p>
+      </div>
+
+      <div class="due-item"><strong>Due:</strong> Weekly Response Post #5</div>
+    </div>
+
+    <div class="week-block">
+      <div class="week-label">Week 10</div>
+      <h4>Moral Choice, Tension, and Replayability</h4>
+
+      <div class="week-section">
+        <div class="week-section-label">Reading</div>
+        <ul>
+          <li>Mitchell et al., "Storygameness: Understanding Repeat Experience and the Desire for Closure in Storygames"</li>
+        </ul>
+      </div>
+
+      <div class="week-section">
+        <div class="week-section-label">Group Presentations</div>
+        <p><em>Papers, Please</em> (or approved alternate game). Each group presents their analysis of how the game uses mechanics and narrative together to create tension, moral weight, and replayability. 10–12 minutes with Q&amp;A.</p>
+      </div>
+
+      <div class="due-item"><strong>Due:</strong> Weekly Response Post #6</div>
+    </div>
+
+    <div class="week-block">
+      <div class="week-label">Week 11</div>
+      <h4>Emotional Pacing and Narrative Time</h4>
+
+      <div class="week-section">
+        <div class="week-section-label">Reading</div>
+        <ul>
+          <li>Reed et al., <em>Adventure Games</em> — Chapter 5</li>
+        </ul>
+      </div>
+
+      <div class="week-section">
+        <div class="week-section-label">Game</div>
+        <p>Watch or play: <em>To the Moon</em></p>
+      </div>
+
+      <div class="week-section">
+        <div class="week-section-label">Discussion</div>
+        <p>How does <em>To the Moon</em> use nonlinear time — moving backward through a character's life — as both a mechanic and an emotional strategy? What is the relationship between when the player learns something and how it feels to learn it?</p>
+      </div>
+
+      <div class="due-item"><strong>Due:</strong> Close Play Essay</div>
+    </div>
+
+    <div class="week-block">
+      <div class="week-label">Week 12</div>
+      <h4>Identity, Authorship, and Who Gets to Make Games</h4>
+
+      <div class="week-section">
+        <div class="week-section-label">Reading</div>
+        <ul>
+          <li>Anthropy, <em>Rise of the Videogame Zinesters</em> — Chapters 1–2 (excerpt)</li>
+          <li>Reed et al., <em>Adventure Games</em> — Chapter 8</li>
+        </ul>
+      </div>
+
+      <div class="week-section">
+        <div class="week-section-label">Game</div>
+        <p>Watch or play: <em>The Stanley Parable</em></p>
+      </div>
+
+      <div class="week-section">
+        <div class="week-section-label">Discussion</div>
+        <p>Anthropy argues that game-making tools like Twine have the potential to democratize who gets to tell stories in games. How does <em>The Stanley Parable</em> play with the relationship between player, designer, and narrator? What does it mean for <em>you</em> — as the person making a Twine this semester — to be an author?</p>
+      </div>
+
+      <div class="due-item"><strong>Due:</strong> Weekly Response Post #7</div>
+      <div class="due-item" style="margin-top:6px;"><strong>Due (end of week):</strong> Story Storyboard — a visual or written map of your Final Twine's narrative architecture</div>
+    </div>
+
+    <!-- MODULE 4 -->
+    <div class="module-header">
+      <div class="module-num">Module 4</div>
+      <h3>Final Project</h3>
+      <div class="module-sub">Building, revising, and presenting your game.</div>
+    </div>
+
+    <div class="week-block">
+      <div class="week-label">Week 13</div>
+      <h4>Workshop: Narrative Architecture</h4>
+
+      <div class="week-section">
+        <p>In-class work session. Bring your Twine-in-progress. The instructor will circulate for individual feedback. Agenda: Does your branching logic serve your narrative? Are your choices legible and meaningful? What does your ending(s) feel like to play?</p>
+      </div>
+
+      <div class="due-item"><strong>Due:</strong> Weekly Response Post #8</div>
+    </div>
+
+    <div class="week-block">
+      <div class="week-label">Week 14</div>
+      <h4>Workshop: Aesthetics and Tone</h4>
+
+      <div class="week-section">
+        <p>In-class work session focused on voice, aesthetic consistency, and player experience. Small group check-ins. Agenda: Does your tone stay consistent across passages? What does your Twine "look like" (even if it's plain text) — and is that a choice?</p>
+      </div>
+
+      <div class="due-item"><strong>Due:</strong> Weekly Response Post #9</div>
+    </div>
+
+    <div class="week-block">
+      <div class="week-label">Week 15</div>
+      <h4>Individual Conferences / Open Studio</h4>
+
+      <div class="week-section">
+        <p>Scheduled individual or small-group conferences with instructor. No whole-class meeting. Students continue developing final projects.</p>
+      </div>
+    </div>
+
+    <div class="week-block">
+      <div class="week-label">Week 16</div>
+      <h4>Final Showcase and Reflection</h4>
+
+      <div class="week-section">
+        <div class="week-section-label">In Class</div>
+        <p>Brief showcase. Each student (or paired group, by arrangement) shares their Final Twine for 5 minutes of open play, followed by a 2-minute description of one design decision they are proud of and one they would revisit.</p>
+      </div>
+
+      <div class="due-item"><strong>Due:</strong> Final Twine Project</div>
+      <div class="due-item" style="margin-top:6px;"><strong>Due:</strong> Final Process Reflection (3–4 pages)</div>
+      <div class="due-item" style="margin-top:6px;"><strong>Due (before showcase):</strong> Weekly Response Post #10 — What is one thing a game we studied this semester taught you about your own design work?</div>
+    </div>
+  </section>
+
+  <!-- WEEKLY RESPONSE POSTS NOTE -->
+  <hr class="divider">
+
+  <section>
+    <h2>A Note on the Weekly Response Posts</h2>
+    <p>These posts are not essays. They are thinking-in-progress. The goal is to keep the reading and the playing in conversation with each other throughout the semester — rather than treating them as separate activities. You will not always have a fully formed argument. That is fine. What matters is specificity: cite a passage, name a moment in a game, make a connection. Graded on completion and genuine engagement (10 weeks × 1.5% = 15%).</p>
+  </section>
+
+  <!-- COURSE POLICIES -->
+  <section>
+    <h2>Course Policies</h2>
+
+    <div class="policy-entry">
+      <h3>Open-Source Philosophy</h3>
+      <p>All required software (Twine) and most readings are free. Purchasing games listed on this syllabus is optional. Watching a complete playthrough on YouTube counts as playing for this course.</p>
+    </div>
+
+    <div class="policy-entry">
+      <h3>AI Writing Policy</h3>
+      <p>This course is about <em>your</em> voice as a designer and thinker. AI-generated writing submitted as your own will receive a zero and be reported for academic integrity review. Using AI to brainstorm, prototype, or troubleshoot Twine code is acceptable with disclosure; using it to write your essays or reflections is not.</p>
+    </div>
+
+    <div class="policy-entry">
+      <h3>Accessibility</h3>
+      <p>Students requiring accommodations should contact the instructor within the first two weeks. We will work together to ensure full participation.</p>
+    </div>
+
+    <div class="policy-entry">
+      <h3>Late Work</h3>
+      <p>Extensions are available if requested before the deadline. Work submitted late without prior arrangement will be penalized 10% per day for up to five days, after which it will not be accepted.</p>
+    </div>
+  </section>
+
+  <!-- ADDITIONAL READING -->
+  <section>
+    <h2>Suggested Additional Reading</h2>
+    <p>For students who want to go further (not required):</p>
+    <ul class="add-reading-list">
+      <li>Aarseth, Espen. <em>Cybertext: Perspectives on Ergodic Literature</em>. Johns Hopkins UP, 1997.</li>
+      <li>Bogost, Ian. <em>How to Do Things with Videogames</em>. University of Minnesota Press, 2011.</li>
+      <li>Montfort, Nick. <em>Twisty Little Passages: An Approach to Interactive Fiction</em>. MIT Press, 2003.</li>
+      <li>Murray, Janet. <em>Hamlet on the Holodeck</em> (full text). MIT Press, 1997.</li>
+      <li>Shaw, Adrienne. <em>Gaming at the Edge</em>. University of Minnesota Press, 2014.</li>
+    </ul>
+  </section>
+
+  <div class="footnote">
+    Syllabus is subject to revision with notice. Any changes will be announced in class and via Canvas.
+  </div>
+
+</div>
+</body>
+</html>
