@@ -3,60 +3,150 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Teaching Demonstration — Twine Tools for Teaching</title>
+  <title>Twine Tools for Teaching</title>
   <style>
     :root {
-      --red: #C8102E;
       --navy: #0A1628;
-      --gold: #F2A900;
       --cream: #F5E6C8;
+      --gold: #F2A900;
+      --red: #C8102E;
       --steel: #6B7280;
-      --dark: #0D0D0D;
     }
     * { box-sizing: border-box; }
     body {
       margin: 0;
-      font-family: Georgia, serif;
+      font-family: 'Special Elite', cursive;
       background: var(--navy);
       color: var(--cream);
-      line-height: 1.6;
+      min-height: 100vh;
     }
-    .wrap { max-width: 900px; margin: 0 auto; padding: 2rem; }
+    nav {
+      display: flex;
+      gap: 1.2rem;
+      padding: 1.25rem 2rem;
+      background: rgba(255,255,255,0.05);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    nav a {
+      color: var(--cream);
+      text-decoration: none;
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+    nav a.active { color: var(--gold); }
+    .hero {
+      max-width: 1100px;
+      margin: 3rem auto 2rem;
+      padding: 2.5rem;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 24px;
+      backdrop-filter: blur(10px);
+    }
+    .hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 6vw, 5rem);
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.3rem;
+    }
+    .hero p {
+      max-width: 42rem;
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: rgba(245,230,200,0.92);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+      max-width: 1100px;
+      margin: 0 auto 3rem;
+      padding: 0 2rem;
+    }
     .card {
       background: var(--cream);
-      color: var(--dark);
-      border: 4px solid var(--dark);
-      box-shadow: 8px 8px 0 var(--dark);
-      padding: 2rem;
-      border-top: 8px solid var(--red);
+      color: var(--navy);
+      border: 1px solid rgba(0,0,0,0.12);
+      border-radius: 20px;
+      padding: 1.75rem;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.12);
     }
-    h1 { font-size: clamp(2rem, 4vw, 3rem); margin: 0 0 0.75rem; color: var(--red); }
-    p { font-size: 1rem; }
-    .actions { margin-top: 1.5rem; }
-    .btn {
+    .card h2 {
+      margin: 0 0 0.75rem;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      letter-spacing: 0.2rem;
+    }
+    .card p {
+      margin: 0;
+      color: #22303f;
+      line-height: 1.7;
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.96rem;
+    }
+    .card a {
       display: inline-block;
-      background: var(--red);
-      color: white;
+      margin-top: 1rem;
+      color: var(--red);
       text-decoration: none;
-      padding: 0.8rem 1.1rem;
-      font-weight: bold;
-      margin-right: 0.8rem;
-      margin-bottom: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
     }
-    .btn.secondary { background: var(--navy); }
+    .footer {
+      text-align: center;
+      color: rgba(245,230,200,0.7);
+      padding: 2rem 1rem 3rem;
+      font-family: 'Courier Prime', monospace;
+      letter-spacing: 0.08em;
+    }
   </style>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;700&family=Courier+Prime:ital,wght@0,400;0,700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="wrap">
-    <div class="card">
-      <h1>Teaching Demonstration</h1>
-      <p>This page serves as the entry point for the Teaching Demonstration within Twine Tools for Teaching.</p>
-      <p>Open the full slide presentation to view the lecture-style demonstration, or return to the broader teaching resources.</p>
-      <div class="actions">
-        <a class="btn" href="teaching-demonstration.html">Open the presentation</a>
-        <a class="btn secondary" href="additional-resources.html">View additional resources</a>
-      </div>
-    </div>
+  <nav>
+    <a href="index.html" class="active">Home</a>
+    <a href="about.html">About</a>
+    <a href="additional-resources.html">Additional Resources</a>
+    <a href="teaching-demonstration.html">Teaching Demonstration</a>
+  </nav>
+  <div class="hero">
+    <h1>Twine Tools for Teaching</h1>
+    <p>Interactive teaching tools and resources built for first-year composition. Browse the site to find curricular materials, digital teaching tools, and a teaching demonstration embedded as one of the site’s resources.</p>
   </div>
+  <div class="grid">
+    <article class="card">
+      <h2>Annotated bibliography</h2>
+      <p>Start here with the annotated bibliography Twine tool for practicing research annotation, synthesis, and source reflection.</p>
+      <a href="tools/annotated-bib/index.html">Open annotated bibliography</a>
+    </article>
+    <article class="card">
+      <h2>Citation Station</h2>
+      <p>Use the citation tool to generate, practice, and check MLA/APA citations in a student-friendly interface.</p>
+      <a href="tools/citation-station/index.html">Open Citation Station</a>
+    </article>
+    <article class="card">
+      <h2>Peer review</h2>
+      <p>Explore the peer review Twine exercise that guides students through feedback, revision, and collaborative reflection.</p>
+      <a href="tools/peer-review/index.html">Open peer review</a>
+    </article>
+    <article class="card">
+      <h2>Additional resources</h2>
+      <p>Access curated materials on digital storytelling, Twine, and interactive teaching practices that extend the core toolset.</p>
+      <a href="additional-resources.html">View resources</a>
+    </article>
+    <article class="card">
+      <h2>Teaching demonstration</h2>
+      <p>Open the slide-based demonstration embedded as a site resource, modeled after a research-focused classroom talk.</p>
+      <a href="teaching-demonstration.html">Open demonstration</a>
+    </article>
+    <article class="card">
+      <h2>About</h2>
+      <p>Read the teaching philosophy that underpins these resources, including process-based pedagogy and meaningful student engagement.</p>
+      <a href="about.html">Read more</a>
+    </article>
+  </div>
+  <div class="footer">Twine Tools for Teaching — a teaching portfolio site with interactive resources, a toolset for students, and a featured classroom demo.</div>
 </body>
 </html>

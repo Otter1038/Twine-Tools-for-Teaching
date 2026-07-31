@@ -3,233 +3,380 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Teaching Demonstration — Twine Tools for Teaching</title>
+  <title>Research is a Process — Teaching Demonstration</title>
   <style>
     :root {
       --navy: #1B3A5C;
+      --navyd: #12293F;
       --gold: #E8A317;
       --cream: #F7F3E8;
       --red: #B03A2E;
+      --slate: #5A6B7C;
+      --ink: #334455;
     }
-    html, body { margin: 0; height: 100%; background: var(--navy); color: var(--navy); font-family: Calibri, Arial, sans-serif; }
-    body { display: flex; align-items: center; justify-content: center; overflow: hidden; }
-    .stage { width: min(100vw, 1100px); height: min(100vh, 760px); position: relative; }
-    .slide { position: absolute; inset: 0; padding: 2.2rem 2.6rem; border: 4px solid var(--navy); background: var(--cream); display: none; opacity: 0; transition: opacity 0.25s ease; }
-    .slide.active { display: block; opacity: 1; }
-    .slide.dark { background: var(--navy); color: var(--cream); }
-    .slide.dark p, .slide.dark li, .slide.dark .small { color: var(--cream); }
-    h1, h2 { font-family: "Bookman Old Style", Georgia, serif; font-weight: 600; margin: 0 0 1rem; }
-    h1 { font-size: clamp(2rem, 4vw, 3rem); }
-    h2 { font-size: clamp(1.5rem, 3vw, 2.2rem); }
-    p, li, .small { font-size: clamp(1rem, 1.4vw, 1.2rem); line-height: 1.5; }
-    .small { font-size: 0.95rem; opacity: 0.8; }
-    .top { margin-top: 0.8rem; }
-    ul { padding-left: 1.1rem; }
-    .quote { font-size: clamp(1.2rem, 2vw, 1.55rem); font-style: italic; }
-    .poster-wrap { display: flex; align-items: center; justify-content: center; height: 100%; }
-    .poster-wrap img { max-width: 92%; max-height: 84vh; border: 3px solid var(--navy); box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
-    .input { width: 100%; padding: 0.8rem 1rem; border: 2px solid var(--navy); font-size: 1rem; margin-top: 0.8rem; background: #fff; }
-    .button-row { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 0.8rem; }
-    .btn { padding: 0.6rem 0.9rem; border: 1px solid var(--navy); background: var(--cream); color: var(--navy); cursor: pointer; font-size: 0.95rem; }
-    .btn.active { background: var(--gold); }
-    .items { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1rem; }
-    .chip { padding: 0.4rem 0.7rem; border-radius: 999px; background: var(--navy); color: var(--cream); font-size: 0.95rem; }
-    .gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 1rem; }
-    .gallery img { width: 100%; height: 200px; object-fit: cover; border: 3px solid var(--navy); display: block; }
-    .footer { position: absolute; right: 1.1rem; bottom: 0.9rem; font-size: 0.8rem; opacity: 0.75; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; overflow: hidden; font-family: Calibri, Candara, Segoe UI, sans-serif; }
+    body { background: #0b1826; }
+
+    .stage { position: relative; width: 100vw; height: 100vh; }
+    .slide {
+      position: absolute;
+      inset: 0;
+      display: none;
+      padding: 4.2vh 5vw 6.5vh;
+      flex-direction: column;
+      opacity: 0;
+      transition: opacity .28s ease;
+    }
+    .slide.on { display: flex; opacity: 1; }
+    .dark { background: var(--navy); color: #fff; }
+    .darker { background: var(--navyd); color: #fff; }
+    .light { background: var(--cream); color: var(--ink); }
+
+    h1, h2, .serif { font-family: "Bookman Old Style", Bookman, Georgia, serif; font-weight: 700; }
+    h1 { font-size: clamp(38px, 6.4vw, 86px); line-height: 1.06; }
+    h2 { font-size: clamp(26px, 3.9vw, 52px); line-height: 1.18; }
+    .eyebrow {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: clamp(10px, 1.05vw, 14px);
+      font-weight: 700;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      margin-bottom: auto;
+    }
+    .eyebrow.g { color: var(--gold); }
+    .eyebrow.r { color: var(--red); }
+    .mid { margin: auto 0; display: flex; flex-direction: column; gap: 2.2vh; }
+    .sub { font-size: clamp(15px, 1.7vw, 23px); font-style: italic; color: #C9D6E2; }
+    .light .sub { color: var(--slate); }
+    .gold { color: var(--gold); }
+    .redt { color: var(--red); }
+    .navyt { color: var(--navy); }
+
+    .bar { position: fixed; left: 0; right: 0; bottom: 0; height: 5px; background: rgba(255,255,255,.12); z-index: 40; }
+    .bar i { display: block; height: 100%; background: var(--gold); width: 0; transition: width .28s; }
+    .num {
+      position: fixed; right: 16px; bottom: 16px; z-index: 40;
+      font-family: Arial, sans-serif; font-size: 12px; letter-spacing: .14em;
+      color: rgba(255,255,255,.45);
+    }
+    .light ~ .num { color: rgba(0,0,0,.35); }
+    .hint {
+      position: fixed; left: 16px; bottom: 16px; z-index: 40;
+      font-family: Arial, sans-serif; font-size: 11px; letter-spacing: .1em;
+      color: rgba(255,255,255,.32);
+    }
+
+    .poster { max-height: 78vh; max-width: 100%; object-fit: contain; display: block; margin: auto; box-shadow: 0 10px 40px rgba(0,0,0,.45); }
+    .credit { font-family: Arial, sans-serif; font-size: 11px; color: rgba(255,255,255,.4); text-align: center; margin-top: 1.4vh; }
+
+    .rows { display: flex; flex-direction: column; gap: 1.9vh; margin: auto 0; width: 100%; }
+    .row { display: grid; grid-template-columns: minmax(140px, 2.1fr) 5fr 3fr; gap: 2.2vw; align-items: start; }
+    .row .lab { font-family: Arial, sans-serif; font-weight: 700; letter-spacing: .1em; font-size: clamp(11px, 1.15vw, 16px); color: var(--red); padding-top: .28em; }
+    .row .txt { font-size: clamp(14px, 1.45vw, 20px); line-height: 1.42; }
+    .row .note { font-size: clamp(12px, 1.2vw, 17px); font-style: italic; color: var(--slate); line-height: 1.4; }
+    .cite { font-family: Arial, sans-serif; font-weight: 700; letter-spacing: .08em; font-size: clamp(11px, 1.1vw, 15px); color: var(--red); text-align: right; margin-top: 1.5vh; }
+
+    blockquote { font-family: "Bookman Old Style", Bookman, Georgia, serif; font-size: clamp(19px, 2.5vw, 34px); line-height: 1.5; max-width: 60ch; }
+    .attrib { font-family: Arial, sans-serif; font-weight: 700; letter-spacing: .09em; font-size: clamp(11px, 1.15vw, 16px); color: var(--gold); margin-top: 3.2vh; }
+
+    .gal { display: flex; gap: 1.1vw; justify-content: center; align-items: flex-end; margin: auto 0; }
+    .gal figure { display: flex; flex-direction: column; align-items: center; gap: .9vh; flex: 0 1 auto; }
+    .gal img { max-height: 52vh; max-width: 17vw; object-fit: contain; box-shadow: 0 8px 26px rgba(0,0,0,.4); }
+    .gal figcaption { text-align: center; }
+    .gal .d { font-family: Arial, sans-serif; font-weight: 700; letter-spacing: .08em; font-size: clamp(9px, .92vw, 13px); color: var(--gold); }
+    .gal .a { font-style: italic; font-size: clamp(11px, 1.05vw, 15px); color: #9FB3C8; }
+
+    .cap { margin: auto 0; width: 100%; display: flex; flex-direction: column; gap: 2.2vh; }
+    .capbar { display: flex; gap: .8vw; }
+    .capbar input {
+      flex: 1; font: inherit; font-size: clamp(15px, 1.6vw, 22px); padding: .7em .9em;
+      border: 2px solid rgba(27,58,92,.25); border-radius: 8px; background: #fff; color: var(--ink);
+    }
+    .capbar input:focus { outline: none; border-color: var(--gold); }
+    .capbar button {
+      font: inherit; font-weight: 700; font-size: clamp(14px, 1.4vw, 19px); padding: .7em 1.5em;
+      border: 0; border-radius: 8px; background: var(--navy); color: #fff; cursor: pointer;
+    }
+    .capbar button:hover { background: var(--navyd); }
+    .chips { display: flex; flex-wrap: wrap; gap: .7vw .7vw; align-content: flex-start; min-height: 34vh; overflow-y: auto; }
+    .chip { background: #fff; border-radius: 9px; padding: .6em .95em; font-size: clamp(13px, 1.35vw, 19px); line-height: 1.35; color: var(--ink); box-shadow: 0 2px 8px rgba(0,0,0,.11); max-width: 46ch; position: relative; }
+    .chip .x { position: absolute; top: -7px; right: -7px; width: 20px; height: 20px; border-radius: 50%; background: var(--red); color: #fff; font-size: 12px; line-height: 20px; text-align: center; cursor: pointer; opacity: 0; transition: opacity .15s; }
+    .chip:hover .x { opacity: 1; }
+    .empty { color: var(--slate); font-style: italic; font-size: clamp(14px, 1.4vw, 20px); }
+
+    .sortwrap { margin: auto 0; display: grid; grid-template-columns: 1.15fr 1fr; gap: 2.4vw; width: 100%; align-items: start; }
+    .sortlist { display: flex; flex-direction: column; gap: 1.1vh; max-height: 62vh; overflow-y: auto; }
+    .item { background: #fff; border-radius: 9px; padding: .75em 1em; box-shadow: 0 2px 8px rgba(0,0,0,.11); font-size: clamp(13px, 1.35vw, 19px); color: var(--ink); display: flex; flex-direction: column; gap: .5em; }
+    .item.tagged { opacity: .55; }
+    .tags { display: flex; flex-wrap: wrap; gap: .35em; }
+    .tags button {
+      font: inherit; font-family: Arial, sans-serif; font-size: clamp(9px, .85vw, 12px); font-weight: 700; letter-spacing: .06em; padding: .42em .7em; border-radius: 20px; cursor: pointer; border: 1.5px solid rgba(27,58,92,.28); background: transparent; color: var(--slate);
+    }
+    .tags button:hover { border-color: var(--navy); color: var(--navy); }
+    .tags button.sel { background: var(--red); border-color: var(--red); color: #fff; }
+    .tags button.sel[data-k="ok"] { background: #2C6E49; border-color: #2C6E49; }
+    .verdict { font-family: Arial, sans-serif; font-weight: 700; letter-spacing: .08em; font-size: clamp(9px, .88vw, 12px); }
+    .key { background: #fff; border-radius: 11px; padding: 1.4em 1.5em; box-shadow: 0 2px 10px rgba(0,0,0,.1); }
+    .key h3 { font-family: Arial, sans-serif; font-size: clamp(10px, 1vw, 13px); letter-spacing: .16em; color: var(--red); margin-bottom: 1em; }
+    .key dl { display: grid; grid-template-columns: auto 1fr; gap: .75em 1em; font-size: clamp(11px, 1.15vw, 16px); line-height: 1.35; }
+    .key dt { font-family: Arial, sans-serif; font-weight: 700; font-size: clamp(9px, .9vw, 12px); letter-spacing: .06em; color: var(--red); padding-top: .2em; white-space: nowrap; }
+    .key dd { color: var(--ink); }
+    .key .fix { margin-top: 1.3em; padding-top: 1.1em; border-top: 1px solid rgba(0,0,0,.1); font-style: italic; color: var(--navy); font-size: clamp(12px, 1.2vw, 17px); }
+
+    .refs { margin: auto 0; display: flex; flex-direction: column; gap: 2.4vh; max-width: 96ch; }
+    .refs p { font-size: clamp(12px, 1.25vw, 18px); line-height: 1.5; padding-left: 2.4em; text-indent: -2.4em; }
+    .refs i { font-style: italic; }
   </style>
 </head>
 <body>
-  <div class="stage">
-    <!-- 1 -->
-    <section class="slide active">
-      <h1>Research as a Process</h1>
-      <p class="top">A fifteen-minute teaching demonstration for a first-year composition faculty search.</p>
-      <p class="top">I begin with a familiar object and ask what we can learn by looking closely.</p>
-      <div class="footer">1 / 11</div>
-    </section>
-
-    <!-- 2 -->
-    <section class="slide dark">
-      <h2>Where do I start?</h2>
-      <p>Sometimes the most useful place is not a new theory but a familiar image.</p>
-      <p class="top">Students already know the poster. That gives us a shared entry point.</p>
-      <div class="footer">2 / 11</div>
-    </section>
-
-    <!-- 3 -->
-    <section class="slide">
-      <h2>Start with what you know</h2>
-      <p>I ask students to name what they see before I ask them to explain what they know.</p>
-      <p class="top">That move keeps the inquiry grounded in evidence rather than in assumption.</p>
-      <div class="footer">3 / 11</div>
-    </section>
-
-    <!-- 4 -->
-    <section class="slide">
-      <div class="poster-wrap">
-        <img src="img/mar.jpg" alt="A poster image used as the object of inquiry">
+  <div class="stage" id="stage">
+    <section class="slide dark on">
+      <p class="eyebrow g">Teaching demonstration</p>
+      <div class="mid">
+        <h1>Research is a Process</h1>
+        <p class="sub">A short teaching demonstration for a first-year composition faculty search.</p>
       </div>
-      <div class="footer">4 / 11</div>
     </section>
 
-    <!-- 5 -->
+    <section class="slide light">
+      <p class="eyebrow r">The most common question I get</p>
+      <div class="mid"><h1 class="navyt">“Where do I start?”</h1></div>
+    </section>
+
     <section class="slide dark">
-      <h2>What do we know?</h2>
-      <p>We capture the first impressions in the room.</p>
-      <input id="entry" class="input" type="text" placeholder="Type one observation">
-      <div class="button-row">
-        <button class="btn" id="add-entry">Add entry</button>
+      <p class="eyebrow g">My answer</p>
+      <div class="mid"><h1>Start with what you know.</h1></div>
+    </section>
+
+    <section class="slide darker" style="padding-bottom: 3vh;">
+      <div class="mid">
+        <img class="poster" src="img/mar.jpg" alt="The Rosie the Riveter poster used as a teaching object">
+        <p class="credit">J. Howard Miller, “We Can Do It!” (1943)</p>
       </div>
-      <div id="capture-list" class="items"></div>
-      <div class="footer">5 / 11</div>
     </section>
 
-    <!-- 6 -->
-    <section class="slide">
-      <h2>What the poster asks of us</h2>
-      <p class="quote">“The poster is not a finished answer. It is a prompt for inquiry.”</p>
-      <p class="top small">Wierszewski, 2017</p>
-      <div class="footer">6 / 11</div>
-    </section>
-
-    <!-- 7 -->
-    <section class="slide">
-      <h2>Researchable or not?</h2>
-      <p>I sort the observations into what can be pursued and what needs more context.</p>
-      <div id="sort-list"></div>
-      <div class="footer">7 / 11</div>
-    </section>
-
-    <!-- 8 -->
-    <section class="slide dark">
-      <h2>What the scholarship says</h2>
-      <p>Kimble and Olson (2006) show that the poster’s meaning changes when we place it in a historical and cultural frame.</p>
-      <p class="top">That is the point of research: it moves from assumption to evidence.</p>
-      <img src="img/sep.jpg" alt="A supporting image for the scholarship slide" style="max-width:100%;margin-top:1rem;border:3px solid var(--cream);">
-      <div class="footer">8 / 11</div>
-    </section>
-
-    <!-- 9 -->
-    <section class="slide">
-      <h2>Assumptions and biases</h2>
-      <p>Research is not only about finding information. It is also about noticing what we bring to the page.</p>
-      <ul class="top">
-        <li>What do I assume?</li>
-        <li>What am I taking for granted?</li>
-        <li>What would change if I asked another question?</li>
-      </ul>
-      <div class="footer">9 / 11</div>
-    </section>
-
-    <!-- 10 -->
-    <section class="slide dark">
-      <h2>Research is a process</h2>
-      <p>The 1943 gallery is not a single conclusion. It is a sequence of questions, revisions, and new evidence.</p>
-      <div class="gallery">
-        <img src="img/feb.jpg" alt="First image in the gallery">
-        <img src="img/mar.jpg" alt="Second image in the gallery">
-        <img src="img/may.jpg" alt="Third image in the gallery">
-        <img src="img/nov.jpg" alt="Fourth image in the gallery">
+    <section class="slide light">
+      <p class="eyebrow r">Live capture</p>
+      <div class="cap">
+        <h2 class="navyt">What do we know?</h2>
+        <div class="capbar">
+          <input id="capIn" type="text" placeholder="Type one observation">
+          <button id="capAdd">Add</button>
+        </div>
+        <div id="capChips" class="chips"></div>
       </div>
-      <div class="footer">10 / 11</div>
     </section>
 
-    <!-- 11 -->
-    <section class="slide">
-      <h2>References</h2>
-      <p class="small">Kimble, J. J., &amp; Olson, J. S. (2006). The Rosie the Riveter image and its historical meanings.</p>
-      <p class="small top">Wierszewski, E. (2017). “The poster’s authority is not self-evident.” In <em>Bad Ideas About Writing</em>.</p>
-      <div class="footer">11 / 11</div>
+    <section class="slide dark">
+      <p class="eyebrow g">A useful move</p>
+      <div class="mid">
+        <blockquote>“The poster is not a finished answer. It is a prompt for inquiry.”</blockquote>
+        <p class="attrib">Wierszewski, 2017</p>
+      </div>
+    </section>
+
+    <section class="slide light">
+      <p class="eyebrow r">Sorting</p>
+      <div class="sortwrap">
+        <div id="sortList" class="sortlist"></div>
+        <div class="key">
+          <h3>Researchable or not?</h3>
+          <dl>
+            <dt>OK</dt><dd>Can be developed into a research question.</dd>
+            <dt>WAIT</dt><dd>Needs more context, framing, or evidence.</dd>
+          </dl>
+          <p class="fix">The point is not to settle everything at once. The point is to make a next step visible.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide light">
+      <p class="eyebrow r">What the scholarship says</p>
+      <div class="rows">
+        <div class="row">
+          <div class="lab">Claim</div>
+          <div class="txt">The poster’s meaning shifts when it is placed in historical and cultural context.</div>
+          <div class="note">The image is familiar, but familiarity is not the same as understanding.</div>
+        </div>
+        <div class="row">
+          <div class="lab">Method</div>
+          <div class="txt">Research asks us to move from assumption to evidence.</div>
+          <div class="note">That movement is what distinguishes inquiry from mere observation.</div>
+        </div>
+        <div class="row">
+          <div class="lab">Source</div>
+          <div class="txt">Kimble and Olson (2006) provide the historical framing for the poster’s meaning.</div>
+          <div class="note">The point is not only what the image says, but how we come to know it.</div>
+        </div>
+      </div>
+      <p class="cite">Kimble &amp; Olson, 2006</p>
+    </section>
+
+    <section class="slide dark">
+      <p class="eyebrow g">Assumptions and biases</p>
+      <div class="mid">
+        <h2>Research is also about noticing what we bring to the page.</h2>
+        <ul style="margin-left: 1.2rem; line-height: 1.6;">
+          <li>What do I assume?</li>
+          <li>What am I taking for granted?</li>
+          <li>What would change if I asked another question?</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="slide dark">
+      <p class="eyebrow g">The process</p>
+      <div class="gal">
+        <figure>
+          <img src="img/feb.jpg" alt="First gallery image">
+          <figcaption><div class="d">February</div><div class="a">The beginning of the inquiry</div></figcaption>
+        </figure>
+        <figure>
+          <img src="img/mar.jpg" alt="Second gallery image">
+          <figcaption><div class="d">March</div><div class="a">A question takes shape</div></figcaption>
+        </figure>
+        <figure>
+          <img src="img/may.jpg" alt="Third gallery image">
+          <figcaption><div class="d">May</div><div class="a">Evidence begins to gather</div></figcaption>
+        </figure>
+        <figure>
+          <img src="img/nov.jpg" alt="Fourth gallery image">
+          <figcaption><div class="d">November</div><div class="a">The frame changes again</div></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="slide light">
+      <p class="eyebrow r">References</p>
+      <div class="refs">
+        <p>Kimble, J. J., &amp; Olson, J. S. (2006). The Rosie the Riveter image and its historical meanings.</p>
+        <p>Wierszewski, E. (2017). “The poster’s authority is not self-evident.” In <i>Bad Ideas About Writing</i>.</p>
+      </div>
     </section>
   </div>
 
+  <div class="bar"><i id="barFill"></i></div>
+  <div class="num" id="num"></div>
+  <div class="hint">← → to navigate · F for fullscreen</div>
+
   <script>
-    var i = 0, CAP = 4, SORT = 6;
-    var slides = document.querySelectorAll('.slide');
-    var items = [];
-    var tags = ['researchable', 'needs context'];
+    (function(){
+      var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+      var i = 0, CAP = 4, SORT = 6;
+      var items = [];
+      var kinds = [
+        {k: 'ok', label: 'OK'},
+        {k: 'wait', label: 'WAIT'}
+      ];
 
-    function showSlide(n) {
-      if (n < 0 || n >= slides.length) { return; }
-      slides[i].classList.remove('active');
-      i = n;
-      slides[i].classList.add('active');
-    }
+      function show(n){
+        if (n < 0 || n >= slides.length) { return; }
+        slides[i].classList.remove('on');
+        i = n;
+        slides[i].classList.add('on');
+        document.getElementById('barFill').style.width = ((i + 1) / slides.length * 100) + '%';
+        document.getElementById('num').textContent = (i + 1) + ' / ' + slides.length;
+      }
 
-    function renderCapture() {
-      var list = document.getElementById('capture-list');
-      if (!list) return;
-      list.innerHTML = '';
-      if (!items.length) {
-        list.innerHTML = '<div class="small">No entries yet.</div>';
-        return;
-      }
-      for (var j = 0; j < items.length; j++) {
-        var chip = document.createElement('div');
-        chip.className = 'chip';
-        chip.textContent = items[j].text + ' · ' + items[j].tag;
-        list.appendChild(chip);
-      }
-    }
-
-    function renderSort() {
-      var host = document.getElementById('sort-list');
-      if (!host) return;
-      host.innerHTML = '';
-      if (!items.length) {
-        host.innerHTML = '<div class="small">No entries yet.</div>';
-        return;
-      }
-      for (var j = 0; j < items.length; j++) {
-        var row = document.createElement('div');
-        row.className = 'top';
-        row.innerHTML = '<strong>' + items[j].text + '</strong>';
-        var buttons = document.createElement('div');
-        buttons.className = 'button-row';
-        for (var k = 0; k < tags.length; k++) {
-          var btn = document.createElement('button');
-          btn.className = 'btn';
-          if (items[j].tag === tags[k]) btn.className += ' active';
-          btn.textContent = tags[k];
-          btn.setAttribute('data-index', j);
-          btn.setAttribute('data-tag', tags[k]);
-          btn.onclick = function () {
-            var idx = parseInt(this.getAttribute('data-index'), 10);
-            items[idx].tag = this.getAttribute('data-tag');
-            renderSort();
-          };
-          buttons.appendChild(btn);
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowRight') { show(i + 1); }
+        if (e.key === 'ArrowLeft') { show(i - 1); }
+        if (e.key && e.key.toLowerCase() === 'f') {
+          if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen();
+          } else {
+            document.exitFullscreen();
+          }
         }
-        host.appendChild(row);
-        host.appendChild(buttons);
-      }
-    }
+      });
 
-    document.getElementById('add-entry').onclick = function () {
-      var input = document.getElementById('entry');
-      var text = input.value.trim();
-      if (!text) return;
-      items.push({ text: text, tag: 'researchable' });
-      input.value = '';
-      renderCapture();
+      function renderChips(){
+        var host = document.getElementById('capChips');
+        if (!host) { return; }
+        host.innerHTML = '';
+        if (!items.length) {
+          host.innerHTML = '<div class="empty">No observations yet.</div>';
+          return;
+        }
+        for (var j = 0; j < items.length; j++) {
+          var chip = document.createElement('div');
+          chip.className = 'chip';
+          var text = document.createTextNode(items[j].text + ' · ' + items[j].tag);
+          chip.appendChild(text);
+          var x = document.createElement('span');
+          x.className = 'x';
+          x.textContent = '×';
+          x.onclick = function (idx) {
+            return function () {
+              items.splice(idx, 1);
+              renderChips();
+              renderSort();
+            };
+          }(j);
+          chip.appendChild(x);
+          host.appendChild(chip);
+        }
+      }
+
+      function add(){
+        var input = document.getElementById('capIn');
+        var text = input.value.trim();
+        if (!text) { return; }
+        items.push({ text: text, tag: 'ok' });
+        input.value = '';
+        renderChips();
+        renderSort();
+      }
+
+      document.getElementById('capAdd').onclick = add;
+      document.getElementById('capIn').addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          add();
+        }
+      });
+
+      function renderSort(){
+        var host = document.getElementById('sortList');
+        if (!host) { return; }
+        host.innerHTML = '';
+        if (!items.length) {
+          host.innerHTML = '<div class="empty">No observations yet.</div>';
+          return;
+        }
+        for (var j = 0; j < items.length; j++) {
+          var item = document.createElement('div');
+          item.className = 'item';
+          if (items[j].tag === 'wait') { item.className += ' tagged'; }
+          var title = document.createElement('div');
+          title.textContent = items[j].text;
+          item.appendChild(title);
+          var tags = document.createElement('div');
+          tags.className = 'tags';
+          for (var k = 0; k < kinds.length; k++) {
+            var btn = document.createElement('button');
+            btn.textContent = kinds[k].label;
+            btn.setAttribute('data-k', kinds[k].k);
+            if (items[j].tag === kinds[k].k) { btn.className = 'sel'; }
+            btn.onclick = function (idx, kind) {
+              return function () {
+                items[idx].tag = kind;
+                renderChips();
+                renderSort();
+              };
+            }(j, kinds[k].k);
+            tags.appendChild(btn);
+          }
+          item.appendChild(tags);
+          host.appendChild(item);
+        }
+      }
+
+      show(0);
+      renderChips();
       renderSort();
-    };
-
-    document.addEventListener('keydown', function (event) {
-      if (event.key === 'ArrowRight') showSlide(i + 1);
-      if (event.key === 'ArrowLeft') showSlide(i - 1);
-      if (event.key.toLowerCase() === 'f') {
-        if (!document.fullscreenElement) {
-          document.documentElement.requestFullscreen();
-        } else {
-          document.exitFullscreen();
-        }
-      }
-    });
-
-    renderCapture();
-    renderSort();
+    })();
   </script>
 </body>
 </html>
