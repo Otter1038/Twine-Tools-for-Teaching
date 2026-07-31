@@ -1,376 +1,62 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Research as a Process</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Teaching Demonstration — Twine Tools for Teaching</title>
   <style>
     :root {
-      --navy: #1B3A5C;
-      --gold: #E8A317;
-      --cream: #F7F3E8;
-      --red: #B03A2E;
+      --red: #C8102E;
+      --navy: #0A1628;
+      --gold: #F2A900;
+      --cream: #F5E6C8;
+      --steel: #6B7280;
+      --dark: #0D0D0D;
     }
-
-    html, body {
-      margin: 0;
-      height: 100%;
-      background: var(--navy);
-      color: var(--navy);
-      font-family: Calibri, Arial, sans-serif;
-    }
-
+    * { box-sizing: border-box; }
     body {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-
-    .stage {
-      width: min(100vw, 1100px);
-      height: min(100vh, 760px);
-      position: relative;
-    }
-
-    .slide {
-      position: absolute;
-      inset: 0;
-      padding: 2.2rem 2.6rem;
-      border: 4px solid var(--navy);
-      background: var(--cream);
-      display: none;
-      opacity: 0;
-      transition: opacity 0.25s ease;
-    }
-
-    .slide.active {
-      display: block;
-      opacity: 1;
-    }
-
-    .slide.dark {
+      margin: 0;
+      font-family: Georgia, serif;
       background: var(--navy);
       color: var(--cream);
+      line-height: 1.6;
     }
-
-    .slide.dark .small,
-    .slide.dark p,
-    .slide.dark li {
-      color: var(--cream);
+    .wrap { max-width: 900px; margin: 0 auto; padding: 2rem; }
+    .card {
+      background: var(--cream);
+      color: var(--dark);
+      border: 4px solid var(--dark);
+      box-shadow: 8px 8px 0 var(--dark);
+      padding: 2rem;
+      border-top: 8px solid var(--red);
     }
-
-    h1, h2, h3 {
-      font-family: "Bookman Old Style", Georgia, serif;
-      font-weight: 600;
-      margin: 0 0 1rem;
-    }
-
-    h1 { font-size: clamp(2rem, 4vw, 3rem); }
-    h2 { font-size: clamp(1.5rem, 3vw, 2.2rem); }
-    p, li, .small { font-size: clamp(1rem, 1.4vw, 1.2rem); line-height: 1.5; }
-
-    .small { font-size: 0.95rem; opacity: 0.8; }
-    .top { margin-top: 0.8rem; }
-    ul { padding-left: 1.1rem; }
-    .quote { font-size: clamp(1.2rem, 2vw, 1.55rem); font-style: italic; }
-
-    .center { text-align: center; }
-
-    .poster-wrap {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100%;
-    }
-
-    .poster-wrap img {
-      max-width: 92%;
-      max-height: 84vh;
-      border: 3px solid var(--navy);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    }
-
-    .grid {
-      display: grid;
-      gap: 1rem;
-    }
-
-    .two { grid-template-columns: 1fr 1fr; }
-
-    .input {
-      width: 100%;
-      padding: 0.8rem 1rem;
-      border: 2px solid var(--navy);
-      font-size: 1rem;
-      margin-top: 0.8rem;
-      background: #fff;
-    }
-
-    .button-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-      margin-top: 0.8rem;
-    }
-
+    h1 { font-size: clamp(2rem, 4vw, 3rem); margin: 0 0 0.75rem; color: var(--red); }
+    p { font-size: 1rem; }
+    .actions { margin-top: 1.5rem; }
     .btn {
-      padding: 0.6rem 0.9rem;
-      border: 1px solid var(--navy);
-      background: var(--cream);
-      color: var(--navy);
-      cursor: pointer;
-      font-size: 0.95rem;
+      display: inline-block;
+      background: var(--red);
+      color: white;
+      text-decoration: none;
+      padding: 0.8rem 1.1rem;
+      font-weight: bold;
+      margin-right: 0.8rem;
+      margin-bottom: 0.8rem;
     }
-
-    .btn.active {
-      background: var(--gold);
-    }
-
-    .items {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-      margin-top: 1rem;
-    }
-
-    .chip {
-      padding: 0.4rem 0.7rem;
-      border-radius: 999px;
-      background: var(--navy);
-      color: var(--cream);
-      font-size: 0.95rem;
-    }
-
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-
-    .gallery img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      border: 3px solid var(--navy);
-      display: block;
-    }
-
-    .footer {
-      position: absolute;
-      right: 1.1rem;
-      bottom: 0.9rem;
-      font-size: 0.8rem;
-      opacity: 0.75;
-    }
+    .btn.secondary { background: var(--navy); }
   </style>
 </head>
 <body>
-  <div class="stage">
-    <!-- 1 -->
-    <section class="slide active">
-      <h1>Research as a Process</h1>
-      <p class="top">A fifteen-minute teaching demonstration for a first-year composition faculty search.</p>
-      <p class="top">I begin with a familiar object and ask what we can learn by looking closely.</p>
-      <div class="footer">1 / 11</div>
-    </section>
-
-    <!-- 2 -->
-    <section class="slide dark">
-      <h2>Where do I start?</h2>
-      <p>Sometimes the most useful place is not a new theory but a familiar image.</p>
-      <p class="top">Students already know the poster. That gives us a shared entry point.</p>
-      <div class="footer">2 / 11</div>
-    </section>
-
-    <!-- 3 -->
-    <section class="slide">
-      <h2>Start with what you know</h2>
-      <p>I ask students to name what they see before I ask them to explain what they know.</p>
-      <p class="top">That move keeps the inquiry grounded in evidence rather than in assumption.</p>
-      <div class="footer">3 / 11</div>
-    </section>
-
-    <!-- 4 -->
-    <section class="slide">
-      <div class="poster-wrap">
-        <img src="img/mar.jpg" alt="A poster image used as the object of inquiry">
+  <div class="wrap">
+    <div class="card">
+      <h1>Teaching Demonstration</h1>
+      <p>This page serves as the entry point for the Teaching Demonstration within Twine Tools for Teaching.</p>
+      <p>Open the full slide presentation to view the lecture-style demonstration, or return to the broader teaching resources.</p>
+      <div class="actions">
+        <a class="btn" href="teaching-demonstration.html">Open the presentation</a>
+        <a class="btn secondary" href="additional-resources.html">View additional resources</a>
       </div>
-      <div class="footer">4 / 11</div>
-    </section>
-
-    <!-- 5 -->
-    <section class="slide dark">
-      <h2>What do we know?</h2>
-      <p>We capture the first impressions in the room.</p>
-      <input id="entry" class="input" type="text" placeholder="Type one observation">
-      <div class="button-row">
-        <button class="btn" id="add-entry">Add entry</button>
-      </div>
-      <div id="capture-list" class="items"></div>
-      <div class="footer">5 / 11</div>
-    </section>
-
-    <!-- 6 -->
-    <section class="slide">
-      <h2>What the poster asks of us</h2>
-      <p class="quote">“The poster is not a finished answer. It is a prompt for inquiry.”</p>
-      <p class="top small">Wierszewski, 2017</p>
-      <div class="footer">6 / 11</div>
-    </section>
-
-    <!-- 7 -->
-    <section class="slide">
-      <h2>Researchable or not?</h2>
-      <p>I sort the observations into what can be pursued and what needs more context.</p>
-      <div id="sort-list"></div>
-      <div class="footer">7 / 11</div>
-    </section>
-
-    <!-- 8 -->
-    <section class="slide dark">
-      <h2>What the scholarship says</h2>
-      <p>Kimble and Olson (2006) show that the poster’s meaning changes when we place it in a historical and cultural frame.</p>
-      <p class="top">That is the point of research: it moves from assumption to evidence.</p>
-      <img src="img/sep.jpg" alt="A supporting image for the scholarship slide" style="max-width:100%;margin-top:1rem;border:3px solid var(--cream);">
-      <div class="footer">8 / 11</div>
-    </section>
-
-    <!-- 9 -->
-    <section class="slide">
-      <h2>Assumptions and biases</h2>
-      <p>Research is not only about finding information. It is also about noticing what we bring to the page.</p>
-      <ul class="top">
-        <li>What do I assume?</li>
-        <li>What am I taking for granted?</li>
-        <li>What would change if I asked another question?</li>
-      </ul>
-      <div class="footer">9 / 11</div>
-    </section>
-
-    <!-- 10 -->
-    <section class="slide dark">
-      <h2>Research is a process</h2>
-      <p>The 1943 gallery is not a single conclusion. It is a sequence of questions, revisions, and new evidence.</p>
-      <div class="gallery">
-        <img src="img/feb.jpg" alt="First image in the gallery">
-        <img src="img/mar.jpg" alt="Second image in the gallery">
-        <img src="img/may.jpg" alt="Third image in the gallery">
-        <img src="img/nov.jpg" alt="Fourth image in the gallery">
-      </div>
-      <div class="footer">10 / 11</div>
-    </section>
-
-    <!-- 11 -->
-    <section class="slide">
-      <h2>References</h2>
-      <p class="small">Kimble, J. J., &amp; Olson, J. S. (2006). The Rosie the Riveter image and its historical meanings.</p>
-      <p class="small top">Wierszewski, E. (2017). “The poster’s authority is not self-evident.” In <em>Bad Ideas About Writing</em>.</p>
-      <div class="footer">11 / 11</div>
-    </section>
+    </div>
   </div>
-
-  <script>
-    var i = 0, CAP = 4, SORT = 6;
-    var slides = document.querySelectorAll('.slide');
-    var items = [];
-    var tags = ['researchable', 'needs context'];
-
-    function showSlide(n) {
-      if (n < 0 || n >= slides.length) {
-        return;
-      }
-      slides[i].classList.remove('active');
-      i = n;
-      slides[i].classList.add('active');
-    }
-
-    function renderCapture() {
-      var list = document.getElementById('capture-list');
-      if (!list) {
-        return;
-      }
-      list.innerHTML = '';
-      if (!items.length) {
-        list.innerHTML = '<div class="small">No entries yet.</div>';
-        return;
-      }
-      for (var j = 0; j < items.length; j++) {
-        var chip = document.createElement('div');
-        chip.className = 'chip';
-        chip.textContent = items[j].text + ' · ' + items[j].tag;
-        list.appendChild(chip);
-      }
-    }
-
-    function renderSort() {
-      var host = document.getElementById('sort-list');
-      if (!host) {
-        return;
-      }
-      host.innerHTML = '';
-      if (!items.length) {
-        host.innerHTML = '<div class="small">No entries yet.</div>';
-        return;
-      }
-      for (var j = 0; j < items.length; j++) {
-        var row = document.createElement('div');
-        row.className = 'top';
-        row.innerHTML = '<strong>' + items[j].text + '</strong>';
-        var buttons = document.createElement('div');
-        buttons.className = 'button-row';
-        for (var k = 0; k < tags.length; k++) {
-          var btn = document.createElement('button');
-          btn.className = 'btn';
-          if (items[j].tag === tags[k]) {
-            btn.className += ' active';
-          }
-          btn.textContent = tags[k];
-          btn.setAttribute('data-index', j);
-          btn.setAttribute('data-tag', tags[k]);
-          btn.onclick = function () {
-            var idx = parseInt(this.getAttribute('data-index'), 10);
-            items[idx].tag = this.getAttribute('data-tag');
-            renderSort();
-          };
-          buttons.appendChild(btn);
-        }
-        host.appendChild(row);
-        host.appendChild(buttons);
-      }
-    }
-
-    document.getElementById('add-entry').onclick = function () {
-      var input = document.getElementById('entry');
-      var text = input.value.trim();
-      if (!text) {
-        return;
-      }
-      items.push({ text: text, tag: 'researchable' });
-      input.value = '';
-      renderCapture();
-      renderSort();
-    };
-
-    document.addEventListener('keydown', function (event) {
-      if (event.key === 'ArrowRight') {
-        showSlide(i + 1);
-      }
-      if (event.key === 'ArrowLeft') {
-        showSlide(i - 1);
-      }
-      if (event.key.toLowerCase() === 'f') {
-        if (!document.fullscreenElement) {
-          document.documentElement.requestFullscreen();
-        } else {
-          document.exitFullscreen();
-        }
-      }
-    });
-
-    renderCapture();
-    renderSort();
-  </script>
 </body>
 </html>
