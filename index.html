@@ -326,6 +326,17 @@
       cursor: not-allowed;
     }
 
+    .tool-card.disabled-card {
+      opacity: 0.7;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    .tool-card.disabled-card:hover {
+      transform: none;
+      box-shadow: 6px 6px 0 var(--dark);
+    }
+
     .tool-card.coming-soon:hover {
       transform: none;
       box-shadow: 6px 6px 0 var(--dark);
@@ -753,7 +764,7 @@
     </div>
 
     <!-- ASK ROSIE -->
-    <div class="tool-card" onclick="window.location.href='ask-rosie/index.html'">
+    <div class="tool-card disabled-card" aria-disabled="true">
       <div class="card-top">
         <span class="card-label">★ Tool No. 4</span>
         <span class="card-number">AI</span>
@@ -762,10 +773,10 @@
       <div class="card-body">
         <div class="card-title">Ask Rosie the Writer</div>
         <p class="card-desc">
-          Your AI writing assistant for ENC 1102. Ask Rosie about assignments, citations, research strategies, peer review, and anything else about the writing process.
+          This tool is currently unavailable. The Ask Rosie experience has been disabled for the website.
         </p>
         <div class="card-footer">
-          <span class="card-cta">→ Ask Rosie the Writer</span>
+          <span class="card-cta">Unavailable</span>
           <div class="rivet"></div>
         </div>
       </div>
