@@ -148,9 +148,11 @@
       justify-content: space-between;
       gap: 0.8rem;
       margin-top: 1.2rem;
+      flex-wrap: wrap;
     }
 
-    .nav button {
+    .nav button,
+    .nav a {
       border: none;
       padding: 0.75rem 1rem;
       font-family: 'Bebas Neue', sans-serif;
@@ -160,6 +162,10 @@
       background: var(--red);
       color: white;
       border-radius: 8px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .nav button:disabled {
@@ -203,6 +209,10 @@
       <div id="stepContent"></div>
       <div class="nav">
         <button id="prevBtn">← Back</button>
+        <div style="display:flex; gap:0.6rem; flex-wrap:wrap;">
+          <button id="restartBtn">Restart</button>
+          <a href="../../index.html">Home</a>
+        </div>
         <button id="nextBtn">Continue →</button>
       </div>
     </main>
@@ -318,6 +328,7 @@
     const progress = document.getElementById('progress');
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
+    const restartBtn = document.getElementById('restartBtn');
     let currentStep = 0;
 
     function renderStep() {
@@ -350,6 +361,11 @@
         currentStep += 1;
         renderStep();
       }
+    });
+
+    restartBtn.addEventListener('click', () => {
+      currentStep = 0;
+      renderStep();
     });
 
     renderStep();
