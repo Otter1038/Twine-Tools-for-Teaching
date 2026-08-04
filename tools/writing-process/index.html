@@ -59,10 +59,91 @@
       color: white;
     }
 
+    body {
+      margin: 0;
+      font-family: 'Courier Prime', monospace;
+      background: var(--navy);
+      color: var(--cream);
+      line-height: 1.7;
+      background-image:
+        repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(255,255,255,0.015) 40px, rgba(255,255,255,0.015) 41px),
+        repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(255,255,255,0.015) 40px, rgba(255,255,255,0.015) 41px);
+    }
+
     .hero p {
       margin: 0;
       color: rgba(255,255,255,0.95);
       font-size: 1.2rem;
+    }
+
+    .process-graphic {
+      margin: 1.2rem auto 0;
+      width: min(100%, 560px);
+      aspect-ratio: 1 / 1;
+      position: relative;
+      background: rgba(255,255,255,0.06);
+      border: 3px solid rgba(242,169,0,0.28);
+      border-radius: 50%;
+      overflow: hidden;
+    }
+
+    .process-graphic::before {
+      content: '';
+      position: absolute;
+      inset: 8%;
+      border: 3px solid rgba(242,169,0,0.15);
+      border-radius: 50%;
+    }
+
+    .process-graphic .hub {
+      position: absolute;
+      inset: 35%;
+      border-radius: 50%;
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--gold);
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 1px;
+      font-size: 1.3rem;
+      padding: 0.8rem;
+      box-shadow: 0 0 0 4px rgba(255,255,255,0.08);
+    }
+
+    .process-graphic .node {
+      position: absolute;
+      width: 104px;
+      height: 104px;
+      background: rgba(245,230,200,0.9);
+      border: 2px solid rgba(242,169,0,0.35);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--navy);
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 0.8rem;
+      line-height: 1.2;
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.05);
+    }
+
+    .process-graphic .node.prewriting { top: 4%; left: 50%; transform: translateX(-50%); background: var(--red); color: white; border-color: rgba(255,255,255,0.25); }
+    .process-graphic .node.drafting { top: 26%; right: 6%; background: var(--gold); color: var(--navy); }
+    .process-graphic .node.revising { right: 4%; bottom: 22%; background: rgba(255,255,255,0.92); color: var(--navy); border-color: rgba(0,0,0,0.15); }
+    .process-graphic .node.editing { left: 4%; bottom: 22%; background: rgba(10,22,40,0.9); color: var(--cream); border-color: rgba(242,169,0,0.3); }
+    .process-graphic .node.publishing { top: 26%; left: 6%; background: rgba(245,230,200,0.88); color: var(--navy); border-color: rgba(242,169,0,0.25); }
+
+    .process-graphic .node span {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 700;
+      line-height: 1.25;
     }
 
     .card {
@@ -91,7 +172,7 @@
     }
 
     .step-content p, .step-content li {
-      font-size: 1.18rem;
+      font-size: 1.25rem;
       color: rgba(245,230,200,0.95);
     }
 
@@ -113,6 +194,96 @@
       font-size: 1.14rem;
     }
 
+    .cover-intro {
+      margin-bottom: 1.2rem;
+    }
+
+    .cover-intro h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.8rem;
+      letter-spacing: 2px;
+      color: var(--cream);
+      margin: 0 0 0.45rem;
+    }
+
+    .cover-intro p {
+      margin: 0;
+      font-size: 1.05rem;
+      color: rgba(245,230,200,0.9);
+    }
+
+    .stage-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem;
+      margin-top: 1rem;
+    }
+
+    .stage-card {
+      border: 1px solid rgba(245,230,200,0.18);
+      border-radius: 12px;
+      padding: 1rem;
+      background: rgba(245,230,200,0.08);
+      text-align: left;
+    }
+
+    .stage-card.active {
+      border-color: var(--gold);
+      background: rgba(242, 169, 0, 0.14);
+    }
+
+    .stage-card.disabled {
+      opacity: 0.55;
+      filter: grayscale(0.8);
+    }
+
+    .stage-card .stage-label {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.76rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 0.35rem;
+    }
+
+    .stage-card h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.3rem;
+      margin: 0 0 0.35rem;
+      color: var(--cream);
+      letter-spacing: 1px;
+    }
+
+    .stage-card p {
+      margin: 0 0 0.7rem;
+      font-size: 0.98rem;
+      color: rgba(245,230,200,0.9);
+    }
+
+    .stage-card .stage-status {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: rgba(245,230,200,0.8);
+    }
+
+    .stage-card.active .stage-status {
+      color: var(--cream);
+    }
+
+    .stage-card button {
+      border: none;
+      background: transparent;
+      color: var(--cream);
+      padding: 0;
+      font: inherit;
+      text-align: left;
+      cursor: pointer;
+      width: 100%;
+    }
+
     .choice-grid {
       display: grid;
       gap: 0.7rem;
@@ -128,7 +299,7 @@
       cursor: pointer;
       font-family: 'Special Elite', cursive;
       border-radius: 8px;
-      font-size: 1rem;
+      font-size: 1.05rem;
     }
 
     .choice-btn:hover {
@@ -212,14 +383,22 @@
   <div class="wrap">
     <header class="hero">
       <div class="eyebrow">Writing Process Tool</div>
-      <h1>Revising Before Editing</h1>
-      <p>This walkthrough helps students practice the difference between revising for meaning and editing for correctness.</p>
+      <h1>Writing Process</h1>
+      <p>This pathway helps students understand how writing moves through planning, drafting, revising, editing, and publishing.</p>
+      <div class="process-graphic" aria-label="Recursive writing process loop">
+        <div class="hub">The Writing Process</div>
+        <div class="node prewriting"><span>Prewriting</span></div>
+        <div class="node drafting"><span>Drafting</span></div>
+        <div class="node revising"><span>Revising</span></div>
+        <div class="node editing"><span>Editing</span></div>
+        <div class="node publishing"><span>Publishing</span></div>
+      </div>
     </header>
 
     <main class="card">
-      <div class="progress" id="progress">Step 1 of 6</div>
+      <div class="progress" id="progress">Writing Process Overview</div>
       <div id="stepContent"></div>
-      <div class="nav">
+      <div class="nav" id="navBar">
         <button id="prevBtn">← Back</button>
         <div style="display:flex; gap:0.6rem; flex-wrap:wrap;">
           <button id="restartBtn">Restart</button>
@@ -341,17 +520,68 @@
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
     const restartBtn = document.getElementById('restartBtn');
-    let currentStep = 0;
+    const navBar = document.getElementById('navBar');
+    let currentStep = -1;
 
     function renderStep() {
+      if (currentStep < 0) {
+        stepContent.innerHTML = `
+          <div class="cover-intro">
+            <h2>Writing Process</h2>
+            <p>Choose a stage to begin. Revising is ready now, and the other stages are coming soon.</p>
+          </div>
+          <div class="stage-grid">
+            <div class="stage-card disabled">
+              <span class="stage-label">Stage 1</span>
+              <h3>Prewriting</h3>
+              <p>Brainstorming, planning, and discovering your main idea.</p>
+              <div class="stage-status">Coming soon</div>
+            </div>
+            <div class="stage-card disabled">
+              <span class="stage-label">Stage 2</span>
+              <h3>Drafting</h3>
+              <p>Getting ideas onto the page and building a first version.</p>
+              <div class="stage-status">Coming soon</div>
+            </div>
+            <div class="stage-card active">
+              <button type="button" id="openRevising">
+                <span class="stage-label">Stage 3</span>
+                <h3>Revising</h3>
+                <p>Strengthen meaning, clarity, organization, and support before editing.</p>
+                <div class="stage-status">Open now</div>
+              </button>
+            </div>
+            <div class="stage-card disabled">
+              <span class="stage-label">Stage 4</span>
+              <h3>Editing</h3>
+              <p>Polishing grammar, punctuation, and formatting details.</p>
+              <div class="stage-status">Coming soon</div>
+            </div>
+            <div class="stage-card disabled">
+              <span class="stage-label">Stage 5</span>
+              <h3>Publishing</h3>
+              <p>Preparing the final draft for sharing and submission.</p>
+              <div class="stage-status">Coming soon</div>
+            </div>
+          </div>
+        `;
+        progress.textContent = 'Writing Process Overview';
+        navBar.style.display = 'flex';
+        prevBtn.style.display = 'none';
+        restartBtn.style.display = 'none';
+        nextBtn.style.display = 'none';
+        return;
+      }
+
       stepContent.innerHTML = steps[currentStep].html;
       progress.textContent = `Step ${currentStep + 1} of ${steps.length}`;
+      prevBtn.style.display = 'inline-flex';
+      restartBtn.style.display = 'inline-flex';
       prevBtn.disabled = currentStep === 0;
       nextBtn.textContent = currentStep === steps.length - 1 ? 'Finished' : 'Continue →';
 
       document.querySelectorAll('.choice-btn').forEach(btn => {
         btn.addEventListener('click', () => {
-          const feedback = btn.closest('.step-content') ? null : btn.parentElement.nextElementSibling;
           const target = btn.parentElement.nextElementSibling;
           if (target && target.classList.contains('feedback')) {
             target.textContent = btn.dataset.feedback;
@@ -369,15 +599,25 @@
     });
 
     nextBtn.addEventListener('click', () => {
-      if (currentStep < steps.length - 1) {
+      if (currentStep < 0) {
+        currentStep = 0;
+        renderStep();
+      } else if (currentStep < steps.length - 1) {
         currentStep += 1;
         renderStep();
       }
     });
 
     restartBtn.addEventListener('click', () => {
-      currentStep = 0;
+      currentStep = -1;
       renderStep();
+    });
+
+    document.addEventListener('click', (event) => {
+      if (event.target.id === 'openRevising') {
+        currentStep = 0;
+        renderStep();
+      }
     });
 
     renderStep();
