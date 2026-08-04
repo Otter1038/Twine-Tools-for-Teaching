@@ -521,7 +521,9 @@
     const nextBtn = document.getElementById('nextBtn');
     const restartBtn = document.getElementById('restartBtn');
     const navBar = document.getElementById('navBar');
-    let currentStep = -1;
+    const params = new URLSearchParams(window.location.search);
+    const startInRevising = params.get('view') === 'revising';
+    let currentStep = startInRevising ? 0 : -1;
 
     function renderStep() {
       if (currentStep < 0) {
@@ -614,7 +616,7 @@
     });
 
     document.addEventListener('click', (event) => {
-      if (event.target.id === 'openRevising') {
+      if (event.target.closest('#openRevising')) {
         currentStep = 0;
         renderStep();
       }
