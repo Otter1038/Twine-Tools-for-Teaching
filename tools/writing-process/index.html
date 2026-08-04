@@ -300,6 +300,19 @@
       margin-bottom: 0.5rem;
     }
 
+    .reference-list {
+      list-style: none;
+      padding-left: 0;
+      margin: 1rem 0;
+    }
+
+    .reference-list li {
+      padding-left: 2rem;
+      text-indent: -2rem;
+      margin-bottom: 0.9rem;
+      font-size: 1.05rem;
+    }
+
     .tiny {
       font-family: 'Courier Prime', monospace;
       font-size: 0.8rem;
@@ -318,10 +331,10 @@
 <body>
   <div class="wrap">
     <header class="hero">
-      <div class="eyebrow">Writing Process Tool</div>
-      <h1>Writing Process</h1>
-      <p>This pathway helps students understand how writing moves through planning, drafting, revising, editing, and publishing.</p>
-      <div class="process-graphic" aria-label="Recursive writing process loop">
+      <div class="eyebrow" id="heroEyebrow">Writing Process Tool</div>
+      <h1 id="heroTitle">Writing Process</h1>
+      <p id="heroSubtitle">This pathway helps students understand how writing moves through planning, drafting, revising, editing, and publishing.</p>
+      <div class="process-graphic" id="processGraphic" aria-label="Recursive writing process loop">
         <div class="hub">The Writing Process</div>
         <div class="node prewriting disabled" title="Coming soon"><span>Prewriting</span></div>
         <div class="node drafting disabled" title="Coming soon"><span>Drafting</span></div>
@@ -348,7 +361,8 @@
   <script>
     const steps = [
       {
-        title: 'Stop 1 of 7 — Why Revision Comes First',
+        title: 'Stop 1 of 8 — Why Revision Comes First',
+        subtitle: '“The only kind of writing is rewriting.” (Hemingway, as cited in Plimpton, 1958)',
         html: `
           <div class="step-title">Revision is the first job of a strong writer.</div>
           <p>Before a writer fixes commas or spelling, they need to ask whether the draft actually says what it means to say. Revision focuses on purpose, clarity, organization, support, and overall effectiveness.</p>
@@ -359,7 +373,8 @@
         `
       },
       {
-        title: 'Stop 2 of 7 — Start With Meaning',
+        title: 'Stop 2 of 8 — Start With Meaning',
+        subtitle: '“Writing is a process of using language to discover meaning in experience and to communicate it.” (Murray, 1972)',
         html: `
           <div class="step-title">Good revision begins with the writer’s purpose.</div>
           <p>When a writer revises, the goal is not to polish every sentence right away. The goal is to improve the draft as a whole by asking whether the paper actually says what it wants to say.</p>
@@ -370,7 +385,8 @@
         `
       },
       {
-        title: 'Stop 3 of 7 — What to Look For in Revision',
+        title: 'Stop 3 of 8 — What to Look For in Revision',
+        subtitle: '“Rewriting is the essence of writing well: it’s where the game is won or lost.” (Zinsser, 2006)',
         html: `
           <div class="step-title">When you revise, look for the big issues first.</div>
           <div class="callout">
@@ -384,7 +400,8 @@
         `
       },
       {
-        title: 'Stop 4 of 7 — Practice With a Real Draft',
+        title: 'Stop 4 of 8 — Practice With a Real Draft',
+        subtitle: '“Almost all good writing begins with terrible first efforts. You need to start somewhere.” (Lamott, 1994)',
         html: `
           <div class="step-title">Here is a sample draft with revision needs.</div>
           <div class="sample">
@@ -400,7 +417,8 @@
         `
       },
       {
-        title: 'Stop 5 of 7 — Editing Practice With the Voltron Challenge',
+        title: 'Stop 5 of 8 — Editing Practice With the Voltron Challenge',
+        subtitle: '“Kill your darlings, kill your darlings, even when it breaks your egocentric little scribbler’s heart, kill your darlings.” (King, 2000)',
         html: `
           <div class="step-title">Now let students distinguish editing from revision.</div>
           <div class="sample">
@@ -416,7 +434,8 @@
         `
       },
       {
-        title: 'Stop 6 of 7 — What Strong Revision Looks Like',
+        title: 'Stop 6 of 8 — What Strong Revision Looks Like',
+        subtitle: '“Clutter is the disease of American writing.” (Zinsser, 2006)',
         html: `
           <div class="step-title">Revision makes a draft more effective.</div>
           <p>A strong revision can do any of these things:</p>
@@ -432,7 +451,8 @@
         `
       },
       {
-        title: 'Stop 7 of 7 — A Revision Checklist',
+        title: 'Stop 7 of 8 — A Revision Checklist',
+        subtitle: '“Omit needless words.” (Strunk & White, 2000)',
         html: `
           <div class="step-title">Before you edit anything, ask these questions.</div>
           <ul class="checklist">
@@ -448,6 +468,22 @@
           </div>
           <div class="tiny">This completes the current Revising section. More Writing Process tools will be added later.</div>
         `
+      },
+      {
+        title: 'Stop 8 of 8 — References',
+        subtitle: 'Works cited in this walkthrough, in APA 7th edition style.',
+        html: `
+          <div class="step-title">References</div>
+          <ul class="reference-list">
+            <li>King, S. (2000). <em>On writing: A memoir of the craft</em>. Scribner.</li>
+            <li>Lamott, A. (1994). <em>Bird by bird: Some instructions on writing and life</em>. Anchor Books.</li>
+            <li>Murray, D. M. (1972). Teach writing as a process, not product. <em>The Leaflet, 71</em>(3), 11–14.</li>
+            <li>Plimpton, G. (1958). Ernest Hemingway, the art of fiction no. 21. <em>The Paris Review</em>, (18).</li>
+            <li>Strunk, W., Jr., &amp; White, E. B. (2000). <em>The elements of style</em> (4th ed.). Allyn and Bacon.</li>
+            <li>Zinsser, W. (2006). <em>On writing well: The classic guide to writing nonfiction</em> (30th anniversary ed.). HarperCollins.</li>
+          </ul>
+          <div class="tiny">Verify page numbers against your specific edition before citing in student-facing materials.</div>
+        `
       }
     ];
 
@@ -457,12 +493,20 @@
     const nextBtn = document.getElementById('nextBtn');
     const restartBtn = document.getElementById('restartBtn');
     const navBar = document.getElementById('navBar');
+    const processGraphic = document.getElementById('processGraphic');
+    const heroEyebrow = document.getElementById('heroEyebrow');
+    const heroTitle = document.getElementById('heroTitle');
+    const heroSubtitle = document.getElementById('heroSubtitle');
     const params = new URLSearchParams(window.location.search);
     const startInRevising = params.get('view') === 'revising';
     let currentStep = startInRevising ? 0 : -1;
 
     function renderStep() {
       if (currentStep < 0) {
+        processGraphic.style.display = '';
+        heroEyebrow.textContent = 'Writing Process Tool';
+        heroTitle.textContent = 'Writing Process';
+        heroSubtitle.textContent = 'This pathway helps students understand how writing moves through planning, drafting, revising, editing, and publishing.';
         stepContent.innerHTML = `
           <div class="cover-intro">
             <h2>Writing Process</h2>
@@ -477,13 +521,19 @@
         return;
       }
 
+      processGraphic.style.display = 'none';
+      const [, stepHeadline] = steps[currentStep].title.split(' — ');
+      heroEyebrow.textContent = 'Writing Process Tool — Revising';
+      heroTitle.textContent = stepHeadline;
+      heroSubtitle.textContent = steps[currentStep].subtitle || '';
       stepContent.innerHTML = steps[currentStep].html;
-      progress.textContent = `Step ${currentStep + 1} of ${steps.length}`;
+      progress.textContent = 'Revising';
       prevBtn.style.display = 'inline-flex';
       restartBtn.style.display = 'inline-flex';
       nextBtn.style.display = 'inline-flex';
       prevBtn.disabled = currentStep === 0;
       nextBtn.textContent = currentStep === steps.length - 1 ? 'Finished' : 'Continue →';
+      window.scrollTo(0, 0);
 
       document.querySelectorAll('.choice-btn').forEach(btn => {
         btn.addEventListener('click', () => {
