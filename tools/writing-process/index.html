@@ -16,16 +16,6 @@
     }
 
     * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: 'Special Elite', cursive;
-      background: var(--navy);
-      color: var(--cream);
-      line-height: 1.7;
-      background-image:
-        repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(255,255,255,0.015) 40px, rgba(255,255,255,0.015) 41px),
-        repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(255,255,255,0.015) 40px, rgba(255,255,255,0.015) 41px);
-    }
 
     .wrap {
       max-width: 1100px;
@@ -146,6 +136,24 @@
       line-height: 1.25;
     }
 
+    .process-graphic .node.disabled {
+      opacity: 0.55;
+      filter: grayscale(0.8);
+      cursor: not-allowed;
+    }
+
+    .process-graphic .node.active {
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .process-graphic .node.active:hover,
+    .process-graphic .node.active:focus-visible {
+      transform: scale(1.06);
+      box-shadow: 0 0 0 4px rgba(242,169,0,0.4);
+      outline: none;
+    }
+
     .card {
       background: rgba(10, 22, 40, 0.95);
       border: 3px solid var(--gold);
@@ -171,7 +179,7 @@
       margin-bottom: 0.7rem;
     }
 
-    .step-content p, .step-content li {
+    #stepContent p, #stepContent li {
       font-size: 1.25rem;
       color: rgba(245,230,200,0.95);
     }
@@ -210,78 +218,6 @@
       margin: 0;
       font-size: 1.05rem;
       color: rgba(245,230,200,0.9);
-    }
-
-    .stage-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.9rem;
-      margin-top: 1rem;
-    }
-
-    .stage-card {
-      border: 1px solid rgba(245,230,200,0.18);
-      border-radius: 12px;
-      padding: 1rem;
-      background: rgba(245,230,200,0.08);
-      text-align: left;
-    }
-
-    .stage-card.active {
-      border-color: var(--gold);
-      background: rgba(242, 169, 0, 0.14);
-    }
-
-    .stage-card.disabled {
-      opacity: 0.55;
-      filter: grayscale(0.8);
-    }
-
-    .stage-card .stage-label {
-      font-family: 'Courier Prime', monospace;
-      font-size: 0.76rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--gold);
-      display: block;
-      margin-bottom: 0.35rem;
-    }
-
-    .stage-card h3 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.3rem;
-      margin: 0 0 0.35rem;
-      color: var(--cream);
-      letter-spacing: 1px;
-    }
-
-    .stage-card p {
-      margin: 0 0 0.7rem;
-      font-size: 0.98rem;
-      color: rgba(245,230,200,0.9);
-    }
-
-    .stage-card .stage-status {
-      font-family: 'Courier Prime', monospace;
-      font-size: 0.72rem;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: rgba(245,230,200,0.8);
-    }
-
-    .stage-card.active .stage-status {
-      color: var(--cream);
-    }
-
-    .stage-card button {
-      border: none;
-      background: transparent;
-      color: var(--cream);
-      padding: 0;
-      font: inherit;
-      text-align: left;
-      cursor: pointer;
-      width: 100%;
     }
 
     .choice-grid {
@@ -387,11 +323,11 @@
       <p>This pathway helps students understand how writing moves through planning, drafting, revising, editing, and publishing.</p>
       <div class="process-graphic" aria-label="Recursive writing process loop">
         <div class="hub">The Writing Process</div>
-        <div class="node prewriting"><span>Prewriting</span></div>
-        <div class="node drafting"><span>Drafting</span></div>
-        <div class="node revising"><span>Revising</span></div>
-        <div class="node editing"><span>Editing</span></div>
-        <div class="node publishing"><span>Publishing</span></div>
+        <div class="node prewriting disabled" title="Coming soon"><span>Prewriting</span></div>
+        <div class="node drafting disabled" title="Coming soon"><span>Drafting</span></div>
+        <div class="node revising active" id="openRevising" role="button" tabindex="0" title="Open Revising"><span>Revising</span></div>
+        <div class="node editing disabled" title="Coming soon"><span>Editing</span></div>
+        <div class="node publishing disabled" title="Coming soon"><span>Publishing</span></div>
       </div>
     </header>
 
@@ -530,41 +466,7 @@
         stepContent.innerHTML = `
           <div class="cover-intro">
             <h2>Writing Process</h2>
-            <p>Choose a stage to begin. Revising is ready now, and the other stages are coming soon.</p>
-          </div>
-          <div class="stage-grid">
-            <div class="stage-card disabled">
-              <span class="stage-label">Stage 1</span>
-              <h3>Prewriting</h3>
-              <p>Brainstorming, planning, and discovering your main idea.</p>
-              <div class="stage-status">Coming soon</div>
-            </div>
-            <div class="stage-card disabled">
-              <span class="stage-label">Stage 2</span>
-              <h3>Drafting</h3>
-              <p>Getting ideas onto the page and building a first version.</p>
-              <div class="stage-status">Coming soon</div>
-            </div>
-            <div class="stage-card active">
-              <button type="button" id="openRevising">
-                <span class="stage-label">Stage 3</span>
-                <h3>Revising</h3>
-                <p>Strengthen meaning, clarity, organization, and support before editing.</p>
-                <div class="stage-status">Open now</div>
-              </button>
-            </div>
-            <div class="stage-card disabled">
-              <span class="stage-label">Stage 4</span>
-              <h3>Editing</h3>
-              <p>Polishing grammar, punctuation, and formatting details.</p>
-              <div class="stage-status">Coming soon</div>
-            </div>
-            <div class="stage-card disabled">
-              <span class="stage-label">Stage 5</span>
-              <h3>Publishing</h3>
-              <p>Preparing the final draft for sharing and submission.</p>
-              <div class="stage-status">Coming soon</div>
-            </div>
+            <p>Choose a stage from the graphic above to begin. Revising is ready now, and the other stages are coming soon.</p>
           </div>
         `;
         progress.textContent = 'Writing Process Overview';
@@ -579,6 +481,7 @@
       progress.textContent = `Step ${currentStep + 1} of ${steps.length}`;
       prevBtn.style.display = 'inline-flex';
       restartBtn.style.display = 'inline-flex';
+      nextBtn.style.display = 'inline-flex';
       prevBtn.disabled = currentStep === 0;
       nextBtn.textContent = currentStep === steps.length - 1 ? 'Finished' : 'Continue →';
 
@@ -617,6 +520,14 @@
 
     document.addEventListener('click', (event) => {
       if (event.target.closest('#openRevising')) {
+        currentStep = 0;
+        renderStep();
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if ((event.key === 'Enter' || event.key === ' ') && event.target.id === 'openRevising') {
+        event.preventDefault();
         currentStep = 0;
         renderStep();
       }
