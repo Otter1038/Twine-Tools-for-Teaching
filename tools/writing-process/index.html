@@ -91,7 +91,7 @@
     }
 
     .step-content p, .step-content li {
-      font-size: 1.16rem;
+      font-size: 1.18rem;
       color: rgba(245,230,200,0.95);
     }
 
@@ -100,7 +100,7 @@
       border-left: 4px solid var(--gold);
       padding: 1rem 1.15rem;
       margin: 1.1rem 0;
-      font-size: 1.08rem;
+      font-size: 1.14rem;
     }
 
     .sample {
@@ -110,7 +110,7 @@
       padding: 1.1rem 1.2rem;
       margin: 1.1rem 0;
       font-style: italic;
-      font-size: 1.08rem;
+      font-size: 1.14rem;
     }
 
     .choice-grid {
@@ -128,7 +128,7 @@
       cursor: pointer;
       font-family: 'Special Elite', cursive;
       border-radius: 8px;
-      font-size: 0.98rem;
+      font-size: 1rem;
     }
 
     .choice-btn:hover {
@@ -156,19 +156,28 @@
 
     .nav button,
     .nav a {
-      border: none;
-      padding: 0.7rem 0.95rem;
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 0.95rem;
-      letter-spacing: 2px;
+      border: 1px solid rgba(242, 169, 0, 0.35);
+      padding: 0.35rem 0.7rem;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
       cursor: pointer;
-      background: var(--red);
-      color: white;
-      border-radius: 8px;
+      background: transparent;
+      color: var(--gold);
+      border-radius: 999px;
       text-decoration: none;
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      line-height: 1.2;
+    }
+
+    .nav button:hover,
+    .nav a:hover {
+      background: rgba(242, 169, 0, 0.12);
+      color: var(--cream);
     }
 
     .nav button:disabled {
