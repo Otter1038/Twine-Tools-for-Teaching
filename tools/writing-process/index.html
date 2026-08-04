@@ -44,7 +44,7 @@
 
     .hero .eyebrow {
       font-family: 'Courier Prime', monospace;
-      font-size: 0.77rem;
+      font-size: 0.84rem;
       letter-spacing: 3px;
       text-transform: uppercase;
       color: rgba(255,255,255,0.8);
@@ -53,7 +53,7 @@
 
     .hero h1 {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-size: clamp(2.2rem, 4.5vw, 3.1rem);
       letter-spacing: 3px;
       margin: 0 0 0.4rem;
       color: white;
@@ -62,24 +62,7 @@
     .hero p {
       margin: 0;
       color: rgba(255,255,255,0.95);
-    }
-
-    .hero .note {
-      margin-top: 0.8rem;
-      font-size: 0.95rem;
-      color: var(--cream);
-      background: rgba(0,0,0,0.16);
-      padding: 0.7rem 0.9rem;
-      border-left: 4px solid var(--gold);
-    }
-
-    .section-overview {
-      margin-top: 0.9rem;
-      font-family: 'Courier Prime', monospace;
-      font-size: 0.8rem;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.9);
+      font-size: 1.05rem;
     }
 
     .card {
@@ -101,14 +84,14 @@
 
     .step-title {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.4rem;
+      font-size: 1.6rem;
       letter-spacing: 2px;
       color: var(--cream);
       margin-bottom: 0.6rem;
     }
 
     .step-content p, .step-content li {
-      font-size: 1rem;
+      font-size: 1.05rem;
       color: rgba(245,230,200,0.95);
     }
 
@@ -213,8 +196,6 @@
       <div class="eyebrow">Writing Process Tool</div>
       <h1>Revising Before Editing</h1>
       <p>This walkthrough helps students practice the difference between revising for meaning and editing for correctness.</p>
-      <div class="section-overview">Planned sections: Prewriting • Drafting • Revising • Editing • Publishing</div>
-      <div class="note">This first build introduces the Revising section of the larger Writing Process tool. The remaining sections will be added later.</div>
     </header>
 
     <main class="card">
@@ -230,7 +211,7 @@
   <script>
     const steps = [
       {
-        title: 'Stop 1 of 6 — Why Revision Comes First',
+        title: 'Stop 1 of 7 — Why Revision Comes First',
         html: `
           <div class="step-title">Revision is the first job of a strong writer.</div>
           <p>Before a writer fixes commas or spelling, they need to ask whether the draft actually says what it means to say. Revision focuses on purpose, clarity, organization, support, and overall effectiveness.</p>
@@ -241,7 +222,7 @@
         `
       },
       {
-        title: 'Stop 2 of 6 — Start With Meaning',
+        title: 'Stop 2 of 7 — Start With Meaning',
         html: `
           <div class="step-title">Good revision begins with the writer’s purpose.</div>
           <p>When a writer revises, the goal is not to polish every sentence right away. The goal is to improve the draft as a whole by asking whether the paper actually says what it wants to say.</p>
@@ -252,7 +233,21 @@
         `
       },
       {
-        title: 'Stop 3 of 6 — Practice With a Real Draft',
+        title: 'Stop 3 of 7 — What to Look For in Revision',
+        html: `
+          <div class="step-title">When you revise, look for the big issues first.</div>
+          <div class="callout">
+            <strong>High-order concerns:</strong> purpose, clarity, focus, organization, and support.
+          </div>
+          <p>Ask: What is the writer really trying to say? Does the draft stay on that point? Where does the reader get confused, lose the thread, or want more explanation?</p>
+          <div class="callout">
+            <strong>Lower-order concerns:</strong> spelling, punctuation, capitalization, and formatting. These matter, but they come later.
+          </div>
+          <p>Revision is about improving the draft as a whole. Editing is about polishing what remains after the meaning is stronger.</p>
+        `
+      },
+      {
+        title: 'Stop 4 of 7 — Practice With a Real Draft',
         html: `
           <div class="step-title">Here is a sample draft with revision needs.</div>
           <div class="sample">
@@ -268,7 +263,7 @@
         `
       },
       {
-        title: 'Stop 4 of 6 — Editing Practice With the Voltron Challenge',
+        title: 'Stop 5 of 7 — Editing Practice With the Voltron Challenge',
         html: `
           <div class="step-title">Now let students distinguish editing from revision.</div>
           <div class="sample">
@@ -284,7 +279,7 @@
         `
       },
       {
-        title: 'Stop 5 of 6 — What Strong Revision Looks Like',
+        title: 'Stop 6 of 7 — What Strong Revision Looks Like',
         html: `
           <div class="step-title">Revision makes a draft more effective.</div>
           <p>A strong revision can do any of these things:</p>
@@ -300,7 +295,7 @@
         `
       },
       {
-        title: 'Stop 6 of 6 — A Revision Checklist',
+        title: 'Stop 7 of 7 — A Revision Checklist',
         html: `
           <div class="step-title">Before you edit anything, ask these questions.</div>
           <ul class="checklist">
