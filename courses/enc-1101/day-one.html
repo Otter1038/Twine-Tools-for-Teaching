@@ -75,6 +75,28 @@
 
   header h1 span { color: var(--gold); }
 
+  /* ── NAV ── */
+  nav {
+    background: var(--dark);
+    border-bottom: 2px solid var(--gold);
+    text-align: center;
+    padding: 0.55em 2em;
+    flex-shrink: 0;
+  }
+
+  nav a {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.78em;
+    letter-spacing: 2px;
+    color: var(--cream);
+    text-decoration: none;
+    text-transform: uppercase;
+    margin: 0 1.2em;
+    transition: color 0.2s;
+  }
+
+  nav a:hover { color: var(--gold); }
+
   /* ── PROGRESS ── */
   .progress-wrap {
     background: var(--dark);
@@ -303,6 +325,11 @@
   <div class="war-badge">★ ENC 1101 ★</div>
   <h1>DAY ONE <span>WALKTHROUGH</span></h1>
 </header>
+
+<nav>
+  <a href="../../index.html">&#8592; Twine Tools Home</a>
+  <a href="index.html">ENC 1101 Course Hub</a>
+</nav>
 
 <div class="progress-wrap">
   <span class="progress-label" id="progress-label">STEP 1 / 9</span>
