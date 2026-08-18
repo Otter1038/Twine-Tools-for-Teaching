@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ENC 1101 — Twine Tools for Teaching</title>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9P579YYGT4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9P579YYGT4');
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Special+Elite&family=Oswald:wght@400;700&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --red: #C8102E;
+      --navy: #0A1628;
+      --gold: #F2A900;
+      --cream: #F5E6C8;
+      --steel: #6B7280;
+      --dark: #0D0D0D;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--navy);
+      color: var(--cream);
+      font-family: 'Special Elite', cursive;
+      background-image:
+        repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(255,255,255,0.015) 40px, rgba(255,255,255,0.015) 41px),
+        repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(255,255,255,0.015) 40px, rgba(255,255,255,0.015) 41px);
+    }
+
+    .stripe-band {
+      height: 18px;
+      background: repeating-linear-gradient(-45deg, var(--red), var(--red) 10px, var(--gold) 10px, var(--gold) 20px);
+    }
+
+    header {
+      background: var(--red);
+      border-bottom: 6px solid var(--gold);
+      padding: 2em;
+      text-align: center;
+    }
+
+    .war-badge {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--dark);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.8em;
+      letter-spacing: 4px;
+      padding: 0.3em 1.5em;
+      margin-bottom: 0.8em;
+      clip-path: polygon(8px 0%, calc(100% - 8px) 0%, 100% 50%, calc(100% - 8px) 100%, 8px 100%, 0% 50%);
+    }
+
+    header h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2em, 6vw, 3.5em);
+      letter-spacing: 6px;
+      color: var(--cream);
+      text-shadow: 3px 3px 0 rgba(0,0,0,0.4);
+      line-height: 1;
+    }
+
+    header h1 span { color: var(--gold); display: block; }
+
+    .header-sub {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.8em;
+      letter-spacing: 3px;
+      color: rgba(245,230,200,0.7);
+      margin-top: 0.6em;
+      text-transform: uppercase;
+    }
+
+    nav {
+      background: var(--dark);
+      border-bottom: 2px solid var(--gold);
+      text-align: center;
+      padding: 0.7em 2em;
+    }
+
+    nav a {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.85em;
+      letter-spacing: 3px;
+      color: var(--cream);
+      text-decoration: none;
+      text-transform: uppercase;
+      margin: 0 1.5em;
+      transition: color 0.2s;
+    }
+
+    nav a:hover { color: var(--gold); }
+    nav a.active { color: var(--gold); }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 3em 2em;
+    }
+
+    .page-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.5em;
+      letter-spacing: 5px;
+      color: var(--gold);
+      border-bottom: 3px solid var(--red);
+      padding-bottom: 0.4em;
+      margin-bottom: 0.6em;
+    }
+
+    .page-title::before {
+      content: '▶ ';
+      color: var(--red);
+      font-size: 0.7em;
+    }
+
+    .page-subtitle {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.85em;
+      color: var(--steel);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 2.5em;
+    }
+
+    /* ── COURSE INFO CARD ── */
+    .info-card {
+      background: var(--cream);
+      color: var(--dark);
+      border: 3px solid var(--dark);
+      box-shadow: 6px 6px 0 var(--dark);
+      padding: 1.6em 1.8em;
+      margin-bottom: 2.5em;
+    }
+
+    .info-card h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4em;
+      letter-spacing: 2px;
+      color: var(--red);
+      margin-bottom: 0.8em;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0.8em 1.6em;
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.85em;
+      line-height: 1.6;
+    }
+
+    .info-grid strong {
+      display: block;
+      color: var(--steel);
+      font-size: 0.78em;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* ── COMING SOON GRID ── */
+    .stub-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5em;
+      margin-bottom: 2.5em;
+    }
+
+    .stub-card {
+      background: rgba(245,230,200,0.05);
+      border: 2px dashed rgba(242,169,0,0.4);
+      padding: 1.4em 1.6em;
+    }
+
+    .stub-card .stub-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.3em;
+      letter-spacing: 2px;
+      color: var(--gold);
+      margin-bottom: 0.4em;
+    }
+
+    .stub-card p {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.8em;
+      line-height: 1.7;
+      color: rgba(245,230,200,0.75);
+    }
+
+    .stub-badge {
+      display: inline-block;
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.68em;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--steel);
+      background: rgba(107,114,128,0.15);
+      border: 1px solid rgba(107,114,128,0.3);
+      padding: 0.3em 0.8em;
+      margin-top: 0.8em;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 1em;
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.8em;
+      letter-spacing: 1px;
+      color: var(--gold);
+      text-decoration: none;
+      border-bottom: 1px solid var(--red);
+    }
+
+    .back-link:hover { color: var(--red); }
+
+    footer {
+      background: var(--dark);
+      border-top: 4px solid var(--red);
+      text-align: center;
+      padding: 1.5em 2em;
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.8em;
+      color: var(--steel);
+      letter-spacing: 2px;
+    }
+
+    footer strong { color: var(--gold); }
+  </style>
+</head>
+<body>
+
+<div class="stripe-band"></div>
+
+<header>
+  <div class="war-badge">★ PROFESSOR FINCH'S ★</div>
+  <h1>TWINE TOOLS <span>FOR TEACHING</span></h1>
+  <p class="header-sub">Interactive Writing Tools for the Modern Classroom</p>
+</header>
+
+<div class="stripe-band"></div>
+
+<nav>
+  <a href="../../index.html">Home</a>
+  <a href="../../about.html">About</a>
+  <a href="../../additional-resources.html">Additional Resources</a>
+</nav>
+
+<div class="container">
+
+  <div class="page-title">ENC 1101</div>
+  <div class="page-subtitle">Composition I &mdash; Section 0006 &mdash; Fall 2026</div>
+
+  <div class="info-card">
+    <h2>Class Info</h2>
+    <div class="info-grid">
+      <div><strong>Meets</strong>Monday &amp; Wednesday</div>
+      <div><strong>Time</strong>9:00 &ndash; 10:15 AM</div>
+      <div><strong>Location</strong>CB1 O107</div>
+      <div><strong>Credit Hours</strong>3.00</div>
+      <div><strong>Modality</strong>In-Person</div>
+      <div><strong>Instructor</strong>Richard "Ricky" Finch</div>
+      <div><strong>Email</strong>richard.finch@ucf.edu</div>
+      <div><strong>Office</strong>TCH 165</div>
+      <div><strong>Office Hours</strong>Wed, 10:30 &ndash; 11:30 AM</div>
+    </div>
+  </div>
+
+  <div class="stub-grid">
+    <a class="stub-card" href="syllabus.html" style="text-decoration:none; display:block; border-style:solid; border-color:var(--gold);">
+      <div class="stub-title">Syllabus</div>
+      <p>Full course policies, grading breakdown, and learning outcomes.</p>
+      <span class="stub-badge" style="color:var(--gold); border-color:rgba(242,169,0,0.4); background:rgba(242,169,0,0.1);">→ View</span>
+    </a>
+    <div class="stub-card">
+      <div class="stub-title">Lesson Plan</div>
+      <p>Day-by-day lesson plan for the semester.</p>
+      <span class="stub-badge">Coming Soon</span>
+    </div>
+    <a class="stub-card" href="day-one.html" style="text-decoration:none; display:block; border-style:solid; border-color:var(--gold);">
+      <div class="stub-title">Day One</div>
+      <p>The interactive walkthrough for the first day of class.</p>
+      <span class="stub-badge" style="color:var(--gold); border-color:rgba(242,169,0,0.4); background:rgba(242,169,0,0.1);">→ Launch</span>
+    </a>
+  </div>
+
+  <a class="back-link" href="../../index.html">&#8592; Back to the Homepage</a>
+
+</div>
+
+<div class="stripe-band"></div>
+
+<footer>
+  <strong>TWINE TOOLS FOR TEACHING</strong> &mdash;
+  Developed for writing classrooms &bull;
+  Built with Twine &amp; Chapbook
+</footer>
+
+<div class="stripe-band"></div>
+
+</body>
+</html>
