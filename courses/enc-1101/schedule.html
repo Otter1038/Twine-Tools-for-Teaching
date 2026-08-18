@@ -282,6 +282,193 @@
 
     .day-link:hover { color: var(--red); }
 
+    .day-link.dw-toggle-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: 'Oswald', sans-serif;
+      padding: 0;
+    }
+
+    /* ── EMBEDDED DAY WALKTHROUGH ── */
+    .day-walkthrough {
+      display: none;
+      grid-column: 1 / -1;
+      background: var(--dark);
+      border-top: 1px solid rgba(242,169,0,0.25);
+      padding: 1.4em 1.4em 1.6em;
+    }
+
+    .day-walkthrough.open { display: block; }
+
+    .dw-progress-wrap {
+      display: flex;
+      align-items: center;
+      gap: 1em;
+      margin-bottom: 1.2em;
+    }
+
+    .dw-progress-track {
+      flex: 1;
+      height: 6px;
+      background: rgba(245,230,200,0.1);
+      border: 1px solid var(--gold);
+    }
+
+    .dw-progress-fill {
+      height: 100%;
+      background: var(--gold);
+      transition: width 0.3s ease;
+    }
+
+    .dw-progress-label {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.68em;
+      letter-spacing: 2px;
+      color: var(--steel);
+      white-space: nowrap;
+    }
+
+    .dw-passage { display: none; animation: dwFadeIn 0.35s ease; }
+    .dw-passage.active { display: block; }
+
+    @keyframes dwFadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .dw-card {
+      background: rgba(10,22,40,0.85);
+      border: 3px solid var(--gold);
+      position: relative;
+      padding: 1.6em 1.8em;
+    }
+
+    .dw-card::before, .dw-card::after {
+      content: '';
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      border-color: var(--red);
+      border-style: solid;
+    }
+    .dw-card::before { top: -3px; left: -3px; border-width: 3px 0 0 3px; }
+    .dw-card::after { bottom: -3px; right: -3px; border-width: 0 3px 3px 0; }
+
+    .dw-eyebrow {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.68em;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.5em;
+    }
+
+    .dw-card h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6em;
+      letter-spacing: 2px;
+      color: var(--cream);
+      margin-bottom: 0.6em;
+      line-height: 1.05;
+    }
+
+    .dw-card p {
+      font-family: 'Special Elite', cursive;
+      font-size: 0.9em;
+      line-height: 1.8;
+      color: rgba(245,230,200,0.9);
+      margin-bottom: 0.8em;
+    }
+
+    .dw-card strong { color: var(--gold); }
+
+    .dw-info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 0.6em 1.2em;
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.78em;
+      line-height: 1.6;
+      margin-bottom: 0.4em;
+    }
+
+    .dw-info-grid strong {
+      display: block;
+      color: var(--steel);
+      font-size: 0.72em;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .dw-prompt-list { list-style: none; margin: 0.5em 0 1em; }
+
+    .dw-prompt-list li {
+      padding: 0.5em 0 0.5em 1.2em;
+      position: relative;
+      font-family: 'Special Elite', cursive;
+      font-size: 0.88em;
+      line-height: 1.6;
+      color: rgba(245,230,200,0.9);
+      border-bottom: 1px dashed rgba(242,169,0,0.2);
+    }
+
+    .dw-prompt-list li::before {
+      content: '★';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      font-size: 0.78em;
+    }
+
+    .dw-policy-line {
+      padding: 0.45em 0;
+      border-bottom: 1px dashed rgba(242,169,0,0.2);
+      font-family: 'Special Elite', cursive;
+      font-size: 0.86em;
+      line-height: 1.6;
+      color: rgba(245,230,200,0.9);
+    }
+    .dw-policy-line:last-child { border-bottom: none; }
+
+    .dw-quickwrite-box {
+      background: var(--cream);
+      color: var(--dark);
+      border: 3px solid var(--dark);
+      box-shadow: 4px 4px 0 var(--dark);
+      padding: 1.2em 1.4em;
+      margin: 0.8em 0;
+    }
+    .dw-quickwrite-box p { color: var(--dark); font-size: 1em; margin: 0; }
+
+    .dw-continue-btn {
+      display: inline-block;
+      margin-top: 0.6em;
+      background: var(--red);
+      color: var(--cream);
+      border: 3px solid var(--dark);
+      box-shadow: 3px 3px 0 var(--dark);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.9em;
+      letter-spacing: 2px;
+      padding: 0.5em 1.5em;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .dw-continue-btn:hover { transform: translate(-2px, -2px); box-shadow: 5px 5px 0 var(--dark); }
+    .dw-continue-btn:active { transform: translate(0, 0); box-shadow: 1px 1px 0 var(--dark); }
+
+    .dw-restart-link {
+      display: block;
+      margin-top: 1em;
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.72em;
+      letter-spacing: 1px;
+      color: var(--steel);
+      text-decoration: none;
+    }
+    .dw-restart-link:hover { color: var(--gold); }
+
     .back-link {
       display: inline-block;
       margin-top: 2em;
@@ -350,11 +537,152 @@
       <div class="week-days">
         <div class="day-cell">
           <div class="day-date">Mon, Aug 24</div>
-          <a class="day-link" href="day-one.html">→ Day One Walkthrough</a>
+          <button class="day-link dw-toggle-btn" onclick="toggleDW('dw-week1', this)">→ Day One Walkthrough</button>
         </div>
         <div class="day-cell">
           <div class="day-date">Wed, Aug 26</div>
           <div class="day-status">Lesson coming soon</div>
+        </div>
+        <div class="day-walkthrough" id="dw-week1">
+
+          <div class="dw-progress-wrap">
+            <span class="dw-progress-label" id="dw-week1-label">STEP 1 / 9</span>
+            <div class="dw-progress-track"><div class="dw-progress-fill" id="dw-week1-fill" style="width:11%"></div></div>
+          </div>
+
+          <!-- 1: WELCOME -->
+          <div class="dw-passage active" data-dw="dw-week1" data-id="welcome">
+            <div class="dw-card">
+              <div class="dw-eyebrow">Welcome To</div>
+              <h3>ENC 1101 — Composition I</h3>
+              <p>Section 06 &bull; Fall 2026</p>
+              <div class="dw-info-grid">
+                <div><strong>Meets</strong>Monday &amp; Wednesday</div>
+                <div><strong>Time</strong>9:00 – 10:15 AM</div>
+                <div><strong>Location</strong>CB1 O107</div>
+                <div><strong>Credit Hours</strong>3.00</div>
+                <div><strong>Modality</strong>In-Person</div>
+                <div><strong>Instructor</strong>Richard "Ricky" Finch</div>
+                <div><strong>Email</strong>richard.finch@ucf.edu</div>
+                <div><strong>Office</strong>TCH 165</div>
+                <div><strong>Office Hours</strong>Wed, 10:30 – 11:30 AM (also by appointment)</div>
+              </div>
+              <button class="dw-continue-btn" onclick="dwGoTo('dw-week1','attendance')">→ Take Attendance</button>
+            </div>
+          </div>
+
+          <!-- 2: ATTENDANCE -->
+          <div class="dw-passage" data-dw="dw-week1" data-id="attendance">
+            <div class="dw-card">
+              <div class="dw-eyebrow">Roll Call</div>
+              <h3>Attendance</h3>
+              <p>As we call roll, answer one quick question:</p>
+              <ul class="dw-prompt-list">
+                <li>Are you more of a morning person or a night owl when it comes to writing?</li>
+                <li>What's the last thing you read that wasn't for school?</li>
+                <li>What's a word or phrase your family uses that no one else would understand?</li>
+                <li>What's the last thing you wrote that had nothing to do with school?</li>
+                <li>What class are you most excited or nervous about this semester?</li>
+              </ul>
+              <button class="dw-continue-btn" onclick="dwGoTo('dw-week1','syllabus')">→ Review the Syllabus</button>
+            </div>
+          </div>
+
+          <!-- 3: SYLLABUS -->
+          <div class="dw-passage" data-dw="dw-week1" data-id="syllabus">
+            <div class="dw-card">
+              <div class="dw-eyebrow">Group Activity</div>
+              <h3>Syllabus Scavenger Hunt</h3>
+              <p>Get into groups of three or four.</p>
+              <p>Review the syllabus.</p>
+              <p>As a group, find <strong>3 items</strong> you want more information about, or that are completely confusing.</p>
+              <button class="dw-continue-btn" onclick="dwGoTo('dw-week1','policies')">→ Policy Highlights</button>
+            </div>
+          </div>
+
+          <!-- 4: POLICIES -->
+          <div class="dw-passage" data-dw="dw-week1" data-id="policies">
+            <div class="dw-card">
+              <div class="dw-eyebrow">The Fine Print</div>
+              <h3>Policy Highlights</h3>
+              <div class="dw-policy-line"><strong>Attendance:</strong> four absences allowed before the grade drops.</div>
+              <div class="dw-policy-line"><strong>Grading:</strong> State Writing Requirement course — C- or higher required to pass.</div>
+              <div class="dw-policy-line"><strong>Late Work:</strong> 48-hr notice grants an extension; otherwise a 5%/day penalty, then a zero after 10 days.</div>
+              <div class="dw-policy-line"><strong>AI Use:</strong> permitted only when explicitly assigned; disclosure required.</div>
+              <div class="dw-policy-line"><strong>Disability Access:</strong> contact Student Accessibility Services (SAS) to arrange accommodations.</div>
+              <p style="margin-top:1em;"><strong>Communication is key!!!</strong></p>
+              <button class="dw-continue-btn" onclick="dwGoTo('dw-week1','webcourses')">→ Webcourses Tour</button>
+            </div>
+          </div>
+
+          <!-- 5: WEBCOURSES -->
+          <div class="dw-passage" data-dw="dw-week1" data-id="webcourses">
+            <div class="dw-card">
+              <div class="dw-eyebrow">Course Site Orientation</div>
+              <h3>Webcourses</h3>
+              <p>Let's take a quick tour together:</p>
+              <ul class="dw-prompt-list">
+                <li>Question of the Day</li>
+                <li>Modules</li>
+                <li>Assignments</li>
+                <li>Grades</li>
+              </ul>
+              <button class="dw-continue-btn" onclick="dwGoTo('dw-week1','activity')">→ Academic Engagement Activity</button>
+            </div>
+          </div>
+
+          <!-- 6: ACTIVITY -->
+          <div class="dw-passage" data-dw="dw-week1" data-id="activity">
+            <div class="dw-card">
+              <div class="dw-eyebrow">Financial Aid Requirement</div>
+              <h3>Academic Engagement Activity</h3>
+              <p>Before we move on, complete the required academic engagement activity for financial aid documentation.</p>
+              <button class="dw-continue-btn" onclick="dwGoTo('dw-week1','quickwrite')">→ Quickwrite</button>
+            </div>
+          </div>
+
+          <!-- 7: QUICKWRITE -->
+          <div class="dw-passage" data-dw="dw-week1" data-id="quickwrite">
+            <div class="dw-card">
+              <div class="dw-eyebrow">Low-Stakes Writing</div>
+              <h3>Quickwrite</h3>
+              <div class="dw-quickwrite-box">
+                <p>Write about one memory you have of learning to read or write.</p>
+              </div>
+              <button class="dw-continue-btn" onclick="dwGoTo('dw-week1','nextclass')">→ Looking Ahead</button>
+            </div>
+          </div>
+
+          <!-- 8: NEXT CLASS -->
+          <div class="dw-passage" data-dw="dw-week1" data-id="nextclass">
+            <div class="dw-card">
+              <div class="dw-eyebrow">Before We Meet Again</div>
+              <h3>Next Class</h3>
+              <p><strong>Readings</strong></p>
+              <ul class="dw-prompt-list">
+                <li>Nathalie Singh-Corcoran, "Composition as a Write of Passage" (Writing Spaces)</li>
+                <li>Kara Taczak, "The Importance of Transfer in Your First Year Writing Course" (Writing Spaces)</li>
+              </ul>
+              <p><strong>Due</strong></p>
+              <ul class="dw-prompt-list">
+                <li><strong>Reading Reflection #1</strong> (1–1.5 pages) — Choose one misconception about writing Taczak names, trace where that belief came from, explain how Taczak's revised truth challenges it, and name one habit or skill that will transfer forward into this class.</li>
+                <li><strong>ePortfolio Work Session</strong> (5 pts, in class) — Choose your ePortfolio platform and create your site. By the end of class you should have a live URL and a working home page — credit is for progress, not polish.</li>
+              </ul>
+              <button class="dw-continue-btn" onclick="dwGoTo('dw-week1','finally')">→ Wrap Up</button>
+            </div>
+          </div>
+
+          <!-- 9: FINALLY -->
+          <div class="dw-passage" data-dw="dw-week1" data-id="finally">
+            <div class="dw-card">
+              <div class="dw-eyebrow">See You Next Time</div>
+              <h3>Have a Great Rest of the Day</h3>
+              <p>If you have questions, feel free to message me in Canvas or email me:</p>
+              <p><strong><a href="mailto:richard.finch@ucf.edu" style="color:var(--gold)">richard.finch@ucf.edu</a></strong></p>
+              <a class="dw-restart-link" href="#" onclick="dwGoTo('dw-week1','welcome'); return false;">↺ Restart Walkthrough</a>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
@@ -668,6 +996,28 @@
 <script>
   function toggleWeek(btn) {
     btn.closest('.week-card').classList.toggle('open');
+  }
+
+  var dwOrder = ['welcome','attendance','syllabus','policies','webcourses','activity','quickwrite','nextclass','finally'];
+
+  function toggleDW(containerId, btn) {
+    var container = document.getElementById(containerId);
+    var opening = !container.classList.contains('open');
+    container.classList.toggle('open');
+    if (btn) { btn.textContent = opening ? '✕ Close Walkthrough' : '→ Day One Walkthrough'; }
+  }
+
+  function dwGoTo(containerId, id) {
+    var container = document.getElementById(containerId);
+    var passages = container.querySelectorAll('.dw-passage');
+    passages.forEach(function(p) { p.classList.remove('active'); });
+    var target = container.querySelector('.dw-passage[data-id="' + id + '"]');
+    target.classList.add('active');
+    container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    var step = dwOrder.indexOf(id) + 1;
+    document.getElementById(containerId + '-label').textContent = 'STEP ' + step + ' / ' + dwOrder.length;
+    document.getElementById(containerId + '-fill').style.width = Math.round((step / dwOrder.length) * 100) + '%';
   }
 </script>
 
