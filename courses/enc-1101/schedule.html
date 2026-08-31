@@ -697,12 +697,160 @@
         </span>
         <span class="week-caret">▶</span>
       </button>
-      <div class="week-overview placeholder">
-        <p>Overview coming soon.</p>
+      <div class="week-overview">
+        <p>Where does your literacy come from, and who gains from it? We read Brandt's sponsors of literacy, Taczak's writing transfer, and Singh-Corcoran's case for meta-awareness in FYC. Monday runs discussion-heavy with a sponsor-mapping brainstorm; Reading Reflection due Sep 1.</p>
       </div>
       <div class="week-days">
-        <div class="day-cell"><div class="day-date">Mon, Aug 31</div><div class="day-status">Lesson coming soon</div></div>
-        <div class="day-cell"><div class="day-date">Wed, Sep 2</div><div class="day-status">Lesson coming soon</div></div>
+        <div class="day-cell">
+          <div class="day-date">Mon, Aug 31</div>
+          <button class="day-link dw-toggle-btn" onclick="toggleDW('dw-week2', this)">→ Day Walkthrough</button>
+        </div>
+        <div class="day-cell">
+          <div class="day-date">Wed, Sep 2</div>
+          <div class="day-status">Lesson coming soon</div>
+        </div>
+        <div class="day-walkthrough" id="dw-week2">
+
+          <div class="dw-progress-wrap">
+            <span class="dw-progress-label" id="dw-week2-label">STEP 1 / 9</span>
+            <div class="dw-progress-track"><div class="dw-progress-fill" id="dw-week2-fill" style="width:11%"></div></div>
+          </div>
+
+          <!-- 1: WELCOME / QOTD -->
+          <div class="dw-passage active" data-dw="dw-week2" data-id="welcome">
+            <div class="dw-card">
+              <div class="dw-eyebrow">Question of the Day</div>
+              <h3>Sponsors of Literacy &amp; Multimodality</h3>
+              <div class="dw-quickwrite-box">
+                <p>What is one show, app, teacher, or family member that quietly shaped how you read or write today, for better or worse?</p>
+              </div>
+              <button class="dw-continue-btn" onclick="dwGoTo('dw-week2','announcements')">→ Announcements</button>
+            </div>
+          </div>
+
+          <!-- 2: ANNOUNCEMENTS -->
+          <div class="dw-passage" data-dw="dw-week2" data-id="announcements">
+            <div class="dw-card">
+              <div class="dw-eyebrow">Now Playing &mdash; Three Things</div>
+              <h3>Announcements</h3>
+              <p><strong>1. Google Site setup guide is in Canvas.</strong> Step by step instructions, including how to publish the site and how to share it with me. Publishing is separate from editing, and the free tier is all you need &mdash; you never have to buy a domain.</p>
+              <p><strong>2. Free software for UCF students.</strong> UCF Apps gives you Office, Adobe Reader, SPSS, and more through a virtual lab, on any device. <a href="https://it.ucf.edu/services/ucf-apps/" style="color:var(--gold)">it.ucf.edu/services/ucf-apps/</a></p>
+              <p><strong>3. This week&rsquo;s work.</strong> Reading Reflection, submitted in Canvas. <strong>Due September 1.</strong></p>
+              <button class="dw-continue-btn" onclick="dwGoTo('dw-week2','openfloor1')">→ Open Floor</button>
+            </div>
+          </div>
+
+          <!-- 3: OPEN FLOOR -->
+          <div class="dw-passage" data-dw="dw-week2" data-id="openfloor1">
+            <div class="dw-card">
+              <div class="dw-eyebrow">Information Desk</div>
+              <h3>Anything From Week One Still Sitting With You?</h3>
+              <p>Questions about the course, the workload, the readings, or the syllabus. Half-formed thoughts count. If you were confused by something, someone else was too.</p>
+              <button class="dw-continue-btn" onclick="dwGoTo('dw-week2','taczak')">→ Kara Taczak</button>
+            </div>
+          </div>
+
+          <!-- 4: TACZAK -->
+          <div class="dw-passage" data-dw="dw-week2" data-id="taczak">
+            <div class="dw-card">
+              <div class="dw-eyebrow">Reading &mdash; Writing Transfer</div>
+              <h3>Kara Taczak</h3>
+              <div class="dw-quickwrite-box">
+                <p>&ldquo;The ability to take writing knowledge and practices from one context and repurpose them in a different writing context.&rdquo;</p>
+              </div>
+              <p><strong>Not a talent.</strong> Writing is a skill that develops over time through a process, not something you either have or do not have.</p>
+              <p><strong>Positive transfer.</strong> Past writing knowledge and practices applied to a new context successfully.</p>
+              <p><strong>Negative transfer.</strong> Inappropriate application of past practices and knowledge to a context that does not fit.</p>
+              <ul class="dw-prompt-list">
+                <li>What misconceptions about writing stood out to you from the reading?</li>
+                <li>Keep three words on the table all semester: <strong>purpose</strong>, <strong>genre</strong>, <strong>audience</strong>.</li>
+              </ul>
+              <button class="dw-continue-btn" onclick="dwGoTo('dw-week2','brandt')">→ Deborah Brandt</button>
+            </div>
+          </div>
+
+          <!-- 5: BRANDT -->
+          <div class="dw-passage" data-dw="dw-week2" data-id="brandt">
+            <div class="dw-card">
+              <div class="dw-eyebrow">Reading &mdash; Sponsors of Literacy</div>
+              <h3>Deborah Brandt</h3>
+              <div class="dw-quickwrite-box">
+                <p>&ldquo;Sponsors are any agents who enable, support, teach, and model literacy, as well as those who recruit, regulate, suppress, or withhold it, and who gain advantage by it in some way.&rdquo;</p>
+              </div>
+              <p><strong>Sponsors are everywhere.</strong> People, institutions, technologies, churches, employers, group chats, a sibling who handed you a book.</p>
+              <p><strong>They give and they take.</strong> A sponsor can open a door and close another one. The same sponsor can teach you and limit you.</p>
+              <p><strong>Access is uneven.</strong> Which sponsors reach you is shaped by where you grew up, what you had access to, and who was around.</p>
+              <ul class="dw-prompt-list">
+                <li>Who sponsored your literacy, and what did they get out of it?</li>
+                <li>Which of your sponsors shaped what you write, and which shaped how you write?</li>
+              </ul>
+              <button class="dw-continue-btn" onclick="dwGoTo('dw-week2','brainstorm')">→ Map Your Sponsors</button>
+            </div>
+          </div>
+
+          <!-- 6: BRAINSTORM -->
+          <div class="dw-passage" data-dw="dw-week2" data-id="brainstorm">
+            <div class="dw-card">
+              <div class="dw-eyebrow">Let&rsquo;s Discuss</div>
+              <h3>Map Your Sponsors</h3>
+              <div class="dw-info-grid">
+                <div><strong>3 min &mdash; Solo</strong>List every sponsor you can think of. People, places, screens, apps, rules. Do not filter, just list.</div>
+                <div><strong>4 min &mdash; Sort</strong>Mark each one: did it open something up, shut something down, or both?</div>
+                <div><strong>5 min &mdash; Pairs</strong>Trade lists. Find one sponsor you share and one neither of you expected.</div>
+                <div><strong>8 min &mdash; Board</strong>We put the strangest and the most common sponsors up front and look at the pattern.</div>
+              </div>
+              <p style="margin-top:1em"><strong>If the room goes quiet:</strong></p>
+              <ul class="dw-prompt-list">
+                <li>Who taught you a rule about writing that you still follow but cannot explain?</li>
+                <li>What is a sponsor you had to unlearn?</li>
+                <li>Does an algorithm count as a sponsor? What does it gain?</li>
+              </ul>
+              <button class="dw-continue-btn" onclick="dwGoTo('dw-week2','singhcorcoran')">→ Nathalie Singh-Corcoran</button>
+            </div>
+          </div>
+
+          <!-- 7: SINGH-CORCORAN -->
+          <div class="dw-passage" data-dw="dw-week2" data-id="singhcorcoran">
+            <div class="dw-card">
+              <div class="dw-eyebrow">Reading &mdash; Why FYC?</div>
+              <h3>Nathalie Singh-Corcoran</h3>
+              <p>She takes on the perceived disconnect between the writing you do in first year composition and the writing you expect to do in your major or your career.</p>
+              <div class="dw-quickwrite-box">
+                <p>&ldquo;FYC courses help students develop a <strong>meta-awareness</strong> about writing.&rdquo; &mdash; the claim worth arguing with</p>
+              </div>
+              <ul class="dw-prompt-list">
+                <li>What is your major, and how is writing part of that field?</li>
+                <li>Meta-awareness. What does that even mean, and how does it help you academically and professionally?</li>
+                <li>How does audience change what we write, or how we write it?</li>
+                <li>Why might reflection matter to your writing process, and how could it make you a better writer?</li>
+              </ul>
+              <button class="dw-continue-btn" onclick="dwGoTo('dw-week2','openfloor2')">→ Open Floor</button>
+            </div>
+          </div>
+
+          <!-- 8: OPEN FLOOR -->
+          <div class="dw-passage" data-dw="dw-week2" data-id="openfloor2">
+            <div class="dw-card">
+              <div class="dw-eyebrow">Information Desk &mdash; Last Call</div>
+              <h3>Questions, Pushback, or Anything Still Unresolved?</h3>
+              <p>On the readings, the discussion, the Google Site, or the reflection due September 1. If you think of it after class, email me or bring it Wednesday.</p>
+              <button class="dw-continue-btn" onclick="dwGoTo('dw-week2','finally')">→ Wrap Up</button>
+            </div>
+          </div>
+
+          <!-- 9: FINALLY -->
+          <div class="dw-passage" data-dw="dw-week2" data-id="finally">
+            <div class="dw-card">
+              <div class="dw-eyebrow">See You Next Time</div>
+              <h3>Have a Great Afternoon</h3>
+              <p>Reading Reflection is due September 1. Get the Google Site published and shared before Wednesday.</p>
+              <p>If you have questions, feel free to message me in Canvas or email me:</p>
+              <p><strong><a href="mailto:richard.finch@ucf.edu" style="color:var(--gold)">richard.finch@ucf.edu</a></strong></p>
+              <a class="dw-restart-link" href="#" onclick="dwGoTo('dw-week2','welcome'); return false;">↺ Restart Walkthrough</a>
+            </div>
+          </div>
+
+        </div>
       </div>
     </div>
 
@@ -998,13 +1146,23 @@
     btn.closest('.week-card').classList.toggle('open');
   }
 
-  var dwOrder = ['welcome','attendance','syllabus','policies','webcourses','activity','quickwrite','nextclass','finally'];
+  var dwOrders = {
+    'dw-week1': ['welcome','attendance','syllabus','policies','webcourses','activity','quickwrite','nextclass','finally'],
+    'dw-week2': ['welcome','announcements','openfloor1','taczak','brandt','brainstorm','singhcorcoran','openfloor2','finally']
+  };
 
   function toggleDW(containerId, btn) {
     var container = document.getElementById(containerId);
     var opening = !container.classList.contains('open');
     container.classList.toggle('open');
-    if (btn) { btn.textContent = opening ? '✕ Close Walkthrough' : '→ Day One Walkthrough'; }
+    if (btn) {
+      if (opening) {
+        btn.dataset.label = btn.textContent;
+        btn.textContent = '✕ Close Walkthrough';
+      } else {
+        btn.textContent = btn.dataset.label || '→ Day Walkthrough';
+      }
+    }
   }
 
   function dwGoTo(containerId, id) {
@@ -1015,9 +1173,10 @@
     target.classList.add('active');
     container.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
-    var step = dwOrder.indexOf(id) + 1;
-    document.getElementById(containerId + '-label').textContent = 'STEP ' + step + ' / ' + dwOrder.length;
-    document.getElementById(containerId + '-fill').style.width = Math.round((step / dwOrder.length) * 100) + '%';
+    var order = dwOrders[containerId];
+    var step = order.indexOf(id) + 1;
+    document.getElementById(containerId + '-label').textContent = 'STEP ' + step + ' / ' + order.length;
+    document.getElementById(containerId + '-fill').style.width = Math.round((step / order.length) * 100) + '%';
   }
 </script>
 
