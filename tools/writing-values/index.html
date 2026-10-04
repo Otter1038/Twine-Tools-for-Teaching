@@ -1,4 +1,4 @@
-<!doctype html><html><head><title>DWR Writing Values Tool</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><script type="module" crossorigin>
+<!doctype html><html><head><title>First Year Composition Values</title><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><script type="module" crossorigin>
 var Wn=Object.defineProperty;var Zn=(n,e,t)=>e in n?Wn(n,e,{enumerable:!0,configurable:!0,writable:!0,value:t}):n[e]=t;var V=(n,e,t)=>(Zn(n,typeof e!="symbol"?e+"":e,t),t),St=(n,e,t)=>{if(!e.has(n))throw TypeError("Cannot "+t)};var pe=(n,e,t)=>(St(n,e,"read from private field"),t?t.call(n):e.get(n)),Et=(n,e,t)=>{if(e.has(n))throw TypeError("Cannot add the same private member more than once");e instanceof WeakSet?e.add(n):e.set(n,t)},_t=(n,e,t,r)=>(St(n,e,"write to private field"),r?r.call(n,t):e.set(n,t),t);(function(){const e=document.createElement("link").relList;if(e&&e.supports&&e.supports("modulepreload"))return;for(const i of document.querySelectorAll('link[rel="modulepreload"]'))r(i);new MutationObserver(i=>{for(const s of i)if(s.type==="childList")for(const a of s.addedNodes)a.tagName==="LINK"&&a.rel==="modulepreload"&&r(a)}).observe(document,{childList:!0,subtree:!0});function t(i){const s={};return i.integrity&&(s.integrity=i.integrity),i.referrerPolicy&&(s.referrerPolicy=i.referrerPolicy),i.crossOrigin==="use-credentials"?s.credentials="include":i.crossOrigin==="anonymous"?s.credentials="omit":s.credentials="same-origin",s}function r(i){if(i.ep)return;i.ep=!0;const s=t(i);fetch(i.href,s)}})();const Gn={"config.logger.show.parse":!1,"config.logger.show.render":!1,"config.logger.show.sound":!1,"config.logger.show.state":!1,"config.logger.show.story":!1,"config.logger.show.style":!1};function Jt(n){return n+": "}const Me={inserts:!0};function Jn(n){Me[n]=!1}function Xn(n){Me[n]=!0}function Xt(n,e){Me[n]&&(console.log(Jt(n)+e),window.dispatchEvent(new CustomEvent("log-info",{detail:{message:e,source:n}})))}function Qt(n,e){Me[n]&&(console.warn(Jt(n)+e),window.dispatchEvent(new CustomEvent("log-warning",{detail:{message:e,source:n}})))}function F(n){return{log(e){Xt(n,e)},warn(e){Qt(n,e)}}}function Qn(){window.addEventListener("state-change",n=>{const e=/^config\.logger\.show\.(.+)$/.exec(n.detail.name);e&&e[1]&&(n.detail.value?Xn(e[1]):Jn(e[1]))})}var Kn=typeof global=="object"&&global&&global.Object===Object&&global;const Yn=Kn;var er=typeof self=="object"&&self&&self.Object===Object&&self,tr=Yn||er||Function("return this")();const it=tr;var nr=it.Symbol;const le=nr;var Kt=Object.prototype,rr=Kt.hasOwnProperty,ir=Kt.toString,ge=le?le.toStringTag:void 0;function sr(n){var e=rr.call(n,ge),t=n[ge];try{n[ge]=void 0;var r=!0}catch{}var i=ir.call(n);return r&&(e?n[ge]=t:delete n[ge]),i}var or=Object.prototype,ar=or.toString;function lr(n){return ar.call(n)}var cr="[object Null]",ur="[object Undefined]",Tt=le?le.toStringTag:void 0;function Yt(n){return n==null?n===void 0?ur:cr:Tt&&Tt in Object(n)?sr(n):lr(n)}function dr(n){return n!=null&&typeof n=="object"}var fr="[object Symbol]";function st(n){return typeof n=="symbol"||dr(n)&&Yt(n)==fr}function hr(n,e){for(var t=-1,r=n==null?0:n.length,i=Array(r);++t<r;)i[t]=e(n[t],t,n);return i}var pr=Array.isArray;const ot=pr;var gr=1/0,Ct=le?le.prototype:void 0,At=Ct?Ct.toString:void 0;function en(n){if(typeof n=="string")return n;if(ot(n))return hr(n,en)+"";if(st(n))return At?At.call(n):"";var e=n+"";return e=="0"&&1/n==-gr?"-0":e}function Pe(n){var e=typeof n;return n!=null&&(e=="object"||e=="function")}var mr="[object AsyncFunction]",br="[object Function]",yr="[object GeneratorFunction]",wr="[object Proxy]";function kr(n){if(!Pe(n))return!1;var e=Yt(n);return e==br||e==yr||e==mr||e==wr}var xr=it["__core-js_shared__"];const Fe=xr;var Lt=function(){var n=/[^.]+$/.exec(Fe&&Fe.keys&&Fe.keys.IE_PROTO||"");return n?"Symbol(src)_1."+n:""}();function vr(n){return!!Lt&&Lt in n}var $r=Function.prototype,Sr=$r.toString;function Er(n){if(n!=null){try{return Sr.call(n)}catch{}try{return n+""}catch{}}return""}var _r=/[\\^$.*+?()[\]{}|]/g,Tr=/^\[object .+?Constructor\]$/,Cr=Function.prototype,Ar=Object.prototype,Lr=Cr.toString,zr=Ar.hasOwnProperty,Pr=RegExp("^"+Lr.call(zr).replace(_r,"\\$&").replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g,"$1.*?")+"$");function Or(n){if(!Pe(n)||vr(n))return!1;var e=kr(n)?Pr:Tr;return e.test(Er(n))}function Ir(n,e){return n==null?void 0:n[e]}function at(n,e){var t=Ir(n,e);return Or(t)?t:void 0}var Nr=function(){try{var n=at(Object,"defineProperty");return n({},"",{}),n}catch{}}();const zt=Nr;var Rr=9007199254740991,Mr=/^(?:0|[1-9]\d*)$/;function Dr(n,e){var t=typeof n;return e=e??Rr,!!e&&(t=="number"||t!="symbol"&&Mr.test(n))&&n>-1&&n%1==0&&n<e}function jr(n,e,t){e=="__proto__"&&zt?zt(n,e,{configurable:!0,enumerable:!0,value:t,writable:!0}):n[e]=t}function tn(n,e){return n===e||n!==n&&e!==e}var qr=Object.prototype,Hr=qr.hasOwnProperty;function Fr(n,e,t){var r=n[e];(!(Hr.call(n,e)&&tn(r,t))||t===void 0&&!(e in n))&&jr(n,e,t)}var Br=/\.|\[(?:[^[\]]*|(["'])(?:(?!\1)[^\\]|\\.)*?\1)\]/,Vr=/^\w*$/;function Ur(n,e){if(ot(n))return!1;var t=typeof n;return t=="number"||t=="symbol"||t=="boolean"||n==null||st(n)?!0:Vr.test(n)||!Br.test(n)||e!=null&&n in Object(e)}var Wr=at(Object,"create");const we=Wr;function Zr(){this.__data__=we?we(null):{},this.size=0}function Gr(n){var e=this.has(n)&&delete this.__data__[n];return this.size-=e?1:0,e}var Jr="__lodash_hash_undefined__",Xr=Object.prototype,Qr=Xr.hasOwnProperty;function Kr(n){var e=this.__data__;if(we){var t=e[n];return t===Jr?void 0:t}return Qr.call(e,n)?e[n]:void 0}var Yr=Object.prototype,ei=Yr.hasOwnProperty;function ti(n){var e=this.__data__;return we?e[n]!==void 0:ei.call(e,n)}var ni="__lodash_hash_undefined__";function ri(n,e){var t=this.__data__;return this.size+=this.has(n)?0:1,t[n]=we&&e===void 0?ni:e,this}function ee(n){var e=-1,t=n==null?0:n.length;for(this.clear();++e<t;){var r=n[e];this.set(r[0],r[1])}}ee.prototype.clear=Zr;ee.prototype.delete=Gr;ee.prototype.get=Kr;ee.prototype.has=ti;ee.prototype.set=ri;function ii(){this.__data__=[],this.size=0}function De(n,e){for(var t=n.length;t--;)if(tn(n[t][0],e))return t;return-1}var si=Array.prototype,oi=si.splice;function ai(n){var e=this.__data__,t=De(e,n);if(t<0)return!1;var r=e.length-1;return t==r?e.pop():oi.call(e,t,1),--this.size,!0}function li(n){var e=this.__data__,t=De(e,n);return t<0?void 0:e[t][1]}function ci(n){return De(this.__data__,n)>-1}function ui(n,e){var t=this.__data__,r=De(t,n);return r<0?(++this.size,t.push([n,e])):t[r][1]=e,this}function de(n){var e=-1,t=n==null?0:n.length;for(this.clear();++e<t;){var r=n[e];this.set(r[0],r[1])}}de.prototype.clear=ii;de.prototype.delete=ai;de.prototype.get=li;de.prototype.has=ci;de.prototype.set=ui;var di=at(it,"Map");const fi=di;function hi(){this.size=0,this.__data__={hash:new ee,map:new(fi||de),string:new ee}}function pi(n){var e=typeof n;return e=="string"||e=="number"||e=="symbol"||e=="boolean"?n!=="__proto__":n===null}function je(n,e){var t=n.__data__;return pi(e)?t[typeof e=="string"?"string":"hash"]:t.map}function gi(n){var e=je(this,n).delete(n);return this.size-=e?1:0,e}function mi(n){return je(this,n).get(n)}function bi(n){return je(this,n).has(n)}function yi(n,e){var t=je(this,n),r=t.size;return t.set(n,e),this.size+=t.size==r?0:1,this}function re(n){var e=-1,t=n==null?0:n.length;for(this.clear();++e<t;){var r=n[e];this.set(r[0],r[1])}}re.prototype.clear=hi;re.prototype.delete=gi;re.prototype.get=mi;re.prototype.has=bi;re.prototype.set=yi;var wi="Expected a function";function lt(n,e){if(typeof n!="function"||e!=null&&typeof e!="function")throw new TypeError(wi);var t=function(){var r=arguments,i=e?e.apply(this,r):r[0],s=t.cache;if(s.has(i))return s.get(i);var a=n.apply(this,r);return t.cache=s.set(i,a)||s,a};return t.cache=new(lt.Cache||re),t}lt.Cache=re;var ki=500;function xi(n){var e=lt(n,function(r){return t.size===ki&&t.clear(),r}),t=e.cache;return e}var vi=/[^.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|$))/g,$i=/\\(\\)?/g,Si=xi(function(n){var e=[];return n.charCodeAt(0)===46&&e.push(""),n.replace(vi,function(t,r,i,s){e.push(i?s.replace($i,"$1"):r||t)}),e});const Ei=Si;function ct(n){return n==null?"":en(n)}function ut(n,e){return ot(n)?n:Ur(n,e)?[n]:Ei(ct(n))}var _i=1/0;function dt(n){if(typeof n=="string"||st(n))return n;var e=n+"";return e=="0"&&1/n==-_i?"-0":e}function nn(n,e){e=ut(e,n);for(var t=0,r=e.length;n!=null&&t<r;)n=n[dt(e[t++])];return t&&t==r?n:void 0}function Be(n,e,t){var r=n==null?void 0:nn(n,e);return r===void 0?t:r}function Ti(n,e,t){var r=-1,i=n.length;e<0&&(e=-e>i?0:i+e),t=t>i?i:t,t<0&&(t+=i),i=e>t?0:t-e>>>0,e>>>=0;for(var s=Array(i);++r<i;)s[r]=n[r+e];return s}function rn(n){return function(e){return n==null?void 0:n[e]}}function Ci(n){var e=n==null?0:n.length;return e?n[e-1]:void 0}var Ai={"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"},Li=rn(Ai);const zi=Li;var sn=/[&<>"']/g,Pi=RegExp(sn.source);function H(n){return n=ct(n),n&&Pi.test(n)?n.replace(sn,zi):n}function Oi(n,e){return e.length<2?n:nn(n,Ti(e,0,-1))}function Ii(n,e){return e=ut(e,n),n=Oi(n,e),n==null||delete n[dt(Ci(e))]}function Ni(n,e,t,r){if(!Pe(n))return n;e=ut(e,n);for(var i=-1,s=e.length,a=s-1,l=n;l!=null&&++i<s;){var o=dt(e[i]),u=t;if(o==="__proto__"||o==="constructor"||o==="prototype")return n;if(i!=a){var c=l[o];u=r?r(c,o,l):void 0,u===void 0&&(u=Pe(c)?c:Dr(e[i+1])?[]:{})}Fr(l,o,u),l=l[o]}return n}function ft(n,e,t){return n==null?n:Ni(n,e,t)}var Ri={"&amp;":"&","&lt;":"<","&gt;":">","&quot;":'"',"&#39;":"'"},Mi=rn(Ri);const Di=Mi;var on=/&(?:amp|lt|gt|quot|#39);/g,ji=RegExp(on.source);function qi(n){return n=ct(n),n&&ji.test(n)?n.replace(on,Di):n}function Hi(n,e){return n==null?!0:Ii(n,e)}const an=F("story"),P={customScripts:[],customStyles:[],passages:[]};function ln(n){for(const r of["name","creator","ifid","options"])P[r]=n.getAttribute(r)??void 0;const e=parseInt(n.getAttribute("startnode")??"");isNaN(e)||(P.startNode=e),P.creatorVersion=n.getAttribute("creator-version")??void 0;const t=r=>[...r].map(i=>i.textContent??"");P.customScripts=t(n.querySelectorAll('[type="text/twine-javascript"]')),P.customStyles=t(n.querySelectorAll('[type="text/twine-css"]')),P.passages=[...n.querySelectorAll("tw-passagedata")].map(r=>{const i=parseInt(r.getAttribute("pid")??""),s=r.getAttribute("tags");return{id:isNaN(i)?void 0:i,name:r.getAttribute("name")??void 0,source:r.textContent??"",tags:s?s.split(" "):[]}})}function cn(){const n=pt();if(!n||!n.name)throw new Error("There is no starting passage for this story, or it has no name.");ie({trail:[n.name],"config.testing":typeof P.options=="string"&&P.options.indexOf("debug")!==-1||!1}),P.name&&(document.title=P.name)}function un(){an.log(`Running custom scripts (${P.customScripts.length})`);for(const n of P.customScripts)new Function(n).apply(window)}function dn(){an.log(`Adding custom styles (${P.customStyles.length})`);for(const n of P.customStyles){const e=document.createElement("style");e.innerHTML=n,document.head.appendChild(e)}}function fn(){return P.ifid}function ht(){return P.name}function Fi(){return P.passages}function pt(){return P.passages.find(n=>n.id===P.startNode)}function Se(n){return P.passages.find(e=>e.name===n)}function Bi(n){return P.passages.find(e=>e.id===n)}function hn(n){let e=[],t=!1;return async(...r)=>{t||(t=!0,Promise.resolve().then(()=>{try{n(e),e=[],t=!1}catch(i){window.setTimeout(()=>{throw i})}})),e.push(r)}}function ke(n,e,t=[]){const r=document.createElement(n);if(e)for(const i of Object.keys(e))e[i]!==void 0&&r.setAttribute(i,e[i]);for(const i of t)typeof i=="string"||typeof i=="number"?r.appendChild(document.createTextNode(i.toString())):r.appendChild(i);return r}function j(...n){return ke(...n).outerHTML}function Je(n){return Array.isArray(n)?n.every(Je):n===null?!0:typeof n=="object"?Object.getPrototypeOf(n)!==Object.prototype?!1:Object.values(n).every(Je):typeof n=="number"?isFinite(n)&&!isNaN(n):["boolean","string","undefined"].includes(typeof n)}const{log:Q,warn:Vi}=F("state");let te;const gt={},pn={},ce={};function mt(n,e){if(n[e])return;Object.defineProperty(n,e,{get(){return p(e)},set(r){$(e,r)},configurable:!0});const t=e.split(".");t.length>1&&(t.pop(),mt(n,t.join(".")))}function Ui(n,e){if(n[e])return;const t=e.split("."),r=t[t.length-1];for(let i=0;i<t.length-1;i++)n[t[i]]=n[t[i]]||{},n=n[t[i]];Object.defineProperty(n,r,{get(){return p(e)},set(){throw new Error("Chapbook lookup variables may only be read.")},configurable:!0})}function Wi(n,e){Hi(n,e)}function gn(){const n=fn(),e=ht();if(e===void 0)throw new Error("Cannot set up state: the story has no name");te=`chapbook-${e}-${n}`,qe("config.state.autosave",!0)}function bt(){function n(e,t){Object.keys(e).forEach(r=>{const i=t===""?r:`${t}.${r}`;if(typeof e[r]=="object"&&!Array.isArray(e[r]))n(e[r],i);else{const s=e[r];delete e[r],Wi(window,t),window.dispatchEvent(new CustomEvent("state-change",{detail:{name:i,value:p(i),previous:s}}))}})}n(ce,""),window.dispatchEvent(new CustomEvent("state-reset")),p("config.state.autosave")&&yt()}function $(n,e){const t=p(n);Je(e)||Vi(`Setting ${n} to ${JSON.stringify(e)} can't be saved permanently. This will work in the current session, but will not persist between sessions.`),ft(ce,n,e),mt(window,n),e!==t&&window.dispatchEvent(new CustomEvent("state-change",{detail:{previous:t,name:n,value:e}})),p("config.state.autosave")&&yt()}function qe(n,e){const t=p(n);Q(`Defaulting "${n}" to ${JSON.stringify(e)}`),ft(gt,n,e),mt(window,n),t==null&&window.dispatchEvent(new CustomEvent("state-change",{detail:{previous:t,name:n,value:e}}))}function ie(n){for(const e in n)qe(e,n[e])}function _(n,e){const t=p(n);Q(`Adding lookup variable ${n}`),ft(pn,n,e),Ui(window,n),t==null&&window.dispatchEvent(new CustomEvent("state-change",{detail:{previous:t,name:n,value:p(n)}}))}function p(n){const e=Be(pn,n);if(typeof e=="function")return e(p,$);const t=Be(ce,n),r=Be(gt,n);if(t==null)return r;if(typeof t=="object"&&t!==null&&!Array.isArray(t)&&typeof r=="object"&&r!==null&&!Array.isArray(r)){const i={},s=[...Object.keys(r),...Object.keys(t)];for(const a of s)Object.defineProperty(i,a,{get(){return p(n+"."+a)},set(l){$(n+"."+a,l)},configurable:!0,enumerable:!0});return i}return t}function xe(){return{...ce}}function Ee(n){bt();for(const e in n)$(e,n[e])}function mn(){try{return window.localStorage.setItem("chapbook-test","a"),window.localStorage.removeItem("chapbook-test"),!0}catch{return!1}}function yt(){Q("Saving to local storage: "+JSON.stringify(xe())),window.localStorage.setItem(te,JSON.stringify(xe())),Q("Save complete")}function bn(){return mn()&&window.localStorage.getItem(te)!==null}function yn(){Q("Restoring variables from local storage");const n=window.localStorage.getItem(te);if(!n)throw new Error(`No value is set in local storage at "${te}"`);Ee(JSON.parse(n)),Q("Restore complete")}function wn(n){n||Q("Purging variables from local storage");const e=window.localStorage.getItem(te);if(!e)throw new Error(`No value is set in local storage at "${te}"`);Ee(JSON.parse(e)),n||Q("Purge complete")}function ve(n){function e(t,r,i=[]){return Object.keys(t).reduce((s,a)=>{if(typeof t[a]=="object"&&t[a]&&!Array.isArray(t[a]))e(t[a],r?`${r}.${a}`:a,s);else{const l=r?`${r}.${a}`:a;s.includes(l)||s.push(l)}return s},i)}return n?e(gt,void 0,e(ce)).sort():e(ce).sort()}const Zi=Object.freeze(Object.defineProperty({__proto__:null,canRestoreFromStorage:bn,canSaveToStorage:mn,get:p,initState:gn,purgeFromStorage:wn,reset:bt,restoreFromObject:Ee,restoreFromStorage:yn,saveToObject:xe,saveToStorage:yt,set:$,setDefault:qe,setDefaults:ie,setLookup:_,varNames:ve},Symbol.toStringTag,{value:"Module"})),Gi=Object.freeze(Object.defineProperty({__proto__:null,addCustomStyles:dn,ifid:fn,initStory:cn,loadFromData:ln,name:ht,passageNamed:Se,passageWithId:Bi,passages:Fi,runCustomScripts:un,startPassage:pt},Symbol.toStringTag,{value:"Module"})),{log:kn}=F("actions");function xn(n){kn(`Going to passage "${n}"`);const e=Se(n);if(!e)throw new Error(`There is no passage with the name "${n}"`);document.activeElement instanceof HTMLElement&&document.activeElement.blur();const t=p("trail");if(!Array.isArray(t))throw new Error(`The trail variable has been set to a ${typeof t}, not an array.`);$("trail",[...t,e.name])}function vn(){kn("Restarting"),bt(),window.location.reload()}let X=[],Oe=!0;function Ji(){Oe&&(X=[],window.dispatchEvent(new CustomEvent("backstage-state-recorder-update")))}function Xi({detail:n}){if(!Oe)return;X.length===p("config.backstage.trail.maxLength")&&X.shift();const{name:e,value:t}=n;X.push({change:{name:e,value:t},state:xe()}),window.dispatchEvent(new CustomEvent("backstage-state-recorder-update"))}function Qi(){return[...X]}function Ki(n){if(!X[n])throw new Error(`There is no history at index ${n} to rewind to.`);Oe=!1,Ee(X[n].state),X.length=n+1,Oe=!0,window.dispatchEvent(new CustomEvent("backstage-state-recorder-update"))}function Yi(){qe("config.backstage.trail.maxLength",100),window.addEventListener("state-change",Xi),window.addEventListener("state-reset",Ji)}let U=[];function es(n){U.push({name:n,state:xe()}),$n(),window.dispatchEvent(new CustomEvent("backstage-state-snapshots-update"))}function ts(n){const e=U.find(t=>t.name===n);if(!e)throw new Error(`There is no snapshot named "${n}".`);Ee(e.state)}function ns(n){U=U.filter(({name:e})=>n!==e),$n(),window.dispatchEvent(new CustomEvent("backstage-state-snapshots-update"))}function rs(){try{U=JSON.parse(window.localStorage.getItem(`chapbookbackstage-snapshots-${p("config.state.saveKey")}`)),Array.isArray(U)||(U=[])}catch{U=[]}}function $n(){window.localStorage.setItem(`chapbookbackstage-snapshots-${p("config.state.saveKey")}`,JSON.stringify(U))}function Pt(){return U.map(({name:n})=>n)}function is(){rs()}function wt(n){for(const e in n)window.customElements.get(e)||window.customElements.define(e,n[e])}class z extends HTMLElement{defaultHtml(e){this.innerHTML.trim()===""&&(this.innerHTML=e)}delegate(e,t,r){this.addEventListener(e,i=>{if(!i.target)return;const s=i.target.closest(t);s&&r(i,s)})}query(e){const t=this.querySelector(e);if(!t)throw new Error(`Couldn't find element matching "${e}"`);return t}queryAll(e){return[...this.querySelectorAll(e)]}}class Sn extends z{constructor(){super(),this.addEventListener("click",e=>{e.target.closest("[data-toggle-collapsed]")&&(this.hasAttribute("collapsed")?this.removeAttribute("collapsed"):this.setAttribute("collapsed",""))})}connectedCallback(){this.innerHTML=`
 			<button data-toggle-collapsed></button>
 			<div class="content">
@@ -218,9 +218,7 @@ ${i}`),b(i)}function $e(n,e=!1){return Qo(Lo(n),An(),Pn(),e)}class Ko extends fe
 </script><style>
 :root{--font-monospace: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono", "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro", "Fira Mono", "Droid Sans Mono", "Courier New", monospace;--font-system: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif}*{box-sizing:border-box}body{margin:0;padding:0}code{font-family:var(--font-monospace)}img{max-width:100%;height:auto}input[type=text],select{padding:.25em}noscript{align-items:center;background:black;color:#fff;display:flex;height:100vh;font-family:var(--font-system);justify-content:center;width:100vw}pre{font-family:var(--font-monospace);white-space:pre-wrap}tw-storydata{display:none}body.backstage-visible #backdrop{max-width:67vw}backstage-sidebar{--backstage-grid: 10px;background:var(--color-gray-2);border-left:1px solid var(--color-gray-3);bottom:0;color:var(--color-gray-5);display:block;font-family:var(--font-system);font-size:13px;position:fixed;top:0;right:0;width:33vw}backstage-sidebar .content{overflow:auto;padding:var(--backstage-grid);height:100%;width:100%}backstage-sidebar[collapsed]{width:0}backstage-sidebar button[data-toggle-collapsed]{background:var(--color-gray-2);border-bottom:1px solid var(--color-gray-3);border-left:1px solid var(--color-gray-3);border-right:none;border-top:1px solid var(--color-gray-3);border-radius:60px 0 0 60px;color:var(--color-gray-5);font-size:20px;height:60px;min-width:30px;padding:0;position:absolute;top:50%;left:-30px;transform:translateY(-50%);width:30px}backstage-sidebar button[data-toggle-collapsed]:hover{background:var(--color-gray-1);cursor:pointer}backstage-sidebar button{background:var(--color-gray-1);border:1px solid var(--color-gray-3);border-radius:var(--backstage-grid);color:var(--color-gray-5);cursor:pointer;font-size:100%;min-width:40px;padding:calc(var(--backstage-grid) / 2)}backstage-sidebar button:disabled{color:var(--color-gray-3);cursor:not-allowed}backstage-sidebar button:not(:disabled):hover{background:white}backstage-sidebar details summary{cursor:pointer;font-size:110%;font-variant:small-caps;padding:calc(var(--backstage-grid) / 2) 0;text-transform:lowercase}backstage-sidebar input,backstage-sidebar textarea{background:var(--color-gray-1);border:1px solid var(--color-gray-3);color:var(--color-gray-5);font:100% var(--font-system);padding:calc(var(--backstage-grid) / 2)}backstage-sidebar table{max-width:100%;width:100%}backstage-history-table button{display:block;width:100%}backstage-history-table table{border-collapse:collapse;margin:var(--backstage-grid) 0;table-layout:fixed}backstage-history-table thead{height:1px;left:-10000px;overflow:hidden;position:absolute;top:auto;width:1px}backstage-history-table tr:not(:last-child){border-bottom:1px solid var(--oc-gray-8)}backstage-history-table td{text-overflow:ellipsis;overflow-wrap:break-word;padding:calc(var(--backstage-grid) / 2);vertical-align:top}backstage-history-table td:first-child{border-right:1px solid var(--oc-gray-8);width:45%}backstage-notes label{display:block;margin-top:var(--backstage-grid)}backstage-notes textarea{height:10em;margin:var(--backstage-grid) 0;width:100%}backstage-notes .actions{display:flex;gap:var(--backstage-grid)}backstage-notes .actions button{flex-grow:1}backstage-state-snapshots button[data-add-snapshot]{width:100%}backstage-state-snapshots .snapshot-button{display:flex;margin-bottom:var(--backstage-grid)}backstage-state-snapshots .snapshot-button [data-restore]{flex-grow:1;border-right-color:var(--oc-gray-4);border-bottom-right-radius:0;border-top-right-radius:0}backstage-state-snapshots .snapshot-button [data-remove]{border-left:none;border-bottom-left-radius:0;border-top-left-radius:0}backstage-state-variables .variables{display:flex;flex-direction:column;gap:calc(var(--backstage-grid) / 2);margin:calc(var(--backstage-grid)) 0}backstage-state-variables .variables label{align-items:center;display:grid;gap:var(--backstage-grid);grid-template-columns:15em 1fr}backstage-style-config textarea{height:10em;margin:var(--backstage-grid) 0;width:100%}backstage-style-group label{display:grid;gap:.25em;margin-bottom:.5em}backstage-style-theme p{margin:0 0 .5em}backstage-tab{border-left:1px solid var(--color-gray-3);cursor:pointer;flex-grow:1;padding:calc(var(--backstage-grid) / 2);text-align:center}backstage-tab:hover{background:white}backstage-tab:first-child{border-left:none;border-bottom-left-radius:var(--backstage-grid);border-top-left-radius:var(--backstage-grid)}backstage-tab:last-child{border-bottom-right-radius:var(--backstage-grid);border-top-right-radius:var(--backstage-grid)}backstage-tab[aria-selected=true]{background-color:#fff;cursor:default;font-weight:700}backstage-tab-panel{display:block;padding:calc(var(--backstage-grid) / 2) 0}backstage-tab-panel[hidden]{display:none}backstage-tabs{background:var(--color-gray-1);border:1px solid var(--color-gray-3);border-radius:var(--backstage-grid);display:flex}backstage-variable-input input{display:inline-block;width:100%}#backdrop{align-items:center;background-color:var(--backdrop-color);display:flex;justify-content:center;min-height:100vh}#page>header,#page>footer{display:flex;justify-content:space-between}#page>header[hidden],#page>footer[hidden]{border:none}#page>header .center,#page>footer .center{text-align:center}#page>header .right,#page>footer .right{text-align:right}#page>footer{background-color:var(--page-footer-background-color);border-top:var(--page-footer-border);color:var(--page-footer-color);font-family:var(--page-footer-font-family);font-size:var(--page-footer-font-size);font-style:var(--page-footer-font-style);font-variant:var(--page-footer-font-variant);font-weight:var(--page-footer-font-weight);text-decoration:var(--page-footer-text-decoration);text-decoration-color:var(--page-footer-text-decoration-color);text-transform:var(--page-footer-text-transform)}#page>footer .link{background-color:var(--page-footer-link-background-color);color:var(--page-footer-link-color);font-family:var(--page-footer-link-font-family);font-size:var(--page-footer-link-font-size);font-style:var(--page-footer-link-font-style);font-variant:var(--page-footer-link-font-variant);font-weight:var(--page-footer-link-font-weight);text-decoration:var(--page-footer-link-text-decoration);text-decoration-color:var(--page-footer-link-text-decoration-color);text-transform:var(--page-footer-link-text-transform)}#page>footer .link:hover{background-color:var(--page-footer-link-active-background-color);color:var(--page-footer-link-active-color);font-family:var(--page-footer-link-active-font-family);font-size:var(--page-footer-link-active-font-size);font-style:var(--page-footer-link-active-font-style);font-variant:var(--page-footer-link-active-font-variant);font-weight:var(--page-footer-link-active-font-weight);text-decoration:var(--page-footer-link-active-text-decoration);text-decoration-color:var( --page-footer-link-active-text-decoration-color );text-transform:var(--page-footer-link-active-text-transform)}#page>header{background-color:var(--page-header-background-color);border-bottom:var(--page-header-border);color:var(--page-header-color);font-family:var(--page-header-font-family);font-size:var(--page-header-font-size);font-style:var(--page-header-font-style);font-variant:var(--page-header-font-variant);font-weight:var(--page-header-font-weight);text-decoration:var(--page-header-text-decoration);text-decoration-color:var(--page-header-text-decoration-color);text-transform:var(--page-header-text-transform)}#page>header .link{background-color:var(--page-header-link-background-color);color:var(--page-header-link-color);font-family:var(--page-header-link-font-family);font-size:var(--page-header-link-font-size);font-style:var(--page-header-link-font-style);font-variant:var(--page-header-link-font-variant);font-weight:var(--page-header-link-font-weight);text-decoration:var(--page-header-link-text-decoration);text-decoration-color:var(--page-header-link-text-decoration-color);text-transform:var(--page-header-link-text-transform)}#page>header .link:hover{background-color:var(--page-header-link-active-background-color);color:var(--page-header-link-active-color);font-family:var(--page-header-link-active-font-family);font-size:var(--page-header-link-active-font-size);font-style:var(--page-header-link-active-font-style);font-variant:var(--page-header-link-active-font-variant);font-weight:var(--page-header-link-active-font-weight);text-decoration:var(--page-header-link-active-text-decoration);text-decoration-color:var( --page-header-link-active-text-decoration-color );text-transform:var(--page-header-link-active-text-transform)}#page{background-color:var(--page-background-color);border:var(--page-border);border-radius:3px;box-shadow:var(--page-box-shadow);color:var(--page-color);display:grid;font-family:var(--page-font-family);font-size:var(--page-font-size);font-style:var(--page-font-style);font-variant:var(--page-font-variant);font-weight:var(--page-font-weight);grid-template-areas:"header" "body" "footer";grid-template-rows:min-content 1fr min-content;line-height:150%;margin:1em;max-width:calc(100vw - 2em);min-height:calc(100vh - 2em);padding:2em 4em;position:relative;text-decoration:var(--page-text-decoration);text-transform:var(--page-text-transform);width:40em}#page hr{border:none}#page hr:after{content:"* \a0* \a0*";display:block;text-align:center}#page page-skip-indicator{position:absolute;bottom:0;right:0}#page .fork p{display:flex;flex-direction:column;width:100%}#page .fork p .link{display:block;flex-grow:1;text-align:center;padding:.5em}#page .fork p .link+.link{border-top:var(--page-fork-divider-size) var(--page-fork-divider-style) var(--page-fork-divider-color)}#page .link{background-color:var(--page-link-background-color);color:var(--page-link-color);cursor:pointer;font-family:var(--page-link-font-family);font-size:var(--page-link-font-size);font-style:var(--page-link-font-style);font-variant:var(--page-link-font-variant);font-weight:var(--page-link-font-weight);text-decoration:var(--page-link-text-decoration);text-decoration-color:var(--page-link-text-decoration-color);text-transform:var(--page-link-text-transform)}#page .link:hover{background-color:var(--page-link-active-background-color);color:var(--page-link-active-color);font-family:var(--page-link-font-family);font-size:var(--page-link-font-size);font-style:var(--page-link-font-style);font-variant:var(--page-link-font-variant);font-weight:var(--page-link-font-weight);text-decoration:var(--page-link-text-decoration);text-decoration-color:var(--page-link-text-decoration-color);text-transform:var(--page-link-text-transform)}#page .small-caps{font-variant:small-caps;text-transform:lowercase}#page>footer{grid-area:footer}#page>header{grid-area:header}#page>article{display:flex;flex-direction:column;flex-grow:1;grid-area:body;justify-content:var(--page-current-passage-justify-content)}#page>error-handler{grid-area:body;position:relative;z-index:2}@media screen and (max-width: 768px){#page{margin:0;width:100vw;max-width:100vw;min-height:100vh;padding:1em}}.fade-in{opacity:0;animation:fade-in 1s ease-out forwards}.fade-out{animation:fade-in 1s ease-out reverse forwards}@keyframes fade-in{0%{opacity:0}to{opacity:1}}error-handler{display:none}error-handler.active{background:var(--color-red-1);color:var(--color-red-5);display:block;font-family:var(--font-system);font-size:max(90%,16px);padding:.5em;border-left:4px solid var(--color-red-2);position:relative;margin:1em 0;overflow:auto}error-handler pre{font-size:90%}error-handler a{color:var(--color-red-4)}error-handler button{appearance:none;background:none;border:none;color:var(--color-red-4);cursor:pointer;padding:0}external-fonts{display:none}page-skip{display:block}page-skip-indicator{background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3e%09%3crect width='38' height='72' x='31' y='14' fill='%23fff' rx='4' /%3e%09%3ccircle cx='50' cy='50' r='28' fill='%23fff' /%3e%09%3crect%09%09width='30'%09%09height='64'%09%09x='35'%09%09y='18'%09%09fill='%23fff'%09%09stroke='%23000'%09%09stroke-width='2'%09%09rx='4'%09/%3e%09%3ccircle%09%09cx='50'%09%09cy='50'%09%09r='20'%09%09fill='%23fff'%09%09stroke='%23000'%09%09stroke-width='2'%09/%3e%09%3cpath%09%09stroke='%23000'%09%09stroke-linecap='round'%09%09stroke-width='2'%09%09d='M50 50V37'%09%3e%09%09%3canimateTransform%09%09%09attributeName='transform'%09%09%09begin='0s'%09%09%09dur='20s'%09%09%09from='0 50 50'%09%09%09repeatCount='indefinite'%09%09%09to='360 50 50'%09%09%09type='rotate'%09%09/%3e%09%3c/path%3e%09%3cpath%09%09stroke='%23000'%09%09stroke-linecap='round'%09%09stroke-width='2'%09%09d='M50 50h-8'%09%3e%09%09%3canimateTransform%09%09%09attributeName='transform'%09%09%09begin='0s'%09%09%09dur='120s'%09%09%09from='0 50 50'%09%09%09repeatCount='indefinite'%09%09%09to='360 50 50'%09%09%09type='rotate'%09%09/%3e%09%3c/path%3e%3c/svg%3e");background-size:contain;display:block;height:50px;opacity:0;pointer-events:none;transition:opacity .3s;width:50px}page-skip-indicator[active]{opacity:1}::view-transition-old(root),::view-transition-new(root){animation-duration:var(--page-transition-duration)}page-transition{display:block}:root{--oc-white: #ffffff;--oc-white-rgb: 255, 255, 255;--oc-black: #000000;--oc-black-rgb: 0, 0, 0;--oc-gray-0: #f8f9fa;--oc-gray-0-rgb: 248, 249, 250;--oc-gray-1: #f1f3f5;--oc-gray-1-rgb: 241, 243, 245;--oc-gray-2: #e9ecef;--oc-gray-2-rgb: 233, 236, 239;--oc-gray-3: #dee2e6;--oc-gray-3-rgb: 222, 226, 230;--oc-gray-4: #ced4da;--oc-gray-4-rgb: 206, 212, 218;--oc-gray-5: #adb5bd;--oc-gray-5-rgb: 173, 181, 189;--oc-gray-6: #868e96;--oc-gray-6-rgb: 134, 142, 150;--oc-gray-7: #495057;--oc-gray-7-rgb: 73, 80, 87;--oc-gray-8: #343a40;--oc-gray-8-rgb: 52, 58, 64;--oc-gray-9: #212529;--oc-gray-9-rgb: 33, 37, 41;--oc-red-0: #fff5f5;--oc-red-0-rgb: 255, 245, 245;--oc-red-1: #ffe3e3;--oc-red-1-rgb: 255, 227, 227;--oc-red-2: #ffc9c9;--oc-red-2-rgb: 255, 201, 201;--oc-red-3: #ffa8a8;--oc-red-3-rgb: 255, 168, 168;--oc-red-4: #ff8787;--oc-red-4-rgb: 255, 135, 135;--oc-red-5: #ff6b6b;--oc-red-5-rgb: 255, 107, 107;--oc-red-6: #fa5252;--oc-red-6-rgb: 250, 82, 82;--oc-red-7: #f03e3e;--oc-red-7-rgb: 240, 62, 62;--oc-red-8: #e03131;--oc-red-8-rgb: 224, 49, 49;--oc-red-9: #c92a2a;--oc-red-9-rgb: 201, 42, 42;--oc-pink-0: #fff0f6;--oc-pink-0-rgb: 255, 240, 246;--oc-pink-1: #ffdeeb;--oc-pink-1-rgb: 255, 222, 235;--oc-pink-2: #fcc2d7;--oc-pink-2-rgb: 252, 194, 215;--oc-pink-3: #faa2c1;--oc-pink-3-rgb: 250, 162, 193;--oc-pink-4: #f783ac;--oc-pink-4-rgb: 247, 131, 172;--oc-pink-5: #f06595;--oc-pink-5-rgb: 240, 101, 149;--oc-pink-6: #e64980;--oc-pink-6-rgb: 230, 73, 128;--oc-pink-7: #d6336c;--oc-pink-7-rgb: 214, 51, 108;--oc-pink-8: #c2255c;--oc-pink-8-rgb: 194, 37, 92;--oc-pink-9: #a61e4d;--oc-pink-9-rgb: 166, 30, 77;--oc-grape-0: #f8f0fc;--oc-grape-0-rgb: 248, 240, 252;--oc-grape-1: #f3d9fa;--oc-grape-1-rgb: 243, 217, 250;--oc-grape-2: #eebefa;--oc-grape-2-rgb: 238, 190, 250;--oc-grape-3: #e599f7;--oc-grape-3-rgb: 229, 153, 247;--oc-grape-4: #da77f2;--oc-grape-4-rgb: 218, 119, 242;--oc-grape-5: #cc5de8;--oc-grape-5-rgb: 204, 93, 232;--oc-grape-6: #be4bdb;--oc-grape-6-rgb: 190, 75, 219;--oc-grape-7: #ae3ec9;--oc-grape-7-rgb: 174, 62, 201;--oc-grape-8: #9c36b5;--oc-grape-8-rgb: 156, 54, 181;--oc-grape-9: #862e9c;--oc-grape-9-rgb: 134, 46, 156;--oc-violet-0: #f3f0ff;--oc-violet-0-rgb: 243, 240, 255;--oc-violet-1: #e5dbff;--oc-violet-1-rgb: 229, 219, 255;--oc-violet-2: #d0bfff;--oc-violet-2-rgb: 208, 191, 255;--oc-violet-3: #b197fc;--oc-violet-3-rgb: 177, 151, 252;--oc-violet-4: #9775fa;--oc-violet-4-rgb: 151, 117, 250;--oc-violet-5: #845ef7;--oc-violet-5-rgb: 132, 94, 247;--oc-violet-6: #7950f2;--oc-violet-6-rgb: 121, 80, 242;--oc-violet-7: #7048e8;--oc-violet-7-rgb: 112, 72, 232;--oc-violet-8: #6741d9;--oc-violet-8-rgb: 103, 65, 217;--oc-violet-9: #5f3dc4;--oc-violet-9-rgb: 95, 61, 196;--oc-indigo-0: #edf2ff;--oc-indigo-0-rgb: 237, 242, 255;--oc-indigo-1: #dbe4ff;--oc-indigo-1-rgb: 219, 228, 255;--oc-indigo-2: #bac8ff;--oc-indigo-2-rgb: 186, 200, 255;--oc-indigo-3: #91a7ff;--oc-indigo-3-rgb: 145, 167, 255;--oc-indigo-4: #748ffc;--oc-indigo-4-rgb: 116, 143, 252;--oc-indigo-5: #5c7cfa;--oc-indigo-5-rgb: 92, 124, 250;--oc-indigo-6: #4c6ef5;--oc-indigo-6-rgb: 76, 110, 245;--oc-indigo-7: #4263eb;--oc-indigo-7-rgb: 66, 99, 235;--oc-indigo-8: #3b5bdb;--oc-indigo-8-rgb: 59, 91, 219;--oc-indigo-9: #364fc7;--oc-indigo-9-rgb: 54, 79, 199;--oc-blue-0: #e7f5ff;--oc-blue-0-rgb: 231, 245, 255;--oc-blue-1: #d0ebff;--oc-blue-1-rgb: 208, 235, 255;--oc-blue-2: #a5d8ff;--oc-blue-2-rgb: 165, 216, 255;--oc-blue-3: #74c0fc;--oc-blue-3-rgb: 116, 192, 252;--oc-blue-4: #4dabf7;--oc-blue-4-rgb: 77, 171, 247;--oc-blue-5: #339af0;--oc-blue-5-rgb: 51, 154, 240;--oc-blue-6: #228be6;--oc-blue-6-rgb: 34, 139, 230;--oc-blue-7: #1c7ed6;--oc-blue-7-rgb: 28, 126, 214;--oc-blue-8: #1971c2;--oc-blue-8-rgb: 25, 113, 194;--oc-blue-9: #1864ab;--oc-blue-9-rgb: 24, 100, 171;--oc-cyan-0: #e3fafc;--oc-cyan-0-rgb: 227, 250, 252;--oc-cyan-1: #c5f6fa;--oc-cyan-1-rgb: 197, 246, 250;--oc-cyan-2: #99e9f2;--oc-cyan-2-rgb: 153, 233, 242;--oc-cyan-3: #66d9e8;--oc-cyan-3-rgb: 102, 217, 232;--oc-cyan-4: #3bc9db;--oc-cyan-4-rgb: 59, 201, 219;--oc-cyan-5: #22b8cf;--oc-cyan-5-rgb: 34, 184, 207;--oc-cyan-6: #15aabf;--oc-cyan-6-rgb: 21, 170, 191;--oc-cyan-7: #1098ad;--oc-cyan-7-rgb: 16, 152, 173;--oc-cyan-8: #0c8599;--oc-cyan-8-rgb: 12, 133, 153;--oc-cyan-9: #0b7285;--oc-cyan-9-rgb: 11, 114, 133;--oc-teal-0: #e6fcf5;--oc-teal-0-rgb: 230, 252, 245;--oc-teal-1: #c3fae8;--oc-teal-1-rgb: 195, 250, 232;--oc-teal-2: #96f2d7;--oc-teal-2-rgb: 150, 242, 215;--oc-teal-3: #63e6be;--oc-teal-3-rgb: 99, 230, 190;--oc-teal-4: #38d9a9;--oc-teal-4-rgb: 56, 217, 169;--oc-teal-5: #20c997;--oc-teal-5-rgb: 32, 201, 151;--oc-teal-6: #12b886;--oc-teal-6-rgb: 18, 184, 134;--oc-teal-7: #0ca678;--oc-teal-7-rgb: 12, 166, 120;--oc-teal-8: #099268;--oc-teal-8-rgb: 9, 146, 104;--oc-teal-9: #087f5b;--oc-teal-9-rgb: 8, 127, 91;--oc-green-0: #ebfbee;--oc-green-0-rgb: 235, 251, 238;--oc-green-1: #d3f9d8;--oc-green-1-rgb: 211, 249, 216;--oc-green-2: #b2f2bb;--oc-green-2-rgb: 178, 242, 187;--oc-green-3: #8ce99a;--oc-green-3-rgb: 140, 233, 154;--oc-green-4: #69db7c;--oc-green-4-rgb: 105, 219, 124;--oc-green-5: #51cf66;--oc-green-5-rgb: 81, 207, 102;--oc-green-6: #40c057;--oc-green-6-rgb: 64, 192, 87;--oc-green-7: #37b24d;--oc-green-7-rgb: 55, 178, 77;--oc-green-8: #2f9e44;--oc-green-8-rgb: 47, 158, 68;--oc-green-9: #2b8a3e;--oc-green-9-rgb: 43, 138, 62;--oc-lime-0: #f4fce3;--oc-lime-0-rgb: 244, 252, 227;--oc-lime-1: #e9fac8;--oc-lime-1-rgb: 233, 250, 200;--oc-lime-2: #d8f5a2;--oc-lime-2-rgb: 216, 245, 162;--oc-lime-3: #c0eb75;--oc-lime-3-rgb: 192, 235, 117;--oc-lime-4: #a9e34b;--oc-lime-4-rgb: 169, 227, 75;--oc-lime-5: #94d82d;--oc-lime-5-rgb: 148, 216, 45;--oc-lime-6: #82c91e;--oc-lime-6-rgb: 130, 201, 30;--oc-lime-7: #74b816;--oc-lime-7-rgb: 116, 184, 22;--oc-lime-8: #66a80f;--oc-lime-8-rgb: 102, 168, 15;--oc-lime-9: #5c940d;--oc-lime-9-rgb: 92, 148, 13;--oc-yellow-0: #fff9db;--oc-yellow-0-rgb: 255, 249, 219;--oc-yellow-1: #fff3bf;--oc-yellow-1-rgb: 255, 243, 191;--oc-yellow-2: #ffec99;--oc-yellow-2-rgb: 255, 236, 153;--oc-yellow-3: #ffe066;--oc-yellow-3-rgb: 255, 224, 102;--oc-yellow-4: #ffd43b;--oc-yellow-4-rgb: 255, 212, 59;--oc-yellow-5: #fcc419;--oc-yellow-5-rgb: 252, 196, 25;--oc-yellow-6: #fab005;--oc-yellow-6-rgb: 250, 176, 5;--oc-yellow-7: #f59f00;--oc-yellow-7-rgb: 245, 159, 0;--oc-yellow-8: #f08c00;--oc-yellow-8-rgb: 240, 140, 0;--oc-yellow-9: #e67700;--oc-yellow-9-rgb: 230, 119, 0;--oc-orange-0: #fff4e6;--oc-orange-0-rgb: 255, 244, 230;--oc-orange-1: #ffe8cc;--oc-orange-1-rgb: 255, 232, 204;--oc-orange-2: #ffd8a8;--oc-orange-2-rgb: 255, 216, 168;--oc-orange-3: #ffc078;--oc-orange-3-rgb: 255, 192, 120;--oc-orange-4: #ffa94d;--oc-orange-4-rgb: 255, 169, 77;--oc-orange-5: #ff922b;--oc-orange-5-rgb: 255, 146, 43;--oc-orange-6: #fd7e14;--oc-orange-6-rgb: 253, 126, 20;--oc-orange-7: #f76707;--oc-orange-7-rgb: 247, 103, 7;--oc-orange-8: #e8590c;--oc-orange-8-rgb: 232, 89, 12;--oc-orange-9: #d9480f;--oc-orange-9-rgb: 217, 72, 15}/*! reasonable colors v0.4.0 | MIT License | https://github.com/matthewhowell/reasonable-colors */:root{--color-gray-1: #f6f6f6;--color-gray-2: #e2e2e2;--color-gray-3: #8b8b8b;--color-gray-4: #6f6f6f;--color-gray-5: #3e3e3e;--color-gray-6: #222222;--color-rose-1: #fff7f9;--color-rose-2: #ffdce5;--color-rose-3: #ff3b8d;--color-rose-4: #db0072;--color-rose-5: #800040;--color-rose-6: #4c0023;--color-raspberry-1: #fff8f8;--color-raspberry-2: #ffdddf;--color-raspberry-3: #ff426c;--color-raspberry-4: #de0051;--color-raspberry-5: #82002c;--color-raspberry-6: #510018;--color-red-1: #fff8f6;--color-red-2: #ffddd8;--color-red-3: #ff4647;--color-red-4: #e0002b;--color-red-5: #830014;--color-red-6: #530003;--color-orange-1: #fff8f5;--color-orange-2: #ffded1;--color-orange-3: #fd4d00;--color-orange-4: #cd3c00;--color-orange-5: #752100;--color-orange-6: #401600;--color-cinnamon-1: #fff8f3;--color-cinnamon-2: #ffdfc6;--color-cinnamon-3: #d57300;--color-cinnamon-4: #ac5c00;--color-cinnamon-5: #633300;--color-cinnamon-6: #371d00;--color-amber-1: #fff8ef;--color-amber-2: #ffe0b2;--color-amber-3: #b98300;--color-amber-4: #926700;--color-amber-5: #523800;--color-amber-6: #302100;--color-yellow-1: #fff9e5;--color-yellow-2: #ffe53e;--color-yellow-3: #9c8b00;--color-yellow-4: #7d6f00;--color-yellow-5: #463d00;--color-yellow-6: #292300;--color-lime-1: #f7ffac;--color-lime-2: #d5f200;--color-lime-3: #819300;--color-lime-4: #677600;--color-lime-5: #394100;--color-lime-6: #222600;--color-chartreuse-1: #e5ffc3;--color-chartreuse-2: #98fb00;--color-chartreuse-3: #5c9b00;--color-chartreuse-4: #497c00;--color-chartreuse-5: #264500;--color-chartreuse-6: #182600;--color-green-1: #e0ffd9;--color-green-2: #72ff6c;--color-green-3: #00a21f;--color-green-4: #008217;--color-green-5: #004908;--color-green-6: #062800;--color-emerald-1: #dcffe6;--color-emerald-2: #5dffa2;--color-emerald-3: #00a05a;--color-emerald-4: #008147;--color-emerald-5: #004825;--color-emerald-6: #002812;--color-aquamarine-1: #daffef;--color-aquamarine-2: #42ffc6;--color-aquamarine-3: #009f78;--color-aquamarine-4: #007f5f;--color-aquamarine-5: #004734;--color-aquamarine-6: #00281b;--color-teal-1: #d7fff7;--color-teal-2: #00ffe4;--color-teal-3: #009e8c;--color-teal-4: #007c6e;--color-teal-5: #00443c;--color-teal-6: #002722;--color-cyan-1: #c4fffe;--color-cyan-2: #00fafb;--color-cyan-3: #00999a;--color-cyan-4: #007a7b;--color-cyan-5: #004344;--color-cyan-6: #002525;--color-powder-1: #dafaff;--color-powder-2: #8df0ff;--color-powder-3: #0098a9;--color-powder-4: #007987;--color-powder-5: #004048;--color-powder-6: #002227;--color-sky-1: #e3f7ff;--color-sky-2: #aee9ff;--color-sky-3: #0094b4;--color-sky-4: #007590;--color-sky-5: #00404f;--color-sky-6: #001f28;--color-cerulean-1: #e8f6ff;--color-cerulean-2: #b9e3ff;--color-cerulean-3: #0092c5;--color-cerulean-4: #00749d;--color-cerulean-5: #003c54;--color-cerulean-6: #001d2a;--color-azure-1: #e8f2ff;--color-azure-2: #c6e0ff;--color-azure-3: #008fdb;--color-azure-4: #0071af;--color-azure-5: #003b5e;--color-azure-6: #001c30;--color-blue-1: #f0f4ff;--color-blue-2: #d4e0ff;--color-blue-3: #0089fc;--color-blue-4: #006dca;--color-blue-5: #00386d;--color-blue-6: #001a39;--color-indigo-1: #f3f3ff;--color-indigo-2: #deddff;--color-indigo-3: #657eff;--color-indigo-4: #0061fc;--color-indigo-5: #00328a;--color-indigo-6: #001649;--color-violet-1: #f7f1ff;--color-violet-2: #e8daff;--color-violet-3: #9b70ff;--color-violet-4: #794aff;--color-violet-5: #2d0fbf;--color-violet-6: #0b0074;--color-purple-1: #fdf4ff;--color-purple-2: #f7d9ff;--color-purple-3: #d150ff;--color-purple-4: #b01fe3;--color-purple-5: #660087;--color-purple-6: #3a004f;--color-magenta-1: #fff3fc;--color-magenta-2: #ffd7f6;--color-magenta-3: #f911e0;--color-magenta-4: #ca00b6;--color-magenta-5: #740068;--color-magenta-6: #44003c;--color-pink-1: #fff7fb;--color-pink-2: #ffdcec;--color-pink-3: #ff2fb2;--color-pink-4: #d2008f;--color-pink-5: #790051;--color-pink-6: #4b0030}warning-list{background:var(--color-yellow-1);border-left:4px solid var(--color-yellow-2);color:var(--color-yellow-4);display:block;font-family:var(--font-system);padding:.5em}warning-list[hidden]{display:none}warning-list ul{list-style-type:none;margin:0;padding-left:0}inline-button{cursor:pointer}
 
-</style><!-- UCF THEME (site-side): black & gold version of the Rosie theme.
-     Lives outside the Twine stylesheet; re-add this block if the story is re-published from Twine. -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;600&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap">
+</style><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;600&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap">
 <style id="ucf-theme">
 :root {
   --ucf-black: #000000;
@@ -246,20 +244,6 @@ body, #backdrop {
   font-family: 'Courier Prime', 'Courier New', monospace !important;
   font-size: 17px !important;
   line-height: 1.65 !important;
-}
-
-/* Department band across the top of every page */
-#page article::before {
-  content: "\2605  UCF \00B7  Department of Writing & Rhetoric  \2605";
-  display: block;
-  margin: 0 0 2em;
-  padding: 0.45em 1em;
-  background: var(--ucf-black);
-  color: var(--ucf-gold);
-  font-family: 'Bebas Neue', Impact, sans-serif;
-  font-size: 1.05em;
-  letter-spacing: 3px;
-  text-align: center;
 }
 
 /* Links: gold underline, gold highlight on hover (gold text on cream is unreadable) */
@@ -292,10 +276,14 @@ body, #backdrop {
   padding-bottom: 0.1em;
 }
 
+/* Quotes sit at the bottom of each passage */
 .epigraph {
   font-family: 'Courier Prime', 'Courier New', monospace !important;
   color: var(--ucf-steel) !important;
-  font-size: 0.78em !important;
+  font-size: 0.7em !important;
+  margin: 2.5em 0 0 !important;
+  padding-top: 0.8em;
+  border-top: 1px solid rgba(0,0,0,0.15);
 }
 
 .poster {
@@ -331,8 +319,10 @@ body, #backdrop {
 .page-num {
   font-family: 'Courier Prime', 'Courier New', monospace !important;
   color: var(--ucf-steel) !important;
-  text-transform: uppercase;
+  text-align: center;
+  font-size: 0.75em;
   letter-spacing: 2px;
+  margin-top: 1.5em;
 }
 
 #page footer {
@@ -348,8 +338,357 @@ body, #backdrop {
 
 /* The page colors are fixed by this theme, so Chapbook's light/dark toggle would do nothing */
 theme-switcher { display: none !important; }
+
+/* Quote pinned at the bottom of the page, just above the footer line */
+#page > article > div:not(.quote-slot):not(.value-header) {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.quote-slot {
+  margin-top: 2em;
+}
+.quote-slot .epigraph {
+  display: block;
+  margin: 0 0 1.2em !important;
+}
+
+/* Page number sits in the middle of the footer row */
+#page footer { align-items: center; }
+#page footer .center .page-num {
+  margin: 0;
+  font-size: 0.8em;
+}
+
+/* Value header: centered label with the value statement under it */
+.value-header {
+  text-align: center;
+  margin: 0 0 1.5em;
+  padding-bottom: 1em;
+  border-bottom: 1px solid rgba(0,0,0,0.15);
+}
+.value-header .vh-label {
+  font-family: 'Oswald', 'Arial Narrow', sans-serif;
+  font-weight: 600;
+  font-size: 1em;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--ucf-ink);
+}
+.value-header .vh-statement {
+  font-family: 'Courier Prime', 'Courier New', monospace;
+  font-style: italic;
+  font-size: 0.95em;
+  line-height: 1.4;
+  color: var(--ucf-steel);
+  margin-top: 0.3em;
+}
+
+/* Value 3: the message the student's choice produces, and the places it can appear */
+.msg-card {
+  background: #ffffff;
+  border: 2px solid var(--ucf-black);
+  border-left: 6px solid var(--ucf-gold);
+  padding: 0.7em 1em;
+  margin: 1em 0 0.4em;
+}
+.msg-card .msg-subject {
+  font-family: 'Oswald', 'Arial Narrow', sans-serif;
+  font-weight: 600;
+  font-size: 0.85em;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.3em;
+}
+.msg-card .msg-body { font-size: 0.85em; line-height: 1.5; }
+.msg-caption {
+  font-style: italic;
+  font-size: 0.8em;
+  color: var(--ucf-steel);
+  margin: 0.5em 0 1.3em;
+}
+.msg-goal {
+  font-family: 'Oswald', 'Arial Narrow', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.7em;
+  color: var(--ucf-steel);
+  margin-bottom: 0.6em;
+}
+
+/* Text message on a phone */
+.phone {
+  width: min(270px, 100%);
+  margin: 1em auto;
+  border: 6px solid #111111;
+  border-radius: 30px;
+  background: #ffffff;
+  overflow: hidden;
+  box-shadow: 5px 5px 0 var(--ucf-gold);
+}
+.phone .phone-notch {
+  width: 70px;
+  height: 10px;
+  background: #111111;
+  border-radius: 0 0 8px 8px;
+  margin: 0 auto;
+}
+.phone .phone-head {
+  background: #f1f1f1;
+  text-align: center;
+  font-family: 'Oswald', 'Arial Narrow', sans-serif;
+  font-size: 0.75em;
+  letter-spacing: 1px;
+  padding: 0.45em 0;
+  border-bottom: 1px solid rgba(0,0,0,0.12);
+}
+.phone .phone-screen { padding: 0.9em 0.7em; min-height: 120px; }
+.phone .bubble {
+  background: var(--ucf-gold);
+  color: var(--ucf-black);
+  border-radius: 16px 16px 4px 16px;
+  padding: 0.6em 0.8em;
+  margin-left: auto;
+  max-width: 92%;
+  font-size: 0.75em;
+  line-height: 1.4;
+}
+.phone .phone-delivered {
+  text-align: right;
+  font-size: 0.6em;
+  color: var(--ucf-steel);
+  margin-top: 0.3em;
+}
+
+/* Email in a window */
+.email-window {
+  background: #ffffff;
+  border: 2px solid var(--ucf-black);
+  margin: 1em 0;
+  font-size: 0.85em;
+  box-shadow: 5px 5px 0 var(--ucf-gold);
+}
+.email-window .email-bar {
+  background: var(--ucf-black);
+  color: var(--ucf-gold);
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Oswald', 'Arial Narrow', sans-serif;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-size: 0.8em;
+  padding: 0.35em 0.7em;
+}
+.email-window .email-row {
+  padding: 0.4em 0.8em;
+  border-bottom: 1px solid rgba(0,0,0,0.12);
+}
+.email-window .email-body { padding: 0.8em; line-height: 1.5; }
+
+/* Flyer pinned to a board */
+.flyer {
+  position: relative;
+  background: #ffffff;
+  border: 2px solid var(--ucf-black);
+  box-shadow: 5px 5px 0 var(--ucf-gold);
+  padding: 1.3em 1.2em 1em;
+  margin: 1.8em auto 1.2em;
+  max-width: 92%;
+  transform: rotate(-1deg);
+}
+.flyer::before {
+  content: "";
+  position: absolute;
+  top: -13px;
+  left: 50%;
+  width: 80px;
+  height: 22px;
+  margin-left: -40px;
+  background: rgba(255,201,4,0.75);
+  transform: rotate(2deg);
+}
+.flyer .flyer-head {
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  font-size: 2em;
+  line-height: 1.05;
+  letter-spacing: 1px;
+  border-bottom: 4px solid var(--ucf-gold);
+  padding-bottom: 0.2em;
+  margin-bottom: 0.5em;
+}
+.flyer .flyer-body { font-size: 0.8em; line-height: 1.45; }
+
+/* Value 4: a sample poster whose parts can be taken away one at a time */
+.pm {
+  width: min(320px, 100%);
+  margin: 1.3em auto;
+  border: 3px solid var(--ucf-black);
+  background: var(--ucf-gold);
+  box-shadow: 5px 5px 0 var(--ucf-black);
+}
+.pm .pm-picture {
+  background: var(--ucf-black);
+  font-size: 4.5em;
+  line-height: 1.2;
+  text-align: center;
+  padding: 0.15em 0;
+}
+.pm .pm-words { padding: 0.5em 0.6em 0.8em; }
+.pm .pm-title {
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  font-size: 2.4em;
+  line-height: 1;
+  letter-spacing: 2px;
+  text-align: center;
+  color: var(--ucf-black);
+}
+.pm .pm-sub {
+  font-family: 'Oswald', 'Arial Narrow', sans-serif;
+  font-size: 0.85em;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--ucf-black);
+  margin-top: 0.3em;
+}
+.pm.no-picture .pm-picture { visibility: hidden; }
+.pm.no-words .pm-words { visibility: hidden; }
+.pm.no-color { filter: grayscale(1); }
+.pm.no-layout { padding: 0.7em 0.9em; line-height: 1.35; }
+.pm.no-layout .pm-picture {
+  display: inline;
+  background: none;
+  font-size: 1em;
+  padding: 0;
+}
+.pm.no-layout .pm-words { display: inline; padding: 0; margin-left: 0.4em; }
+.pm.no-layout .pm-title,
+.pm.no-layout .pm-sub {
+  display: inline;
+  font-family: 'Courier Prime', 'Courier New', monospace;
+  font-size: 0.85em;
+  letter-spacing: 0;
+  text-transform: none;
+  text-align: left;
+  margin: 0;
+}
+.pm.no-layout .pm-sub { margin-left: 0.5em; }
+
+/* Value 4: 8-bit sketch of the shop sign */
+.pixel-sign { text-align: center; margin: 1em 0 0.5em; }
+.pixel-sign svg { width: 150px; height: auto; image-rendering: pixelated; }
+.pixel-sign .msg-caption { margin: 0.4em 0 0; }
+
+/* Value 5: the professors' slide, shown on a screen and filled in with the student's examples */
+.slide-frame { width: min(100%, 470px); margin: 1.4em auto; }
+.slide2 {
+  background: #ffffff;
+  border: 9px solid #111111;
+  border-radius: 8px;
+  padding: 0.8em 1em 1em;
+  box-shadow: 5px 5px 0 var(--ucf-gold);
+}
+.slide2 .s2-title {
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  font-size: 1.7em;
+  letter-spacing: 1.5px;
+  line-height: 1.05;
+  border-bottom: 4px solid var(--ucf-gold);
+  padding-bottom: 0.15em;
+  margin-bottom: 0.7em;
+}
+.slide2 .s2-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.6em;
+}
+.slide2 .s2-card {
+  text-align: center;
+  background: var(--ucf-cream);
+  border: 2px solid var(--ucf-black);
+  padding: 0.6em 0.4em 0.7em;
+}
+.slide2 .s2-icon { font-size: 2.1em; line-height: 1.1; }
+.slide2 .s2-label {
+  font-family: 'Oswald', 'Arial Narrow', sans-serif;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-size: 0.62em;
+  color: var(--ucf-steel);
+  margin-top: 0.25em;
+}
+.slide2 .s2-text {
+  font-size: 0.72em;
+  line-height: 1.3;
+  margin-top: 0.35em;
+  overflow-wrap: anywhere;
+}
+.slide-stand {
+  width: 34%;
+  height: 12px;
+  margin: 0 auto;
+  background: #111111;
+  border-radius: 0 0 8px 8px;
+}
+@media (max-width: 460px) {
+  .slide2 .s2-grid { grid-template-columns: 1fr; }
+}
+
+/* The finished poster on the Ending page */
+.final-poster {
+  background: #ffffff;
+  border: 3px solid var(--ucf-black);
+  box-shadow: 6px 6px 0 var(--ucf-gold);
+  margin: 0.4em 0 1.4em;
+  padding: 1.5em 1.5em 1.2em;
+}
+.final-poster .fp-name {
+  font-family: 'Bebas Neue', Impact, sans-serif;
+  font-size: 2.9em;
+  line-height: 1;
+  letter-spacing: 2px;
+  text-align: center;
+  border-bottom: 5px solid var(--ucf-gold);
+  padding-bottom: 0.15em;
+  margin-bottom: 0.9em;
+  overflow-wrap: anywhere;
+}
+.final-poster .fp-section {
+  font-family: 'Oswald', 'Arial Narrow', sans-serif;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-size: 0.8em;
+  text-align: center;
+  color: var(--ucf-steel);
+}
+.final-poster .fp-value {
+  font-style: italic;
+  font-size: 1.2em;
+  line-height: 1.4;
+  text-align: center;
+  margin: 0.4em 0 1.3em;
+  overflow-wrap: anywhere;
+}
+.final-poster .fp-items {
+  border-top: 2px solid var(--ucf-black);
+  padding-top: 0.9em;
+}
+.final-poster .fp-item { margin-bottom: 0.9em; }
+.final-poster .fp-label {
+  font-family: 'Oswald', 'Arial Narrow', sans-serif;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-size: 0.62em;
+  color: var(--ucf-steel);
+}
+.final-poster .fp-text {
+  font-size: 0.9em;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
 </style>
-</head><body><state-css-variables><state-dark-theme-css-overrides><div id="backdrop"><page-skip><page-transition><div id="page" aria-live="polite"><header hidden></header><article></article><warning-list></warning-list><footer hidden></footer><error-handler></error-handler><page-skip-indicator></page-skip-indicator></div></page-transition></page-skip></div></state-dark-theme-css-overrides></state-css-variables><external-fonts></external-fonts><noscript>This requires JavaScript.</noscript></body><tw-storydata name="DWR Writing Values Tool" startnode="1" creator="Twine" creator-version="2.10.0" format="Chapbook" format-version="2.3.1" ifid="8F3C2E1A-4B6D-4A9E-9C2F-1D5E7A9B3C4D" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">body {
+</head><body><state-css-variables><state-dark-theme-css-overrides><div id="backdrop"><page-skip><page-transition><div id="page" aria-live="polite"><header hidden></header><article></article><warning-list></warning-list><footer hidden></footer><error-handler></error-handler><page-skip-indicator></page-skip-indicator></div></page-transition></page-skip></div></state-dark-theme-css-overrides></state-css-variables><external-fonts></external-fonts><noscript>This requires JavaScript.</noscript></body><tw-storydata name="First Year Composition Values" startnode="1" creator="Twine" creator-version="2.10.0" format="Chapbook" format-version="2.3.1" ifid="8F3C2E1A-4B6D-4A9E-9C2F-1D5E7A9B3C4D" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">body {
   font-family: Georgia, 'Times New Roman', serif;
   line-height: 1.5;
 }
@@ -371,6 +710,12 @@ theme-switcher { display: none !important; }
   margin-bottom: 0.5em;
 }
 
+.hub-title {
+  font-size: 1.4em;
+  font-weight: bold;
+  margin-bottom: 0.5em;
+}
+
 .poster {
   border: 1px solid #ccc;
   padding: 1em;
@@ -384,13 +729,6 @@ theme-switcher { display: none !important; }
   margin-bottom: 0.5em;
 }
 
-.page-num {
-  text-align: center;
-  font-size: 0.7em;
-  color: #aaaaaa;
-  margin-top: 2em;
-}
-
 input[type="text"] {
   font-family: Georgia, 'Times New Roman', serif;
   font-size: 1em;
@@ -398,351 +736,857 @@ input[type="text"] {
   margin: 0.3em 0;
   width: 100%;
   max-width: 400px;
-}</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="Start" tags="" position="100,100" size="100,100">&lt;div class="intro-title"&gt;DWR Writing Values Tool&lt;/div&gt;
+}</style><script role="script" id="twine-user-script" type="text/twine-javascript">// Make {back link} step back through history instead of adding a new step,
+// so pressing Back repeatedly keeps going back rather than bouncing between two pages.
+document.addEventListener('click', function (e) {
+  var link = e.target.closest && e.target.closest('passage-link');
+  if (!link || link.textContent.trim() !== 'Back') return;
+  var trail = engine.state.get('trail');
+  if (!Array.isArray(trail) || trail.length < 2 || link.getAttribute('to') !== trail[trail.length - 2]) return;
+  e.preventDefault();
+  e.stopImmediatePropagation();
+  engine.state.set('trail', trail.slice(0, -1));
+}, true);
+
+// Pin each passage's quote just above the footer line, show its page number
+// in the middle of the footer, and add the value header at the top of the page.
+(function () {
+  var pageNum = null;
+  var VALUES = {
+    1: 'Writing is a process that requires ongoing revision.',
+    2: 'Writing responds to specific audiences and contexts.',
+    3: 'Writers make decisions based on their purposes and goals for writing.',
+    4: 'Writing is multimodal.',
+    5: 'Writers draw on their languages, cultures, and experiences to make and communicate meaning.',
+    6: 'Language is never neutral.',
+    7: 'Knowledge about writing transfers to other situations through reflection.'
+  };
+  // Header text comes from the passage name: "Value 3 ..." pages get Value 3's header.
+  function headerFor(name) {
+    var m = /^Value (\d)/.exec(name || '');
+    if (m) return { statement: VALUES[m[1]] };
+    if (name === 'Hub') return { label: 'Choose a value' };
+    if (name === 'Ending') return { label: 'Final Reflection' };
+    return null;
+  }
+  function setHeader(art) {
+    var old = art.querySelector(':scope > .value-header');
+    if (old) old.remove();
+    var trail = engine.state.get('trail');
+    var info = headerFor(Array.isArray(trail) ? trail[trail.length - 1] : null);
+    if (!info) return;
+    var h = document.createElement('div');
+    h.className = 'value-header';
+    if (info.label) {
+      var label = document.createElement('div');
+      label.className = 'vh-label';
+      label.textContent = info.label;
+      h.appendChild(label);
+    }
+    if (info.statement) {
+      var st = document.createElement('div');
+      st.className = 'vh-statement';
+      st.textContent = info.statement;
+      h.appendChild(st);
+    }
+    art.insertBefore(h, art.firstChild);
+  }
+  function place() {
+    var page = document.getElementById('page');
+    if (!page) return;
+    var art = page.querySelector('article');
+    if (!art) return;
+    var body = art.querySelector(':scope > div:not(.quote-slot):not(.value-header)');
+    if (body && !body.dataset.placed) {
+      body.dataset.placed = 'yes';
+      setHeader(art);
+      var slot = art.querySelector(':scope > .quote-slot');
+      if (!slot) {
+        slot = document.createElement('div');
+        slot.className = 'quote-slot';
+        art.appendChild(slot);
+      }
+      slot.innerHTML = '';
+      var quote = body.querySelector('.epigraph');
+      if (quote) {
+        var holder = quote.parentElement;
+        slot.appendChild(quote);
+        if (holder !== body && holder.textContent.trim() === '') holder.remove();
+      }
+      pageNum = body.querySelector('.page-num');
+      if (pageNum) pageNum.remove();
+    }
+    var center = page.querySelector('footer .center');
+    if (center && pageNum && pageNum.parentElement !== center) {
+      center.innerHTML = '';
+      center.appendChild(pageNum);
+    }
+  }
+  new MutationObserver(place).observe(document.body, { childList: true, subtree: true });
+})();</script><tw-passagedata pid="1" name="Start" tags="" position="100,100" size="100,100">&lt;!-- TODO (Ricky): work out the opening. The old version had a dorm-room scene that sent the student to Lindsey in the DWR office, between this page and the Hub. --&gt;
+
+&lt;div class="intro-title"&gt;First Year Composition Values&lt;/div&gt;
 
 What's your name?
 
 First name: {text input for: 'firstName'}
-
 Last name: {text input for: 'lastName'}
 
-[[Begin-&gt;Dorm Room]]
+[[Begin-&gt;Hub]]</tw-passagedata><tw-passagedata pid="2" name="Hub" tags="" position="200,100" size="100,100">done1 (typeof done1 === 'undefined'): false
+done2 (typeof done2 === 'undefined'): false
+done3 (typeof done3 === 'undefined'): false
+done4 (typeof done4 === 'undefined'): false
+done5 (typeof done5 === 'undefined'): false
+done6 (typeof done6 === 'undefined'): false
+done7 (typeof done7 === 'undefined'): false
+check1: done1 ? '✓ ' : ''
+check2: done2 ? '✓ ' : ''
+check3: done3 ? '✓ ' : ''
+check4: done4 ? '✓ ' : ''
+check5: done5 ? '✓ ' : ''
+check6: done6 ? '✓ ' : ''
+check7: done7 ? '✓ ' : ''
+allDone: done1 &amp;&amp; done2 &amp;&amp; done3 &amp;&amp; done4 &amp;&amp; done5 &amp;&amp; done6 &amp;&amp; done7
+--
+&lt;div class="hub-title"&gt;Seven Values About Writing&lt;/div&gt;
 
-&lt;div class="page-num"&gt;Page 1 of 23&lt;/div&gt;</tw-passagedata><tw-passagedata pid="2" name="Dorm Room" tags="" position="200,100" size="100,100">&lt;span class="epigraph"&gt;"Writing is an exploratory practice."&lt;br&gt;—Glenn Ritchey&lt;/span&gt;
+Explore the seven values in any order. When you've finished all seven, you'll get a poster of your own reflections.
 
-It's 7:00 AM. Way too early for a Saturday, and yet here you are, jolted awake by something that is absolutely not your alarm.
+- {check1}[[Value 1: Writing is a process that requires ongoing revision.-&gt;Value 1]]
+- {check2}[[Value 2: Writing responds to specific audiences and contexts.-&gt;Value 2]]
+- {check3}[[Value 3: Writers make decisions based on their purposes and goals for writing.-&gt;Value 3]]
+- {check4}[[Value 4: Writing is multimodal.-&gt;Value 4]]
+- {check5}[[Value 5: Writers draw on their languages, cultures, and experiences to make and communicate meaning.-&gt;Value 5]]
+- {check6}[[Value 6: Language is never neutral.-&gt;Value 6]]
+- {check7}[[Value 7: Knowledge about writing transfers to other situations through reflection.-&gt;Value 7]]
 
-Floating at the foot of your bed is a small, wide-eyed alien, staring at you with an expression that somehow reads as both concerned and mildly judgmental.
+[if allDone]
+You've explored all seven values.
 
-"{firstName}. You have to go to the Knight Write Showcase today," it says, with zero context and zero patience for questions.
+[[Finish-&gt;Ending]]
+[continue]
 
-"...What?"
+{back link}</tw-passagedata><tw-passagedata pid="3" name="Value 1" tags="" position="300,100" size="100,100">Hi, {firstName}, how's your day going?
 
-"Today. Showcase. Go." And with that, it blinks out of existence, leaving nothing behind but the faint smell of ozone and a folded note sitting on your desk that definitely was not there last night.
+Frequently, students stop at the first draft: something finished just minutes before a deadline, when there's no time to stop, take a beat, and consider what is missing.
 
-You pick it up. It reads:
+Donald Murray wrote about this in "Teach Writing as a Process Not Product." He said we've got it backwards when we treat writing like the point is to produce something, when really the writing itself is where the thinking happens. The draft isn't the failure. The draft is the process working.
 
-*Talk to Lindsey in the DWR office. She has more information.*
+As Ana Valdes Diaz puts it, "Revising is re-thinking."
 
-[[Get up and head to the DWR office-&gt;DWR Office]]
-
-{back link}
-
-&lt;div class="page-num"&gt;Page 2 of 23&lt;/div&gt;</tw-passagedata><tw-passagedata pid="3" name="DWR Office" tags="" position="300,100" size="100,100">&lt;span class="epigraph"&gt;"Writing is connected to our identity and experience."&lt;br&gt;—Nick Gardiakos&lt;br&gt;&lt;br&gt;"Writing is culturally situated and sustained."&lt;br&gt;—Rosalind Rohrbaugh&lt;/span&gt;
-
-You push open the door to the DWR office and immediately step into the middle of a conversation. Three professors are gathered near the mailboxes, one of them holding a laptop open to a half-built slide, all three clearly deep into something.
-
-"Okay, but this slide needs an example," Professor Dees says, squinting at the screen. "Something concrete. Right now it just says 'identity matters,' and that could mean literally anything to a conference audience."
-
-"Use the code-switching example," Professor Gardiakos says. "A student who talks one way at home, another way in a seminar, another way online. That's not three different students. That's one student drawing on everything they've got, depending on the room."
-
-"That's good," Professor Wood says, already typing. "Because that's really the whole argument, right? Writing's never separate from where someone comes from. You can't teach 'good writing' like it exists outside of culture, or language, or lived experience. It's already in there."
-
-"Which is why this panel matters," Dees says. "Half the field still talks about 'proper' writing like it's neutral. It's not neutral. It never was."
-
-You linger near the door, not sure whether to interrupt a working session.
-
-Beside you, seemingly out of nowhere, the alien reappears, watching the three professors with great interest.
-
-"See," it whispers to you, like this proves something. "Told you this would be useful."
-
-[[Wait for someone to notice you-&gt;Lindsey]]
-
-{back link}
-
-&lt;div class="page-num"&gt;Page 3 of 23&lt;/div&gt;</tw-passagedata><tw-passagedata pid="4" name="Lindsey" tags="" position="400,100" size="100,100">&lt;span class="epigraph"&gt;"Writing explores, establishes, and enacts identities."&lt;br&gt;—Elora Pfriender&lt;/span&gt;
-
-The door to the inner office opens, and a woman pokes her head out, looking mildly amused at finding a student just standing in the middle of the foyer.
-
-"Can I help you with something?"
-
-"Um — yeah, actually. Are you Lindsey?" You hold up the note. "An alien left this. It said to talk to you."
-
-Lindsey doesn't even blink. "Ah. Right. The alien thing." She steps fully into the doorway, arms crossed, like this is a normal Tuesday. "Okay, here's what I know, {firstName} — you're supposed to get to the Knight Write Showcase today. If you want more on what that actually means, go talk to the folks at the Writing Center. They'll get you sorted."
-
-"That's... it?"
-
-"That's it. Good luck." And she disappears back into her office before you can ask anything else.
-
-[[Head to the Writing Center-&gt;Writing Center Overheard 1]]
+[[Continue-&gt;Value 1 Lamott]]
 
 {back link}
 
-&lt;div class="page-num"&gt;Page 4 of 23&lt;/div&gt;</tw-passagedata><tw-passagedata pid="5" name="Writing Center Overheard 1" tags="" position="500,100" size="100,100">&lt;span class="epigraph"&gt;"Writing is contextual."&lt;br&gt;—Meegan Faulconer&lt;/span&gt;
+&lt;span class="epigraph"&gt;"Revision Is Central to Developing Writing."&lt;br&gt;—Stuart Dees&lt;/span&gt;</tw-passagedata><tw-passagedata pid="4" name="Value 1 Lamott" tags="" position="400,100" size="100,100">In *Bird by Bird*, Anne Lamott admits that every writer she knows writes terrible first drafts, and that's what first drafts are *for*. They get the ideas onto the page so you have something to rethink.
 
-You walk into the Writing Center and take a seat near the window while you wait. A few tables over, a consultant is working through a draft with another student.
+That can feel uncomfortable, and that's okay. Stuart Dees reminds us that "failure can be an important part of writing development."
 
-"Okay, so — quick question," the consultant says. "You're writing the same update for two audiences: your professor and your group chat. What changes?"
-
-You find yourself thinking about it too.
-
-- [[Nothing — good writing is good writing no matter who reads it-&gt;Writing Center Overheard 2]]
-- [[The tone and level of detail, but the point stays the same-&gt;Writing Center Overheard 2]]
-- [[Just the vocabulary — simpler words for the group chat-&gt;Writing Center Overheard 2]]
-- [[The whole approach — what I say and how I say it both shift-&gt;Writing Center Overheard 2]]
+[[Let's try it-&gt;Value 1 Scenario]]
 
 {back link}
 
-&lt;div class="page-num"&gt;Page 5 of 23&lt;/div&gt;</tw-passagedata><tw-passagedata pid="6" name="Writing Center Overheard 2" tags="" position="600,100" size="100,100">&lt;span class="epigraph"&gt;"Writing is a rhetorical act; meaning, good writing demonstrates rhetorical awareness of the audience, purpose, and consequences (good, bad, and in-between)."&lt;br&gt;—Adele Richardson&lt;/span&gt;
+&lt;span class="epigraph"&gt;"Writing is an exploratory practice."&lt;br&gt;—Glenn Ritchey&lt;/span&gt;</tw-passagedata><tw-passagedata pid="5" name="Value 1 Scenario" tags="" position="500,100" size="100,100">{firstName}, picture this:
 
-"Here's another one," the consultant says. "Ever read something and thought 'this makes no sense' — until you found out who it was actually written for?"
-
-- [[Yeah, I just wasn't part of that conversation-&gt;Writing Center Overheard 3]]
-- [[That happens when writers do a bad job explaining things-&gt;Writing Center Overheard 3]]
-- [[Not really, clear writing should make sense to anyone-&gt;Writing Center Overheard 3]]
-- [[Sometimes — I didn't know the specific term or shorthand that group uses-&gt;Writing Center Overheard 3]]
-
-{back link}
-
-&lt;div class="page-num"&gt;Page 6 of 23&lt;/div&gt;</tw-passagedata><tw-passagedata pid="7" name="Writing Center Overheard 3" tags="" position="700,100" size="100,100">&lt;span class="epigraph"&gt;"'Good writing' is context-dependent."&lt;br&gt;—Megan Valez&lt;/span&gt;
-
-"Last one," the consultant says. "When you're deciding how to write something, what do you think about first?"
-
-- [[What sounds smart or professional-&gt;Writing Center Amy]]
-- [[Who's going to read it and what they need from it-&gt;Writing Center Amy]]
-- [[Getting it done quickly-&gt;Writing Center Amy]]
-- [[Following whatever format I was told to use-&gt;Writing Center Amy]]
-
-{back link}
-
-&lt;div class="page-num"&gt;Page 7 of 23&lt;/div&gt;</tw-passagedata><tw-passagedata pid="8" name="Writing Center Amy" tags="" position="800,100" size="100,100">&lt;span class="epigraph"&gt;"Writing is social."&lt;br&gt;—Emily LaPadura&lt;/span&gt;
-
-A woman with a lanyard walks over, clearly the person in charge here.
-
-"Hi, {firstName} — I'm Amy. What can I help you with?"
-
-"Sorry," you say, feeling caught. "I wasn't trying to eavesdrop, I just — I got kind of pulled into the questions."
-
-Amy laughs, then tilts her head, noticing something floating just behind your shoulder. "So you have an alien following you, huh?"
-
-You don't really have an answer for that.
-
-"Can I ask you something," you say instead. "Why does it matter so much who I'm writing for? Isn't good writing just... good writing?"
-
-"That's actually the whole idea behind discourse communities," Amy says. "Dan Melzer wrote about this — every group, whether it's a lab, a fandom, or a group chat, has its own shared expectations for what counts as 'good' communication. Writing that works perfectly in one context can completely miss the mark in another, not because it's badly written, but because it wasn't written for that room."
-
-"So — the Knight Write Showcase," you say. "Do you know anything about that?"
-
-"I know it's today, and I know you should probably get moving," she says, smiling. "Head toward the library. You'll figure the rest out on the way."
-
-[[Head to the library-&gt;Walk to Library Explanation]]
-
-{back link}
-
-&lt;div class="page-num"&gt;Page 8 of 23&lt;/div&gt;</tw-passagedata><tw-passagedata pid="9" name="Walk to Library Explanation" tags="" position="900,100" size="100,100">&lt;span class="epigraph"&gt;"Writing demands the writer make choices; effective writing makes choices that consider the audience, genre, context, and affordances of medium."&lt;br&gt;—Amy Cicchino&lt;/span&gt;
-
-You head out toward the library. You've barely made it past the first crosswalk when the alien reappears beside you, matching your pace even though it doesn't appear to have legs.
-
-"Every time you write something, you're making choices," it says, "and not just about the words. Catherine Forsa wrote about this — writers constantly decide what to include, what to cut, how formal to be, even what format makes sense. None of that happens by accident. It happens because you have a goal, even if you don't always stop to name it."
-
-"Okay," you say. "So what, you're going to quiz me now?"
-
-"I prefer 'ask you about your own life,'" it says. "Same thing, really."
-
-[[Continue-&gt;Walk to Library Q1]]
-
-{back link}
-
-&lt;div class="page-num"&gt;Page 9 of 23&lt;/div&gt;</tw-passagedata><tw-passagedata pid="10" name="Walk to Library Q1" tags="" position="1000,100" size="100,100">&lt;span class="epigraph"&gt;"Writing emerges where writers, readers, and rhetorical situations meet."&lt;br&gt;—Kenneth Tanemura&lt;/span&gt;
-
-"Think about the last thing you wrote for someone else," the alien says. "What did you care about most while writing it?"
-
-- [[Getting it done and off my plate-&gt;Walk to Library Q2]]
-- [[Making sure it sounded right to whoever was reading it-&gt;Walk to Library Q2]]
-- [[Making sure I said exactly what I meant-&gt;Walk to Library Q2]]
-- [[Following whatever format I was told to use-&gt;Walk to Library Q2]]
-
-{back link}
-
-&lt;div class="page-num"&gt;Page 10 of 23&lt;/div&gt;</tw-passagedata><tw-passagedata pid="11" name="Walk to Library Q2" tags="" position="1100,100" size="100,100">&lt;span class="epigraph"&gt;"Writing is problem-solving."&lt;br&gt;—Erica Macalintal&lt;/span&gt;
-
-"Have you ever rewritten something because you realized it wasn't going to work for what you needed it to do?"
-
-- [[All the time — I'll scrap something completely if it's not doing its job-&gt;Walk to Library Q3]]
-- [[Sometimes, if it's important enough-&gt;Walk to Library Q3]]
-- [[Rarely — I usually stick with my first draft-&gt;Walk to Library Q3]]
-- [[I don't think about it that way-&gt;Walk to Library Q3]]
-
-{back link}
-
-&lt;div class="page-num"&gt;Page 11 of 23&lt;/div&gt;</tw-passagedata><tw-passagedata pid="12" name="Walk to Library Q3" tags="" position="1200,100" size="100,100">&lt;span class="epigraph"&gt;"Writing is a decision-making process shaped by purpose, audience, context, constraints, and available modes of meaning."&lt;br&gt;—Priscila Schilaro Santa Rosa&lt;/span&gt;
-
-"Last one," the alien says. "When you're stuck on how to start writing something, what usually helps you figure it out?"
-
-- [[Thinking about who's going to read it-&gt;Library Basement]]
-- [[Thinking about what I actually want to happen because of it-&gt;Library Basement]]
-- [[Just picking a format and going-&gt;Library Basement]]
-- [[Waiting until I understand the assignment better-&gt;Library Basement]]
-
-{back link}
-
-&lt;div class="page-num"&gt;Page 12 of 23&lt;/div&gt;</tw-passagedata><tw-passagedata pid="13" name="Library Basement" tags="" position="1300,100" size="100,100">&lt;span class="epigraph"&gt;"Revision Is Central to Developing Writing."&lt;br&gt;—Stuart Dees&lt;/span&gt;
-
-The library basement is quiet except for one corner, where a grad student is hunched over a laptop, muttering to themselves.
+The library basement is quiet except for one corner, where a classmate is hunched over a laptop, muttering to themselves.
 
 "Hey," you say, stepping closer. "You okay?"
 
-They look up, startled, and it all comes out at once — the ninth draft, the deadline, the sentence that will not cooperate no matter what they do to it, the growing certainty that none of this was ever going to work.
+They look up, startled, and it all comes out at once: the ninth draft, the deadline, the sentence that will not cooperate no matter what they do to it, the growing certainty that none of this was ever going to work.
 
-"Can you — can you just look at this?" they say, turning the laptop toward you. "Please. I just need this one sentence to work."
+"Can you... can you just look at this?" they say, turning the laptop toward you. "Please. I just need this one sentence to work."
 
-[[Help them revise it-&gt;Library Basement Revision]]
+[[Help them revise it-&gt;Value 1 Revision]]
 
 {back link}
 
-&lt;div class="page-num"&gt;Page 13 of 23&lt;/div&gt;</tw-passagedata><tw-passagedata pid="14" name="Library Basement Revision" tags="" position="1400,100" size="100,100">&lt;span class="epigraph"&gt;"Writing is always a process. Writing is thinking. All writers have more to learn."&lt;br&gt;—Emily Proulx&lt;/span&gt;
+&lt;span class="epigraph"&gt;"Writing development is a lifelong activity."&lt;br&gt;—Meghan Velez&lt;/span&gt;</tw-passagedata><tw-passagedata pid="6" name="Value 1 Revision" tags="" position="600,100" size="100,100">They point to the sentence. You read it over, and start typing a revision of your own.
 
-They point to the sentence. You read it over, and start typing a revision of your own.
+**Sentence to revise:**
+
+*We write things all the time, in different ways, and different form for so many reasons.*
 
 Your revision: {text input for: 'revision'}
 
-[[Show them-&gt;Library Basement Synthesis]]
+[[Show them-&gt;Value 1 Reaction]]
 
 {back link}
 
-&lt;div class="page-num"&gt;Page 14 of 23&lt;/div&gt;</tw-passagedata><tw-passagedata pid="15" name="Library Basement Synthesis" tags="" position="1500,100" size="100,100">&lt;span class="epigraph"&gt;"Revising is re-thinking."&lt;br&gt;—Ana Valdes Diaz&lt;/span&gt;
+&lt;span class="epigraph"&gt;"Writing is always a process. Writing is thinking. All writers have more to learn."&lt;br&gt;—Emily Proulx&lt;/span&gt;</tw-passagedata><tw-passagedata pid="7" name="Value 1 Reaction" tags="" position="700,100" size="100,100">&gt; {revision} Yet most of us treat the first version of whatever we write as the final one, finished minutes before it's due. Sandra Giles argues that real revision means going back to ask what we were actually thinking, and being honest about whether that's still what we mean.
 
-&lt;!-- TODO (Ricky): write the 3-sentence paragraph here, embedding {revision} -- this is where the grad student reads your revision back and reacts to it, before the Lamott/Murray/Giles conversation below. --&gt;
-
-The grad student leans back, staring at the ceiling for a second, like they're deciding whether to actually get into it.
-
-"Can I tell you something? This is my ninth draft of that sentence. Ninth. And for the longest time I thought that meant I was bad at this." They laugh, but it's not really a happy laugh. "Then I read this essay by Anne Lamott — 'Shitty First Drafts' — and she just says it outright. Every writer she knows produces terrible first drafts. That's not a warning sign. That's just what a first draft is for."
-
-They gesture at the crossed-out mess in their notebook.
-
-"Donald Murray wrote about this too — he said we've got it backwards when we treat writing like the point is to produce something, when really the writing itself is where the thinking happens. The draft isn't the failure. The draft is the process working."
+Your classmate reads it back and freezes. "Wait. *That's* it. Nine drafts, and I kept fixing the words when I hadn't figured out what I meant."
 
 "So why does it still feel awful?" you ask.
 
 "Because nobody tells you the *feeling* is part of it too." They pause. "You know who does tell you about feelings?"
 
-"...Your dissertation committee?"
+"...The Golden Girls?"
 
-"Nooo." They actually laugh at that one, for real this time. They think for a second. "Sandra Giles does. She says revision isn't just fixing commas — it's going back and asking yourself what you were actually thinking when you wrote something, and being honest about whether that's still what you mean. That's uncomfortable. It's supposed to be a little uncomfortable."
+"Nooo." They laugh.
 
-They look down at the sentence you helped them with.
-
-"I guess I forgot that getting to something good means being willing to have something bad first."
-
-Beside you, the alien clears its throat. "We should go."
-
-[[Head to the fountain-&gt;Fountain]]
+[[Continue-&gt;Value 1 Reflection]]
 
 {back link}
 
-&lt;div class="page-num"&gt;Page 15 of 23&lt;/div&gt;</tw-passagedata><tw-passagedata pid="16" name="Fountain" tags="" position="1600,100" size="100,100">&lt;span class="epigraph"&gt;"There is no single standard for 'good' writing."&lt;br&gt;—Nichole Stack&lt;/span&gt;
+&lt;span class="epigraph"&gt;"Writing is rewriting."&lt;br&gt;—Alicia M. Lienhart&lt;/span&gt;</tw-passagedata><tw-passagedata pid="8" name="Value 1 Reflection" tags="" position="800,100" size="100,100">done1: true
+--
+Before you go, {firstName}: write a sentence about what revision means to you.
 
-You walk over to the fountain and sit down, letting the sound of the water fill the silence for a second. You're not even sure why you feel this deflated — maybe it's just been a long day already, and it's not even nine.
+{text input for: 'revisionMeaning'}
 
-"Rough morning?"
-
-You look up. It's one of your professors, coffee in hand, giving you the kind of look that means they're not just being polite.
-
-"I don't even know," you admit. "I think I'm supposed to be at some Showcase thing, {firstName}, and I've somehow ended up in three different conversations about writing before breakfast."
-
-They laugh and sit down on the edge of the fountain. "Only three? Slow morning, then."
-
-You tell them a little about the DWR office, the writing center, the grad student in the library. They nod along like none of it surprises them.
-
-"You know, none of that is really about grammar," they say. "It's about power — who gets heard, whose way of writing counts as 'correct,' and who decided that in the first place. There's an essay by Vershawn Young — 'Nah, We Straight' — that gets into this. He argues against the whole idea that people should have to switch how they talk depending on the room, like there's one 'right' way underneath it all and everything else is just a detour from it. That idea shows up everywhere, not just in classrooms. Every time someone tells you to 'sound more professional' or 'clean that up,' there's usually an assumption buried in there about whose way of writing counts as the default. Language was never neutral to begin with. Every choice you make on the page is doing something, whether you notice it or not — including the choice to write the way you're 'supposed to.'"
-
-You think about that for a second.
-
-"Can I ask you something?" they say. "What do you value about writing? One sentence. Doesn't have to be perfect."
-
-[[Answer-&gt;Fountain Quote]]
+[[Continue-&gt;Hub]]
 
 {back link}
 
-&lt;div class="page-num"&gt;Page 16 of 23&lt;/div&gt;</tw-passagedata><tw-passagedata pid="17" name="Fountain Quote" tags="" position="1700,100" size="100,100">&lt;span class="epigraph"&gt;"Writing is a community."&lt;br&gt;—Emery Beckman&lt;br&gt;&lt;br&gt;"Don't let perfect be the enemy of done."&lt;br&gt;—Vee Kennedy&lt;/span&gt;
+&lt;span class="epigraph"&gt;"Writing develops new knowledge."&lt;br&gt;—Ana Valdes Diaz&lt;/span&gt;</tw-passagedata><tw-passagedata pid="9" name="Value 2" tags="" position="900,100" size="100,100">Hi, {firstName}. Quick question: have you ever sent the same message to two different people and had it land completely differently?
 
-Your answer: {text input for: 'valueQuote'}
+That's because, as Meeghan Faulconer recognizes, "writing is contextual."
 
-They nod slowly, like it's a good answer even before they've fully processed it. "Hold onto that," they say, standing up and brushing off their coat. "Actually — you should get some food before you go anywhere else. You look like you're running on fumes."
+Think about an email to your professor and an update to your group chat. Neither one is wrong. They're written for different readers, and those readers need different things.
 
-[[Go get food-&gt;Dominos]]
+Maybe you've been on the other side of it, reading something and thinking "this makes no sense," until you found out who it was actually written for. That's context at work.
+
+[[Continue-&gt;Value 2 Melzer]]
 
 {back link}
 
-&lt;div class="page-num"&gt;Page 17 of 23&lt;/div&gt;</tw-passagedata><tw-passagedata pid="18" name="Dominos" tags="" position="1800,100" size="100,100">&lt;span class="epigraph"&gt;"Developing an understanding of intertextuality and multimodality is key to expanding writing competency and confidence."&lt;br&gt;—Amy Barnickel&lt;/span&gt;
+&lt;span class="epigraph"&gt;"Writing is inextricably linked to identity."&lt;br&gt;—Rosalind Rohrbaugh&lt;/span&gt;</tw-passagedata><tw-passagedata pid="10" name="Value 2 Melzer" tags="" position="1000,100" size="100,100">That's the idea behind discourse communities. Dan Melzer wrote about this: every group, whether it's a lab, a fandom, or a group chat, has its own shared expectations for what counts as "good" communication.
 
-You're standing outside Domino's, waiting for your order, when you hear someone call your name. It's a classmate from your class, holding their own bag.
+Writing that works perfectly in one context can completely miss the mark in another, not because it's badly written, but because it wasn't written for that room. As Meghan Velez says, "Learning to write is a social process."
 
-"Oh hey, {firstName}! Funny running into you here." They glance up at the sign. "I don't know what it is, but I've always kind of loved that Domino's logo. Simple, but it works. Almost as much as I love the Rosie the Riveter poster, not gonna lie."
+[[Let's try it-&gt;Value 2 Scenario]]
+
+{back link}
+
+&lt;span class="epigraph"&gt;"Writing always exists in a social and cultural context."&lt;br&gt;—Nick Gardiakos&lt;/span&gt;</tw-passagedata><tw-passagedata pid="11" name="Value 2 Scenario" tags="" position="1100,100" size="100,100">{firstName}, let's walk over to the Writing Center.
+
+You take a seat near the window while you wait. A few tables over, a consultant is working through a draft with another student.
+
+"Okay, so, quick question," the consultant says. "You're writing about the same thing for two audiences: an email to your professor and an update to your group chat. What changes?"
+
+You find yourself thinking about it too.
+
+A woman with a lanyard walks over, clearly the person in charge here.
+
+"Hi, {firstName}, I'm Amy Cicchino, the director of the University Writing Center here at UCF. What can I help you with?"
+
+"Sorry," you say, feeling caught. "I wasn't trying to eavesdrop, I just got kind of pulled into the question."
+
+Amy laughs. "Then let's put you to work."
+
+[[Try it-&gt;Value 2 Activity]]
+
+{back link}
+
+&lt;span class="epigraph"&gt;"Writing is a rhetorical act; meaning, good writing demonstrates rhetorical awareness of the audience, purpose, and consequences (good, bad, and in-between)."&lt;br&gt;—Adele Richardson&lt;/span&gt;</tw-passagedata><tw-passagedata pid="12" name="Value 2 Activity" tags="" position="1200,100" size="100,100">"Pick something you'd really have to tell people this week," Amy says. "A missed meeting, a project you're behind on, anything. Write it twice."
+
+**An email to your professor:**
+
+{text input for: 'profVersion'}
+
+**An update to your group chat:**
+
+{text input for: 'chatVersion'}
+
+[[Show Amy-&gt;Value 2 Reaction]]
+
+{back link}
+
+&lt;span class="epigraph"&gt;"Effective writing demands adaptive critical thinking."&lt;br&gt;—Priscila Schilaro Santa Rosa&lt;/span&gt;</tw-passagedata><tw-passagedata pid="13" name="Value 2 Reaction" tags="" position="1300,100" size="100,100">Amy Cicchino reads both versions side by side.
+
+&gt; **Your email:** {profVersion}
+&gt;
+&gt; **Your group chat update:** {chatVersion}
+
+"Same news," she says, "and almost nothing in common. Look at what changed: the tone, how much detail you gave, even what you decided the reader needed to know." She taps the screen. "Neither one is the good version. Each one works because it was written for its room."
+
+"So why does it matter so much who I'm writing for?" you ask. "Isn't good writing just good writing?"
+
+"Not quite," Amy says. "Good writing is writing that works for the people reading it."
+
+[[Continue-&gt;Value 2 Reflection]]
+
+{back link}
+
+&lt;span class="epigraph"&gt;"'Good writing' is context-dependent."&lt;br&gt;—Meghan Velez&lt;/span&gt;</tw-passagedata><tw-passagedata pid="14" name="Value 2 Reflection" tags="" position="1400,100" size="100,100">done2: true
+--
+Before you go, {firstName}: write a sentence about what changes when your audience changes.
+
+{text input for: 'audienceMeaning'}
+
+[[Continue-&gt;Hub]]
+
+{back link}
+
+&lt;span class="epigraph"&gt;"Writing is social."&lt;br&gt;—Emily Lapadura&lt;/span&gt;</tw-passagedata><tw-passagedata pid="15" name="Value 3" tags="" position="1500,100" size="100,100">Hi, {firstName}. Think about the last thing you wrote for someone else. What did you care about most while writing it? Getting it done? Sounding right to your reader? Saying exactly what you meant? Following the format you were given? Each of those is a goal, and each one changes what you write.
+
+Every time you write something, you're making choices, and not just about the words. Catherine Forsa wrote about this: writers constantly decide what to include, what to cut, how formal to be, even what format makes sense. None of that happens by accident. It happens because you have a goal, even if you don't always stop to name it.
+
+Priscila Schilaro Santa Rosa describes writing as "a decision-making process shaped by purpose, audience, context, constraints, and available modes of meaning."
+
+[[Continue-&gt;Value 3 Limits]]
+
+{back link}
+
+&lt;span class="epigraph"&gt;"Writing emerges where writers, readers, and rhetorical situations meet."&lt;br&gt;—Kenneth Tanemura&lt;/span&gt;</tw-passagedata><tw-passagedata pid="16" name="Value 3 Limits" tags="" position="1600,100" size="100,100">Those choices aren't unlimited, though. Who you're writing for, the technology you're using, the conventions of the situation, and the situation itself all shape what you can do. A choice that works in one setting can fall flat in another.
+
+Have you ever rewritten something because you realized it wasn't going to work for what you needed it to do? That's a goal at work. You noticed the writing wasn't doing its job, so you changed it.
+
+That's why deciding on a goal first makes everything else easier. Once you know what the writing needs to do, the other choices start to sort themselves out.
+
+[[Let's try it-&gt;Value 3 Scenario]]
+
+{back link}
+
+&lt;span class="epigraph"&gt;"Writers' choices are enabled and constrained by people, technologies, conventions, and situations."&lt;br&gt;—Priscila Schilaro Santa Rosa&lt;/span&gt;</tw-passagedata><tw-passagedata pid="17" name="Value 3 Scenario" tags="" position="1700,100" size="100,100">{firstName}, let's grab a seat in the student union. A classmate waves you over.
+
+They're starting a study group for your class, and the first meeting is this Thursday. The message that invites people has to go out today, and they're stuck.
+
+"I know what I have to tell people," they say. "I just don't know what the message is supposed to *do*. What do you think is the most important thing it needs to do?"
+
+- [[Get people to actually show up-&gt;Value 3 Goal Show]]
+- [[Make the group sound impressive-&gt;Value 3 Goal Impress]]
+- [[Share every detail so nobody is confused-&gt;Value 3 Goal Details]]
+
+{back link}
+
+&lt;span class="epigraph"&gt;"Writing is problem-solving."&lt;br&gt;—Erica Macalintal&lt;/span&gt;</tw-passagedata><tw-passagedata pid="18" name="Value 3 Goal Show" tags="" position="1800,100" size="100,100">goalChoice: 'getting people to show up'
+msgSubject: 'Study group Thursday, 6 PM'
+msgBody: 'First study group is Thursday at 6 PM in Library Room 204. Bring one question from this week’s reading. Reply “in” and we’ll save you a seat.'
+--
+Your classmate starts typing:
+
+&lt;div class="msg-card"&gt;&lt;div class="msg-subject"&gt;{msgSubject}&lt;/div&gt;&lt;div class="msg-body"&gt;{msgBody}&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class="msg-caption"&gt;Time, place, and one thing to do. Everything else got cut.&lt;/div&gt;
+
+Where should it go?
+
+- [[A text to the group chat-&gt;Value 3 Medium Text]]
+- [[An email to the whole class-&gt;Value 3 Medium Email]]
+- [[A flyer on campus-&gt;Value 3 Medium Flyer]]
+
+{back link}
+
+&lt;span class="epigraph"&gt;"Writing helps create, organize, and determine what counts as acceptable knowledge, norms, and conventions."&lt;br&gt;—Priscila Schilaro Santa Rosa&lt;/span&gt;</tw-passagedata><tw-passagedata pid="19" name="Value 3 Goal Impress" tags="" position="1900,100" size="100,100">goalChoice: 'making the group sound impressive'
+msgSubject: 'An invitation to the ENC 1101 Scholars’ Study Group'
+msgBody: 'Our rigorous, discussion-based study group, led by high-achieving students in the course, is now accepting participants. Our inaugural session will take place this week.'
+--
+Your classmate starts typing:
+
+&lt;div class="msg-card"&gt;&lt;div class="msg-subject"&gt;{msgSubject}&lt;/div&gt;&lt;div class="msg-body"&gt;{msgBody}&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class="msg-caption"&gt;It sounds impressive, but when and where? The reader has to write back to find out.&lt;/div&gt;
+
+Where should it go?
+
+- [[A text to the group chat-&gt;Value 3 Medium Text]]
+- [[An email to the whole class-&gt;Value 3 Medium Email]]
+- [[A flyer on campus-&gt;Value 3 Medium Flyer]]
+
+{back link}
+
+&lt;span class="epigraph"&gt;"Writing helps create, organize, and determine what counts as acceptable knowledge, norms, and conventions."&lt;br&gt;—Priscila Schilaro Santa Rosa&lt;/span&gt;</tw-passagedata><tw-passagedata pid="20" name="Value 3 Goal Details" tags="" position="2000,100" size="100,100">goalChoice: 'giving everyone all the details'
+msgSubject: 'Study group info'
+msgBody: 'Hi everyone! We’re starting a study group for ENC 1101. We’ll meet Thursdays, probably, and maybe Tuesdays later in the term depending on schedules. Bring your textbook, a notebook, and a charger. Snacks welcome, but no nuts please. We’ll go over the readings, practice thesis statements, and review for quizzes. The first meeting is at 6 PM in Library Room 204.'
+--
+Your classmate starts typing:
+
+&lt;div class="msg-card"&gt;&lt;div class="msg-subject"&gt;{msgSubject}&lt;/div&gt;&lt;div class="msg-body"&gt;{msgBody}&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class="msg-caption"&gt;Everything is in there. Can you find the time and place?&lt;/div&gt;
+
+Where should it go?
+
+- [[A text to the group chat-&gt;Value 3 Medium Text]]
+- [[An email to the whole class-&gt;Value 3 Medium Email]]
+- [[A flyer on campus-&gt;Value 3 Medium Flyer]]
+
+{back link}
+
+&lt;span class="epigraph"&gt;"Writing helps create, organize, and determine what counts as acceptable knowledge, norms, and conventions."&lt;br&gt;—Priscila Schilaro Santa Rosa&lt;/span&gt;</tw-passagedata><tw-passagedata pid="21" name="Value 3 Medium Text" tags="" position="2100,100" size="100,100">&lt;div class="msg-goal"&gt;Your goal: {goalChoice}&lt;/div&gt;
+
+&lt;div class="phone"&gt;&lt;div class="phone-notch"&gt;&lt;/div&gt;&lt;div class="phone-head"&gt;Group Chat&lt;/div&gt;&lt;div class="phone-screen"&gt;&lt;div class="bubble"&gt;{msgBody}&lt;/div&gt;&lt;div class="phone-delivered"&gt;Delivered&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class="msg-caption"&gt;Short and fast. A text only has room for the essentials.&lt;/div&gt;
+
+[[Continue-&gt;Value 3 Reflection]]
+
+{back link}
+
+&lt;span class="epigraph"&gt;"Writing demands the writer make choices; effective writing makes choices that consider the audience, genre, context, and affordances of medium."&lt;br&gt;—Amy Cicchino&lt;/span&gt;</tw-passagedata><tw-passagedata pid="22" name="Value 3 Medium Email" tags="" position="2200,100" size="100,100">&lt;div class="msg-goal"&gt;Your goal: {goalChoice}&lt;/div&gt;
+
+&lt;div class="email-window"&gt;&lt;div class="email-bar"&gt;&lt;span&gt;New Message&lt;/span&gt;&lt;span class="dots"&gt;● ● ●&lt;/span&gt;&lt;/div&gt;&lt;div class="email-row"&gt;&lt;b&gt;To:&lt;/b&gt; ENC 1101 class list&lt;/div&gt;&lt;div class="email-row"&gt;&lt;b&gt;Subject:&lt;/b&gt; {msgSubject}&lt;/div&gt;&lt;div class="email-body"&gt;{msgBody}&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class="msg-caption"&gt;Room for a subject line and more detail, but people skim.&lt;/div&gt;
+
+[[Continue-&gt;Value 3 Reflection]]
+
+{back link}
+
+&lt;span class="epigraph"&gt;"Writing demands the writer make choices; effective writing makes choices that consider the audience, genre, context, and affordances of medium."&lt;br&gt;—Amy Cicchino&lt;/span&gt;</tw-passagedata><tw-passagedata pid="23" name="Value 3 Medium Flyer" tags="" position="2300,100" size="100,100">&lt;div class="msg-goal"&gt;Your goal: {goalChoice}&lt;/div&gt;
+
+&lt;div class="flyer"&gt;&lt;div class="flyer-head"&gt;{msgSubject}&lt;/div&gt;&lt;div class="flyer-body"&gt;{msgBody}&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class="msg-caption"&gt;Read in seconds. The headline does the work.&lt;/div&gt;
+
+[[Continue-&gt;Value 3 Reflection]]
+
+{back link}
+
+&lt;span class="epigraph"&gt;"Writing demands the writer make choices; effective writing makes choices that consider the audience, genre, context, and affordances of medium."&lt;br&gt;—Amy Cicchino&lt;/span&gt;</tw-passagedata><tw-passagedata pid="24" name="Value 3 Reflection" tags="" position="2400,100" size="100,100">done3: true
+--
+Before you go, {firstName}: write a sentence about what usually helps you figure out your goal when you're stuck on how to start writing something.
+
+{text input for: 'purposeHelp'}
+
+[[Continue-&gt;Hub]]
+
+{back link}
+
+&lt;span class="epigraph"&gt;"Writing Is a Knowledge-Making Activity."&lt;br&gt;—Stuart Dees&lt;/span&gt;</tw-passagedata><tw-passagedata pid="25" name="Value 4" tags="" position="2500,100" size="100,100">Hi, {firstName}. What's the last thing you "read" that didn't have a single word in it? A logo, a meme, a road sign?
+
+You understood it anyway, probably without even thinking about it. Let's look at why.
+
+[[Continue-&gt;Value 4 Scenario]]
+
+{back link}
+
+&lt;span class="epigraph"&gt;"Students already possess knowledge about writing; they might not understand the terms or theory at first, but developing an understanding of intertextuality and multimodality is key to expanding their writing competency and giving them confidence in their own writing voice."&lt;br&gt;—Amy Barnickel&lt;/span&gt;</tw-passagedata><tw-passagedata pid="26" name="Value 4 Scenario" tags="" position="2600,100" size="100,100">{firstName}, let's go pick up some pizza.
+
+&lt;div class="pixel-sign"&gt;&lt;svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges" role="img" aria-label="Pixel sketch of a pizza slice with a question mark"&gt;&lt;rect x="3" y="0" width="1" height="1" fill="#000"/&gt;&lt;rect x="4" y="0" width="1" height="1" fill="#000"/&gt;&lt;rect x="5" y="0" width="1" height="1" fill="#000"/&gt;&lt;rect x="6" y="0" width="1" height="1" fill="#000"/&gt;&lt;rect x="7" y="0" width="1" height="1" fill="#000"/&gt;&lt;rect x="8" y="0" width="1" height="1" fill="#000"/&gt;&lt;rect x="9" y="0" width="1" height="1" fill="#000"/&gt;&lt;rect x="10" y="0" width="1" height="1" fill="#000"/&gt;&lt;rect x="11" y="0" width="1" height="1" fill="#000"/&gt;&lt;rect x="12" y="0" width="1" height="1" fill="#000"/&gt;&lt;rect x="2" y="1" width="1" height="1" fill="#000"/&gt;&lt;rect x="3" y="1" width="1" height="1" fill="#FFC904"/&gt;&lt;rect x="4" y="1" width="1" height="1" fill="#FFC904"/&gt;&lt;rect x="5" y="1" width="1" height="1" fill="#FFC904"/&gt;&lt;rect x="6" y="1" width="1" height="1" fill="#FFC904"/&gt;&lt;rect x="7" y="1" width="1" height="1" fill="#FFC904"/&gt;&lt;rect x="8" y="1" width="1" height="1" fill="#FFC904"/&gt;&lt;rect x="9" y="1" width="1" height="1" fill="#FFC904"/&gt;&lt;rect x="10" y="1" width="1" height="1" fill="#FFC904"/&gt;&lt;rect x="11" y="1" width="1" height="1" fill="#FFC904"/&gt;&lt;rect x="12" y="1" width="1" height="1" fill="#FFC904"/&gt;&lt;rect x="13" y="1" width="1" height="1" fill="#000"/&gt;&lt;rect x="1" y="2" width="1" height="1" fill="#000"/&gt;&lt;rect x="2" y="2" width="1" height="1" fill="#FFC904"/&gt;&lt;rect x="3" y="2" width="1" height="1" fill="#FFC904"/&gt;&lt;rect x="4" y="2" width="1" height="1" fill="#FFC904"/&gt;&lt;rect x="5" y="2" width="1" height="1" fill="#FFC904"/&gt;&lt;rect x="6" y="2" width="1" height="1" fill="#FFC904"/&gt;&lt;rect x="7" y="2" width="1" height="1" fill="#FFC904"/&gt;&lt;rect x="8" y="2" width="1" height="1" fill="#FFC904"/&gt;&lt;rect x="9" y="2" width="1" height="1" fill="#FFC904"/&gt;&lt;rect x="10" y="2" width="1" height="1" fill="#FFC904"/&gt;&lt;rect x="11" y="2" width="1" height="1" fill="#FFC904"/&gt;&lt;rect x="12" y="2" width="1" height="1" fill="#FFC904"/&gt;&lt;rect x="13" y="2" width="1" height="1" fill="#FFC904"/&gt;&lt;rect x="14" y="2" width="1" height="1" fill="#000"/&gt;&lt;rect x="1" y="3" width="1" height="1" fill="#000"/&gt;&lt;rect x="2" y="3" width="1" height="1" fill="#FFC904"/&gt;&lt;rect x="3" y="3" width="1" height="1" fill="#FFC904"/&gt;&lt;rect x="4" y="3" width="1" height="1" fill="#FFC904"/&gt;&lt;rect x="5" y="3" width="1" height="1" fill="#FFC904"/&gt;&lt;rect x="6" y="3" width="1" height="1" fill="#FFC904"/&gt;&lt;rect x="7" y="3" width="1" height="1" fill="#FFC904"/&gt;&lt;rect x="8" y="3" width="1" height="1" fill="#FFC904"/&gt;&lt;rect x="9" y="3" width="1" height="1" fill="#FFC904"/&gt;&lt;rect x="10" y="3" width="1" height="1" fill="#FFC904"/&gt;&lt;rect x="11" y="3" width="1" height="1" fill="#FFC904"/&gt;&lt;rect x="12" y="3" width="1" height="1" fill="#FFC904"/&gt;&lt;rect x="13" y="3" width="1" height="1" fill="#FFC904"/&gt;&lt;rect x="14" y="3" width="1" height="1" fill="#000"/&gt;&lt;rect x="1" y="4" width="1" height="1" fill="#000"/&gt;&lt;rect x="2" y="4" width="1" height="1" fill="#FFE680"/&gt;&lt;rect x="3" y="4" width="1" height="1" fill="#FFE680"/&gt;&lt;rect x="4" y="4" width="1" height="1" fill="#FFE680"/&gt;&lt;rect x="5" y="4" width="1" height="1" fill="#FFE680"/&gt;&lt;rect x="6" y="4" width="1" height="1" fill="#FFE680"/&gt;&lt;rect x="7" y="4" width="1" height="1" fill="#FFE680"/&gt;&lt;rect x="8" y="4" width="1" height="1" fill="#FFE680"/&gt;&lt;rect x="9" y="4" width="1" height="1" fill="#FFE680"/&gt;&lt;rect x="10" y="4" width="1" height="1" fill="#FFE680"/&gt;&lt;rect x="11" y="4" width="1" height="1" fill="#FFE680"/&gt;&lt;rect x="12" y="4" width="1" height="1" fill="#FFE680"/&gt;&lt;rect x="13" y="4" width="1" height="1" fill="#FFE680"/&gt;&lt;rect x="14" y="4" width="1" height="1" fill="#000"/&gt;&lt;rect x="2" y="5" width="1" height="1" fill="#000"/&gt;&lt;rect x="3" y="5" width="1" height="1" fill="#FFE680"/&gt;&lt;rect x="4" y="5" width="1" height="1" fill="#FFE680"/&gt;&lt;rect x="5" y="5" width="1" height="1" fill="#FFE680"/&gt;&lt;rect x="6" y="5" width="1" height="1" fill="#000"/&gt;&lt;rect x="7" y="5" width="1" height="1" fill="#000"/&gt;&lt;rect x="8" y="5" width="1" height="1" fill="#000"/&gt;&lt;rect x="9" y="5" width="1" height="1" fill="#FFE680"/&gt;&lt;rect x="10" y="5" width="1" height="1" fill="#FFE680"/&gt;&lt;rect x="11" y="5" width="1" height="1" fill="#FFE680"/&gt;&lt;rect x="12" y="5" width="1" height="1" fill="#FFE680"/&gt;&lt;rect x="13" y="5" width="1" height="1" fill="#000"/&gt;&lt;rect x="2" y="6" width="1" height="1" fill="#000"/&gt;&lt;rect x="3" y="6" width="1" height="1" fill="#FFE680"/&gt;&lt;rect x="4" y="6" width="1" height="1" fill="#FFE680"/&gt;&lt;rect x="5" y="6" width="1" height="1" fill="#FFE680"/&gt;&lt;rect x="6" y="6" width="1" height="1" fill="#FFE680"/&gt;&lt;rect x="7" y="6" width="1" height="1" fill="#FFE680"/&gt;&lt;rect x="8" y="6" width="1" height="1" fill="#000"/&gt;&lt;rect x="9" y="6" width="1" height="1" fill="#FFE680"/&gt;&lt;rect x="10" y="6" width="1" height="1" fill="#FFE680"/&gt;&lt;rect x="11" y="6" width="1" height="1" fill="#FFE680"/&gt;&lt;rect x="12" y="6" width="1" height="1" fill="#FFE680"/&gt;&lt;rect x="13" y="6" width="1" height="1" fill="#000"/&gt;&lt;rect x="3" y="7" width="1" height="1" fill="#000"/&gt;&lt;rect x="4" y="7" width="1" height="1" fill="#FFE680"/&gt;&lt;rect x="5" y="7" width="1" height="1" fill="#FFE680"/&gt;&lt;rect x="6" y="7" width="1" height="1" fill="#FFE680"/&gt;&lt;rect x="7" y="7" width="1" height="1" fill="#000"/&gt;&lt;rect x="8" y="7" width="1" height="1" fill="#FFE680"/&gt;&lt;rect x="9" y="7" width="1" height="1" fill="#FFE680"/&gt;&lt;rect x="10" y="7" width="1" height="1" fill="#FFE680"/&gt;&lt;rect x="11" y="7" width="1" height="1" fill="#FFE680"/&gt;&lt;rect x="12" y="7" width="1" height="1" fill="#000"/&gt;&lt;rect x="3" y="8" width="1" height="1" fill="#000"/&gt;&lt;rect x="4" y="8" width="1" height="1" fill="#FFE680"/&gt;&lt;rect x="5" y="8" width="1" height="1" fill="#FFE680"/&gt;&lt;rect x="6" y="8" width="1" height="1" fill="#FFE680"/&gt;&lt;rect x="7" y="8" width="1" height="1" fill="#FFE680"/&gt;&lt;rect x="8" y="8" width="1" height="1" fill="#FFE680"/&gt;&lt;rect x="9" y="8" width="1" height="1" fill="#FFE680"/&gt;&lt;rect x="10" y="8" width="1" height="1" fill="#FFE680"/&gt;&lt;rect x="11" y="8" width="1" height="1" fill="#FFE680"/&gt;&lt;rect x="12" y="8" width="1" height="1" fill="#000"/&gt;&lt;rect x="4" y="9" width="1" height="1" fill="#000"/&gt;&lt;rect x="5" y="9" width="1" height="1" fill="#FFE680"/&gt;&lt;rect x="6" y="9" width="1" height="1" fill="#FFE680"/&gt;&lt;rect x="7" y="9" width="1" height="1" fill="#000"/&gt;&lt;rect x="8" y="9" width="1" height="1" fill="#FFE680"/&gt;&lt;rect x="9" y="9" width="1" height="1" fill="#FFE680"/&gt;&lt;rect x="10" y="9" width="1" height="1" fill="#FFE680"/&gt;&lt;rect x="11" y="9" width="1" height="1" fill="#000"/&gt;&lt;rect x="4" y="10" width="1" height="1" fill="#000"/&gt;&lt;rect x="5" y="10" width="1" height="1" fill="#FFE680"/&gt;&lt;rect x="6" y="10" width="1" height="1" fill="#FFE680"/&gt;&lt;rect x="7" y="10" width="1" height="1" fill="#FFE680"/&gt;&lt;rect x="8" y="10" width="1" height="1" fill="#FFE680"/&gt;&lt;rect x="9" y="10" width="1" height="1" fill="#FFE680"/&gt;&lt;rect x="10" y="10" width="1" height="1" fill="#FFE680"/&gt;&lt;rect x="11" y="10" width="1" height="1" fill="#000"/&gt;&lt;rect x="5" y="11" width="1" height="1" fill="#000"/&gt;&lt;rect x="6" y="11" width="1" height="1" fill="#FFE680"/&gt;&lt;rect x="7" y="11" width="1" height="1" fill="#FFE680"/&gt;&lt;rect x="8" y="11" width="1" height="1" fill="#FFE680"/&gt;&lt;rect x="9" y="11" width="1" height="1" fill="#FFE680"/&gt;&lt;rect x="10" y="11" width="1" height="1" fill="#000"/&gt;&lt;rect x="5" y="12" width="1" height="1" fill="#000"/&gt;&lt;rect x="6" y="12" width="1" height="1" fill="#FFE680"/&gt;&lt;rect x="7" y="12" width="1" height="1" fill="#FFE680"/&gt;&lt;rect x="8" y="12" width="1" height="1" fill="#FFE680"/&gt;&lt;rect x="9" y="12" width="1" height="1" fill="#FFE680"/&gt;&lt;rect x="10" y="12" width="1" height="1" fill="#000"/&gt;&lt;rect x="6" y="13" width="1" height="1" fill="#000"/&gt;&lt;rect x="7" y="13" width="1" height="1" fill="#FFE680"/&gt;&lt;rect x="8" y="13" width="1" height="1" fill="#FFE680"/&gt;&lt;rect x="9" y="13" width="1" height="1" fill="#000"/&gt;&lt;rect x="6" y="14" width="1" height="1" fill="#000"/&gt;&lt;rect x="7" y="14" width="1" height="1" fill="#FFE680"/&gt;&lt;rect x="8" y="14" width="1" height="1" fill="#FFE680"/&gt;&lt;rect x="9" y="14" width="1" height="1" fill="#000"/&gt;&lt;rect x="7" y="15" width="1" height="1" fill="#000"/&gt;&lt;rect x="8" y="15" width="1" height="1" fill="#000"/&gt;&lt;/svg&gt;&lt;div class="msg-caption"&gt;A pixel sketch of the sign.&lt;/div&gt;&lt;/div&gt;
+
+You're standing outside Pizza Surprise, waiting for your order, when you hear someone call your name. It's a classmate from your class, holding their own bag.
+
+"Oh hey, {firstName}! Funny running into you here." They glance up at the sign. "I don't know what it is, but I've always kind of loved that Pizza Surprise logo. Simple, but it works. Almost as much as I love the Rosie the Riveter poster, not gonna lie."
 
 You laugh. "That's a weirdly specific comparison."
 
-"I mean, they're both doing a lot with very little, right? Like, no words needed. You just *get* it." They tilt their head. "Actually — didn't we just talk about this in class this week? Multimodal writing?"
+"I mean, they're both doing a lot with very little, right? Like, no words needed. You just *get* it." They tilt their head. "Actually, didn't we just talk about this in class this week? Multimodal writing?"
 
 "Vaguely. Remind me?"
 
-"Basically that writing isn't just words on a page anymore. It's images, layout, color, sound, all of it working together to make meaning. Jenae Cohn wrote about this — 'Understanding Visual Rhetoric' — the idea that a logo or a poster is *doing rhetorical work* just as much as an essay is. You're not just looking at Domino's logo, you're reading it."
+"Basically that writing isn't just words on a page anymore. It's images, layout, color, sound, all of it working together to make meaning. Jenae Cohn wrote about this in "Understanding Visual Rhetoric": the idea that a logo or a poster is *doing rhetorical work* just as much as an essay is. You're not just looking at the Pizza Surprise logo, you're reading it."
 
 "Reading a pizza logo."
 
 "Reading a pizza logo," they confirm, completely serious.
 
-[[Continue-&gt;Transition to Showcase]]
+[[Continue-&gt;Value 4 Poster]]
+
+{back link}</tw-passagedata><tw-passagedata pid="27" name="Value 4 Poster" tags="" position="2700,100" size="100,100">seenPicture (typeof seenPicture === 'undefined'): false
+seenColor (typeof seenColor === 'undefined'): false
+seenWords (typeof seenWords === 'undefined'): false
+seenLayout (typeof seenLayout === 'undefined'): false
+checkPicture: seenPicture ? '✓ ' : ''
+checkColor: seenColor ? '✓ ' : ''
+checkWords: seenWords ? '✓ ' : ''
+checkLayout: seenLayout ? '✓ ' : ''
+allSeen: seenPicture &amp;&amp; seenColor &amp;&amp; seenWords &amp;&amp; seenLayout
+--
+"Okay, try this," your classmate says, pulling out their phone. "My club made this for our next event."
+
+&lt;div class="pm"&gt;&lt;div class="pm-picture"&gt;🎤&lt;/div&gt;&lt;div class="pm-words"&gt;&lt;div class="pm-title"&gt;Open Mic Night&lt;/div&gt;&lt;div class="pm-sub"&gt;Fri · 7 PM · Student Union&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+
+"Let's take it apart, one piece at a time. Where do you want to start?"
+
+- {checkPicture}[[The picture-&gt;Value 4 Result Picture]]
+- {checkColor}[[The color-&gt;Value 4 Result Color]]
+- {checkWords}[[The words-&gt;Value 4 Result Words]]
+- {checkLayout}[[The layout-&gt;Value 4 Result Layout]]
+
+[if allSeen]
+[[Continue-&gt;Value 4 Reflection]]
+[continue]
+
+{back link}</tw-passagedata><tw-passagedata pid="28" name="Value 4 Result Picture" tags="" position="2800,100" size="100,100">seenPicture: true
+allSeen: seenPicture &amp;&amp; seenColor &amp;&amp; seenWords &amp;&amp; seenLayout
+--
+Here's the poster without the picture:
+
+&lt;div class="pm no-picture"&gt;&lt;div class="pm-picture"&gt;🎤&lt;/div&gt;&lt;div class="pm-words"&gt;&lt;div class="pm-title"&gt;Open Mic Night&lt;/div&gt;&lt;div class="pm-sub"&gt;Fri · 7 PM · Student Union&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class="msg-caption"&gt;Now it's just a time and a place. You have to read to find out what it's even about.&lt;/div&gt;
+
+[[Back to the poster-&gt;Value 4 Poster]]
+
+[if allSeen]
+[[Continue-&gt;Value 4 Reflection]]
+[continue]
+
+{back link}</tw-passagedata><tw-passagedata pid="29" name="Value 4 Result Color" tags="" position="2900,100" size="100,100">seenColor: true
+allSeen: seenPicture &amp;&amp; seenColor &amp;&amp; seenWords &amp;&amp; seenLayout
+--
+Here's the poster without the color:
+
+&lt;div class="pm no-color"&gt;&lt;div class="pm-picture"&gt;🎤&lt;/div&gt;&lt;div class="pm-words"&gt;&lt;div class="pm-title"&gt;Open Mic Night&lt;/div&gt;&lt;div class="pm-sub"&gt;Fri · 7 PM · Student Union&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class="msg-caption"&gt;Same picture, same words, but the energy is gone. Color tells you the mood before you read a word.&lt;/div&gt;
+
+[[Back to the poster-&gt;Value 4 Poster]]
+
+[if allSeen]
+[[Continue-&gt;Value 4 Reflection]]
+[continue]
+
+{back link}</tw-passagedata><tw-passagedata pid="30" name="Value 4 Result Words" tags="" position="3000,100" size="100,100">seenWords: true
+allSeen: seenPicture &amp;&amp; seenColor &amp;&amp; seenWords &amp;&amp; seenLayout
+--
+Here's the poster without the words:
+
+&lt;div class="pm no-words"&gt;&lt;div class="pm-picture"&gt;🎤&lt;/div&gt;&lt;div class="pm-words"&gt;&lt;div class="pm-title"&gt;Open Mic Night&lt;/div&gt;&lt;div class="pm-sub"&gt;Fri · 7 PM · Student Union&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class="msg-caption"&gt;You can guess it's something musical, but not when or where. The picture can only say so much.&lt;/div&gt;
+
+[[Back to the poster-&gt;Value 4 Poster]]
+
+[if allSeen]
+[[Continue-&gt;Value 4 Reflection]]
+[continue]
+
+{back link}</tw-passagedata><tw-passagedata pid="31" name="Value 4 Result Layout" tags="" position="3100,100" size="100,100">seenLayout: true
+allSeen: seenPicture &amp;&amp; seenColor &amp;&amp; seenWords &amp;&amp; seenLayout
+--
+Here's the poster without the layout:
+
+&lt;div class="pm no-layout"&gt;&lt;div class="pm-picture"&gt;🎤&lt;/div&gt;&lt;div class="pm-words"&gt;&lt;div class="pm-title"&gt;Open Mic Night&lt;/div&gt;&lt;div class="pm-sub"&gt;Fri · 7 PM · Student Union&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class="msg-caption"&gt;Same picture, same words, same color, but nothing tells you what to look at first. Layout is how a poster tells you where to start.&lt;/div&gt;
+
+[[Back to the poster-&gt;Value 4 Poster]]
+
+[if allSeen]
+[[Continue-&gt;Value 4 Reflection]]
+[continue]
+
+{back link}</tw-passagedata><tw-passagedata pid="32" name="Value 4 Reflection" tags="" position="3200,100" size="100,100">done4: true
+--
+Before you go, {firstName}: write a sentence about a logo, poster, or video that told you something without using any words.
+
+{text input for: 'multimodalExample'}
+
+[[Continue-&gt;Hub]]
+
+{back link}</tw-passagedata><tw-passagedata pid="33" name="Value 5" tags="" position="3300,100" size="100,100">Hi, {firstName}. Think about how you talk to your family, then your friends, then a professor. Same person, three different ways of speaking.
+
+None of that is an accident, and none of it is a problem. Who you are, the languages you speak, the places you come from, and the things you've lived through all show up in how you write. Elora Pfriender says it this way: writing "explores, establishes, and enacts identities."
+
+Alvarez, Wan, and Lee make the same point in the title of their chapter: "Workin' Languages: Who We Are Matters in Our Writing."
+
+[[Continue-&gt;Value 5 Scene]]
 
 {back link}
 
-&lt;div class="page-num"&gt;Page 18 of 23&lt;/div&gt;</tw-passagedata><tw-passagedata pid="19" name="Transition to Showcase" tags="" position="1900,100" size="100,100">&lt;span class="epigraph"&gt;"Writing is rewriting."&lt;br&gt;—Alicia M. Lienhart&lt;/span&gt;
+&lt;span class="epigraph"&gt;"Writing is connected to our identity and experience."&lt;br&gt;—Nick Gardiakos&lt;/span&gt;</tw-passagedata><tw-passagedata pid="34" name="Value 5 Scene" tags="" position="3400,100" size="100,100">{firstName}, let's stop by the DWR office.
 
-You're mid-bite when your phone buzzes. A calendar reminder: **Knight Write Showcase — starting soon.**
+You push open the door and immediately step into the middle of a conversation. Three professors are gathered near the mailboxes, one of them holding a laptop open to a half-built slide, all three clearly deep into something.
 
-"Oh, that's today?" your classmate says, glancing at your screen. "I know exactly where that is. Come on, I'll walk with you."
+"Okay, but this slide needs an example," Professor Kennedy says, squinting at the screen. "Something concrete. Right now it just says 'identity matters,' and that could mean literally anything to a conference audience."
 
-You toss your trash, and the two of you head off together, the alien trailing along somewhere just out of sight.
+"Use the code-switching example," Professor Lambert says. "A student who talks one way at home, another way in a seminar, another way online. That's not three different students. That's one student drawing on everything they've got, depending on the room."
 
-[[Head to the Showcase-&gt;Showcase Poster 1]]
+"That's good," Professor Velez says, already typing. "Because that's really the whole argument, right? Writing's never separate from where someone comes from."
 
-{back link}
-
-&lt;div class="page-num"&gt;Page 19 of 23&lt;/div&gt;</tw-passagedata><tw-passagedata pid="20" name="Showcase Poster 1" tags="" position="2000,100" size="100,100">&lt;span class="epigraph"&gt;"Reflection is critical to the development of writers."&lt;br&gt;—Kara Taczak&lt;/span&gt;
-
-You walk into the Knight Write Showcase, and a line of poster presentations stretches down the hall. The alien has taken up a spot on your shoulder, apparently satisfied with this vantage point.
-
-&lt;div class="poster"&gt;&lt;div class="poster-title"&gt;"The Essay I Wrote Twice"&lt;/div&gt;
-&lt;p&gt;Freshman year, I turned in a personal essay for my First-Year Composition class about learning to skateboard. Six months later, a scholarship application asked for "a piece of creative nonfiction." I opened that old essay, meaning to write something new, and just&amp;hellip; started editing instead. Same story. Different audience, different stakes, completely different sentences by the time I was done.&lt;/p&gt;
-&lt;p&gt;I didn't think I was doing anything special. I just knew how to do this now.&lt;/p&gt;&lt;/div&gt;
-
-[[Next poster-&gt;Showcase Poster 2]]
+[[Listen in-&gt;Value 5 Readings]]
 
 {back link}
 
-&lt;div class="page-num"&gt;Page 20 of 23&lt;/div&gt;</tw-passagedata><tw-passagedata pid="21" name="Showcase Poster 2" tags="" position="2100,100" size="100,100">&lt;span class="epigraph"&gt;"Writing is not just something people do, but something people study through inquiry."&lt;br&gt;—Pamela Baker&lt;/span&gt;
+&lt;span class="epigraph"&gt;"Writing is culturally situated and sustained."&lt;br&gt;—Rosalind Rohrbaugh&lt;/span&gt;</tw-passagedata><tw-passagedata pid="35" name="Value 5 Readings" tags="" position="3500,100" size="100,100">"Which is why this panel matters," Kennedy says. "Half the field still talks about 'proper' writing like it's neutral. It's not neutral. It never was."
 
-&lt;div class="poster"&gt;&lt;div class="poster-title"&gt;"Where I Actually Learned This"&lt;/div&gt;
-&lt;p&gt;My professor said my thesis paragraph had good "signposting" — that I told the reader exactly where the argument was headed before I got there. I didn't learn that from an essay. I learned it from writing raid strategies for my guild, back in high school. You always tell people the plan before you start moving. Turns out that's just&amp;hellip; how you write anything that needs to make sense to someone else.&lt;/p&gt;
-&lt;p&gt;I didn't know I already knew this until someone made me explain it out loud.&lt;/p&gt;&lt;/div&gt;
+"Gloria Anzaldúa said it years ago," Lambert says. "In 'How to Tame a Wild Tongue,' she writes about the languages she grew up with and refuses to be told they're wrong."
 
-[[Next poster-&gt;Showcase Poster 3]]
+"She moves between English and Spanish in the same essay and never apologizes for it," Velez says. "That's one writer drawing on everything she's got."
 
-{back link}
+"And Deborah Brandt's 'Sponsors of Literacy,'" Kennedy adds. "Everyone who taught you to read and write, a parent, a church, a boss, is part of how you write now."
 
-&lt;div class="page-num"&gt;Page 21 of 23&lt;/div&gt;</tw-passagedata><tw-passagedata pid="22" name="Showcase Poster 3" tags="" position="2200,100" size="100,100">&lt;span class="epigraph"&gt;"Writing is a knowledge-making activity."&lt;br&gt;—Xaria Arthur&lt;/span&gt;
+You linger near the door, not sure whether to interrupt a working session. Lambert looks up and spots you.
 
-&lt;div class="poster"&gt;&lt;div class="poster-title"&gt;Field Notes: Kara Taczak, on Transfer&lt;/div&gt;
-&lt;p&gt;An example student reflection, in the spirit of Taczak's research on writing transfer:&lt;/p&gt;
-&lt;p&gt;"I kept thinking I was starting from zero every time I got a new writing assignment. It wasn't until my professor asked me to write about &lt;em&gt;how&lt;/em&gt; I wrote something — not just turn it in — that I realized I already had a whole toolkit. I'd just never been asked to look at it before."&lt;/p&gt;
-&lt;p&gt;Taczak's work argues that this kind of reflection is what makes transfer possible. Students don't just carry skills from one writing situation to another automatically — they have to notice they're doing it.&lt;/p&gt;&lt;/div&gt;
+"Oh, hi. Perfect timing. Do you have a minute? We could use a real example."
 
-[[Next poster-&gt;Showcase Poster 4]]
+[[Help them-&gt;Value 5 Activity]]
 
-{back link}
+{back link}</tw-passagedata><tw-passagedata pid="36" name="Value 5 Activity" tags="" position="3600,100" size="100,100">Kennedy turns the laptop toward you. "We need three real examples for this slide. Fill in whatever fits you. There are no wrong answers."
 
-&lt;div class="page-num"&gt;Page 22 of 23&lt;/div&gt;</tw-passagedata><tw-passagedata pid="23" name="Showcase Poster 4" tags="" position="2300,100" size="100,100">&lt;span class="epigraph"&gt;"Writing is generative—it contributes something new to the world, which can then allow others to respond and generate more."&lt;br&gt;—Joel Schneier&lt;/span&gt;
+**A word or phrase you use with family or friends that you wouldn't use in a seminar:**
 
-&lt;div class="poster"&gt;&lt;div class="poster-title"&gt;What Do You Value About Writing?&lt;/div&gt;
-&lt;p&gt;Collected from a student on their way to today's Showcase:&lt;/p&gt;
-&lt;p&gt;"{valueQuote}"&lt;/p&gt;&lt;/div&gt;
+{text input for: 'langWord'}
 
-You look around at the posters, at the alien still perched on your shoulder, and for a second the whole morning — the DWR office, the writing center, the grad student, the fountain, the pizza — actually makes sense as one thing instead of five separate things.
+**A place, tradition, or community you know well:**
 
-"Well," the alien says. "You made it."
+{text input for: 'cultureWord'}
 
-**THE END**
+**Something you know a lot about that has nothing to do with school:**
+
+{text input for: 'experienceWord'}
+
+[[Add it to the slide-&gt;Value 5 Reaction]]
 
 {back link}
 
-&lt;div class="page-num"&gt;Page 23 of 23&lt;/div&gt;</tw-passagedata></tw-storydata></html>
+&lt;span class="epigraph"&gt;"Writing is a community."&lt;br&gt;—Emery Beckman&lt;/span&gt;</tw-passagedata><tw-passagedata pid="37" name="Value 5 Reaction" tags="" position="3700,100" size="100,100">Professor Velez types your answers into the slide:
+
+&lt;div class="slide-frame"&gt;&lt;div class="slide2"&gt;&lt;div class="s2-title"&gt;What We Bring to Our Writing&lt;/div&gt;&lt;div class="s2-grid"&gt;&lt;div class="s2-card"&gt;&lt;div class="s2-icon"&gt;💬&lt;/div&gt;&lt;div class="s2-label"&gt;Language&lt;/div&gt;&lt;div class="s2-text"&gt;{langWord}&lt;/div&gt;&lt;/div&gt;&lt;div class="s2-card"&gt;&lt;div class="s2-icon"&gt;🌎&lt;/div&gt;&lt;div class="s2-label"&gt;Culture&lt;/div&gt;&lt;div class="s2-text"&gt;{cultureWord}&lt;/div&gt;&lt;/div&gt;&lt;div class="s2-card"&gt;&lt;div class="s2-icon"&gt;🧰&lt;/div&gt;&lt;div class="s2-label"&gt;Experience&lt;/div&gt;&lt;div class="s2-text"&gt;{experienceWord}&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="slide-stand"&gt;&lt;/div&gt;&lt;/div&gt;
+
+"Those are great!" Professor Velez says.
+
+"Three different pieces, and every one of them is yours," Kennedy says. "Nobody else could have written that."
+
+[[Continue-&gt;Value 5 Reflection]]
+
+{back link}</tw-passagedata><tw-passagedata pid="38" name="Value 5 Reflection" tags="" position="3800,100" size="100,100">done5: true
+--
+Before you go, {firstName}: write a sentence about how one of those could show up in your writing for a class.
+
+{text input for: 'bringToWriting'}
+
+[[Continue-&gt;Hub]]
+
+{back link}</tw-passagedata><tw-passagedata pid="39" name="Value 6" tags="" position="3900,100" size="100,100">Hi, {firstName}. Has anyone ever told you to "sound more professional" or to "clean that up"?
+
+It can sound like simple advice. But advice like that carries an idea of what "correct" writing looks like, and someone had to decide that. Priscila Schilaro Santa Rosa puts it this way: writing "is never neutral because it reproduces, negotiates, or challenges existing relationships of power."
+
+Let's talk to someone who thinks about this a lot.
+
+[[Continue-&gt;Value 6 Scene]]
+
+{back link}
+
+&lt;span class="epigraph"&gt;"There is no single standard for 'good' writing."&lt;br&gt;—Nichole Stack&lt;/span&gt;</tw-passagedata><tw-passagedata pid="40" name="Value 6 Scene" tags="" position="4000,100" size="100,100">{firstName}, let's sit by the fountain for a minute.
+
+You let the sound of the water fill the silence for a second.
+
+"Rough morning?"
+
+You look up. It's one of your professors, coffee in hand, giving you the kind of look that means they're not just being polite.
+
+"I don't even know," you admit. "It feels like everyone on this campus has an opinion about how I write."
+
+They laugh and sit down on the edge of the fountain. "Sounds about right. You know, none of that is really about grammar. It's about power: who gets heard, whose way of writing counts as 'correct,' and who decided that in the first place."
+
+[[Continue-&gt;Value 6 Readings]]
+
+{back link}</tw-passagedata><tw-passagedata pid="41" name="Value 6 Readings" tags="" position="4100,100" size="100,100">"There's an essay by Vershawn Young, 'Nah, We Straight,' that gets into this," they say. "He argues against the whole idea that people should have to switch how they talk depending on the room, like there's one 'right' way underneath it all and everything else is just a detour from it."
+
+"That idea shows up everywhere, not just in classrooms. Every time someone tells you to 'sound more professional' or 'clean that up,' there's usually an assumption buried in there about whose way of writing counts as the default."
+
+"Language was never neutral to begin with. Every choice you make on the page is doing something, whether you notice it or not, including the choice to write the way you're 'supposed to.'"
+
+They pull out their phone. "Here, let me show you what I mean."
+
+[[Continue-&gt;Value 6 Activity]]
+
+{back link}</tw-passagedata><tw-passagedata pid="42" name="Value 6 Activity" tags="" position="4200,100" size="100,100">seenClean (typeof seenClean === 'undefined'): false
+seenLeave (typeof seenLeave === 'undefined'): false
+seenAsk (typeof seenAsk === 'undefined'): false
+checkClean: seenClean ? '✓ ' : ''
+checkLeave: seenLeave ? '✓ ' : ''
+checkAsk: seenAsk ? '✓ ' : ''
+allSeen6: seenClean &amp;&amp; seenLeave &amp;&amp; seenAsk
+--
+"A student sent me this," they say.
+
+&lt;div class="email-window"&gt;&lt;div class="email-bar"&gt;&lt;span&gt;New Message&lt;/span&gt;&lt;span class="dots"&gt;● ● ●&lt;/span&gt;&lt;/div&gt;&lt;div class="email-row"&gt;&lt;b&gt;To:&lt;/b&gt; Your professor&lt;/div&gt;&lt;div class="email-row"&gt;&lt;b&gt;Subject:&lt;/b&gt; Office hours&lt;/div&gt;&lt;div class="email-body"&gt;Hey Professor, I can’t make office hours today, my bus was super late. Can we do tomorrow?&lt;/div&gt;&lt;/div&gt;
+
+"Someone told them to 'clean it up' and 'sound more professional.' What would you do?"
+
+- {checkClean}[[Clean it up-&gt;Value 6 Choice Clean]]
+- {checkLeave}[[Leave it as it is-&gt;Value 6 Choice Leave]]
+- {checkAsk}[[Ask the reader what they need-&gt;Value 6 Choice Ask]]
+
+[if allSeen6]
+[[Continue-&gt;Value 6 Reflection]]
+[continue]
+
+{back link}</tw-passagedata><tw-passagedata pid="43" name="Value 6 Choice Clean" tags="" position="4300,100" size="100,100">seenClean: true
+allSeen6: seenClean &amp;&amp; seenLeave &amp;&amp; seenAsk
+--
+Here's the email now:
+
+&lt;div class="email-window"&gt;&lt;div class="email-bar"&gt;&lt;span&gt;New Message&lt;/span&gt;&lt;span class="dots"&gt;● ● ●&lt;/span&gt;&lt;/div&gt;&lt;div class="email-row"&gt;&lt;b&gt;To:&lt;/b&gt; Your professor&lt;/div&gt;&lt;div class="email-row"&gt;&lt;b&gt;Subject:&lt;/b&gt; Office hours&lt;/div&gt;&lt;div class="email-body"&gt;Dear Professor, I regret to inform you that I will be unable to attend office hours today due to a transportation delay. May I please reschedule for tomorrow? Sincerely,&lt;/div&gt;&lt;/div&gt;
+
+"That's the version most of us were taught to write," they say. "But nothing was wrong with the first one. It was clear and polite. It just didn't sound like the people who usually decide what's 'professional.'"
+
+&lt;div class="msg-caption"&gt;Now it sounds like what a formal reader expects. But “professional” is a standard someone decided on, and it isn’t the only way to be clear and respectful.&lt;/div&gt;
+
+[[Back to the email-&gt;Value 6 Activity]]
+
+[if allSeen6]
+[[Continue-&gt;Value 6 Reflection]]
+[continue]
+
+{back link}
+
+&lt;span class="epigraph"&gt;"Don't let perfect be the enemy of done."&lt;br&gt;—Vee Kennedy&lt;/span&gt;</tw-passagedata><tw-passagedata pid="44" name="Value 6 Choice Leave" tags="" position="4400,100" size="100,100">seenLeave: true
+allSeen6: seenClean &amp;&amp; seenLeave &amp;&amp; seenAsk
+--
+Here's the email now:
+
+&lt;div class="email-window"&gt;&lt;div class="email-bar"&gt;&lt;span&gt;New Message&lt;/span&gt;&lt;span class="dots"&gt;● ● ●&lt;/span&gt;&lt;/div&gt;&lt;div class="email-row"&gt;&lt;b&gt;To:&lt;/b&gt; Your professor&lt;/div&gt;&lt;div class="email-row"&gt;&lt;b&gt;Subject:&lt;/b&gt; Office hours&lt;/div&gt;&lt;div class="email-body"&gt;Hey Professor, I can’t make office hours today, my bus was super late. Can we do tomorrow?&lt;/div&gt;&lt;/div&gt;
+
+"Plenty of readers would be fine with that one," they say. "Others would read it as careless. Same words, different reader, different verdict."
+
+&lt;div class="msg-caption"&gt;It’s clear, polite, and gets the job done. Whether it counts as “good” depends on who is reading and who decided what the standard is.&lt;/div&gt;
+
+[[Back to the email-&gt;Value 6 Activity]]
+
+[if allSeen6]
+[[Continue-&gt;Value 6 Reflection]]
+[continue]
+
+{back link}
+
+&lt;span class="epigraph"&gt;"Don't let perfect be the enemy of done."&lt;br&gt;—Vee Kennedy&lt;/span&gt;</tw-passagedata><tw-passagedata pid="45" name="Value 6 Choice Ask" tags="" position="4500,100" size="100,100">seenAsk: true
+allSeen6: seenClean &amp;&amp; seenLeave &amp;&amp; seenAsk
+--
+Here's the email now:
+
+&lt;div class="email-window"&gt;&lt;div class="email-bar"&gt;&lt;span&gt;New Message&lt;/span&gt;&lt;span class="dots"&gt;● ● ●&lt;/span&gt;&lt;/div&gt;&lt;div class="email-row"&gt;&lt;b&gt;To:&lt;/b&gt; Your professor&lt;/div&gt;&lt;div class="email-row"&gt;&lt;b&gt;Subject:&lt;/b&gt; Office hours&lt;/div&gt;&lt;div class="email-body"&gt;Hi! All I need is to know when you can come in. How you write it is fine.&lt;/div&gt;&lt;/div&gt;
+
+"That's the move," they say. "Instead of guessing what 'professional' means to someone, you find out. Then the choice is yours, not an assumption you inherited."
+
+&lt;div class="msg-caption"&gt;Often “sound more professional” is a guess about what the reader wants. Asking replaces the guess.&lt;/div&gt;
+
+[[Back to the email-&gt;Value 6 Activity]]
+
+[if allSeen6]
+[[Continue-&gt;Value 6 Reflection]]
+[continue]
+
+{back link}
+
+&lt;span class="epigraph"&gt;"Don't let perfect be the enemy of done."&lt;br&gt;—Vee Kennedy&lt;/span&gt;</tw-passagedata><tw-passagedata pid="46" name="Value 6 Reflection" tags="" position="4600,100" size="100,100">done6: true
+--
+"Can I ask you something?" the professor says. "What do you value about writing? One sentence. Doesn't have to be perfect."
+
+{text input for: 'valueQuote'}
+
+They nod slowly, like it's a good answer even before they've fully processed it. "Hold onto that," they say, standing up and brushing off their coat. "Take care of yourself out there."
+
+[[Continue-&gt;Hub]]
+
+{back link}
+
+&lt;span class="epigraph"&gt;"Anyone can be a writer."&lt;br&gt;—Stuart Dees&lt;/span&gt;</tw-passagedata><tw-passagedata pid="47" name="Value 7" tags="" position="4700,100" size="100,100">Hi, {firstName}. Think about the last time you started a brand-new writing assignment and felt like you were starting from zero.
+
+You weren't. Everything you've written, read, and figured out before comes with you. Kara Taczak wrote a chapter for first-year writers on exactly this, "The Importance of Transfer in Your First Year Writing Course." She says transfer "happens when writers use reflection to frame and reframe prior knowledge and experiences in new writing situations."
+
+Let's see what that looks like.
+
+[[Continue-&gt;Value 7 Posters]]
+
+{back link}
+
+&lt;span class="epigraph"&gt;"Reflection is critical to the development of writers."&lt;br&gt;—Kara Taczak&lt;/span&gt;</tw-passagedata><tw-passagedata pid="48" name="Value 7 Posters" tags="" position="4800,100" size="100,100">seenEssay (typeof seenEssay === 'undefined'): false
+seenGuild (typeof seenGuild === 'undefined'): false
+seenTaczak (typeof seenTaczak === 'undefined'): false
+checkEssay: seenEssay ? '✓ ' : ''
+checkGuild: seenGuild ? '✓ ' : ''
+checkTaczak: seenTaczak ? '✓ ' : ''
+allPostersSeen: seenEssay &amp;&amp; seenGuild &amp;&amp; seenTaczak
+--
+{firstName}, let's head over to the Knights Write Showcase.
+
+A line of poster presentations stretches down the hall. Three of them catch your eye. Where do you want to start?
+
+- {checkEssay}[[The Essay I Wrote Twice-&gt;Value 7 Poster Essay]]
+- {checkGuild}[[Where I Actually Learned This-&gt;Value 7 Poster Guild]]
+- {checkTaczak}[[Field Notes: Kara Taczak, on Transfer-&gt;Value 7 Poster Taczak]]
+
+[if allPostersSeen]
+[[Continue-&gt;Value 7 Activity]]
+[continue]
+
+{back link}
+
+&lt;span class="epigraph"&gt;"Writing is not just something people do, but something people study through inquiry."&lt;br&gt;—Pamela Baker&lt;/span&gt;</tw-passagedata><tw-passagedata pid="49" name="Value 7 Poster Essay" tags="" position="4900,100" size="100,100">seenEssay: true
+allPostersSeen: seenEssay &amp;&amp; seenGuild &amp;&amp; seenTaczak
+--
+&lt;div class="poster"&gt;&lt;div class="poster-title"&gt;"The Essay I Wrote Twice"&lt;/div&gt;&lt;p&gt;Freshman year, I turned in a personal essay for my First-Year Composition class about learning to skateboard. Six months later, a scholarship application asked for "a piece of creative nonfiction." I opened that old essay, meaning to write something new, and just&amp;hellip; started editing instead. Same story. Different audience, different stakes, completely different sentences by the time I was done.&lt;/p&gt;&lt;p&gt;I didn't think I was doing anything special. I just knew how to do this now.&lt;/p&gt;&lt;/div&gt;
+
+&lt;div class="msg-caption"&gt;They didn't start from zero. They carried what they knew into a new situation.&lt;/div&gt;
+
+[[Back to the posters-&gt;Value 7 Posters]]
+
+[if allPostersSeen]
+[[Continue-&gt;Value 7 Activity]]
+[continue]
+
+{back link}
+
+&lt;span class="epigraph"&gt;"Writing is a knowledge-making activity."&lt;br&gt;—Xaria Arthur&lt;/span&gt;</tw-passagedata><tw-passagedata pid="50" name="Value 7 Poster Guild" tags="" position="5000,100" size="100,100">seenGuild: true
+allPostersSeen: seenEssay &amp;&amp; seenGuild &amp;&amp; seenTaczak
+--
+&lt;div class="poster"&gt;&lt;div class="poster-title"&gt;"Where I Actually Learned This"&lt;/div&gt;&lt;p&gt;My professor said my thesis paragraph had good "signposting" — that I told the reader exactly where the argument was headed before I got there. I didn't learn that from an essay. I learned it from writing raid strategies for my guild, back in high school. You always tell people the plan before you start moving. Turns out that's just&amp;hellip; how you write anything that needs to make sense to someone else.&lt;/p&gt;&lt;p&gt;I didn't know I already knew this until someone made me explain it out loud.&lt;/p&gt;&lt;/div&gt;
+
+&lt;div class="msg-caption"&gt;They already knew it. Someone just asked them to notice.&lt;/div&gt;
+
+[[Back to the posters-&gt;Value 7 Posters]]
+
+[if allPostersSeen]
+[[Continue-&gt;Value 7 Activity]]
+[continue]
+
+{back link}
+
+&lt;span class="epigraph"&gt;"Writing is a knowledge-making activity."&lt;br&gt;—Xaria Arthur&lt;/span&gt;</tw-passagedata><tw-passagedata pid="51" name="Value 7 Poster Taczak" tags="" position="5100,100" size="100,100">seenTaczak: true
+allPostersSeen: seenEssay &amp;&amp; seenGuild &amp;&amp; seenTaczak
+--
+&lt;div class="poster"&gt;&lt;div class="poster-title"&gt;Field Notes: Kara Taczak, on Transfer&lt;/div&gt;&lt;p&gt;An example student reflection, in the spirit of Taczak's research on writing transfer:&lt;/p&gt;&lt;p&gt;"I kept thinking I was starting from zero every time I got a new writing assignment. It wasn't until my professor asked me to write about &lt;em&gt;how&lt;/em&gt; I wrote something — not just turn it in — that I realized I already had a whole toolkit. I'd just never been asked to look at it before."&lt;/p&gt;&lt;p&gt;Taczak's work argues that this kind of reflection is what makes transfer possible. Students don't just carry skills from one writing situation to another automatically — they have to notice they're doing it.&lt;/p&gt;&lt;/div&gt;
+
+[[Back to the posters-&gt;Value 7 Posters]]
+
+[if allPostersSeen]
+[[Continue-&gt;Value 7 Activity]]
+[continue]
+
+{back link}
+
+&lt;span class="epigraph"&gt;"Writing is a knowledge-making activity."&lt;br&gt;—Xaria Arthur&lt;/span&gt;</tw-passagedata><tw-passagedata pid="52" name="Value 7 Activity" tags="" position="5200,100" size="100,100">A student volunteer hands you a marker and points to a blank poster board. "Visitors fill one in," they say. "Same idea: what do you already know, and where could it go?"
+
+**Something you already know how to do, outside of class:**
+
+{text input for: 'skillWord'}
+
+**A writing situation coming up for you (an assignment, an application, a message):**
+
+{text input for: 'situationWord'}
+
+**How the first could help with the second:**
+
+{text input for: 'transferWord'}
+
+[[Put it on the board-&gt;Value 7 Board]]
+
+{back link}</tw-passagedata><tw-passagedata pid="53" name="Value 7 Board" tags="" position="5300,100" size="100,100">Your poster goes up next to the others:
+
+&lt;div class="poster"&gt;&lt;div class="poster-title"&gt;What I Already Know&lt;/div&gt;&lt;p&gt;&lt;b&gt;I know how to:&lt;/b&gt; {skillWord}&lt;/p&gt;&lt;p&gt;&lt;b&gt;Coming up:&lt;/b&gt; {situationWord}&lt;/p&gt;&lt;p&gt;&lt;b&gt;How it helps:&lt;/b&gt; {transferWord}&lt;/p&gt;&lt;/div&gt;
+
+&lt;div class="msg-caption"&gt;That's transfer: noticing what you already have and carrying it into something new.&lt;/div&gt;
+
+[[Continue-&gt;Value 7 Reflection]]
+
+{back link}</tw-passagedata><tw-passagedata pid="54" name="Value 7 Reflection" tags="" position="5400,100" size="100,100">done7: true
+--
+Before you go, {firstName}: write a sentence about what looking back at your own writing helps you notice.
+
+{text input for: 'reflectNotice'}
+
+[[Continue-&gt;Hub]]
+
+{back link}
+
+&lt;span class="epigraph"&gt;"Learning to Write Effectively Requires Different Kinds of Practice, Time, and Effort."&lt;br&gt;—Stuart Dees&lt;/span&gt;</tw-passagedata><tw-passagedata pid="55" name="Ending" tags="" position="5500,100" size="100,100">firstName (typeof firstName === 'undefined'): ''
+lastName (typeof lastName === 'undefined'): ''
+valueQuote (typeof valueQuote === 'undefined'): ''
+revisionMeaning (typeof revisionMeaning === 'undefined'): ''
+audienceMeaning (typeof audienceMeaning === 'undefined'): ''
+purposeHelp (typeof purposeHelp === 'undefined'): ''
+multimodalExample (typeof multimodalExample === 'undefined'): ''
+bringToWriting (typeof bringToWriting === 'undefined'): ''
+reflectNotice (typeof reflectNotice === 'undefined'): ''
+--
+&lt;div class="final-poster"&gt;&lt;div class="fp-name"&gt;{firstName} {lastName}&lt;/div&gt;&lt;div class="fp-section"&gt;What I Value About Writing&lt;/div&gt;&lt;div class="fp-value"&gt;“{valueQuote}”&lt;/div&gt;&lt;div class="fp-items"&gt;&lt;div class="fp-item"&gt;&lt;div class="fp-label"&gt;What revision means to me&lt;/div&gt;&lt;div class="fp-text"&gt;{revisionMeaning}&lt;/div&gt;&lt;/div&gt;&lt;div class="fp-item"&gt;&lt;div class="fp-label"&gt;What changes when my audience changes&lt;/div&gt;&lt;div class="fp-text"&gt;{audienceMeaning}&lt;/div&gt;&lt;/div&gt;&lt;div class="fp-item"&gt;&lt;div class="fp-label"&gt;What helps me figure out my goal&lt;/div&gt;&lt;div class="fp-text"&gt;{purposeHelp}&lt;/div&gt;&lt;/div&gt;&lt;div class="fp-item"&gt;&lt;div class="fp-label"&gt;Something that said it without words&lt;/div&gt;&lt;div class="fp-text"&gt;{multimodalExample}&lt;/div&gt;&lt;/div&gt;&lt;div class="fp-item"&gt;&lt;div class="fp-label"&gt;How what I know could show up in my writing&lt;/div&gt;&lt;div class="fp-text"&gt;{bringToWriting}&lt;/div&gt;&lt;/div&gt;&lt;div class="fp-item"&gt;&lt;div class="fp-label"&gt;What looking back helps me notice&lt;/div&gt;&lt;div class="fp-text"&gt;{reflectNotice}&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+
+{back link}
+
+&lt;span class="epigraph"&gt;"Writing is generative—it contributes something new to the world, which can then allow others to respond and generate more."&lt;br&gt;—Joel Schneier&lt;/span&gt;</tw-passagedata></tw-storydata></html>
